@@ -1,0 +1,196 @@
+
+    {
+      "name": "Abacavir"
+    },
+    {
+      "name": "Alkeran"
+    },
+    {
+      "name": "Aricept"
+    },
+    {
+      "name": "Atripla"
+    },
+    {
+      "name": "Calcium Acetate*"
+    },
+    {
+      "name": "Campath"
+    },
+    {
+      "name": "Caprelsa"
+    },
+    {
+      "name": "Carbidopa/Levodopa*"
+    },
+    {
+      "name": "Casodex"
+    },
+    {
+      "name": "Cellcept"
+    },
+    {
+      "name": "Chlorpromazine Hcl*"
+    },
+    {
+      "name": "Cognex"
+    },
+    {
+      "name": "Combivir"
+    },
+    {
+      "name": "Crixivan"
+    },
+    {
+      "name": "Cyclosporine"
+    },
+    {
+      "name": "Cytoxan"
+    },
+    {
+      "name": "Donepezil"
+    },
+    {
+      "name": "Droxia"
+    },
+    {
+      "name": "Eligard"
+    },
+    {
+      "name": "Epivir Hbv"
+    },
+    {
+      "name": "Ergoloid Mesylates"
+    },
+    {
+      "name": "Exelon"
+    },
+    {
+      "name": "Floxuridine"
+    },
+    {
+      "name": "Fluorouracil"
+    },
+    {
+      "name": "Galantamine"
+    },
+    {
+      "name": "Hydrobromide"
+    },
+    {
+      "name": "Gammagard"
+    },
+    {
+      "name": "Gamunex"
+    },
+    {
+      "name": "Gengraf"
+    },
+    {
+      "name": "Hydrea"
+    },
+    {
+      "name": "Hydroxyurea"
+    },
+    {
+      "name": "Invirase"
+    },
+    {
+      "name": "Leucovorin Calcium"
+    },
+    {
+      "name": "Lexiva"
+    },
+    {
+      "name": "Megace"
+    },
+    {
+      "name": "Megestrol Acetate"
+    },
+    {
+      "name": "Mitomycin"
+    },
+    {
+      "name": "Mycophenolate Mofetil"
+    },
+    {
+      "name": "Myfortic"
+    },
+    {
+      "name": "Naloxone Hcl*"
+    },
+    {
+      "name": "Naltrexone Hcl*"
+    },
+    {
+      "name": "Namenda"
+    },
+    {
+      "name": "Neupogen"
+    },
+    {
+      "name": "Panretin"
+    },
+    {
+      "name": "Peg-Intron*"
+    },
+    {
+      "name": "Prograf"
+    },
+    {
+      "name": "Razadyne"
+    },
+    {
+      "name": "Retrovir"
+    },
+    {
+      "name": "Revlimid"
+    },
+    {
+      "name": "Rituxan"
+    },
+    {
+      "name": "Sandimmune"
+    },
+    {
+      "name": "Stribild"
+    },
+    {
+      "name": "Sustiva"
+    },
+    {
+      "name": "Targretin"
+    },
+    {
+      "name": "Teslac"
+    },
+    {
+      "name": "Truvada"
+    },
+    {
+      "name": "Viracept"
+    },
+    {
+      "name": "Viramune"
+    },
+    {
+      "name": "Viread"
+    },
+    {
+      "name": "Zenapax"
+    },
+    {
+      "name": "Zerit"
+    },
+    {
+      "name": "Ziagen"
+    },
+    {
+      "name": "Zidovudine"
+    },
+    {
+      "name": "Zoladex"
+    },
+    {
+      "name": "Zyprexa*"
+    }
