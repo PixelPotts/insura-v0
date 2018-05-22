@@ -1,6 +1,187 @@
 export default {
   providers: [
 
+    // AMERICO
+    {
+      id: 2,
+      name: "Americo",
+      nickname: "A",
+      logoUrl: './images/logo_am.jpeg',
+      products: [
+        {
+          id: 201,
+          name: "HMS Plus",
+          nickname: "HMSP",
+          payout: {
+            min: 2000,
+            max: 20000
+          },
+          underwriting: {
+            age: {
+              min: 45,
+              max: 80
+            },
+            bmi: {
+              min: 16.6,
+              max: 41.1
+            },
+            drugs: {
+              decline: [],
+              info: [],
+              seeDecline: null
+            },
+            conditions: {
+              decline: [],
+              seeDecline: false
+            }
+          }
+        },
+        {
+          id: 2011,
+          name: "HMS Plus DI",
+          nickname: "HMSP-DI",
+          payout: {
+            min: 2000,
+            max: 20000
+          },
+          underwriting: {
+            age: {
+              min: 45,
+              max: 80
+            },
+            bmi: {
+              min: 16.6,
+              max: 41.1
+            },
+            drugs: {
+              decline: [],
+              info: [],
+              seeDecline: null
+            },
+            conditions: {
+              decline: [],
+              seeDecline: false
+            }
+          }
+        },
+        {
+          id: 202,
+          name: "Eagle Premier Level",
+          nickname: "EPL",
+          payout: {
+            min: 2000,
+            max: 20000
+          },
+          underwriting: {
+            age: {
+              min: 50,
+              max: 85
+            },
+            bmi: {
+              min: 16.6,
+              max: 41.1
+            },
+            drugs: {
+              decline: [],
+              info: [],
+              seeDecline: null
+            },
+            conditions: {
+              decline: [],
+              seeDecline: false
+            }
+          }
+        },
+        {
+          id: 203,
+          name: "Eagle Premier Guaranteed",
+          nickname: "EPG",
+          payout: {
+            min: 2000,
+            max: 20000
+          },
+          underwriting: {
+            age: {
+              min: 50,
+              max: 80
+            },
+            bmi: {
+              min: 16.6,
+              max: 41.1
+            },
+            drugs: {
+              decline: [],
+              info: [],
+              seeDecline: null
+            },
+            conditions: {
+              decline: [],
+              seeDecline: false
+            }
+          }
+        },
+        {
+          id: 204,
+          name: "Ultra Protector I",
+          nickname: "UP1",
+          payout: {
+            min: 2000,
+            max: 20000
+          },
+          underwriting: {
+            age: {
+              min: 50,
+              max: 85
+            },
+            bmi: {
+              min: 16.6,
+              max: 41.1
+            }
+          }
+        },
+        {
+          id: 205,
+          name: "Ultra Protector II",
+          nickname: "UP2",
+          payout: {
+            min: 2000,
+            max: 20000
+          },
+          underwriting: {
+            age: {
+              min: 50,
+              max: 80
+            },
+            bmi: {
+              min: 16.6,
+              max: 41.1
+            }
+          }
+        },
+        {
+          id: 206,
+          name: "Ultra Protector III",
+          nickname: "UP3",
+          payout: {
+            min: 2000,
+            max: 20000
+          },
+          underwriting: {
+            age: {
+              min: 50,
+              max: 75
+            },
+            bmi: {
+              min: 16.6,
+              max: 41.1
+            }
+          }
+        },
+
+      ]
+    },
+
+
     // MUTUAL OF OMAHA
     {
       id: 1,
@@ -424,23 +605,7 @@ export default {
             },
             conditions: {
               decline: [
-                {
-                  name: 'SHR028', // Diabetes
-                  maxAge: 50
-                },
-                {
-                  name: 'BPL003',
-                  maxAge: 999
-                },
-                {
-                  name: 'GST055',
-                  maxAge: 999
-                }
-                ,
-                {
-                  name: 'CNG053001',
-                  maxAge: 999
-                }
+
               ],
               seeDecline: false,
               info: [
@@ -1334,141 +1499,10 @@ export default {
             }
           }
         },
-      ]
-    },
+      ],
+      underwriting: {
 
-
-    // AMERICO
-    {
-      id: 2,
-      name: "Americo",
-      nickname: "AM",
-      logoUrl: './images/logo_am.jpeg',
-      products: [
-        {
-          id: 201,
-          name: "HMS Plus",
-          nickname: "HMSP",
-          payout: {
-            min: 2000,
-            max: 20000
-          },
-          underwriting: {
-            age: {
-              min: 45,
-              max: 80
-            },
-            bmi: {
-              min: 16.6,
-              max: 41.1
-            },
-            drugs: {
-              decline: [],
-              info: [],
-              seeDecline: null
-            },
-            conditions: {
-              decline: [],
-              seeDecline: false
-            }
-          }
-        },
-        {
-          id: 202,
-          name: "Eagle Premier Level",
-          nickname: "EPL",
-          payout: {
-            min: 2000,
-            max: 20000
-          },
-          underwriting: {
-            age: {
-              min: 45,
-              max: 80
-            },
-            bmi: {
-              min: 16.6,
-              max: 41.1
-            },
-            drugs: {
-              decline: [],
-              info: [],
-              seeDecline: null
-            },
-            conditions: {
-              decline: [],
-              seeDecline: false
-            }
-          }
-        },
-        {
-          id: 203,
-          name: "Eagle Premier Guaranteed",
-          nickname: "EPG",
-          payout: {
-            min: 2000,
-            max: 20000
-          },
-          underwriting: {
-            age: {
-              min: 45,
-              max: 80
-            },
-            bmi: {
-              min: 16.6,
-              max: 41.1
-            },
-            drugs: {
-              decline: [],
-              info: [],
-              seeDecline: null
-            },
-            conditions: {
-              decline: [],
-              seeDecline: false
-            }
-          }
-        },
-        {
-          id: 204,
-          name: "Ultra Protector I",
-          nickname: "UP1",
-          payout: {
-            min: 2000,
-            max: 20000
-          },
-          underwriting: {
-            age: {
-              min: 45,
-              max: 80
-            },
-            bmi: {
-              min: 16.6,
-              max: 41.1
-            },
-            drugs: {
-              decline: [],
-              info: [],
-              seeDecline: null
-            },
-            conditions: {
-              decline: [],
-              seeDecline: false
-            }
-          }
-        },
-        // {
-        //   id: 205,
-        //   name: "Ultra Protector II",
-        //   nickname: "UP2",
-        // },
-        // {
-        //   id: 206,
-        //   name: "Ultra Protector III",
-        //   nickname: "UP3",
-        // },
-
-      ]
+      }
     },
 
 
@@ -1694,7 +1728,7 @@ export default {
         {
           id: 601,
           name: "Simplified Issue Whole Life",
-          nickname: "SIWL",
+          nickname: "SI-WL",
           payout: {
             min: 2000,
             max: 20000

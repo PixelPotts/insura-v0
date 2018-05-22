@@ -10,7 +10,7 @@ export default StyleSheet.create({
     borderColor: '#FFF',
     borderWidth: 0,
     padding: 0,
-    backgroundColor: '#424760'
+    backgroundColor: '#EEEFF4'
   },
   header: {
     flexDirection: 'row',
@@ -23,7 +23,7 @@ export default StyleSheet.create({
   },
   logo: {
     width: 150,
-    color: '#f3bb2b',
+    color: '#0F35AB',
     fontSize: 20,
     borderWidth: 0,
     borderColor: '#FFF'
@@ -39,11 +39,11 @@ export default StyleSheet.create({
   },
   loggedInUserName: {
     textAlign: 'right',
-    color: '#d2d2d4'
+    color: '#26347B'
   },
   signOutLink: {
     textAlign: 'right',
-    color: '#f3bb2b'
+    color: '#0F35AB'
   },
   console: {
     position: 'absolute',
@@ -71,13 +71,14 @@ export default StyleSheet.create({
   masterQuestion: {
     marginTop: 20,
     fontSize: 26,
-    color: '#d2d2d4'
+    color: '#000'
   },
   masterQuestionWrap: {
     flex: 1,
     borderColor: '#FFF',
     borderWidth: 0,
-    padding: 0
+    padding: 0,
+    marginTop: -44
   },
   autoSuggestWrap: {
     position: 'absolute',
@@ -115,7 +116,7 @@ export default StyleSheet.create({
   questionButton: {
     height: 50,
     width: 100,
-    color: '#f3bb2b'
+    color: '#0F35AB'
   },
   idScanButtonContainer: {
     position: 'absolute',
@@ -149,9 +150,24 @@ export default StyleSheet.create({
   providerTitle: {
     position: 'relative',
     top: 1,
-    color: '#F1F1F1',
+    color: '#000',
   },
   providerTitleProduct: {
+    fontWeight: 'bold',
+    fontSize: 13,
+    color: 'white',
+  },
+  providerTitleProduct_1: {
+    fontWeight: 'bold',
+    fontSize: 13,
+    color: 'white',
+  },
+  providerTitleProduct_2: {
+    fontWeight: 'bold',
+    fontSize: 13,
+    color: 'black',
+  },
+  providerTitleProduct_3: {
     fontWeight: 'bold',
     fontSize: 13,
     color: 'white',
@@ -169,7 +185,8 @@ export default StyleSheet.create({
     backgroundColor: '#a3000e',
   },
   providerTitleProductWrapStatus_2: {
-    backgroundColor: '#a2a300',
+    backgroundColor: '#feff00',
+    color: '#000'
   },
   providerTitleProductWrapStatus_3: {
     backgroundColor: '#4aa31a',
@@ -184,7 +201,7 @@ export default StyleSheet.create({
 
   calculator: {
     position: 'absolute',
-    top: 58,
+    top: 13,
     width: '100%',
     height: '80%',
     borderRadius: 8,
@@ -197,6 +214,7 @@ export default StyleSheet.create({
   },
   calculatorHeader: {
     marginBottom: 20,
+    flexDirection: 'row'
   },
   calculatorLogo: {
     // flex: 1,
@@ -218,14 +236,16 @@ export default StyleSheet.create({
     marginBottom: 20,
   },
   calculatorFaceValueWrap: {
-    marginTop: 10
+    marginTop: 10,
+    marginLeft: 20
   },
   calculatorProductWrap: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 20,
-    marginBottom: 20
+    marginBottom: 20,
+    marginLeft: 20
   },
   calculatorProductPeriodCostWrap: {
     alignItems: 'center',
@@ -289,19 +309,19 @@ export default StyleSheet.create({
 
   // BIO
   infoButton_BIO: {
-    backgroundColor: '#566b98',
+    backgroundColor: '#9EFFA1',
   },
   infoButtonTitle_BIO: {
     fontSize: 14,
     marginBottom: 2,
     marginTop: 10,
     fontWeight: "600",
-    color: "#dbdbdb"
+    color: "#595454"
   },
   infoButtonSubtitle_BIO: {
     padding: 3,
     fontSize: 20,
-    color: "#dbdbdb"
+    color: "#000"
   },
   infoButtonType_BIO: {
     padding: 3
@@ -310,7 +330,7 @@ export default StyleSheet.create({
 
   // MEDICATION
   infoButton_MED: {
-    backgroundColor: '#ccbe23',
+    backgroundColor: '#FFF05B',
     borderColor: "#fde5d2"
   },
   infoButtonTitle_MED: {
@@ -332,8 +352,8 @@ export default StyleSheet.create({
 
 
   infoButton_MED_OLD: {
-    backgroundColor: '#b2a423',
-    borderColor: "#fde5d2"
+    backgroundColor: '#FFF8B4',
+    borderColor: "#111"
   },
   infoButtonTitle_MED_OLD: {
     marginBottom: 2,
@@ -354,7 +374,7 @@ export default StyleSheet.create({
 
   // CONDITION
   infoButton_CON: {
-    backgroundColor: '#B52CA1',
+    backgroundColor: '#C6B8FF',
     borderColor: "#fde5d2"
   },
   infoButtonTitle_CON: {
@@ -371,7 +391,7 @@ export default StyleSheet.create({
   },
   infoButtonType_CON: {
     padding: 3,
-    color: "#B52CA1"
+    color: "#C6B8FF"
   }
 
 });

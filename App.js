@@ -15,18 +15,24 @@ import {
   TouchableHighlight,
   View
 } from 'react-native';
-import {BlinkID, MRTDKeys, USDLKeys, EUDLKeys, MYKADKeys} from 'blinkid-react-native';
 import Hyperlink from 'react-native-hyperlink';
 import _ from 'lodash';
 import styles from './styles';
 const stringifyObject = require('stringify-object');
 const Providers = require('./providers').default.providers;
-const Medications = require('./medications2').default;
-const DeclinedDrugs = require('./decline_drugs').default;
-const Diseases = Object.assign(require('./diseases').default, require('./diseases2').default,require('./diseases3').default, require('./diseases4').default);
+const DeclinedDrugs = require('./decline_drugs').default.medications;
+
+// Diseases Import (>> NO LONGER USED <<)
+// const Diseases = Object.assign(require('./diseases').default;
+// let DiseasesFull = []; _.each(Diseases,function(type){ DiseasesFull = _.concat(DiseasesFull,type);});
+
+const Conditions = require('./decline_conditions').default.conditions;
+
 const Calculator = require('./calculatorData').default;
 let Questions = require('./questions').default.questions;
-let DiseasesFull = []; _.each(Diseases,function(type){ DiseasesFull = _.concat(DiseasesFull,type);});
+
+// BLINK ID License Key
+import {BlinkID, MRTDKeys, USDLKeys, EUDLKeys, MYKADKeys} from 'blinkid-react-native';
 const BlinklicenseKey = Platform.select({
   ios: 'R6GH6FFH-JKIYQ76Q-QGUJSEIH-DSQCNQTR-IUZB525W-PXAH7EHI-NPUGWSGI-EDRUGFHX',
 });
@@ -78,6 +84,7 @@ export default class Applify extends Component {
     // let str = stringifyObject(content) + " " + Math.floor(Date.now() / 1000) + "\n" + this.state.consoleContent;
     let str = stringifyObject(content) + "\n" + this.state.consoleContent;
     this.state.consoleContent = str.substr(0,4999);
+    console.log(str);
     // this.setState({consoleContent: updateContent});
   };
   nextQuestion = () => {
@@ -103,11 +110,11 @@ export default class Applify extends Component {
     // If the button exists
     if(_.find(this.state.buttons,function(o){ return o.field === Q.field })
       && !(category==='MED' || category==='MED_OLD'||category==="CON") ){
-      this.log('updating existing button');
+      // this.log('updating existing button');
       if(category==="BIO") { // Update an existing button
         clientInfo[Q.field] = details.answer;
-        this.log(Q.field);
-        this.log(details.answer);
+        // this.log(Q.field);
+        // this.log(details.answer);
         this.setState({clientInfo},()=>{ this.updateProviders();});
         let buttons = {...this.state.buttons};
         buttons[this.state.activeButtonId].subtitle = details.answer;
@@ -124,13 +131,14 @@ export default class Applify extends Component {
         B.subtitle = details.answer;
       }
       else if(category==="MED" || category==="MED_OLD"){
-        B.title = _.startCase(_.toLower(details.name));
+        B.title = details.name;
         B.subtitle = details.dosage;
+        B.key = details.id
       }
       else if(category==="CON"){
         B.title = _.startCase(_.toLower(details.name));
-        B.subtitle = "CODE: " + details.key +"-"+ details.mifts;
-        B.key = details.key;
+        B.subtitle = "CODE: " + details.id;
+        B.key = details.id;
       }
       if(_.trim(B.title)==='') return;
       this.setState(prevState => ({buttons: [...prevState.buttons, B]}),this.updateProviders);
@@ -169,79 +177,117 @@ export default class Applify extends Component {
   updateProviders = () => {
     let self = this;
     let age = this.state.clientInfo.age;
-    this.log("running updateProviders()");
-    // this.log(this.state.clientInfo);
+    // this.log("running updateProviders()");
+    // this.logf(this.state.clientInfo);
     let Providers = {...this.state.Providers};
     let client = this.state.clientInfo;
     _.each(Providers,function(Provider,ProviderKey){
-      // self.log("=== "+Provider.name+" ===");
+     //self.log("=== "+Provider.name+" ===");
       _.each(Provider.products,function(product,productKey){
-        // self.log("=== "+Provider.name+" ===");
+       //self.log("=== "+Provider.name+" ===");
         let uw = product.underwriting;
         let statuses = [];
         if(client.age) statuses.push(_.inRange(client.age,uw.age.min,uw.age.max) ? 3 : 1);
         if(client.bmi) statuses.push(_.inRange(client.bmi,uw.bmi.min,uw.bmi.max) ? 3 : 1);
 
-
         // if(product.id===110){
-          self.log("=== Provider: "+Provider.name+" ===");
-          self.log("=== Product: "+product.name+" ===");
+          //self.log("=== Provider: "+Provider.name+" ===");
+          //self.log("=== Product: "+product.name+" ===");
 
           _.each(self.state.buttons,function(button){
 
           // check more info drugs
             if(button.category==='MED'){
-              self.log("=== Searching MED category ===");
-              self.log("MED TO SEARCH: "+button.title);
-              if(uw.drugs.seeDecline) {
-                self.log("SeeDecline ID FOUND: "+ uw.drugs.seeDecline);
-                self.log("SeeDecline Decline: ");
-                let drugsSee = _.find(Providers[ProviderKey].products, function(o){return o.id===uw.drugs.seeDecline});
-                // self.log(drugsSee.underwriting.drugs.decline);
-                uw.drugs.decline = drugsSee.underwriting.drugs.decline;
-              } else {
-                self.log("SEE NOT FOUND");
-              }
-              _.each(uw.drugs.decline,function(thisDeclinedDrug){
-                statuses.push(thisDeclinedDrug.name===button.title ? 1 : 3);
-              });
-            }
 
-            // check decline conditions
+              let medication = _.find(DeclinedDrugs,function(o){return o.id == button.key});
+              self.log("found medication:");
+              self.log(button);
+              self.log(medication);
+
+              debugger;
+
+              switch (medication[product.nickname]){
+                case 'A':
+                  statuses.push(3); break;
+                case 'IC':
+                  statuses.push(2); break;
+                case 'D':
+                  statuses.push(1); break;
+
+                default:
+                  statuses.push(3);
+              }
+
+              //self.log("=== Searching MED category ===");
+              //self.log("MED TO SEARCH: "+button.title);
+
+              // _.each(uw.drugs.decline,function(thisDeclinedDrug){
+              //   statuses.push(thisDeclinedDrug.name===button.title ? 1 : 3);
+              // });
+            }
             if(button.category==='CON'){
-              self.log("=== Searching CON category ===");
-              self.log("CON TO SEARCH: "+button.title);
-              if(uw.conditions.seeDecline) {
-                self.log("SeeDecline ID FOUND: "+ uw.drugs.seeDecline);
-                self.log("SeeDecline Decline: ");
-                let drugsSee = _.find(Providers[ProviderKey].products, function(o){return o.id===uw.drugs.seeDecline});
-                // self.log(drugsSee.underwriting.drugs.decline);
-                uw.drugs.decline = drugsSee.underwriting.drugs.decline;
-              } else {
-                self.log("SEE NOT FOUND");
+
+              let condition = _.find(Conditions,function(o){return o.id == button.key});
+              self.log("found condition:");
+              self.log(condition);
+
+              switch (condition[product.nickname]){
+                case 'A':
+                  statuses.push(3); break;
+                case 'IC':
+                  statuses.push(2); break;
+                case 'D':
+                  statuses.push(1); break;
+
+                default:
+                  statuses.push(3);
               }
-              self.log("conditions in array:");
-              self.log(uw.conditions.decline);
-              _.each(uw.conditions.decline,function(thisDeclinedCondition){
-                self.log("array item:");
-                self.log(thisDeclinedCondition);
-                statuses.push(thisDeclinedCondition===button.key ? 1 : 3);
-              });
-              _.each(uw.conditions.info,function(thisInfoCondition){
-                self.log("array item:");
-                self.log(thisInfoCondition);
-                self.log("button item:");
-                self.log(button);
-
-                self.log("client age: "+ self.state.clientAge);
-                self.log("drug maxAge: "+thisInfoCondition.maxAge);
-                self.log("thisInfoCondition.name: "+thisInfoCondition.name);
-                self.log("button key: "+button.key);
-
-                statuses.push(thisInfoCondition.key===button.key && self.state.clientAge > thisInfoCondition.maxAge ? 1 : 3);
-              });
+              // Americo
+              if(product.id === 201){
+                statuses.push(condition.HMSP === "D" ? 1 : 3);
+              }
+              else if(product.id === 2011){
+                statuses.push(condition['HMSP-DI'] === "D" ? 1 : 3);
+              }
 
             }
+
+            //
+            // // check decline conditions
+            // if(button.category==='CON'){
+            //   // self.log("=== Searching CON category ===");
+            //   // self.log("CON TO SEARCH: "+button.title);
+            //   if(uw.conditions.seeDecline) {
+            //     // self.log("SeeDecline ID FOUND: "+ uw.drugs.seeDecline);
+            //     // self.log("SeeDecline Decline: ");
+            //     let drugsSee = _.find(Providers[ProviderKey].products, function(o){return o.id===uw.drugs.seeDecline});
+            //    //self.log(drugsSee.underwriting.drugs.decline);
+            //     uw.drugs.decline = drugsSee.underwriting.drugs.decline;
+            //   } else {
+            //     //self.log("SEE NOT FOUND");
+            //   }
+            //   //self.log("conditions in array:");
+            //   //self.log(uw.conditions.decline);
+            //   _.each(uw.conditions.decline,function(thisDeclinedCondition){
+            //     //self.log("array item:");
+            //     //self.log(thisDeclinedCondition);
+            //
+            //   });
+            //   _.each(uw.conditions.info,function(thisInfoCondition){
+            //     //self.log("array item:");
+            //     //self.log(thisInfoCondition);
+            //     //self.log("button item:");
+            //     //self.log(button);
+            //
+            //     //self.log("client age: "+ self.state.clientAge);
+            //     //self.log("drug maxAge: "+thisInfoCondition.maxAge);
+            //     //self.log("thisInfoCondition.name: "+thisInfoCondition.name);
+            //     //self.log("button key: "+button.key);
+            //
+            //     statuses.push(thisInfoCondition.key===button.key && self.state.clientAge > thisInfoCondition.maxAge ? 1 : 3);
+            //   });
+            // }
+            //
           });
 
         // } // check product 101
@@ -283,10 +329,10 @@ export default class Applify extends Component {
     let category = Questions[this.state.activeQuestionId].category;
     let data = [];
     if(category==="MED"||category==="MED_OLD"){
-      data = Medications.all;
+      data = DeclinedDrugs;
     }
     else if(category==="CON") {
-      data = DiseasesFull;
+      data = Conditions
     }
 
     return data;
@@ -312,12 +358,13 @@ export default class Applify extends Component {
         }
     });
     }
-    matches = _.uniqBy(matches,'key'); // force unique (thanks Obama)
+    matches = _.uniqBy(matches,'id'); // force unique (thanks Obama)
     if(category==="MED"||category==="MED_OLD") matches = matches.sort(function(a,b) { return a.name.length - b.name.length; }); // order by shortest name
     if(category==="CON") matches = _.orderBy(matches,'mifts','desc'); // order by shortest name
     this.setState({autoSuggestOptions: matches});
   };
   clickAutoSuggestOption = (option) => {
+    this.log(option);
     this.processAnswer(Questions[this.state.activeQuestionId].category,option);
     this.state.autoSuggestVisible = false;
     this.clearAnswer();
@@ -328,7 +375,7 @@ export default class Applify extends Component {
         <View style={styles.autoSuggestWrap}>
           <ScrollView keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
             {this.state.autoSuggestOptions.map(option => (
-              <TouchableHighlight onPress={() => this.clickAutoSuggestOption(option)}  key={(option.key+option.mcid)} underlayColor="#FFF">
+              <TouchableHighlight onPress={() => this.clickAutoSuggestOption(option)}  key={(option.id)} underlayColor="#FFF">
                 <View style={styles.autoSuggestItem}>
                 <Text
                   style={styles.autoSuggestItemTitle}>
@@ -342,7 +389,7 @@ export default class Applify extends Component {
     }
   };
   editButton = (button,key) => {
-    this.log(this.state.buttons);
+    // this.log(this.state.buttons);
     if(!button.auto){
       this.setState({activeButtonId: key});
       let buttons = {...this.state.buttons};
@@ -385,9 +432,13 @@ export default class Applify extends Component {
     // this.log("running renderButtons()");
     return (
       <ScrollView
-        contentContainerStyle={styles.infoButtonsWrap} keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
+        contentContainerStyle={styles.infoButtonsWrap}
+        keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
         {buttons.map((button,k) => (
-          <TouchableHighlight onPress={()=>{this.editButton(button, k)}} onLongPress={()=>{this.deleteButton(button,k)}} key={button.id} underlayColor="transparent">
+          <TouchableHighlight onPress={()=>{this.editButton(button, k)}}
+                              onLongPress={()=>{this.deleteButton(button,k)}}
+                              key={button.id}
+            underlayColor="transparent">
             <View style={[styles.infoButton,styles['infoButton_'+button.category]]}>
               <Text style={[styles.infoButtonTitle, styles['infoButtonTitle_'+button.category]]}>{button.title}</Text>
               <Text style={[styles.infoButtonSubtitle, styles['infoButtonSubtitle_'+button.category]]}>{button.subtitle}</Text>
@@ -408,7 +459,7 @@ export default class Applify extends Component {
               {provider.products.map(product => (
                 <View key={product.id}
                       style={[styles.providerTitleProductWrap, styles['providerTitleProductWrapStatus_'+product.status]]}>
-                  <Text style={styles.providerTitleProduct}>{product.nickname}</Text>
+                  <Text style={[styles.providerTitleProduct,styles['providerTitleProduct_'+product.status]]}>{product.nickname}</Text>
                 </View>
               ))}
             </View>
@@ -423,13 +474,12 @@ export default class Applify extends Component {
     let diff = [];
     let diffString = '';
     _.each(MooDrugs.tle_decline,function(md){
-      // this.log("\n\nSEARCHING: "+md.name);
       diff = _.filter(Medications.all, function(o) { return _.includes(_.toLower(o.name),_.toLower(md.name)) });
       if(diff.length<1){
         diffString += md.name + ", ";
       }
     });
-    this.log(diffString)
+    // this.log(diffString)
   };
   getBMI = () => {
     let clientInfo = this.state.clientInfo;
@@ -458,30 +508,33 @@ export default class Applify extends Component {
     //let Providers = Calculator.providers;
     return (
        <View style={styles.calculator}>
-         <View style={{ position:'absolute', top: 20, right: 20 }}>
-           <TouchableHighlight onPress={()=>{this.hideCalculator}}>
+         <View style={{ position:'absolute', top: 20, right: 20, zIndex:999 }}>
+           <TouchableHighlight onPress={()=>{this.setState({calculatorVisible: false})}}>
              <Text>Close</Text>
            </TouchableHighlight>
          </View>
-        <View style={styles.calculatorHeader}>
-          <Text style={{fontSize: 20}}>Coverage Options for {this.state.clientInfo.firstName}</Text>
+         {/*<Text style={{fontSize: 20}}>Coverage Options for {this.state.clientInfo.firstName}</Text>*/}
+         <View style={styles.calculatorHeader}>
           <View style={styles.calculatorFaceValueWrap}>
             <Text>Coverage Amount</Text>
-            <TextInput style={styles.calculatorFaceValue} placeholder="$5k – $25k"/>
+            <TextInput style={styles.calculatorFaceValue} placeholder="$5,000 – $5,000,000"/>
           </View>
-        </View>
-        <ScrollView>
-
+          <View style={styles.calculatorFaceValueWrap}>
+            <Text>Duration (Years)</Text>
+            <TextInput style={styles.calculatorFaceValue} placeholder="10, 15, 20, or 30"/>
+          </View>
+         </View>
+         <ScrollView>
             <View style={styles.calculatorCompanyWrap}>
               <Image source={require('./images/logo_moo.jpg')} style={styles.calculatorLogo}/>
               <View style={styles.calculatorProductWrap}>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Text style={styles.calculatorProductWrapTitle}>Monthly</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$38.00</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
                 </View>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Text style={styles.calculatorProductWrapTitle}>Annual</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$452.00</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
                 </View>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Hyperlink
@@ -494,16 +547,38 @@ export default class Applify extends Component {
               </View>
             </View>
 
+           <View style={styles.calculatorCompanyWrap}>
+             <Image source={require('./images/logo_am.jpeg')} style={styles.calculatorLogo}/>
+             <View style={styles.calculatorProductWrap}>
+               <View style={styles.calculatorProductPeriodCostWrap}>
+                 <Text style={styles.calculatorProductWrapTitle}>Monthly</Text>
+                 <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
+               </View>
+               <View style={styles.calculatorProductPeriodCostWrap}>
+                 <Text style={styles.calculatorProductWrapTitle}>Annual</Text>
+                 <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
+               </View>
+               <View style={styles.calculatorProductPeriodCostWrap}>
+                 <Hyperlink
+                   linkDefault={true}
+                   linkText={url => url === 'https://adfs.americo.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn%3aagent.americo.com%3asharepoint&wctx=https%3a%2f%2fagent.americo.com%2f_layouts%2fAuthenticate.aspx%3fSource%3d%252F' ? 'Select' : url }
+                 >
+                   <Text>Americo</Text>
+                 </Hyperlink>
+               </View>
+             </View>
+           </View>
+
             <View style={styles.calculatorCompanyWrap}>
               <Image source={require('./images/logo_aig.png')} style={styles.calculatorLogo}/>
               <View style={styles.calculatorProductWrap}>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Text style={styles.calculatorProductWrapTitle}>Monthly</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$38.00</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
                 </View>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Text style={styles.calculatorProductWrapTitle}>Annual</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$452.00</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
                 </View>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Hyperlink
@@ -521,11 +596,11 @@ export default class Applify extends Component {
               <View style={styles.calculatorProductWrap}>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Text style={styles.calculatorProductWrapTitle}>Monthly</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$38.00</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
                 </View>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Text style={styles.calculatorProductWrapTitle}>Annual</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$452.00</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
                 </View>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Hyperlink
@@ -543,11 +618,11 @@ export default class Applify extends Component {
               <View style={styles.calculatorProductWrap}>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Text style={styles.calculatorProductWrapTitle}>Monthly</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$38.00</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
                 </View>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Text style={styles.calculatorProductWrapTitle}>Annual</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$452.00</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
                 </View>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Hyperlink
@@ -561,37 +636,15 @@ export default class Applify extends Component {
             </View>
 
             <View style={styles.calculatorCompanyWrap}>
-              <Image source={require('./images/logo_am.jpeg')} style={styles.calculatorLogo}/>
-              <View style={styles.calculatorProductWrap}>
-                <View style={styles.calculatorProductPeriodCostWrap}>
-                  <Text style={styles.calculatorProductWrapTitle}>Monthly</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$38.00</Text>
-                </View>
-                <View style={styles.calculatorProductPeriodCostWrap}>
-                  <Text style={styles.calculatorProductWrapTitle}>Annual</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$452.00</Text>
-                </View>
-                <View style={styles.calculatorProductPeriodCostWrap}>
-                  <Hyperlink
-                    linkDefault={true}
-                    linkText={url => url === 'https://adfs.americo.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn%3aagent.americo.com%3asharepoint&wctx=https%3a%2f%2fagent.americo.com%2f_layouts%2fAuthenticate.aspx%3fSource%3d%252F' ? 'Select' : url }
-                  >
-                    <Text>Americo</Text>
-                  </Hyperlink>
-                </View>
-              </View>
-            </View>
-
-            <View style={styles.calculatorCompanyWrap}>
               <Image source={require('./images/logo_roy.jpeg')} style={styles.calculatorLogo}/>
               <View style={styles.calculatorProductWrap}>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Text style={styles.calculatorProductWrapTitle}>Monthly</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$38.00</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
                 </View>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Text style={styles.calculatorProductWrapTitle}>Annual</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$452.00</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
                 </View>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Hyperlink
@@ -609,11 +662,11 @@ export default class Applify extends Component {
               <View style={styles.calculatorProductWrap}>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Text style={styles.calculatorProductWrapTitle}>Monthly</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$38.00</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
                 </View>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Text style={styles.calculatorProductWrapTitle}>Annual</Text>
-                  <Text style={styles.calculatorProductWrapSubtitle}>$452.00</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle}>–</Text>
                 </View>
                 <View style={styles.calculatorProductPeriodCostWrap}>
                   <Hyperlink
@@ -645,9 +698,9 @@ export default class Applify extends Component {
 
         {/* HEADER */}
         <View style={styles.header}>
-          <View><Text style={styles.logo}>Insurā <Text style={{fontWeight: '300', fontSize: 13}}>BETA</Text></Text></View>
+          {/*<View><Text style={styles.logo}>Insurā <Text style={{fontWeight: '300', fontSize: 13}}>BETA</Text></Text></View>*/}
           <View style={styles.headerTopRight}>
-            <View><Text style={styles.loggedInUserName}>Victor Valenzuela</Text></View>
+            <View><Text style={styles.loggedInUserName}>Guest User</Text></View>
             <View><Text style={styles.signOutLink}>Sign Out</Text></View>
           </View>
         </View>
@@ -677,8 +730,8 @@ export default class Applify extends Component {
           />
           {this.state.autoSuggestVisible ? this.renderOptions() : null}
           <View style={styles.questionLinksWrap}>
-            <Button title="Prev" color="#f3bb2b" onPress={this.prevQuestion}><Text>Prev</Text></Button>
-            <Button title="Next" color="#f3bb2b" onPress={this.nextQuestion}><Text>Next</Text></Button>
+            <Button title="Prev" color="#2548B2" onPress={this.prevQuestion}><Text>Prev</Text></Button>
+            <Button title="Next" color="#2548B2" onPress={this.nextQuestion}><Text>Next</Text></Button>
             {this.renderIdScanButton()}
           </View>
           {this.renderButtons(this.state.buttons)}
@@ -692,7 +745,7 @@ export default class Applify extends Component {
   renderIdScanButton() {
     return (
       <View style={styles.idScanButtonContainer}>
-        <Button onPress={this.scan.bind(this)} title="Scan DL" color="#f3bb2b"/>
+        <Button onPress={this.scan.bind(this)} title="Scan DL" color="#0F35AB"/>
       </View>
     );
   }

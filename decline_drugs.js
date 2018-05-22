@@ -1,1131 +1,2810 @@
 export default {
-  providers: [
+  medications: [
     {
-      id: 1,
-      decline: [],
-      products: [
-        // TLE, GULE
-        {
-          id: 100,
-          decline: [
-            {
-              "name": "Abacavir"
-            },
-            {
-              "name": "Abilify"
-            },
-            {
-              "name": "Adcirca"
-            },
-            {
-              "name": "Aggrenox"
-            },
-            {
-              "name": "Alkeran"
-            },
-            {
-              "name": "Amiodarone"
-            },
-            {
-              "name": "Ampyra"
-            },
-            {
-              "name": "Antabuse"
-            },
-            {
-              "name": "Aricept"
-            },
-            {
-              "name": "Arimidex"
-            },
-            {
-              "name": "Atripla"
-            },
-            {
-              "name": "Avonex"
-            },
-            {
-              "name": "Azilect"
-            },
-            {
-              "name": "Baraclude"
-            },
-            {
-              "name": "Betaseron"
-            },
-            {
-              "name": "Calcium Acetate"
-            },
-            {
-              "name": "Campath"
-            },
-            {
-              "name": "Campral"
-            },
-            {
-              "name": "Caprelsa"
-            },
-            {
-              "name": "Carbidopa"
-            },
-            {
-              "name": "Levodopa"
-            },
-            {
-              "name": "Casodex"
-            },
-            {
-              "name": "Cellcept"
-            },
-            {
-              "name": "Chlorpromazine Hydrochloride"
-            },
-            {
-              "name": "Clozapine"
-            },
-            {
-              "name": "Cognex"
-            },
-            {
-              "name": "Combivir"
-            },
-            {
-              "name": "Copaxone"
-            },
-            {
-              "name": "Crixivan"
-            },
-            {
-              "name": "Cyclosporine"
-            },
-            {
-              "name": "Cytoxan"
-            },
-            {
-              "name": "Digitek"
-            },
-            {
-              "name": "DIGOXIN (DIGITEK)"
-            },
-            {
-              "name": "Dobutamine Hydrochloride"
-            },
-            {
-              "name": "Donepezil"
-            },
-            {
-              "name": "Droxia"
-            },
-            {
-              "name": "Eligard"
-            },
-            {
-              "name": "Eliquis"
-            },
-            {
-              "name": "Eminase"
-            },
-            {
-              "name": "Enbrel"
-            },
-            {
-              "name": "Epivir-Hbv"
-            },
-            {
-              "name": "Ergoloid Mesylates"
-            },
-            {
-              "name": "Exelon"
-            },
-            {
-              "name": "Femara"
-            },
-            {
-              "name": "Floxuridine"
-            },
-            {
-              "name": "Fluorouracil"
-            },
-            {
-              "name": "Galantamine"
-            },
-            {
-              "name": "Hydrobromide"
-            },
-            {
-              "name": "Gammagard"
-            },
-            {
-              "name": "Gamunex"
-            },
-            {
-              "name": "Gengraf"
-            },
-            {
-              "name": "Geodon"
-            },
-            {
-              "name": "Haldol"
-            },
-            {
-              "name": "Haloperidol"
-            },
-            {
-              "name": "Hepsera"
-            },
-            {
-              "name": "Humira"
-            },
-            {
-              "name": "Hydrea"
-            },
-            {
-              "name": "Hydroxyurea"
-            },
-            {
-              "name": "Infergen"
-            },
-            {
-              "name": "Invega"
-            },
-            {
-              "name": "Invirase"
-            },
-            {
-              "name": "Kalydeco"
-            },
-            {
-              "name": "Lanoxin"
-            },
-            {
-              "name": "Latuda"
-            },
-            {
-              "name": "Leucovorin Calcium"
-            },
-            {
-              "name": "Lexiva"
-            },
-            {
-              "name": "Limbitrol"
-            },
-            {
-              "name": "Lithium"
-            },
-            {
-              "name": "Megestrol Acetate"
-            },
-            {
-              "name": "Methadone"
-            },
-            {
-              "name": "Methotrexate"
-            },
-            {
-              "name": "Mitomycin"
-            },
-            {
-              "name": "Morphine Sulfate"
-            },
-            {
-              "name": "Mycophenolate Mofetil"
-            },
-            {
-              "name": "Myfortic"
-            },
-            {
-              "name": "Nabi-Hb"
-            },
-            {
-              "name": "Naloxone Hcl"
-            },
-            {
-              "name": "Naltrexone Hydrochloride"
-            },
-            {
-              "name": "Namenda"
-            },
-            {
-              "name": "Neupogen"
-            },
-            {
-              "name": "Panretin"
-            },
-            {
-              "name": "Pegasys"
-            },
-            {
-              "name": "Peg-Intron"
-            },
-            {
-              "name": "Perphenazine"
-            },
-            {
-              "name": "Pradaxa"
-            },
-            {
-              "name": "Prograf"
-            },
-            {
-              "name": "Ranexa"
-            },
-            {
-              "name": "Razadyne"
-            },
-            {
-              "name": "Rebif"
-            },
-            {
-              "name": "Retrovir"
-            },
-            {
-              "name": "Revia"
-            },
-            {
-              "name": "Revlimid"
-            },
-            {
-              "name": "Ribavirin"
-            },
-            {
-              "name": "Risperdal"
-            },
-            {
-              "name": "Rituxan"
-            },
-            {
-              "name": "Sandimmune"
-            },
-            {
-              "name": "Saphris"
-            },
-            {
-              "name": "Seroquel"
-            },
-            {
-              "name": "Serzone"
-            },
-            {
-              "name": "Sinemet"
-            },
-            {
-              "name": "Spiriva"
-            },
-            {
-              "name": "Stalevo"
-            },
-            {
-              "name": "Stribild"
-            },
-            {
-              "name": "Suboxone"
-            },
-            {
-              "name": "Sustiva"
-            },
-            {
-              "name": "Symbyax"
-            },
-            {
-              "name": "Tamoxifen"
-            },
-            {
-              "name": "Targretin"
-            },
-            {
-              "name": "Teslac"
-            },
-            {
-              "name": "Truvada"
-            },
-            {
-              "name": "Tysabri"
-            },
-            {
-              "name": "Viracept"
-            },
-            {
-              "name": "Viramune"
-            },
-            {
-              "name": "Viread"
-            },
-            {
-              "name": "Xarelto"
-            },
-            {
-              "name": "Xeljanz"
-            },
-            {
-              "name": "Zenapax"
-            },
-            {
-              "name": "Zerit"
-            },
-            {
-              "name": "Ziagen"
-            },
-            {
-              "name": "Zidovudine"
-            },
-            {
-              "name": "Zoladex"
-            },
-            {
-              "name": "Zyprexa"
-            }
-          ],
-          info: [
-            {
-              "name": "Carvedilol"
-            },
-            {
-              "name": "Clopidogrel"
-            },
-            {
-              "name": "Coreg"
-            },
-            {
-              "name": "Coumadin"
-            },
-            {
-              "name": "Enoxaparin Sodium"
-            },
-            {
-              "name": "Lovenox"
-            },
-            {
-              "name": "Plavix"
-            },
-            {
-              "name": "Warfarin"
-            }
-          ]
-        },
-        {
-          id: 101,
-          mirror: 100
-        },
-        {
-          id: 110,
-          mirror: 100
-        },
-        {
-          id: 111,
-          mirror: 100
-        },
-        // LP
-        {
-          id: 120,
-          decline: [
-            {
-              "name": "Abacavir"
-            },
-            {
-              "name": "Abilify*"
-            },
-            {
-              "name": "Alkeran"
-            },
-            {
-              "name": "Amiodarone*"
-            },
-            {
-              "name": "Ampyra*"
-            },
-            {
-              "name": "Antabuse*"
-            },
-            {
-              "name": "Aricept"
-            },
-            {
-              "name": "Atripla"
-            },
-            {
-              "name": "Avonex*"
-            },
-            {
-              "name": "Azilect*"
-            },
-            {
-              "name": "Baraclude*"
-            },
-            {
-              "name": "Betaseron*"
-            },
-            {
-              "name": "Calcium Acetate*"
-            },
-            {
-              "name": "Campath"
-            },
-            {
-              "name": "Campral*"
-            },
-            {
-              "name": "Caprelsa"
-            },
-            {
-              "name": "Carbidopa/Levodopa*"
-            },
-            {
-              "name": "Casodex"
-            },
-            {
-              "name": "Cellcept"
-            },
-            {
-              "name": "Chlorpromazine Hcl*"
-            },
-            {
-              "name": "Clozapine*"
-            },
-            {
-              "name": "Cognex"
-            },
-            {
-              "name": "Combivir"
-            },
-            {
-              "name": "Copaxone*"
-            },
-            {
-              "name": "Crixivan"
-            },
-            {
-              "name": "Cyclosporine"
-            },
-            {
-              "name": "Cytoxan"
-            },
-            {
-              "name": "Donepezil"
-            },
-            {
-              "name": "Droxia"
-            },
-            {
-              "name": "Eligard"
-            },
-            {
-              "name": "Eminase*"
-            },
-            {
-              "name": "Epivir Hbv"
-            },
-            {
-              "name": "Ergoloid Mesylates"
-            },
-            {
-              "name": "Exelon"
-            },
-            {
-              "name": "Floxuridine"
-            },
-            {
-              "name": "Fluorouracil"
-            },
-            {
-              "name": "Galantamine"
-            },
-            {
-              "name": "Hydrobromide"
-            },
-            {
-              "name": "Gammagard"
-            },
-            {
-              "name": "Gamunex"
-            },
-            {
-              "name": "Gengraf"
-            },
-            {
-              "name": "Geodon*"
-            },
-            {
-              "name": "Haldol*"
-            },
-            {
-              "name": "Haloperidol*"
-            },
-            {
-              "name": "Hydrea"
-            },
-            {
-              "name": "Hydroxyurea"
-            },
-            {
-              "name": "Infergen*"
-            },
-            {
-              "name": "Invega*"
-            },
-            {
-              "name": "Invirase"
-            },
-            {
-              "name": "Latuda*"
-            },
-            {
-              "name": "Leucovorin Calcium"
-            },
-            {
-              "name": "Lexiva"
-            },
-            {
-              "name": "Limbitrol*"
-            },
-            {
-              "name": "Lithium*"
-            },
-            {
-              "name": "Megace"
-            },
-            {
-              "name": "Megestrol Acetate"
-            },
-            {
-              "name": "Mitomycin"
-            },
-            {
-              "name": "Mycophenolate Mofetil"
-            },
-            {
-              "name": "Myfortic"
-            },
-            {
-              "name": "Naloxone Hcl*"
-            },
-            {
-              "name": "Naltrexone Hcl*"
-            },
-            {
-              "name": "Namenda"
-            },
-            {
-              "name": "Neupogen"
-            },
-            {
-              "name": "Panretin"
-            },
-            {
-              "name": "Pegasys*"
-            },
-            {
-              "name": "Peg-Intron*"
-            },
-            {
-              "name": "Perphenazine*"
-            },
-            {
-              "name": "Pradaxa*"
-            },
-            {
-              "name": "Prograf"
-            },
-            {
-              "name": "Ranexa*"
-            },
-            {
-              "name": "Razadyne"
-            },
-            {
-              "name": "Rebif*"
-            },
-            {
-              "name": "Retrovir"
-            },
-            {
-              "name": "Revia*"
-            },
-            {
-              "name": "Revlimid"
-            },
-            {
-              "name": "Ribavirin*"
-            },
-            {
-              "name": "Risperdal*"
-            },
-            {
-              "name": "Rituxan"
-            },
-            {
-              "name": "Sandimmune"
-            },
-            {
-              "name": "Saphris*"
-            },
-            {
-              "name": "Seroquel*"
-            },
-            {
-              "name": "Serzone*"
-            },
-            {
-              "name": "Sinemet*"
-            },
-            {
-              "name": "Spiriva*"
-            },
-            {
-              "name": "Stalevo*"
-            },
-            {
-              "name": "Stribild"
-            },
-            {
-              "name": "Suboxone*"
-            },
-            {
-              "name": "Sustiva"
-            },
-            {
-              "name": "Symbyax*"
-            },
-            {
-              "name": "Targretin"
-            },
-            {
-              "name": "Teslac"
-            },
-            {
-              "name": "Truvada"
-            },
-            {
-              "name": "Viracept"
-            },
-            {
-              "name": "Viramune"
-            },
-            {
-              "name": "Viread"
-            },
-            {
-              "name": "Zenapax"
-            },
-            {
-              "name": "Zerit"
-            },
-            {
-              "name": "Ziagen"
-            },
-            {
-              "name": "Zidovudine"
-            },
-            {
-              "name": "Zoladex"
-            },
-            {
-              "name": "Zyprexa*"
-            }
-          ],
-          info: [
-            {
-              "name": "Aggrenox"
-            },
-            {
-              "name": "Arimidex"
-            },
-            {
-              "name": "Carvedilol"
-            },
-            {
-              "name": "Clopidogrel"
-            },
-            {
-              "name": "Coreg"
-            },
-            {
-              "name": "Coumadin"
-            },
-            {
-              "name": "Digitek"
-            },
-            {
-              "name": "DIGOXIN (DIGITEK)"
-            },
-            {
-              "name": "Eliquis"
-            },
-            {
-              "name": "Enoxaparin Sodium"
-            },
-            {
-              "name": "Femara"
-            },
-            {
-              "name": "Lanoxin"
-            },
-            {
-              "name": "Lovenox"
-            },
-            {
-              "name": "Plavix"
-            },
-            {
-              "name": "Tamoxifen"
-            },
-            {
-              "name": "Warfarin"
-            },
-            {
-              "name": "Xarelto"
-            }
-          ]
-        },
-        {
-          id: 130,
-          decline: [
-
-            {
-              "name": "Abacavir"
-            },
-            {
-              "name": "Alkeran"
-            },
-            {
-              "name": "Aricept"
-            },
-            {
-              "name": "Atripla"
-            },
-            {
-              "name": "Calcium Acetate*"
-            },
-            {
-              "name": "Campath"
-            },
-            {
-              "name": "Caprelsa"
-            },
-            {
-              "name": "Carbidopa/Levodopa*"
-            },
-            {
-              "name": "Casodex"
-            },
-            {
-              "name": "Cellcept"
-            },
-            {
-              "name": "Chlorpromazine Hcl*"
-            },
-            {
-              "name": "Cognex"
-            },
-            {
-              "name": "Combivir"
-            },
-            {
-              "name": "Crixivan"
-            },
-            {
-              "name": "Cyclosporine"
-            },
-            {
-              "name": "Cytoxan"
-            },
-            {
-              "name": "Donepezil"
-            },
-            {
-              "name": "Droxia"
-            },
-            {
-              "name": "Eligard"
-            },
-            {
-              "name": "Epivir Hbv"
-            },
-            {
-              "name": "Ergoloid Mesylates"
-            },
-            {
-              "name": "Exelon"
-            },
-            {
-              "name": "Floxuridine"
-            },
-            {
-              "name": "Fluorouracil"
-            },
-            {
-              "name": "Galantamine"
-            },
-            {
-              "name": "Hydrobromide"
-            },
-            {
-              "name": "Gammagard"
-            },
-            {
-              "name": "Gamunex"
-            },
-            {
-              "name": "Gengraf"
-            },
-            {
-              "name": "Hydrea"
-            },
-            {
-              "name": "Hydroxyurea"
-            },
-            {
-              "name": "Invirase"
-            },
-            {
-              "name": "Leucovorin Calcium"
-            },
-            {
-              "name": "Lexiva"
-            },
-            {
-              "name": "Megace"
-            },
-            {
-              "name": "Megestrol Acetate"
-            },
-            {
-              "name": "Mitomycin"
-            },
-            {
-              "name": "Mycophenolate Mofetil"
-            },
-            {
-              "name": "Myfortic"
-            },
-            {
-              "name": "Naloxone Hcl*"
-            },
-            {
-              "name": "Naltrexone Hcl*"
-            },
-            {
-              "name": "Namenda"
-            },
-            {
-              "name": "Neupogen"
-            },
-            {
-              "name": "Panretin"
-            },
-            {
-              "name": "Peg-Intron*"
-            },
-            {
-              "name": "Prograf"
-            },
-            {
-              "name": "Razadyne"
-            },
-            {
-              "name": "Retrovir"
-            },
-            {
-              "name": "Revlimid"
-            },
-            {
-              "name": "Rituxan"
-            },
-            {
-              "name": "Sandimmune"
-            },
-            {
-              "name": "Stribild"
-            },
-            {
-              "name": "Sustiva"
-            },
-            {
-              "name": "Targretin"
-            },
-            {
-              "name": "Teslac"
-            },
-            {
-              "name": "Truvada"
-            },
-            {
-              "name": "Viracept"
-            },
-            {
-              "name": "Viramune"
-            },
-            {
-              "name": "Viread"
-            },
-            {
-              "name": "Zenapax"
-            },
-            {
-              "name": "Zerit"
-            },
-            {
-              "name": "Ziagen"
-            },
-            {
-              "name": "Zidovudine"
-            },
-            {
-              "name": "Zoladex"
-            },
-            {
-              "name": "Zyprexa*"
-            }
-          ],
-          info: [
-
-            {
-              "name": "Abilify*"
-            },
-            {
-              "name": "Amiodarone*"
-            },
-            {
-              "name": "Ampyra*"
-            },
-            {
-              "name": "Antabuse*"
-            },
-            {
-              "name": "Avonex*"
-            },
-            {
-              "name": "Azilect*"
-            },
-            {
-              "name": "Baraclude*"
-            },
-            {
-              "name": "Betaseron*"
-            },
-            {
-              "name": "Calcium Acetate*"
-            },
-            {
-              "name": "Campral*"
-            },
-            {
-              "name": "Carbidopa/Levodopa*"
-            },
-            {
-              "name": "Chlorpromazine Hcl*"
-            },
-            {
-              "name": "Clozapine*"
-            },
-            {
-              "name": "Copaxone*"
-            },
-            {
-              "name": "Eminase*"
-            },
-            {
-              "name": "Epivir Hbv"
-            },
-            {
-              "name": "Ergoloid Mesylates"
-            },
-            {
-              "name": "Geodon*"
-            },
-            {
-              "name": "Haldol*"
-            },
-            {
-              "name": "Haloperidol*"
-            },
-            {
-              "name": "Infergen*"
-            },
-            {
-              "name": "Invega*"
-            },
-            {
-              "name": "Latuda*"
-            },
-            {
-              "name": "Leucovorin Calcium"
-            },
-            {
-              "name": "Limbitrol*"
-            },
-            {
-              "name": "Lithium*"
-            },
-            {
-              "name": "Megestrol Acetate"
-            },
-            {
-              "name": "Mycophenolate Mofetil"
-            },
-            {
-              "name": "Naloxone Hcl*"
-            },
-            {
-              "name": "Naltrexone Hcl*"
-            },
-            {
-              "name": "Pegasys*"
-            },
-            {
-              "name": "Peg-Intron*"
-            },
-            {
-              "name": "Perphenazine*"
-            },
-            {
-              "name": "Pradaxa*"
-            },
-            {
-              "name": "Ranexa*"
-            },
-            {
-              "name": "Rebif*"
-            },
-            {
-              "name": "Revia*"
-            },
-            {
-              "name": "Ribavirin*"
-            },
-            {
-              "name": "Risperdal*"
-            },
-            {
-              "name": "Saphris*"
-            },
-            {
-              "name": "Seroquel*"
-            },
-            {
-              "name": "Serzone*"
-            },
-            {
-              "name": "Sinemet*"
-            },
-            {
-              "name": "Spiriva*"
-            },
-            {
-              "name": "Stalevo*"
-            },
-            {
-              "name": "Suboxone*"
-            },
-            {
-              "name": "Symbyax*"
-            },
-            {
-              "name": "Zyprexa*"
-            }
-          ],
-        },
-      ]
+      "id": 100,
+      "name": "Abacavir",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
     },
-
+    {
+      "id": 200,
+      "name": "Abilify",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 300,
+      "name": "Adcirca",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 400,
+      "name": "Aggrenox",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 500,
+      "name": "Alkeran",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 600,
+      "name": "Amiodarone",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 700,
+      "name": "Ampyra",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 800,
+      "name": "Antabuse",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 900,
+      "name": "Aricept",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 1000,
+      "name": "Arimidex",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 1100,
+      "name": "Atripla",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 1200,
+      "name": "Avonex",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 1300,
+      "name": "Azilect",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 1400,
+      "name": "Baraclude",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 1500,
+      "name": "Betaseron",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 1600,
+      "name": "Calcium Acetate",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 1700,
+      "name": "Campath",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 1800,
+      "name": "Campral",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 1900,
+      "name": "Caprelsa",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 2000,
+      "name": "Carbidopa",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 2100,
+      "name": "Levodopa",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 2200,
+      "name": "Casodex",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 2300,
+      "name": "Cellcept",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 2400,
+      "name": "Chlorpromazine Hydrochloride",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 2500,
+      "name": "Clozapine",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 2600,
+      "name": "Cognex",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 2700,
+      "name": "Combivir",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 2800,
+      "name": "Copaxone",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 2900,
+      "name": "Crixivan",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 3000,
+      "name": "Cyclosporine",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 3100,
+      "name": "Cytoxan",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 3200,
+      "name": "Digitek",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 3300,
+      "name": "DIGOXIN (DIGITEK)",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 3400,
+      "name": "Dobutamine Hydrochloride",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 3500,
+      "name": "Donepezil",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 3600,
+      "name": "Droxia",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 3700,
+      "name": "Eligard",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 3800,
+      "name": "Eliquis",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 3900,
+      "name": "Eminase",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 4000,
+      "name": "Enbrel",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 4100,
+      "name": "Epivir-Hbv",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 4200,
+      "name": "Ergoloid Mesylates",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 4300,
+      "name": "Exelon",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 4400,
+      "name": "Femara",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 4500,
+      "name": "Floxuridine",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 4600,
+      "name": "Fluorouracil",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 4700,
+      "name": "Galantamine",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 4800,
+      "name": "Hydrobromide",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 4900,
+      "name": "Gammagard",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 5000,
+      "name": "Gamunex",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 5100,
+      "name": "Gengraf",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 5200,
+      "name": "Geodon",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 5300,
+      "name": "Haldol",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 5400,
+      "name": "Haloperidol",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 5500,
+      "name": "Hepsera",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 5600,
+      "name": "Humira",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 5700,
+      "name": "Hydrea",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 5800,
+      "name": "Hydroxyurea",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 5900,
+      "name": "Infergen",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 6000,
+      "name": "Invega",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 6100,
+      "name": "Invirase",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 6200,
+      "name": "Kalydeco",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 6300,
+      "name": "Lanoxin",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 6400,
+      "name": "Latuda",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 6500,
+      "name": "Leucovorin Calcium",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 6600,
+      "name": "Lexiva",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 6700,
+      "name": "Limbitrol",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 6800,
+      "name": "Lithium",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 6900,
+      "name": "Megestrol Acetate",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 7000,
+      "name": "Methadone",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 7100,
+      "name": "Methotrexate",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 7200,
+      "name": "Mitomycin",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 7300,
+      "name": "Morphine Sulfate",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 7400,
+      "name": "Mycophenolate Mofetil",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 7500,
+      "name": "Myfortic",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 7600,
+      "name": "Nabi-Hb",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 7700,
+      "name": "Naloxone Hcl",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 7800,
+      "name": "Naltrexone Hydrochloride",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 7900,
+      "name": "Namenda",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 8000,
+      "name": "Neupogen",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 8100,
+      "name": "Panretin",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 8200,
+      "name": "Pegasys",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 8300,
+      "name": "Peg-Intron",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 8400,
+      "name": "Perphenazine",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 8500,
+      "name": "Pradaxa",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 8600,
+      "name": "Prograf",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 8700,
+      "name": "Ranexa",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 8800,
+      "name": "Razadyne",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 8900,
+      "name": "Rebif",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 9000,
+      "name": "Retrovir",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 9100,
+      "name": "Revia",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 9200,
+      "name": "Revlimid",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 9300,
+      "name": "Ribavirin",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 9400,
+      "name": "Risperdal",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 9500,
+      "name": "Rituxan",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 9600,
+      "name": "Sandimmune",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 9700,
+      "name": "Saphris",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 9800,
+      "name": "Seroquel",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 9900,
+      "name": "Serzone",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 10000,
+      "name": "Sinemet",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 10100,
+      "name": "Spiriva",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 10200,
+      "name": "Stalevo",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 10300,
+      "name": "Stribild",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 10400,
+      "name": "Suboxone",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 10500,
+      "name": "Sustiva",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 10600,
+      "name": "Symbyax",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 10700,
+      "name": "Tamoxifen",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 10800,
+      "name": "Targretin",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 10900,
+      "name": "Teslac",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 11000,
+      "name": "Truvada",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 11100,
+      "name": "Tysabri",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 11200,
+      "name": "Viracept",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 11300,
+      "name": "Viramune",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 11400,
+      "name": "Viread",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 11500,
+      "name": "Xarelto",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 11600,
+      "name": "Xeljanz",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 11700,
+      "name": "Zenapax",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 11800,
+      "name": "Zerit",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 11900,
+      "name": "Ziagen",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 12000,
+      "name": "Zidovudine",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 12100,
+      "name": "Zoladex",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    },
+    {
+      "id": 12200,
+      "name": "Zyprexa",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE56": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "10P": "",
+      "ES": "",
+      "PR": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SI-WL": ""
+    }
   ]
 }
