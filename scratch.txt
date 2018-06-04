@@ -1,102 +1,126 @@
-Abacavir
-Abilify
-Alkeran
-Amiodarone
-Ampyra
-Antabuse
-Aricept
-Atripla
-Avonex
-Azilect
-Baraclude
-Betaseron
-Calcium Acetate
-Campath
-Campral
-Caprelsa
-Carbidopa/Levodopa
-Casodex
-Cellcept
-Chlorpromazine Hcl
-Clozapine
-Cognex
-Combivir
-Copaxone
-Crixivan
-Cyclosporine
-Cytoxan
-Donepezil
-Droxia
-Eligard
-Eminase
-Epivir Hbv
-Ergoloid Mesylates
-Exelon
-Floxuridine
-Fluorouracil
-Galantamine
-Hydrobromide
-Gammagard
-Gamunex
-Gengraf
-Geodon
-Haldol
-Haloperidol
-Hydrea
-Hydroxyurea
-Infergen
-Invega
-Invirase
-Latuda
-Leucovorin Calcium
-Lexiva
-Limbitrol
-Lithium
-Megace
-Megestrol Acetate
-(Megace)
-Mitomycin
-Mycophenolate Mofetil
-Myfortic
-Naloxone Hcl
-Naltrexone Hcl
-Namenda
-Neupogen
-Panretin
-Pegasys
-Peg-Intron
-Perphenazine
-Pradaxa
-Prograf
-Ranexa
-Razadyne
-Rebif
-Retrovir
-Revia
-Revlimid
-Ribavirin
-Risperdal
-Rituxan
-Sandimmune
-Saphris
-Seroquel
-Serzone
-Sinemet
-Spiriva
-Stalevo
-Stribild
-Suboxone
-Sustiva
-Symbyax
-Targretin
-Teslac
-Truvada
-Viracepta
-Viramune
-Viread
-Zenapax
-Zerit
-Ziagen
-Zidovudine
-Zoladex
-Zyprexa
+{
+  50: {
+    "M": 48.03
+    ,"F": 35.85
+  },
+  51: {
+    "M": 49.52
+    ,"F": 36.96
+  },
+  52: {
+    "M": 51.05
+    ,"F": 38.10
+  },
+  53: {
+    "M": 53.60
+    ,"F": 40.01
+  },
+  54: {
+    "M": 55.75
+    ,"F": 41.61
+  },
+  55: {
+    "M": 57.98
+    ,"F": 43.27
+  },
+  56: {
+    "M": 60.30
+    ,"F": 45.00
+  },
+  57: {
+    "M": 65.40
+    ,"F": 47.05
+  },
+  58: {
+    "M": 68.67
+    ,"F": 48.93
+  },
+  59: {
+    "M": 72.10
+    ,"F": 50.89
+  },
+  60: {
+    "M": 75.71
+    ,"F": 52.92
+  },
+  61: {
+    "M": 79.49
+    ,"F": 55.04
+  },
+  62: {
+    "M": 84.55
+    ,"F": 56.20
+  },
+  63: {
+    "M": 88.78
+    ,"F": 59.01
+  },
+  64: {
+    "M": 93.22
+    ,"F": 61.96
+  },
+  65: {
+    "M": 97.88
+    ,"F": 65.06
+  },
+  66: {
+    "M": 102.77
+    ,"F": 68.31
+  },
+  67: {
+    "M": 111.20
+    ,"F": 71.65
+  },
+  68: {
+    "M": 115.65
+    ,"F": 75.23
+  },
+  69: {
+    "M": 120.27
+    ,"F": 78.99
+  },
+  70: {
+    "M": 128.69
+    ,"F": 82.94
+  },
+  71: {
+    "M": 137.70
+    ,"F": 88.75
+  },
+  72: {
+    "M": 148.60
+    ,"F": 98.40
+  },
+  73: {
+    "M": 156.03
+    ,"F": 103.32
+  },
+  74: {
+    "M": 163.83
+    ,"F": 110.55
+  },
+  75: {
+    "M": 172.02
+    ,"F": 118.29
+  },
+  76: {
+    "M": 182.34
+    ,"F": 125.39
+  },
+  77: {
+    "M": 197.30
+    ,"F": 136.30
+  },
+  78: {
+    "M": 211.11
+    ,"F": 148.57
+  },
+  79: {
+    "M": 225.89
+    ,"F": 160.45
+  },
+  80: {
+    "M": 241.70
+    ,"F": 173.29
+  }
+}

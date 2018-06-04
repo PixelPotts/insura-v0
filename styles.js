@@ -80,6 +80,30 @@ export default StyleSheet.create({
     padding: 0,
     marginTop: -44
   },
+  answerButtonsWrap: {
+    position: 'absolute',
+    top: 64,
+    left: 10,
+    flexDirection: 'row',
+    zIndex: 3,
+    backgroundColor: 'white',
+    width: '98%'
+  },
+  answerButton: {
+    backgroundColor: '#B9F0FF',
+    marginRight: 5,
+    height: 38,
+    borderRadius: 5,
+    minWidth: 100,
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+  answerButtonText: {
+    fontSize: 18,
+    width: '100%',
+    textAlign: 'center',
+    marginTop: 8
+  },
   autoSuggestWrap: {
     position: 'absolute',
     top: 105,
@@ -186,7 +210,6 @@ export default StyleSheet.create({
   },
   providerTitleProductWrapStatus_2: {
     backgroundColor: '#feff00',
-    color: '#000'
   },
   providerTitleProductWrapStatus_3: {
     backgroundColor: '#4aa31a',
@@ -235,6 +258,14 @@ export default StyleSheet.create({
     marginTop: 8,
     marginBottom: 20,
   },
+  calculatorTermDropDown: {
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: '#c9c9c9',
+    padding: 10,
+    marginTop: 8,
+    marginBottom: 20,
+  },
   calculatorFaceValueWrap: {
     marginTop: 10,
     marginLeft: 20
@@ -253,9 +284,20 @@ export default StyleSheet.create({
     marginRight: 50,
     marginTop: 5
   },
+  calculatorProductPeriodCostWrapProduct: {
+    alignItems: 'center',
+    marginLeft: 50,
+    marginRight: 50,
+    marginTop: -50,
+    width: 200
+  },
   calculatorProductWrapTitle: {
     fontSize: 14,
-    fontWeight: '900'
+    fontWeight: '900',
+  },
+  calculatorProductWrapProduct: {
+    fontSize: 14,
+    fontWeight: '900',
   },
   calculatorProductWrapSubtitle: {
     fontSize: 20,
@@ -271,7 +313,7 @@ export default StyleSheet.create({
 
 
 
-  // BUTTONS ======================================
+  // BUTTONS ====================================== //
 
   infoButtonsWrap: {
     flexDirection: 'row',
@@ -305,6 +347,36 @@ export default StyleSheet.create({
   },
   infoButtonType: {
     padding: 3
+  },
+
+
+  // BUTTON'S BUTTONS ============================ //
+
+  buttonButtonsWrap: {
+    flex: 1,
+    flexDirection: 'row',
+    width: '100%',
+  },
+  buttonButtonWrap: {
+    minWidth: 22,
+    height: 25,
+    paddingTop: 3,
+    marginLeft: 3,
+    marginRight: 3,
+    marginTop: -10,
+    borderRadius: 3
+  },
+  buttonButtonText: {
+    width: '100%',
+    height: '100%',
+    textAlign: 'center'
+  },
+  buttonButtonTitle: {
+    fontSize: 10,
+    marginTop: -10,
+    marginRight: 5,
+    width: 28,
+    textAlign: 'right'
   },
 
   // BIO
@@ -392,6 +464,25 @@ export default StyleSheet.create({
   infoButtonType_CON: {
     padding: 3,
     color: "#C6B8FF"
-  }
+  },
+
+
+
+
+
+
+  // PICKER
+  picker: {
+    fontSize: 16,
+    paddingTop: 13,
+    paddingHorizontal: 10,
+    paddingBottom: 12,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 4,
+    backgroundColor: 'white',
+    color: 'black',
+    width: 200
+  },
 
 });
