@@ -46,7 +46,7 @@ export default {
       answer: null,
       field: 'height',
       submitByReturn: true,
-      answerOptions: [ {"id": 1,"value": 48,"name": "4’ 0”"},{"id": 2,"value": 49,"name": "4’ 1”"},{"id": 3,"value": 50,"name": "4’ 2”"},{"id": 4,"value": 51,"name": "4’ 3”"},{"id": 5,"value": 52,"name": "4’ 4”"},{"id": 6,"value": 53,"name": "4’ 5”"},{"id": 7,"value": 54,"name": "4’ 6”"},{"id": 8,"value": 55,"name": "4’ 7”"},{"id": 9,"value": 56,"name": "4’ 8”"},{"id": 10,"value": 57,"name": "4’ 9”"},{"id": 11,"value": 58,"name": "4’ 10”"},{"id": 12,"value": 59,"name": "4’ 11”"},{"id": 13,"value": 60,"name": "5’ 0”"},{"id": 14,"value": 61,"name": "5’ 1”"},{"id": 15,"value": 62,"name": "5’ 2”"},{"id": 16,"value": 63,"name": "5’ 3”"},{"id": 17,"value": 64,"name": "5’ 4”"},{"id": 18,"value": 65,"name": "5’ 5”"},{"id": 19,"value": 66,"name": "5’ 6”"},{"id": 20,"value": 67,"name": "5’ 7”"},{"id": 21,"value": 68,"name": "5’ 8”"},{"id": 22,"value": 69,"name": "5’ 9”"},{"id": 23,"value": 70,"name": "5’ 10”"},{"id": 24,"value": 71,"name": "5’ 11”"},{"id": 25,"value": 72,"name": "6’ 0”"},{"id": 26,"value": 73,"name": "6’ 1”"},{"id": 27,"value": 74,"name": "6’ 2”"},{"id": 28,"value": 75,"name": "6’ 3”"},{"id": 29,"value": 76,"name": "6’ 4”"},{"id": 30,"value": 77,"name": "6’ 5”"},{"id": 31,"value": 78,"name": "6’ 6”"},{"id": 32,"value": 79,"name": "6’ 7”"},{"id": 33,"value": 80,"name": "6’ 8”"},{"id": 34,"value": 81,"name": "6’ 9”"},{"id": 35,"value": 82,"name": "6’ 10”"},{"id": 36,"value": 83,"name": "6’ 11”"},{"id": 37,"value": 84,"name": "7’ 0”"},{"id": 38,"value": 85,"name": "7’ 1”"},{"id": 39,"value": 86,"name": "7’ 2”"},{"id": 40,"value": 87,"name": "7’ 3”"},{"id": 41,"value": 88,"name": "7’ 4”"},{"id": 42,"value": 89,"name": "7’ 5”"},{"id": 43,"value": 90,"name": "7’ 6”"},{"id": 44,"value": 91,"name": "7’ 7”"},{"id": 45,"value": 92,"name": "7’ 8”"},{"id": 46,"value": 93,"name": "7’ 9”"},{"id": 47,"value": 94,"name": "7’ 10”"},{"id": 48,"value": 95,"name": "7’ 11”"} ]
+      answerOptions: [{"id":1,"value":24,"name":"2'0''"},{"id":2,"value":25,"name":"2'1''"},{"id":3,"value":26,"name":"2'2''"},{"id":4,"value":27,"name":"2'3''"},{"id":5,"value":28,"name":"2'4''"},{"id":6,"value":29,"name":"2'5''"},{"id":7,"value":30,"name":"2'6''"},{"id":8,"value":31,"name":"2'7''"},{"id":9,"value":32,"name":"2'8''"},{"id":10,"value":33,"name":"2'9''"},{"id":11,"value":34,"name":"2'10''"},{"id":12,"value":35,"name":"2'11''"},{"id":13,"value":36,"name":"3'0''"},{"id":14,"value":37,"name":"3'1''"},{"id":15,"value":38,"name":"3'2''"},{"id":16,"value":39,"name":"3'3''"},{"id":17,"value":40,"name":"3'4''"},{"id":18,"value":41,"name":"3'5''"},{"id":19,"value":42,"name":"3'6''"},{"id":20,"value":43,"name":"3'7''"},{"id":21,"value":44,"name":"3'8''"},{"id":22,"value":45,"name":"3'9''"},{"id":23,"value":46,"name":"3'10''"},{"id":24,"value":47,"name":"3'11''"},{"id":25,"value":48,"name":"4'0''"},{"id":26,"value":49,"name":"4'1''"},{"id":27,"value":50,"name":"4'2''"},{"id":28,"value":51,"name":"4'3''"},{"id":29,"value":52,"name":"4'4''"},{"id":30,"value":53,"name":"4'5''"},{"id":31,"value":54,"name":"4'6''"},{"id":32,"value":55,"name":"4'7''"},{"id":33,"value":56,"name":"4'8''"},{"id":34,"value":57,"name":"4'9''"},{"id":35,"value":58,"name":"4'10''"},{"id":36,"value":59,"name":"5'11''"},{"id":37,"value":60,"name":"5'0''"},{"id":38,"value":61,"name":"5'1''"},{"id":39,"value":62,"name":"5'2''"},{"id":40,"value":63,"name":"5'3''"},{"id":41,"value":64,"name":"5'4''"},{"id":42,"value":65,"name":"5'5''"},{"id":43,"value":66,"name":"5'6''"},{"id":44,"value":67,"name":"5'7''"},{"id":45,"value":68,"name":"5'8''"},{"id":46,"value":69,"name":"5'9''"},{"id":47,"value":70,"name":"5'10''"},{"id":48,"value":71,"name":"5'11''"},{"id":49,"value":72,"name":"6'0''"},{"id":50,"value":73,"name":"6'1''"},{"id":51,"value":74,"name":"6'2''"},{"id":52,"value":75,"name":"6'3''"},{"id":53,"value":76,"name":"6'4''"},{"id":54,"value":77,"name":"6'5''"},{"id":55,"value":78,"name":"6'6''"},{"id":56,"value":79,"name":"6'7''"},{"id":57,"value":80,"name":"6'8''"},{"id":58,"value":81,"name":"6'9''"},{"id":59,"value":82,"name":"6'10''"},{"id":60,"value":83,"name":"6'11''"},{"id":61,"value":84,"name":"7'0''"},{"id":62,"value":85,"name":"7'1''"},{"id":63,"value":86,"name":"7'2''"},{"id":64,"value":87,"name":"7'3''"},{"id":65,"value":88,"name":"7'4''"},{"id":66,"value":89,"name":"7'5''"},{"id":67,"value":90,"name":"7'6''"},{"id":68,"value":91,"name":"7'7''"},{"id":69,"value":92,"name":"7'8''"},{"id":70,"value":93,"name":"7'9''"},{"id":71,"value":94,"name":"7'10''"},{"id":72,"value":95,"name":"7'11''"}]
     },
     {
       id: 400,
@@ -237,23 +237,23 @@ export default {
       field: 'condition',
       submitByReturn: false
     },
-    {
-      id: 400,
-      text: 'Two or more occurences of any kind of cancer or reoccurence of a prev. cancer?',
-      placeholder: "",
-      category: 'CON',
-      title: "RECURRENT CANCER",
-      subtitle: null,
-      answer: null,
-      field: 'recurrent-cancer',
-      submitByReturn: false,
-      answerOptions: [
-        {id: 1, value: '0',   name: "NO"},
-        {id: 2, value: '1', name: "YES"}
-      ],
-      underwriting: {
-        guaranteed: 1
-      }
-    },
+    // {
+    //   id: 400,
+    //   text: 'Two or more occurences of any kind of cancer or reoccurence of a prev. cancer?',
+    //   placeholder: "",
+    //   category: 'CON',
+    //   title: "RECURRENT CANCER",
+    //   subtitle: null,
+    //   answer: null,
+    //   field: 'recurrent-cancer',
+    //   submitByReturn: false,
+    //   answerOptions: [
+    //     {id: 1, value: '0',   name: "NO"},
+    //     {id: 2, value: '1', name: "YES"}
+    //   ],
+    //   underwriting: {
+    //     guaranteed: 1
+    //   }
+    // },
   ]
 }

@@ -10,7 +10,7 @@ export default StyleSheet.create({
     borderColor: '#FFF',
     borderWidth: 0,
     padding: 0,
-    backgroundColor: '#EEEFF4'
+    backgroundColor: '#404861'
   },
   header: {
     flexDirection: 'row',
@@ -39,11 +39,11 @@ export default StyleSheet.create({
   },
   loggedInUserName: {
     textAlign: 'right',
-    color: '#26347B'
+    color: '#d2d2d4'
   },
   signOutLink: {
     textAlign: 'right',
-    color: '#0F35AB'
+    color: '#ffb601'
   },
   console: {
     position: 'absolute',
@@ -71,7 +71,7 @@ export default StyleSheet.create({
   masterQuestion: {
     marginTop: 20,
     fontSize: 26,
-    color: '#000'
+    color: '#d2d2d4'
   },
   masterQuestionWrap: {
     flex: 1,
@@ -90,13 +90,15 @@ export default StyleSheet.create({
     width: '98%'
   },
   answerButton: {
-    backgroundColor: '#B9F0FF',
+    backgroundColor: '#E5E5E5',
     marginRight: 5,
     height: 38,
     borderRadius: 5,
     minWidth: 100,
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 15,
+    borderWidth: 0.5,
+    borderColor: '#e0e0e0'
   },
   answerButtonText: {
     fontSize: 18,
@@ -117,7 +119,8 @@ export default StyleSheet.create({
     zIndex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    overflow: 'hidden'
   },
   autoSuggestItem: {
     borderBottomWidth: 1,
@@ -140,11 +143,13 @@ export default StyleSheet.create({
   questionButton: {
     height: 50,
     width: 100,
-    color: '#0F35AB'
+    color: '#ffb601'
   },
   idScanButtonContainer: {
+    flex: 1,
+    flexDirection: 'row',
     position: 'absolute',
-    right: 0
+    right: 0,
   },
   footer: {
     flexDirection: 'column',
@@ -160,7 +165,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     // borderColor: 'red',
     // borderWidth: 1,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    marginLeft: -8
   },
   providerStatusWrap: {
     height: 20,
@@ -174,7 +180,7 @@ export default StyleSheet.create({
   providerTitle: {
     position: 'relative',
     top: 1,
-    color: '#000',
+    color: '#d2d2d4',
   },
   providerTitleProduct: {
     fontWeight: 'bold',
@@ -266,10 +272,15 @@ export default StyleSheet.create({
     marginTop: 8,
     marginBottom: 20,
   },
+  calculatorTermsWrap: {
+    marginTop: 10,
+    marginLeft: 20
+  },
   calculatorFaceValueWrap: {
     marginTop: 10,
     marginLeft: 20
   },
+
   calculatorProductWrap: {
     flex: 1,
     flexDirection: 'row',
@@ -446,7 +457,7 @@ export default StyleSheet.create({
 
   // CONDITION
   infoButton_CON: {
-    backgroundColor: '#C6B8FF',
+    backgroundColor: '#23ABCC',
     borderColor: "#fde5d2"
   },
   infoButtonTitle_CON: {

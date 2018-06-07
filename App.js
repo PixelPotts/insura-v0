@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import {
+  AlertIOS,
   Button,
   Image,
   Platform,
@@ -29,6 +30,7 @@ const DeclinedDrugs = require('./decline_drugs').default.medications;
 // let DiseasesFull = []; _.each(Diseases,function(type){ DiseasesFull = _.concat(DiseasesFull,type);});
 
 const Conditions = require('./decline_conditions').default.conditions;
+// const Medications = require('./medications2').default.all;
 
 const Calculator = require('./calculatorData').default;
 let Questions = require('./questions').default.questions;
@@ -36,7 +38,8 @@ let Questions = require('./questions').default.questions;
 // BLINK ID License Key
 import {BlinkID, MRTDKeys, USDLKeys, EUDLKeys, MYKADKeys} from 'blinkid-react-native';
 const BlinklicenseKey = Platform.select({
-  ios: 'R6GH6FFH-JKIYQ76Q-QGUJSEIH-DSQCNQTR-IUZB525W-PXAH7EHI-NPUGWSGI-EDRUGFHX',
+  ios: 'RIWAWJSR-CWCHEIUG-P2NBYJIL-PU65ZFWS-UE77OCVN-APB6INY3-CWDH4J6W-7BLWEEON',
+  // ios: 'R6GH6FFH-JKIYQ76Q-QGUJSEIH-DSQCNQTR-IUZB525W-PXAH7EHI-NPUGWSGI-EDRUGFHX',
 });
 
 const logos = {
@@ -48,7 +51,7 @@ const logos = {
   6: require('./images/logo_roy.jpeg'),
   7: require('./images/logo_aig.png')
 };
-
+let clientStartAge = 50;
 export default class Applify extends Component {
   constructor(props) {
     super(props);
@@ -57,6 +60,7 @@ export default class Applify extends Component {
       questionAnswer: '',
       activeQuestionId: 0,
       activeButtonId: 0,
+      questionCounter: 1,
       buttons: [],
       autoSuggestVisible: false,
       autoSuggestOptions: [],
@@ -69,14 +73,13 @@ export default class Applify extends Component {
       BlinkResults: '',
       BlinkLicenseKeyErrorMessage: '',
       Providers: Providers,
-      clientAge: 50,
       clientInfo: {
         name: '',
         firstName: '',
         middleName: '',
         lastName: '',
+        age: 50,
         dob: '',
-        age: undefined,
         height: 0,
         weight: 0,
         bmi: 25,
@@ -92,6 +95,7 @@ export default class Applify extends Component {
       calculatorFaceValue: '25,000',
       calculatorTerms: '20',
       calculatorHiddenProducts: [],
+      calculatorClientAge: "",
       calculator: {}
     };
   }
@@ -104,6 +108,7 @@ export default class Applify extends Component {
     // this.setState({consoleContent: updateContent});
   };
   nextQuestion = (skip=false) => {
+    if(this.state.questionCounter < Questions.length) this.setState({questionCounter: this.state.questionCounter + 1});
     if(!skip) this.processAnswer(Questions[this.state.activeQuestionId].category,{answer:this.state.questionAnswer});
     if(Questions[this.state.activeQuestionId+1]) {
       this.setState({activeQuestionId: this.state.activeQuestionId+1});
@@ -111,6 +116,7 @@ export default class Applify extends Component {
     }
   };
   prevQuestion = () => {
+    if(this.state.questionCounter > 1) this.setState({questionCounter: this.state.questionCounter - 1});
     if(Questions[this.state.activeQuestionId-1]) {
       this.setState({activeQuestionId: this.state.activeQuestionId-1});
       this.setState({activeButtonId: this.state.activeQuestionId-1});
@@ -124,9 +130,9 @@ export default class Applify extends Component {
     details.answer = details.value === undefined ? details.answer : details.value;
     Q = Questions[this.state.activeQuestionId];
     let clientInfo = {...this.state.clientInfo};
-    if(Q.field==='dob') details.answer = this.formatDate(details.answer) + " ("+ this.state.clientAge+"yo)";
+    if(Q.field==='dob') details.answer = this.formatDate(details.answer) + " ("+ this.state.clientInfo.age+"yo)";
     if(Q.field==='height') details.answer = this.formateHeight(details.answer);
-    if(Q.field==='mortgage') details.answer = '$' + details.answer;
+    if(Q.field==='mortgage') details.answer = '$' + number_format(details.answer);
 
     // UPDATE EXISTING BUTTON
     if(_.find(this.state.buttons,function(o){ return o.field === Q.field })
@@ -139,6 +145,7 @@ export default class Applify extends Component {
         let buttons = {...this.state.buttons};
         buttons[this.state.activeButtonId].subtitle = details.answer;
         this.setState([{buttons}],()=>{this.processBMI()});
+        this.updateProviders();
       }
 
     // START A NEW BUTTON
@@ -197,51 +204,100 @@ export default class Applify extends Component {
     let clientInfo = {...this.state.clientInfo};
     clientInfo.dob = dob;
     clientInfo.age = this.getAge(dob);
-    this.state.clientAge = clientInfo.age;
+    this.state.clientInfo.age = clientInfo.age;
     this.setState({clientInfo});
     return dob;
   };
-  formateHeight = (str) => {
-    if(!str) return;
-    let m = /([0-9]){1}[^0-9]*([0-9]{1,2})/.exec(str);
-    return m[1]+"' "+m[2]+"''"+" or "+((parseInt(m[1])*12)+parseInt(m[2]))+"''";
+  formateHeight = (height) => {
+    console.log("height");
+    console.log(height);
+    if(!height) return;
+    return parseInt(height/12) +"' "+height%12+"'' or "+ height+"''";
   };
-  updateProviders = () => {
+  updateProviders = (restart=false) => {
+    console.log("--- Updating providers ---");
+    console.log(this.state.buttons);
+    console.log(this.state.clientInfo);
     let self = this;
     let age = this.state.clientInfo.age;
     let Providers = {...this.state.Providers};
     let client = this.state.clientInfo;
+    let term = this.state.calculatorTerms;
     _.each(Providers,function(Provider,ProviderKey){
       _.each(Provider.products,function(product,productKey){
         let uw = product.underwriting;
         let statuses = [];
-        if(client.age) statuses.push(_.inRange(client.age,uw.age.min,uw.age.max) ? 3 : 1);
+        console.log("age:");
+        console.log(age);
+        // if(client.age) statuses.push(_.inRange(client.age,uw.age.min,uw.age.max) ? 3 : 1);
         if(client.bmi) statuses.push(_.inRange(client.bmi,uw.bmi.min,uw.bmi.max) ? 3 : 1);
+
+        // Check that the products in this product support the uses current age
+        let check = {notice:''};
+        _.each(product.calculator.products, function(product){
+          console.log("========= PRODUCT AGE CHECK ==========");
+          console.log(product);
+          table = product.table;
+          // CALCULATE MONTHLY AND ANUUAL COST
+          switch (product.tableType) {
+            case 'term--age--gender-smokerStatus':
+              if(typeof table[term][age] === "undefined"){
+                check.notice = "The age of '"+age+"' was not found in the rate table.";
+                statuses.push(1);
+              }
+              break;
+            case 'age--term-smokerStatus':
+              if(typeof table[age]==="undefined"){
+                check.notice = "The age of '"+age+"' was not found in the rate table.";
+                statuses.push(1);
+              }
+              break;
+            case 'age--gender-smokerStatus':
+              if(typeof table[age]==="undefined"){
+                check.notice = "The age of '"+age+"' was not found in the rate table.";
+                statuses.push(1);
+              }
+              break;
+            case 'age--gender':
+              if(typeof table[age]==="undefined"){
+                check.notice = "The age of '"+age+"' was not found in the rate table.";
+                statuses.push(1);
+              }
+              break;
+          }
+        })
 
         _.each(self.state.buttons,function(button){
 
-        // check more info drugs
+          // If this is a medication...
           if(button.category==='MED'){
             let medication = _.find(DeclinedDrugs,function(o){return o.id == button.key});
 
-            let status = medication[product.nickname];
-            let arr = _.split(status,'-'); // split out encoded answers
-            status = arr[0]; // update medications to use the first segment regardless
-            query = 0;
-            if(arr.length > 1){ // if a second segment is found, use it
-              let query = arr[1];
-            }
+            // If the drug exists in our databases
+            if(medication !== undefined){
+              let status = medication[product.nickname];
+              let arr = _.split(status,'-'); // split out encoded answers
+              status = arr[0]; // update medications to use the first segment regardless
+              query = 0;
+              if(arr.length > 1){ // if a second segment is found, use it
+                let query = arr[1];
+              }
 
-            switch (status){
-              case 'A':
-                statuses.push(3); break;
-              case 'IC':
-                statuses.push(2); break;
-              case 'D':
-                statuses.push(1); break;
+              switch (status){
+                case 'A':
+                  statuses.push(3); break;
+                case 'IC':
+                  statuses.push(2); break;
+                case 'D':
+                  statuses.push(1); break;
 
-              default:
-                statuses.push(3);
+                default:
+                  statuses.push(3);
+              }
+
+            // If the drug does not exist in our databses, it must be a manual entry that we want to allow
+            } else {
+              statuses.push(3);
             }
 
             //self.log("=== Searching MED category ===");
@@ -253,7 +309,9 @@ export default class Applify extends Component {
           }
           if(button.category==='CON'){
             let condition = _.find(Conditions,function(o){return o.id == button.key});
-
+            console.log("checking condition...........");
+            console.log(condition);
+            console.log(product.nickname);
             let status = condition[product.nickname];
             let query = 0;
             let arr = _.split(status,'-'); // split out encoded answers
@@ -289,6 +347,7 @@ export default class Applify extends Component {
 
         // Update Provider and Product
         Providers[ProviderKey].products[productKey].status = _.min(statuses);
+        if(restart) Providers[ProviderKey].products[productKey].status = 3;
       })
     });
     this.setState(Providers);
@@ -363,6 +422,10 @@ export default class Applify extends Component {
     this.clearAnswer();
   };
   renderOptions = (buttons) => {
+    console.log('=== renderOptions ===');
+    console.log(this.state.autoSuggestOptions);
+    console.log(this.state.questionAnswer);
+
     if(this.state.autoSuggestOptions.length > 0) {
       return (
         <View style={styles.autoSuggestWrap}>
@@ -376,6 +439,21 @@ export default class Applify extends Component {
                 </View>
               </TouchableHighlight>
             ))}
+          </ScrollView>
+        </View>
+      )
+    } else {
+      option = {id: _.random(1000000), name: this.state.questionAnswer, dosage: '', manualEntry: true };
+      return (
+        <View style={styles.autoSuggestWrap}>
+          <ScrollView keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
+              <TouchableHighlight onPress={() => this.clickAnswer(option)} key={(option.id)} underlayColor="#FFF">
+                <View style={styles.autoSuggestItem}>
+                  <Text
+                    style={styles.autoSuggestItemTitle}>
+                    {option.name} &nbsp;{option.dosage} <Text style={{fontWeight: '700'}}>(Manual Entry)</Text></Text>
+                </View>
+              </TouchableHighlight>
           </ScrollView>
         </View>
       )
@@ -398,14 +476,20 @@ export default class Applify extends Component {
     }
   };
   deleteButton = (button,key) => {
+    let clientInfo = this.state.clientInfo;
     if(!button.auto){
       let buttons = {...this.state.buttons};
       buttons = _.filter(buttons,function(o){ return o.id !== button.id });
       this.setState({buttons});
+      if (button.field === 'dob') {
+        clientInfo.age = clientStartAge;
+        this.setState({clientInfo: clientInfo});
+      }
     } else {
       if (button.field === 'bmi') {
         alert('BMI is auto calculated and cannot be deleted.');
       }
+
     }
     this.updateProviders();
   };
@@ -553,10 +637,78 @@ export default class Applify extends Component {
     console.log('test')
     this.setState({calculatorVisible: false});
   };
+  check = (o,k) => {
+    if (!(k in o)) {
+      
+    }
+  }
+  
+  getProductCostAvailability = (product,age,gender,smokerStatus,faceValue,term) => {
+    let cost = { month: 0, annual: 0, notice: '' };
+    let rate = 0;
+    console.log("=-=-=-=-=-= PRODUCT TABLE =-=-=-=-=-=-=");
+    table = product.table;
+    console.log(table);
+    // CALCULATE SHOW/HIDE STATUS
+    console.log(product.tableType);
+
+    // CALCULATE MONTHLY AND ANUUAL COST
+    switch (product.tableType) {
+      case 'term--age--gender-smokerStatus':
+        if(!(term in table)){
+          cost.notice = "The term of '"+term+"' was not found in the rate table.";
+          return cost;
+        } 
+        else if(!(age in table[term])){
+          cost.notice = "The age of '"+age+"' was not found in the rate table.";
+          return cost;
+        }
+        rate = table[term][age][gender+"-"+smokerStatus];
+        break;
+      case 'age--term-smokerStatus':
+        if(!(age in table)){
+          cost.notice = "The age of '"+age+"' was not found in the rate table.";
+          return cost;
+        }
+        if(!(term+"-"+smokerStatus in table[age])){
+          cost.notice = "The term/smoker of '"+term+"-"+smokerStatus+"' was not found in the rate table.";
+          return cost;
+        }
+        if(table[age][term+"-"+smokerStatus] === undefined) return cost;
+        rate = table[age][term+"-"+smokerStatus];
+        break;
+      case 'age--gender-smokerStatus':
+        if(!(age in table)){
+          cost.notice = "The age of '"+age+"' was not found in the rate table.";
+          return cost;
+        }
+        if(!(gender+"-"+smokerStatus in table[age])){
+          cost.notice = "The gender/smoker of '"+gender+"-"+smokerStatus+"' was not found in the rate table.";
+          return cost;
+        }
+        if(table[age][gender+"-"+smokerStatus] === undefined) return cost;
+        rate = table[age][gender+"-"+smokerStatus];
+        break;
+      case 'age--gender':
+        if(!(age in table)){
+          cost.notice = "The age of '"+age+"' was not found in the rate table.";
+          return cost;
+        }
+        if(table[age][gender] === undefined) return cost;
+        rate = table[age][gender];
+        break;
+    }
+    cost.annual = rate * (_.toInteger(faceValue) / product.multiplier) + product.fee;
+    if(product.id===403)
+      cost.annual = (rate * (_.toInteger(faceValue) / product.multiplier) + product.fee) * 12;
+    cost.month = cost.annual * product.monthFactor;
+    return cost;
+  }
+
   updateCalculatorValues = (updatedFaceValue, updatedTerms) => {
+    getProductCostAvailability = this.getProductCostAvailability;
     console.log("state:");
     console.log(this.state);
-
     console.log("==== start updateCalculatorValues ====");
     console.log("updatedFaceValue: ");
     console.log(updatedFaceValue);
@@ -565,13 +717,14 @@ export default class Applify extends Component {
 
     updatedFaceValue = updatedFaceValue === null ? this.state.calculatorFaceValue : updatedFaceValue;
     updatedTerms = updatedTerms === null ? this.state.calculatorTerms : updatedTerms;
+    this.setState({calculatorClientAge: this.state.clientInfo.age+""});
 
     updatedFaceValue = updatedFaceValue.toString().replace(/[^0-9\.]/gm,'');
     if(updatedFaceValue<2000) updatedFaceValue = 2000;
 
     smokerButton = _.find(this.state.buttons,function(b){return b.field == "tobacco-use-type"});
     genderButton = _.find(this.state.buttons,function(b){return b.field == "gender"});
-    age = this.state.clientAge;
+    age = this.state.clientInfo.age;
 
     let smokerStatus;
     if(!smokerButton){
@@ -588,6 +741,8 @@ export default class Applify extends Component {
       gender = genderButton.subtitle === "Male" ? "M" : "F";
     }
 
+    age = this.state.clientInfo.age;
+
     console.log("smoker status");
     console.log(smokerStatus);
 
@@ -603,39 +758,16 @@ export default class Applify extends Component {
     let hiddenIds = this.state.calculatorHiddenProducts;
 
     _.each(Providers,function(provider){
-      console.log("provider:");
+      console.log("==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-== Provider ==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==");
       console.log(provider);
       _.each(provider.products,function(product){
-        console.log("product");
+        console.log("==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-== Product === ");
         console.log(product);
         _.each(product.calculator.products,function(calculatorProduct){
+          console.log(calculatorProduct);
 
           console.log("product.calculator.type: ");
           console.log(product.calculator.type);
-
-          let rate, cost;
-          if(product.calculator.type === "term") {
-            rate = _.find(calculatorProduct.rates,function(o){return o.years == updatedTerms});
-
-            // // Skip this product if this term is not supported
-            // if(rate === undefined) {
-            //   hiddenIds.push(calculatorProduct.id);
-            //   return;
-            // }
-
-            // cost = rate[smokerStatus];
-
-          } else if(product.calculator.type === "whole"){
-            rate = calculatorProduct.rate;
-            cost = rate[smokerStatus];
-          }
-
-          // Skip this product if this smoker status is not supported
-          // if(smokerStatus in rate) {} else {
-          //   hiddenIds.push(calculatorProduct.id);
-          //   return;
-          // }
-
           console.log("calculatorProduct");
           console.log(calculatorProduct);
           console.log(" === COST VARIABLES ===");
@@ -643,91 +775,23 @@ export default class Applify extends Component {
           console.log(updatedTerms);
           console.log("updatedFaceValue");
           console.log(updatedFaceValue);
-          console.log("rate");
-          console.log(rate);
           console.log("age");
           console.log(age);
           console.log("gender");
           console.log(gender);
-          console.log("cost");
-          console.log(cost);
           console.log("calculatorProduct.multiplier");
           console.log(calculatorProduct.multiplier);
           console.log("multiplier applied:");
           console.log(_.toInteger(updatedFaceValue) / calculatorProduct.multiplier);
-
           console.log("rate table");
           console.log(calculatorProduct.table);
 
-          calc[calculatorProduct.id] = {month: 0, annual: 0};
+          let cost = getProductCostAvailability(calculatorProduct,age,gender,smokerStatus,updatedFaceValue,updatedTerms);
+          calc[calculatorProduct.id] = cost;
+          if(cost.annual == 0) hiddenIds.push(calculatorProduct.id);
 
-
-
-          if("table" in calculatorProduct){
-
-            // Skip this product if this age isn't available
-            if(!(age in calculatorProduct.table)){
-              hiddenIds.push(calculatorProduct.id);
-              return;
-            }
-
-            // Americo
-            if(provider.id === 2) {
-
-              if(product.calculator.type === "term"){
-                console.log(" table by age: ");
-                console.log(updatedTerms+"-"+smokerStatus);
-                console.log(calculatorProduct.table[age]);
-                calc[calculatorProduct.id].annual = number_format(calculatorProduct.table[age][updatedTerms+"-"+smokerStatus] * (_.toInteger(updatedFaceValue) / calculatorProduct.multiplier) + calculatorProduct.fee,2);
-                calc[calculatorProduct.id].month = number_format((calculatorProduct.table[age][updatedTerms+"-"+smokerStatus] * (_.toInteger(updatedFaceValue) / calculatorProduct.multiplier) + calculatorProduct.fee) * calculatorProduct.monthFactor,2);
-                if(_.includes([2021],calculatorProduct.id)){
-                  console.log("=== Product ID 2021 ===");
-                  calc[calculatorProduct.id].annual = number_format(calculatorProduct.table[age][gender+"-"+smokerStatus] * (_.toInteger(updatedFaceValue) / calculatorProduct.multiplier) + calculatorProduct.fee,2);
-                  calc[calculatorProduct.id].month = number_format((calculatorProduct.table[age][gender+"-"+smokerStatus] * (_.toInteger(updatedFaceValue) / calculatorProduct.multiplier) + calculatorProduct.fee) * calculatorProduct.monthFactor,2);
-                }
-                if(_.includes([2031,2041],calculatorProduct.id)){
-                  console.log("=== Product ID 2031 ===");
-                  calc[calculatorProduct.id].annual = number_format(calculatorProduct.table[age][gender] * (_.toInteger(updatedFaceValue) / calculatorProduct.multiplier) + calculatorProduct.fee,2);
-                  calc[calculatorProduct.id].month = number_format((calculatorProduct.table[age][gender] * (_.toInteger(updatedFaceValue) / calculatorProduct.multiplier) + calculatorProduct.fee) * calculatorProduct.monthFactor,2);
-                }
-
-              } else if(product.calculator.type === "whole"){
-
-              }
-
-            }
-
-            // MOO
-            if(provider.id === 1) {
-
-              if(product.calculator.type === "term"){
-
-              } else if(product.calculator.type === "whole"){
-
-                console.log(" table by gender, age: ");
-                console.log(gender+"-"+smokerStatus);
-                console.log(calculatorProduct.table[age]);
-
-                if(_.includes([131], calculatorProduct.id)){
-                  console.log("=== Product 131 ===");
-                  if(!(age in calculatorProduct.table)) { hiddenIds.push(calculatorProduct.id); return; }
-                  calc[calculatorProduct.id].annual = number_format(calculatorProduct.table[age][gender] * (_.toInteger(updatedFaceValue) / calculatorProduct.multiplier) + calculatorProduct.fee,2);
-                  calc[calculatorProduct.id].month = number_format((calculatorProduct.table[age][gender] * (_.toInteger(updatedFaceValue) / calculatorProduct.multiplier) + calculatorProduct.fee) * calculatorProduct.monthFactor,2);
-                } else {
-                  console.log("=== Not Product 131 ===");
-                  console.log(calculatorProduct.table[age][gender+"-"+smokerStatus]);
-                  if(!(age in calculatorProduct.table)) { hiddenIds.push(calculatorProduct.id); return; }
-                  calc[calculatorProduct.id].annual = number_format(calculatorProduct.table[age][gender+"-"+smokerStatus] * (_.toInteger(updatedFaceValue) / calculatorProduct.multiplier) + calculatorProduct.fee,2);
-                  calc[calculatorProduct.id].month = number_format((calculatorProduct.table[age][gender+"-"+smokerStatus] * (_.toInteger(updatedFaceValue) / calculatorProduct.multiplier) + calculatorProduct.fee) * calculatorProduct.monthFactor,2);
-
-                }
-
-              }
-
-            }
-
-          }
-
+          console.log("-0-0-0-0-0-0-0-0 CALCULATOR 0-0-0-0-0-0-0-0-0-");
+          console.log(calc);
 
         })
       })
@@ -739,8 +803,8 @@ export default class Applify extends Component {
     console.log("=== CALCULATOR OUTPUT ===");
     console.log(calc);
 
-    this.setState({calculator: calc});
-    this.setState({calculatorHiddenProducts: hiddenIds});
+    // this.setState({calculator: calc});
+    // this.setState({calculatorHiddenProducts: hiddenIds});
   }
 
   renderCalculatorProduct = (provider, product, calculatorProduct) => {
@@ -750,7 +814,7 @@ export default class Applify extends Component {
     console.log(calculatorProduct);
 
     // Hide products from the hide array
-    if(calculatorProduct.id in this.state.calculatorHiddenProducts) return;
+    if(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id)>0) return;
 
     return (
       <View style={styles.calculatorCompanyWrap} key={calculatorProduct.id}>
@@ -762,7 +826,7 @@ export default class Applify extends Component {
           <View style={styles.calculatorProductPeriodCostWrap}>
             <Text style={styles.calculatorProductWrapTitle}>Monthly</Text>
             <Text style={styles.calculatorProductWrapSubtitle}>
-              ${this.state.calculator[calculatorProduct.id].month}
+              ${number_format(this.state.calculator[calculatorProduct.id].month,2)}
               </Text>
             <Text
               value={this.state.questionAnswer}
@@ -771,7 +835,7 @@ export default class Applify extends Component {
           <View style={styles.calculatorProductPeriodCostWrap}>
             <Text style={styles.calculatorProductWrapTitle}>Annual</Text>
             <Text style={styles.calculatorProductWrapSubtitle}>
-              ${this.state.calculator[calculatorProduct.id].annual}
+              ${number_format(this.state.calculator[calculatorProduct.id].annual,2)}
               </Text>
           </View>
           <View style={styles.calculatorProductPeriodCostWrap}>
@@ -787,6 +851,9 @@ export default class Applify extends Component {
   }
 
   renderCalculator = () => {
+
+    console.log(" --- RENDER CALCULATOR ---");
+
     //let Providers = Calculator.providers;
     this.inputRefs = {};
     self = this;
@@ -801,24 +868,56 @@ export default class Applify extends Component {
          </View>
          {/*<Text style={{fontSize: 20}}>Coverage Options for {this.state.clientInfo.firstName}</Text>*/}
          <View style={styles.calculatorHeader}>
-          <View style={styles.calculatorFaceValueWrap}>
-            <Text>Coverage Amount ($)</Text>
-            <TextInput
-              style={styles.calculatorFaceValue}
-              ref="calculatorFaceValue"
-              // placeholder="100,000"
-              onChangeText={(value)=> {
-                console.log("=== calling onChangeText ===");
-                console.log("value:");
-                console.log(value);
-                this.updateCalculatorValues(number_format(value,2),null)
-                this.setState({calculatorFaceValue: number_format(value,2)})
-              }}
-              value={number_format(this.state.calculatorFaceValue)}
-            />
-          </View>
-          <View style={styles.calculatorFaceValueWrap}>
-            <Text>Term (Years)</Text>
+          {/*<View style={styles.calculatorFaceValueWrap}>*/}
+            {/*<Text>Coverage Amount ($)</Text>*/}
+            {/*<TextInput*/}
+              {/*style={styles.calculatorFaceValue}*/}
+              {/*ref="calculatorFaceValue"*/}
+              {/*// placeholder="100,000"*/}
+              {/*onChangeText={(value)=> {*/}
+                {/*console.log("=== calling onChangeText ===");*/}
+                {/*console.log("value:");*/}
+                {/*console.log(value);*/}
+                {/*this.updateCalculatorValues(number_format(value,2),null)*/}
+                {/*// this.setState({calculatorFaceValue: number_format(value,2)})*/}
+              {/*}}*/}
+              {/*value={number_format(this.state.calculatorFaceValue)}*/}
+            {/*/>*/}
+          {/*</View>*/}
+
+           {/* FACE VALUE SELECT */}
+           <View style={styles.calculatorFaceValueWrap}>
+             <Text>Face Value</Text>
+             {/*<TextInput style={styles.calculatorFaceValue} placeholder="10, 15, 20, or 30"/>*/}
+
+             <View style={styles.calculatorTermDropDown}>
+               <RNPickerSelect
+                 // placeholder={{
+                 //   label: 'Select...',
+                 //   value: null,
+                 // }}
+                 items={[{"label":"1,000","value":"1,000"},{"label":"2,000","value":"2,000"},{"label":"3,000","value":"3,000"},{"label":"4,000","value":"4,000"},{"label":"5,000","value":"5,000"},{"label":"6,000","value":"6,000"},{"label":"7,000","value":"7,000"},{"label":"8,000","value":"8,000"},{"label":"9,000","value":"9,000"},{"label":"10,000","value":"10,000"},{"label":"15,000","value":"15,000"},{"label":"20,000","value":"20,000"},{"label":"25,000","value":"25,000"},{"label":"30,000","value":"30,000"},{"label":"35,000","value":"35,000"},{"label":"40,000","value":"40,000"},{"label":"45,000","value":"45,000"},{"label":"50,000","value":"50,000"},{"label":"55,000","value":"55,000"},{"label":"60,000","value":"60,000"},{"label":"65,000","value":"65,000"},{"label":"70,000","value":"70,000"},{"label":"75,000","value":"75,000"},{"label":"80,000","value":"80,000"},{"label":"85,000","value":"85,000"},{"label":"90,000","value":"90,000"},{"label":"95,000","value":"95,000"},{"label":"100,000","value":"100,000"},{"label":"110,000","value":"110,000"},{"label":"120,000","value":"120,000"},{"label":"130,000","value":"130,000"},{"label":"140,000","value":"140,000"},{"label":"150,000","value":"150,000"},{"label":"160,000","value":"160,000"},{"label":"170,000","value":"170,000"},{"label":"180,000","value":"180,000"},{"label":"190,000","value":"190,000"},{"label":"200,000","value":"200,000"},{"label":"210,000","value":"210,000"},{"label":"220,000","value":"220,000"},{"label":"230,000","value":"230,000"},{"label":"240,000","value":"240,000"},{"label":"250,000","value":"250,000"},{"label":"300,000","value":"300,000"},{"label":"350,000","value":"350,000"},{"label":"400,000","value":"400,000"},{"label":"450,000","value":"450,000"},{"label":"500,000","value":"500,000"},{"label":"550,000","value":"550,000"},{"label":"600,000","value":"600,000"},{"label":"650,000","value":"650,000"},{"label":"700,000","value":"700,000"},{"label":"750,000","value":"750,000"},{"label":"800,000","value":"800,000"},{"label":"850,000","value":"850,000"},{"label":"900,000","value":"900,000"},{"label":"950,000","value":"950,000"},{"label":"1,000,000","value":"1,000,000"},{"label":"1,100,000","value":"1,100,000"},{"label":"1,200,000","value":"1,200,000"},{"label":"1,300,000","value":"1,300,000"},{"label":"1,400,000","value":"1,400,000"},{"label":"1,500,000","value":"1,500,000"},{"label":"1,600,000","value":"1,600,000"},{"label":"1,700,000","value":"1,700,000"},{"label":"1,800,000","value":"1,800,000"},{"label":"1,900,000","value":"1,900,000"},{"label":"2,000,000","value":"2,000,000"},{"label":"2,250,000","value":"2,250,000"},{"label":"2,500,000","value":"2,500,000"},{"label":"2,750,000","value":"2,750,000"},{"label":"3,000,000","value":"3,000,000"},{"label":"3,250,000","value":"3,250,000"},{"label":"3,500,000","value":"3,500,000"},{"label":"3,750,000","value":"3,750,000"},{"label":"4,000,000","value":"4,000,000"},{"label":"4,250,000","value":"4,250,000"},{"label":"4,500,000","value":"4,500,000"},{"label":"4,750,000","value":"4,750,000"},{"label":"5,000,000","value":"5,000,000"},{"label":"5,500,000","value":"5,500,000"},{"label":"6,000,000","value":"6,000,000"},{"label":"6,500,000","value":"6,500,000"},{"label":"7,000,000","value":"7,000,000"},{"label":"7,500,000","value":"7,500,000"},{"label":"8,000,000","value":"8,000,000"},{"label":"8,500,000","value":"8,500,000"},{"label":"9,000,000","value":"9,000,000"},{"label":"9,500,000","value":"9,500,000"},{"label":"10,000,000","value":"10,000,000"},{"label":"11,000,000","value":"11,000,000"},{"label":"12,000,000","value":"12,000,000"},{"label":"13,000,000","value":"13,000,000"},{"label":"14,000,000","value":"14,000,000"},{"label":"15,000,000","value":"15,000,000"},{"label":"16,000,000","value":"16,000,000"},{"label":"17,000,000","value":"17,000,000"},{"label":"18,000,000","value":"18,000,000"},{"label":"19,000,000","value":"19,000,000"},{"label":"20,000,000","value":"20,000,000"}]}
+                 onValueChange={(value) => {
+                   this.setState({ calculatorFaceValue: value });
+                   this.updateCalculatorValues(value,null);
+                 }}
+                 onUpArrow={() => {
+                   this.inputRefs.name.focus();
+                 }}
+                 onDownArrow={() => {
+                   this.inputRefs.picker2.togglePicker();
+                 }}
+                 style={{icon: {marginTop:-16, marginRight:-8}}}
+                 value={this.state.calculatorFaceValue}
+                 ref="faceValues"
+               />
+             </View>
+
+           </View>
+
+         {/* TERMS SELECT */}
+          <View style={styles.calculatorTermsWrap}>
+            <Text>Term</Text>
             {/*<TextInput style={styles.calculatorFaceValue} placeholder="10, 15, 20, or 30"/>*/}
 
             <View style={styles.calculatorTermDropDown}>
@@ -843,7 +942,7 @@ export default class Applify extends Component {
                   this.inputRefs.name.focus();
                 }}
                 onDownArrow={() => {
-                  this.inputRefs.picker2.togglePicker();
+                  this.inputRefs.picker3.togglePicker();
                 }}
                 style={{icon: {marginTop:-16, marginRight:-8}}}
                 value={this.state.calculatorTerms}
@@ -852,198 +951,58 @@ export default class Applify extends Component {
             </View>
 
           </View>
+
+         {/* AGE SELECT */}
+          <View style={styles.calculatorTermsWrap}>
+            <Text>Age</Text>
+            {/*<TextInput style={styles.calculatorFaceValue} placeholder="10, 15, 20, or 30"/>*/}
+
+            <View style={styles.calculatorTermDropDown}>
+              <RNPickerSelect
+                // placeholder={{
+                //   label: 'Select...',
+                //   value: null,
+                // }}
+                items={[{"label":"0","value":"0"},{"label":"1","value":"1"},{"label":"2","value":"2"},{"label":"3","value":"3"},{"label":"4","value":"4"},{"label":"5","value":"5"},{"label":"6","value":"6"},{"label":"7","value":"7"},{"label":"8","value":"8"},{"label":"9","value":"9"},{"label":"10","value":"10"},{"label":"11","value":"11"},{"label":"12","value":"12"},{"label":"13","value":"13"},{"label":"14","value":"14"},{"label":"15","value":"15"},{"label":"16","value":"16"},{"label":"17","value":"17"},{"label":"18","value":"18"},{"label":"19","value":"19"},{"label":"20","value":"20"},{"label":"21","value":"21"},{"label":"22","value":"22"},{"label":"23","value":"23"},{"label":"24","value":"24"},{"label":"25","value":"25"},{"label":"26","value":"26"},{"label":"27","value":"27"},{"label":"28","value":"28"},{"label":"29","value":"29"},{"label":"30","value":"30"},{"label":"31","value":"31"},{"label":"32","value":"32"},{"label":"33","value":"33"},{"label":"34","value":"34"},{"label":"35","value":"35"},{"label":"36","value":"36"},{"label":"37","value":"37"},{"label":"38","value":"38"},{"label":"39","value":"39"},{"label":"40","value":"40"},{"label":"41","value":"41"},{"label":"42","value":"42"},{"label":"43","value":"43"},{"label":"44","value":"44"},{"label":"45","value":"45"},{"label":"46","value":"46"},{"label":"47","value":"47"},{"label":"48","value":"48"},{"label":"49","value":"49"},{"label":"50","value":"50"},{"label":"51","value":"51"},{"label":"52","value":"52"},{"label":"53","value":"53"},{"label":"54","value":"54"},{"label":"55","value":"55"},{"label":"56","value":"56"},{"label":"57","value":"57"},{"label":"58","value":"58"},{"label":"59","value":"59"},{"label":"60","value":"60"},{"label":"61","value":"61"},{"label":"62","value":"62"},{"label":"63","value":"63"},{"label":"64","value":"64"},{"label":"65","value":"65"},{"label":"66","value":"66"},{"label":"67","value":"67"},{"label":"68","value":"68"},{"label":"69","value":"69"},{"label":"70","value":"70"},{"label":"71","value":"71"},{"label":"72","value":"72"},{"label":"73","value":"73"},{"label":"74","value":"74"},{"label":"75","value":"75"},{"label":"76","value":"76"},{"label":"77","value":"77"},{"label":"78","value":"78"},{"label":"79","value":"79"},{"label":"80","value":"80"},{"label":"81","value":"81"},{"label":"82","value":"82"},{"label":"83","value":"83"},{"label":"84","value":"84"},{"label":"85","value":"85"},{"label":"86","value":"86"},{"label":"87","value":"87"},{"label":"88","value":"88"},{"label":"89","value":"89"},{"label":"90","value":"90"},{"label":"91","value":"91"},{"label":"92","value":"92"},{"label":"93","value":"93"},{"label":"94","value":"94"},{"label":"95","value":"95"},{"label":"96","value":"96"},{"label":"97","value":"97"},{"label":"98","value":"98"},{"label":"99","value":"99"},{"label":"100","value":"100"},{"label":"101","value":"101"},{"label":"102","value":"102"},{"label":"103","value":"103"},{"label":"104","value":"104"},{"label":"105","value":"105"},{"label":"106","value":"106"},{"label":"107","value":"107"},{"label":"108","value":"108"},{"label":"109","value":"109"},{"label":"110","value":"110"},{"label":"111","value":"111"},{"label":"112","value":"112"},{"label":"113","value":"113"},{"label":"114","value":"114"},{"label":"115","value":"115"},{"label":"116","value":"116"},{"label":"117","value":"117"},{"label":"118","value":"118"},{"label":"119","value":"119"},{"label":"120","value":"120"}]}
+                onValueChange={(value) => {
+                  clientInfo = this.state.clientInfo;
+                  clientInfo.age = parseInt(value);
+                  this.setState({ clientInfo: clientInfo });
+                  this.updateCalculatorValues(null,null);
+                }}
+                onUpArrow={() => {
+                  this.inputRefs.name.focus();
+                }}
+                onDownArrow={() => {
+                  this.inputRefs.picker4.togglePicker();
+                }}
+                style={{icon: {marginTop:-16, marginRight:-8}}}
+                value={_.toString(this.state.clientInfo.age)}
+                ref="ages"
+              />
+            </View>
+
+          </View>
+
+
+
          </View>
 
 
          <ScrollView>
 
+
            {Providers.map(function(provider){
              provider.products.map(function(product){
                product.calculator.products.map(function(calculatorProduct){
                  productsRender.push(renderCalculatorProduct(provider,product,calculatorProduct));
+                 console.log("--- Rendering ---");
                })
              })
            })}
+
            {productsRender}
 
-           {/*<Text style={styles.calculatorProductWrapProduct}>Gtd Universal Life Exp</Text>*/}
-
-
-
-
-
-
-
-           {/*<View style={styles.calculatorCompanyWrap}>*/}
-             {/*<Image source={require('./images/logo_for.png')} style={styles.calculatorLogo}/>*/}
-             {/*<View style={styles.calculatorProductWrap}>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrapProduct}>*/}
-                 {/*<Text style={styles.calculatorProductWrapProduct}>PlanRight</Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Text style={styles.calculatorProductWrapTitle}>Monthly</Text>*/}
-                 {/*<Text style={styles.calculatorProductWrapSubtitle}>${this.state.calculator.MOO_monthly}</Text>*/}
-                 {/*<Text*/}
-                   {/*value={this.state.questionAnswer}*/}
-                   {/*style={styles.calculatorProductWrapSubtitle}></Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Text style={styles.calculatorProductWrapTitle}>Annual</Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Hyperlink*/}
-                   {/*linkDefault={true}*/}
-                   {/*linkText={url => url === 'https://adfs.americo.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn%3aagent.americo.com%3asharepoint&wctx=https%3a%2f%2fagent.americo.com%2f_layouts%2fAuthenticate.aspx%3fSource%3d%252F' ? 'Select' : url }*/}
-                 {/*>*/}
-                   {/*<Text>Americo</Text>*/}
-                 {/*</Hyperlink>*/}
-               {/*</View>*/}
-             {/*</View>*/}
-           {/*</View>*/}
-
-
-
-           {/*<View style={styles.calculatorCompanyWrap}>*/}
-             {/*<Image source={require('./images/logo_for.png')} style={styles.calculatorLogo}/>*/}
-             {/*<View style={styles.calculatorProductWrap}>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrapProduct}>*/}
-                 {/*<Text style={styles.calculatorProductWrapProduct}>Strong Foundation</Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Text style={styles.calculatorProductWrapTitle}>Monthly</Text>*/}
-                 {/*<Text style={styles.calculatorProductWrapSubtitle}>${this.state.calculator.MOO_monthly}</Text>*/}
-                 {/*<Text*/}
-                   {/*value={this.state.questionAnswer}*/}
-                   {/*style={styles.calculatorProductWrapSubtitle}></Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Text style={styles.calculatorProductWrapTitle}>Annual</Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Hyperlink*/}
-                   {/*linkDefault={true}*/}
-                   {/*linkText={url => url === 'https://adfs.americo.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn%3aagent.americo.com%3asharepoint&wctx=https%3a%2f%2fagent.americo.com%2f_layouts%2fAuthenticate.aspx%3fSource%3d%252F' ? 'Select' : url }*/}
-                 {/*>*/}
-                   {/*<Text>Americo</Text>*/}
-                 {/*</Hyperlink>*/}
-               {/*</View>*/}
-             {/*</View>*/}
-           {/*</View>*/}
-
-
-
-           {/*<View style={styles.calculatorCompanyWrap}>*/}
-             {/*<Image source={require('./images/logo_for.png')} style={styles.calculatorLogo}/>*/}
-             {/*<View style={styles.calculatorProductWrap}>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrapProduct}>*/}
-                 {/*<Text style={styles.calculatorProductWrapProduct}>Smart UL</Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Text style={styles.calculatorProductWrapTitle}>Monthly</Text>*/}
-                 {/*<Text style={styles.calculatorProductWrapSubtitle}>${this.state.calculator.MOO_monthly}</Text>*/}
-                 {/*<Text*/}
-                   {/*value={this.state.questionAnswer}*/}
-                   {/*style={styles.calculatorProductWrapSubtitle}></Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Text style={styles.calculatorProductWrapTitle}>Annual</Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Hyperlink*/}
-                   {/*linkDefault={true}*/}
-                   {/*linkText={url => url === 'https://adfs.americo.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn%3aagent.americo.com%3asharepoint&wctx=https%3a%2f%2fagent.americo.com%2f_layouts%2fAuthenticate.aspx%3fSource%3d%252F' ? 'Select' : url }*/}
-                 {/*>*/}
-                   {/*<Text>Americo</Text>*/}
-                 {/*</Hyperlink>*/}
-               {/*</View>*/}
-             {/*</View>*/}
-           {/*</View>*/}
-
-
-
-           {/*<View style={styles.calculatorCompanyWrap}>*/}
-             {/*<Image source={require('./images/logo_cfg.jpeg')} style={styles.calculatorLogo}/>*/}
-             {/*<View style={styles.calculatorProductWrap}>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrapProduct}>*/}
-                 {/*<Text style={styles.calculatorProductWrapProduct}>Dignified Choice - Final Exp</Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Text style={styles.calculatorProductWrapTitle}>Monthly</Text>*/}
-                 {/*<Text style={styles.calculatorProductWrapSubtitle}>${this.state.calculator.MOO_monthly}</Text>*/}
-                 {/*<Text*/}
-                   {/*value={this.state.questionAnswer}*/}
-                   {/*style={styles.calculatorProductWrapSubtitle}></Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Text style={styles.calculatorProductWrapTitle}>Annual</Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Hyperlink*/}
-                   {/*linkDefault={true}*/}
-                   {/*linkText={url => url === 'https://adfs.americo.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn%3aagent.americo.com%3asharepoint&wctx=https%3a%2f%2fagent.americo.com%2f_layouts%2fAuthenticate.aspx%3fSource%3d%252F' ? 'Select' : url }*/}
-                 {/*>*/}
-                   {/*<Text>Americo</Text>*/}
-                 {/*</Hyperlink>*/}
-               {/*</View>*/}
-             {/*</View>*/}
-           {/*</View>*/}
-
-
-
-           {/*<View style={styles.calculatorCompanyWrap}>*/}
-             {/*<Image source={require('./images/logo_roy.jpeg')} style={styles.calculatorLogo}/>*/}
-             {/*<View style={styles.calculatorProductWrap}>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrapProduct}>*/}
-                 {/*<Text style={styles.calculatorProductWrapProduct}>Simplified Issue Whole</Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Text style={styles.calculatorProductWrapTitle}>Monthly</Text>*/}
-                 {/*<Text style={styles.calculatorProductWrapSubtitle}>${this.state.calculator.MOO_monthly}</Text>*/}
-                 {/*<Text*/}
-                   {/*value={this.state.questionAnswer}*/}
-                   {/*style={styles.calculatorProductWrapSubtitle}></Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Text style={styles.calculatorProductWrapTitle}>Annual</Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Hyperlink*/}
-                   {/*linkDefault={true}*/}
-                   {/*linkText={url => url === 'https://adfs.americo.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn%3aagent.americo.com%3asharepoint&wctx=https%3a%2f%2fagent.americo.com%2f_layouts%2fAuthenticate.aspx%3fSource%3d%252F' ? 'Select' : url }*/}
-                 {/*>*/}
-                   {/*<Text>Americo</Text>*/}
-                 {/*</Hyperlink>*/}
-               {/*</View>*/}
-             {/*</View>*/}
-           {/*</View>*/}
-
-
-           {/*<View style={styles.calculatorCompanyWrap}>*/}
-             {/*<Image source={require('./images/logo_aig.png')} style={styles.calculatorLogo}/>*/}
-             {/*<View style={styles.calculatorProductWrap}>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrapProduct}>*/}
-                 {/*<Text style={styles.calculatorProductWrapProduct}>Guaranteed Issue Whole</Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Text style={styles.calculatorProductWrapTitle}>Monthly</Text>*/}
-                 {/*<Text style={styles.calculatorProductWrapSubtitle}>${this.state.calculator.MOO_monthly}</Text>*/}
-                 {/*<Text*/}
-                   {/*value={this.state.questionAnswer}*/}
-                   {/*style={styles.calculatorProductWrapSubtitle}></Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Text style={styles.calculatorProductWrapTitle}>Annual</Text>*/}
-               {/*</View>*/}
-               {/*<View style={styles.calculatorProductPeriodCostWrap}>*/}
-                 {/*<Hyperlink*/}
-                   {/*linkDefault={true}*/}
-                   {/*linkText={url => url === 'https://adfs.americo.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn%3aagent.americo.com%3asharepoint&wctx=https%3a%2f%2fagent.americo.com%2f_layouts%2fAuthenticate.aspx%3fSource%3d%252F' ? 'Select' : url }*/}
-                 {/*>*/}
-                   {/*<Text>Americo</Text>*/}
-                 {/*</Hyperlink>*/}
-               {/*</View>*/}
-             {/*</View>*/}
-           {/*</View>*/}
 
 
 
@@ -1099,8 +1058,9 @@ export default class Applify extends Component {
           {this.state.answerButtonsVisible ? this.renderAnswerButtons(Questions[this.state.activeQuestionId].answerOptions||[]) : null}
           {this.state.autoSuggestVisible ? this.renderOptions() : null}
           <View style={styles.questionLinksWrap}>
-            <Button title="Prev" color="#2548B2" onPress={this.prevQuestion}><Text>Prev</Text></Button>
-            <Button title="Next" color="#2548B2" onPress={this.nextQuestion}><Text>Next</Text></Button>
+            <Button title="Prev" color="#ffb601" onPress={this.prevQuestion}><Text>Prev</Text></Button>
+            <Button title="Next" color="#ffb601" onPress={this.nextQuestion}><Text>Next</Text></Button>
+            <Text style={{color: '#b6b8be', marginTop: 11, marginLeft: 13}}>{this.state.questionCounter} of {Questions.length}</Text>
             {this.renderIdScanButton()}
           </View>
           {this.renderButtons(this.state.buttons)}
@@ -1131,10 +1091,33 @@ export default class Applify extends Component {
       )
     }
   };
+  clearForm = () => {
+    this.setState({buttons: []},()=>{});
+    this.setState({activeQuestionId: 0});
+    this.setState({questionCounter: 1});
+    this.updateProviders(true);
+  };
   renderIdScanButton() {
     return (
       <View style={styles.idScanButtonContainer}>
-        <Button onPress={this.scan.bind(this)} title="Scan DL" color="#0F35AB"/>
+        <Button onPress={this.scan.bind(this)} title="Scan DL" color="#d2d2d4"/>
+        <Button onPress={()=>{
+          AlertIOS.alert(
+            'Clear All Data',
+            'This action cannot be undone.',
+            [
+              {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Clear Form Pressed'),
+                style: 'cancel',
+              },
+              {
+                text: 'Clear Form',
+                onPress: () => this.clearForm(),
+              },
+            ]
+          );
+        }} title="Clear" color="#d2d2d4"/>
       </View>
     );
   }
