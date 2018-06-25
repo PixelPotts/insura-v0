@@ -2,4 +2,10 @@ platform :ios, '9.0'
 
 target 'AwesomeProject' do
   pod 'PPBlinkID', '~> 2.15.0'
+  pod 'Firebase/Core'
+  # Pods for AppCenter
+  pod 'AppCenter/Crashes', '~> 1.7.1'
+  pod 'AppCenter/Analytics', '~> 1.7.1'
+  pod 'AppCenterReactNativeShared', '~> 1.6.0'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 end

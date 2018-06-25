@@ -1,6 +1,7 @@
 /*
  * TODO:
  * - Install
+ * Transported App Password: esvi-nrzl-ltfd-laxw
  */
 
 import React, { Component } from 'react';
@@ -15,28 +16,33 @@ import {
   TextInput,
   Picker,
   TouchableHighlight,
+  LayoutAnimation,
+  Animated,
+  Easing,
+  KeyboardAvoidingView,
   View
 } from 'react-native';
-import RNPickerSelect from 'react-native-picker-select';
-import Hyperlink from 'react-native-hyperlink';
-import _ from 'lodash';
-import styles from './styles';
-const stringifyObject = require('stringify-object');
-const Providers = require('./providers').default.providers;
-const DeclinedDrugs = require('./decline_drugs').default.medications;
-let Build = {min:{},max:{}};
-Build.min = require('./weight-min').default.min;
-Build.max = require('./weight-max').default.max;
+import StripeToken from 'react-native-stripe-api'
+import Stripe from './stripe'
+import { LiteCreditCardInput } from "react-native-credit-card-input"
+import * as firebase from 'firebase'
+import RNPickerSelect from 'react-native-picker-select'
+import Hyperlink from 'react-native-hyperlink'
+import _ from 'lodash'
+import styles from './styles'
+const stringifyObject = require('stringify-object')
+const Providers = require('./providers').default.providers
+const DeclinedDrugs = require('./decline_drugs').default.medications
+const CoverageLimits = require('./coverage-limits').default
 
-// console.log(Build.min);
-// console.log(Build.max);
+let Build = {min:{},max:{}}
+Build.min = require('./weight-min').default.min
+Build.max = require('./weight-max').default.max
 
-// Diseases Import (>> NO LONGER USED <<)
-// const Diseases = Object.assign(require('./diseases').default;
-// let DiseasesFull = []; _.each(Diseases,function(type){ DiseasesFull = _.concat(DiseasesFull,type);});
+const TestFairy = require('react-native-testfairy');
 
 const Conditions = require('./decline_conditions').default.conditions;
-// const Medications = require('./medications2').default.all;
+const Medications = require('./medications2').default.all;
 
 const Calculator = require('./calculatorData').default;
 let Questions = require('./questions').default.questions;
@@ -48,7 +54,16 @@ const BlinklicenseKey = Platform.select({
   // ios: 'R6GH6FFH-JKIYQ76Q-QGUJSEIH-DSQCNQTR-IUZB525W-PXAH7EHI-NPUGWSGI-EDRUGFHX',
 });
 
+// STRIPE KEYS
+let stripe_url = 'https://api.stripe.com/v1/';
+let stripe_mode = 'TEST';
+const stripe_test_key = "sk_test_4pJ7hGg9yxZxZCXibtxvzphX";
+const stripe_prod_key = "sk_live_c8NPJO5bonIsTxjtryiEwmrN";
+const STRIPE_API_KEY = stripe_mode === "PROD" ? stripe_prod_key : stripe_test_key;
+// console.log("Stripe API Key: "+STRIPE_API_KEY);
+
 const logos = {
+  0: require('./images/insura_logo.png'),
   1: require('./images/logo_moo.jpg'),
   2: require('./images/logo_am.jpeg'),
   3: require('./images/logo_ta.png'),
@@ -57,6 +72,44 @@ const logos = {
   6: require('./images/logo_roy.jpeg'),
   7: require('./images/logo_aig.png')
 };
+
+var CustomLayoutSpring = {
+  duration: 200,
+  create: {
+    type: LayoutAnimation.Types.spring,
+    property: LayoutAnimation.Properties.scaleXY,
+    springDamping: 0.8,
+  },
+  update: {
+    type: LayoutAnimation.Types.spring,
+    springDamping: 0.2,
+  },
+};
+var CustomLayoutSpringSlow = {
+  duration: 400,
+  create: {
+    type: LayoutAnimation.Types.spring,
+    property: LayoutAnimation.Properties.scaleXY,
+    springDamping: 0.4,
+  },
+  update: {
+    type: LayoutAnimation.Types.spring,
+    springDamping: 0.2,
+  },
+};
+
+// Linear with easing
+var CustomLayoutLinear = {
+  duration: 250,
+  create: {
+    type: LayoutAnimation.Types.linear,
+    property: LayoutAnimation.Properties.opacity,
+  },
+  update: {
+    type: LayoutAnimation.Types.easeInEaseOut,
+  },
+};
+
 let clientStartAge = 50;
 let clientStartHeight = 69;
 let clientStartWeight = 170;
@@ -66,6 +119,7 @@ export default class Applify extends Component {
     this.setState = this.setState.bind(this);
     this.state = {
       questionAnswer: '',
+      masterInputNotice: null,
       activeQuestionId: 0,
       activeButtonId: 0,
       questionCounter: 1,
@@ -98,13 +152,66 @@ export default class Applify extends Component {
         ssn:''
       },
       calculatorVisible: false,
+      calculatorPositionX: 0,
       calculatorFaceValue: '25,000',
       calculatorTerms: '20',
       calculatorHiddenProducts: [],
       calculatorClientAge: "",
       calculatorCounter: 0,
-      calculator: {}
+      calculator: {},
+      exportVisible: false,
+
+      // Form / Login
+      modalMaskVisible: false,
+      loading: true,
+      user: null,
+      formError: false,
+      formErrorNotice: false,
+      registerVisible: false,
+      registerFullName: null,
+      registerEmail: null,
+      registerPhone: null,
+      registerPhoneResult: null,
+      registerPassword: null,
+      registerConfirmPassword: null,
+      registerCC: {},
+      registerCCStatuses: {},
+      refisterCCValid: false,
+      registerPlanID: 'plan_D2F3s5CVgtPEkC',
+      loginVisible: false,
+      loginEmail: null,
+      loginPassword: null,
+      resetPasswordVisible: false,
+      menuVisible: false,
+      menuPosition: new Animated.Value(-250)
     };
+  }
+  componentDidMount() {
+
+    // Initialize Firebase
+    const firebaseConfig = {
+      appId: "1:292940424411:ios:b22bd4f0743fec70",
+      apiKey: "AIzaSyD8Jc91V77cVQfZmQ351jak2GyjTUbi1xE",
+      authDomain: "insura-app.firebaseapp.com",
+      databaseURL: "https://insura-app.firebaseio.com",
+      storageBucket: "insura-app.appspot.com",
+    };
+    const firebaseApp = firebase.initializeApp(firebaseConfig);
+    let db = firebase.database();
+
+    this.authSubscription = firebase.auth().onAuthStateChanged((user)=>{
+      this.setState({loading: false, user});
+      if(firebase.auth().currentUser === null){
+        this.setState({modalMaskVisible: true, registerVisible: true});
+      } else {
+        this.setState({modalMaskVisible: false, registerVisible: false, loginVisible: false});
+      }
+    });
+
+  }
+  componentWillUnmount() {
+    this.authSubscription();
+    TestFairy.begin("0b43fbd57420a2d774299b1e10e75ca1ff5249af");
   }
 
   log = (content) => {
@@ -114,12 +221,34 @@ export default class Applify extends Component {
     // console.log(str);
     // this.setState({consoleContent: updateContent});
   };
+  setAnswerFromButton=(questionId)=>{
+    // console.log("setAnswerFromButt() =====================")
+    // console.log("questionId: "+questionId)
+    // console.log("buttons:")
+    // console.log(this.state.buttons)
+    button = _.find(this.state.buttons,function(b){ return b.questionId==questionId})
+    // console.log("button found by ID:")
+    // console.log(button)
+    if(typeof button != 'undefined') {
+      if(button.field==='dob') button.subtitle = button.subtitle.replace(/\(.*\)/gm,'').trim(); // remove anything in ()s
+      this.setState({questionAnswer: button.subtitle},()=>{console.log(this.state.questionAnswer)})
+    }
+  }
   nextQuestion = (skip=false) => {
+    Q = Questions[this.state.activeQuestionId]
+    if(Q.submitByReturn===false && !skip && Q.fieldType=='buttons'){
+      this.setState({masterInputNotice:'PRESS OPTION'});
+      return false
+    }
+    LayoutAnimation.configureNext(CustomLayoutSpring);
+    if(!this.validateAnswer()) return
+    // console.log("nextQuestion, answer is validated");
     if(this.state.questionCounter < Questions.length) this.setState({questionCounter: this.state.questionCounter + 1});
-    if(!skip) this.processAnswer(Questions[this.state.activeQuestionId].category,{answer:this.state.questionAnswer});
+    if(!skip) this.processAnswer(Q.category,{answer:this.state.questionAnswer});
     if(Questions[this.state.activeQuestionId+1]) {
       this.setState({activeQuestionId: this.state.activeQuestionId+1});
       this.setState({activeButtonId: this.state.activeQuestionId+1});
+      // this.setAnswerFromButton(this.state.activeQuestionId+1)
     }
   };
   prevQuestion = () => {
@@ -127,20 +256,72 @@ export default class Applify extends Component {
     if(Questions[this.state.activeQuestionId-1]) {
       this.setState({activeQuestionId: this.state.activeQuestionId-1});
       this.setState({activeButtonId: this.state.activeQuestionId-1});
+      this.setAnswerFromButton(this.state.activeQuestionId-1)
     }
   };
+  validateAnswer=()=>{
+    // console.log("running validateAnswer()")
+    const Q = Questions[this.state.activeQuestionId]
+    const a = this.state.questionAnswer
+    // console.log(Q); console.log(a)
+    stat = 1
+    switch(Q.fieldType){
+      case 'buttons':
+        if(a.length < 1) {
+          stat = 0
+        }
+      case 'options': stat = 1 // questions that use autosuggest
+        break
+      case 'int':
+      case 'float':
+        stat = parseInt(number_format(a)) > 0 ? 1 : 0
+        if(stat==0) this.setState({masterInputNotice:'NUMBER NEEDED'});
+        break
+      case 'full-name':
+        name = a.replace(/[^a-zA-Z ]/,'').trim()
+        if(name.length<5) stat = 0
+        if(a.split(' ').length<2) stat = 0
+        if(stat==0) this.setState({masterInputNotice:'TOO SHORT'});
+        break
+      case 'dob':
+        if(a.trim().length < 6) { this.setState({masterInputNotice:"TOO\nSHORT"}); return 0 }
+        let m = /([0-9]){1,2}[^0-9]*([0-9]{1,2})[^0-9]*([0-9]{2,4})/.exec(a);
+        if(!m) { this.setState({masterInputNotice:'WRONG FORMAT'}); return 0 }
+        if(m.length<4) {
+          stat = 0
+          if(stat==0) this.setState({masterInputNotice:'WRONG FORMAT'});
+        } else {
+          if(m[1].length<1 || m[2].length<1 || m[3].length<2) stat = 0
+          if(stat==0) this.setState({masterInputNotice:'TOO SHORT'});
+        }
+        break
+      case 'email':
+        if( ! /(.+)@(.+){2,}\.(.+){2,}/.test(a)){
+          this.setState({masterInputNotice:'INVALID EMAIL'});
+          return 0
+        }
+    }
+    // console.log("stat:"); console.log(stat)
+    if(stat==1) this.setState({masterInputNotice:null});
+    return stat
+  }
   processAnswer = (category, details) => {
-    // console.log("processing answer");
-    // console.log(category);
-    // console.log(details);
+    // console.log("processAnswer");
     let self = this;
     details.answer = details.value === undefined ? details.answer : details.value;
     Q = Questions[this.state.activeQuestionId];
     let clientInfo = this.state.clientInfo;
+
+    if(Q.field==='name'){
+      name = details.answer.split(' ')
+      clientInfo.name       = details.answer
+      clientInfo.firstName  = name[0]
+      clientInfo.lastName   = name[1]
+    }
     if(Q.field==='dob'){
-      console.log("=== DOB SUBMITTED ===");
+      // console.log("=== DOB SUBMITTED ===");
       const dob = this.formatDOB(details.answer);
-      console.log(dob);
+      // console.log(dob);
       const age = this.getAge(dob);
       clientInfo.dob = dob;
       clientInfo.age = age;
@@ -156,6 +337,7 @@ export default class Applify extends Component {
     }
 
     if(Q.field==='mortgage') details.answer = '$' + number_format(details.answer);
+    if(Q.field==='mortgage-rate') details.answer = parseFloat(details.answer) + "%";
 
     // UPDATE EXISTING BUTTON
     if(_.find(this.state.buttons,function(o){ return o.field === Q.field })
@@ -185,11 +367,11 @@ export default class Applify extends Component {
         // console.log("== NEW bio button ==");
         this.setState({clientInfo}, ()=>{this.updateProviders()});
         B.title = Q.title;
-        B.subtitle = details.answer;
+        B.subtitle = details.answer.toString().trim();
       }
       else if(category==="MED" || category==="MED_OLD"){
         B.title = details.name;
-        // B.subtitle = details.dosage;
+        B.subtitle = details.dosage;
         B.key = details.id
       }
       else if(category==="CON"){
@@ -198,7 +380,7 @@ export default class Applify extends Component {
         B.key = details.id;
       }
       if(_.trim(B.title)==='') return;
-      this.setState(prevState => ({buttons: [...prevState.buttons, B]}),this.updateProviders);
+      this.setState(prevState => ({buttons: [...prevState.buttons, B]}),()=>{this.updateProviders;});
     }
     if('answerOptions' in Q){
       this.nextQuestion(true);
@@ -208,31 +390,34 @@ export default class Applify extends Component {
       this.clearAnswer();
       this.updateProviders();
     });
-  };
 
+  };
   clearAnswer = () => {
     this.setState({questionAnswer: ''});
   };
   getAge = (dob) => {
-    console.log("getAge():");
-    console.log(dob);
+    // console.log("getAge():");
+    // console.log(dob);
     let today = new Date();
     let birthDate = new Date(dob);
-    console.log("biorthdate:"); console.log(birthDate);
+    // console.log("biorthdate:"); console.log(birthDate);
     let age = today.getFullYear() - birthDate.getFullYear();
-    console.log("age:"); console.log(age);
+    // console.log("age:"); console.log(age);
     let m = today.getMonth() - birthDate.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
       age--;
     }
-    console.log("returning age of: "+age);
+    // console.log("returning age of: "+age);
     return age;
   };
   formatDOB = (str) => {
-    // console.log("=== FORMATTING DOB ====");
+    console.log("=== FORMATTING DOB ====");
+    console.log(str);
     if(_.trim(str)==='') return;
-    let m = /([0-9]){1,2}[^0-9]*([0-9]{1,2})[^0-9]*([0-9]{2,4})/.exec(str);
+    let m = /([0-9]{1,2})[^0-9]*([0-9]{1,2})[^0-9]*([0-9]{2,4})/.exec(str);
+    console.log(m)
     let dob = m[1]+"/"+m[2]+"/"+m[3];
+    console.log(dob)
     return dob;
   };
   formateHeight = (height) => {
@@ -241,7 +426,6 @@ export default class Applify extends Component {
     if(!height) return;
     return parseInt(height/12) +"' "+height%12+"'' or "+ height+"''";
   };
-  
   updateProviders = (restart=false) => {
     // console.log("--- Updating providers ---");
     // console.log(this.state.buttons);
@@ -310,7 +494,7 @@ export default class Applify extends Component {
         })
 
         // If the age is supported in any of the products in the loop above, force approval
-        console.log("statuses: "); console.log(statuses);
+        // console.log("statuses: "); console.log(statuses);
         if(_.max(statuses)===3) statuses = [3];
 
 
@@ -349,33 +533,50 @@ export default class Applify extends Component {
 
           // If this is a medication...
           if(button.category==='MED'){
-            let medication = _.find(DeclinedDrugs,function(o){return o.id == button.key});
+            let medication = _.find(Medications,function(o){return o.id == button.key});
+            // console.log("medication:")
+            // console.log(medication)
+            // console.log("button")
+            // console.log(button)
+
+            // console.log("checking drug list:")
 
             // If the drug exists in our databases
             if(medication !== undefined){
-              let status = medication[product.nickname];
-              let arr = _.split(status,'-'); // split out encoded answers
-              status = arr[0]; // update medications to use the first segment regardless
-              query = 0;
-              if(arr.length > 1){ // if a second segment is found, use it
-                let query = arr[1];
-              }
+              if(product.nickname in medication) {
 
-              switch (status){
-                case 'A':
-                  statuses.push(3);
-                  break;
-                case 'IC':
-                  statuses.push(2);
-                  notices.push(product.name+" does not allow medication: "+medication.name);
-                  break;
-                case 'D':
-                  statuses.push(1);
-                  notices.push(product.name+" needs to review : "+medication.name);
-                  break;
+                medication = _.filter(DeclinedDrugs, function (dd) {
+                  // console.log("dd.name"+_.toLower(dd.name))
+                  // console.log("medication.name)"+_.toLower(medication.name))
+                  return _.includes(_.toLower(dd.name), _.toLower(medication.name))
+                })[0]
 
-                default:
-                  statuses.push(3);
+                let status = medication[product.nickname];
+                let arr = _.split(status, '-'); // split out encoded answers
+                status = arr[0]; // update medications to use the first segment regardless
+                query = 0;
+                if (arr.length > 1) { // if a second segment is found, use it
+                  let query = arr[1];
+                }
+
+                switch (status) {
+                  case 'A':
+                    statuses.push(3);
+                    break;
+                  case 'IC':
+                    statuses.push(2);
+                    notices.push(product.name + " does not allow medication: " + medication.name);
+                    break;
+                  case 'D':
+                    statuses.push(1);
+                    notices.push(product.name + " needs to review : " + medication.name);
+                    break;
+
+                  default:
+                    statuses.push(3);
+                }
+              } else {
+                statuses.push(3);
               }
 
             // If the drug does not exist in our databses, it must be a manual entry that we want to allow
@@ -383,53 +584,55 @@ export default class Applify extends Component {
               statuses.push(3);
             }
 
-            //self.log("=== Searching MED category ===");
-            //self.log("MED TO SEARCH: "+button.title);
-
-            // _.each(uw.drugs.decline,function(thisDeclinedDrug){
-            //   statuses.push(thisDeclinedDrug.name===button.title ? 1 : 3);
-            // });
           }
+
           if(button.category==='CON'){
             let condition = _.find(Conditions,function(o){return o.id == button.key});
             // console.log("checking condition...........");
             // console.log(condition);
             // console.log(product.nickname);
-            let status = condition[product.nickname];
-            let query = 0;
-            let arr = _.split(status,'-'); // split out encoded answers
-            status = arr[0]; // update medications to use the first segment regardless
-            if(arr.length > 1){ // if a second segment is found, use it
-              query = arr[1];
-            }
 
-            switch (status){
-              case 'A':
-                statuses.push(3); break;
-              case 'IC':
-                statuses.push(2);
-                notices.push(product.name+" needs to review: "+condition.name);
-                break;
-              case 'D':
-                statuses.push(1);
-                notices.push(product.name+" does not allow: "+condition.name);
-                break;
-              case 'Q':
-                // console.log(" ========== Case Q ========== ");
-                // console.log("button.buttonButtonId: " + button.buttonButtonId);
-                // console.log("query: " + query);
-                if(button.buttonButtonId <= query){
-                  statuses.push(1)
-                  notices.push(product.name+" does not support: "+condition.name+" within "+query+" years.");
-                } else {
+            if(condition !== undefined){
+
+              let status = condition[product.nickname];
+              let query = 0;
+              let arr = _.split(status,'-'); // split out encoded answers
+              status = arr[0]; // update medications to use the first segment regardless
+              if(arr.length > 1){ // if a second segment is found, use it
+                query = arr[1];
+              }
+
+              switch (status){
+                case 'A':
+                  statuses.push(3); break;
+                case 'IC':
+                  statuses.push(2);
+                  notices.push(product.name+" needs to review: "+condition.name);
+                  break;
+                case 'D':
+                  statuses.push(1);
+                  notices.push(product.name+" does not allow: "+condition.name);
+                  break;
+                case 'Q':
+                  // console.log(" ========== Case Q ========== ");
+                  // console.log("button.buttonButtonId: " + button.buttonButtonId);
+                  // console.log("query: " + query);
+                  if(button.buttonButtonId <= query){
+                    statuses.push(1)
+                    notices.push(product.name+" does not support: "+condition.name+" within "+query+" years.");
+                  } else {
+                    statuses.push(3);
+                  }
+                  break;
+
+                default:
                   statuses.push(3);
-                }
-                break;
+              }
 
-              default:
-                statuses.push(3);
+            // If the condition does not exist in our databses, it must be a manual entry that we want to allow
+            } else {
+              statuses.push(3);
             }
-
           }
         });
 
@@ -439,10 +642,11 @@ export default class Applify extends Component {
       })
     });
     this.setState(Providers);
-    console.log(notices);
+    // console.log(notices);
     // console.log(this.state);
   };
   watchAnswer = (questionAnswer) => {
+    // console.log("watchAnswer()")
     this.setState({questionAnswer: questionAnswer});
     if(questionAnswer===''){
       this.setState({autoSuggestVisible: false});
@@ -464,7 +668,7 @@ export default class Applify extends Component {
     let category = Questions[this.state.activeQuestionId].category;
     let data = [];
     if(category==="MED"||category==="MED_OLD"){
-      data = DeclinedDrugs;
+      data = Medications;
     }
     else if(category==="CON") {
       data = Conditions
@@ -496,6 +700,7 @@ export default class Applify extends Component {
     matches = _.uniqBy(matches,'id'); // force unique (thanks Obama)
     if(category==="MED"||category==="MED_OLD") matches = matches.sort(function(a,b) { return a.name.length - b.name.length; }); // order by shortest name
     if(category==="CON") matches = _.orderBy(matches,'mifts','desc'); // order by shortest name
+    LayoutAnimation.configureNext(CustomLayoutSpring);
     this.setState({autoSuggestOptions: matches});
   };
   clickAnswer = (option) => {
@@ -544,7 +749,7 @@ export default class Applify extends Component {
     }
   };
   editButton = (button,key) => {
-    this.setState({activeButtonId: key});
+    this.setState({activeButtonId: key, questionCounter: key+1});
     let buttons = {...this.state.buttons};
     let qId = buttons[key].questionId;
     this.setState({activeQuestionId: qId});
@@ -555,7 +760,8 @@ export default class Applify extends Component {
     }
   };
   deleteButton = (button,key) => {
-  let clientInfo = this.state.clientInfo;
+    if(button.category=="BIO") return // disallow deleting BIO buttons
+    let clientInfo = this.state.clientInfo;
     let buttons = {...this.state.buttons};
     buttons = _.filter(buttons,function(o){ return o.id !== button.id });
     this.setState({buttons});
@@ -586,8 +792,6 @@ export default class Applify extends Component {
     });
     this.setState({consoleContent: fields + "\n" + stringifyObject(Questions) + stringifyObject(clientInfo)});
   };
-
-  // The inner buttons on medications/conditions e.g. [1] [[2]
   renderButtonButtons = (button) => {
     // console.log("rendering renderButtonButtons()");
     // console.log(button);
@@ -636,7 +840,6 @@ export default class Applify extends Component {
         </View>
       )
   }
-
   clickedButtonButton = (n, activeButton) => {
     // console.log('clicked button button');
     // console.log(n);
@@ -649,7 +852,6 @@ export default class Applify extends Component {
     this.setState({buttons: buttons});
     this.updateProviders();
   }
-
   renderButtons = (buttons) => {
     return (
       <ScrollView
@@ -675,7 +877,7 @@ export default class Applify extends Component {
       <TouchableHighlight onPress={()=>{this.setState({
         calculatorVisible: true,
         calculatorProduct: 1,
-        null: this.updateCalculatorValues(this.state.calculatorFaceValue,this.state.calculatorTerms)
+        updateCalculatorValues: this.updateCalculatorValues(this.state.calculatorFaceValue,this.state.calculatorTerms)
       })}}>
       <View style={styles.providerStatusContainer}>
           {Providers.map(provider => (
@@ -700,13 +902,13 @@ export default class Applify extends Component {
   };
   check = (o,k) => {
     if (!(k in o)) {
-      
+
     }
   }
-  
   getProductCostAvailability = (product,age,gender,smokerStatus,faceValue,term) => {
     let cost = { month: 0, annual: 0, notice: '' };
     let rate = 0;
+
     // console.log("=-=-=-=-=-= PRODUCT TABLE =-=-=-=-=-=-=");
     table = product.table;
     // console.log(table);
@@ -759,13 +961,25 @@ export default class Applify extends Component {
         rate = table[age][gender];
         break;
     }
+
+    // Check for riders and add to the rate
+    if('rider' in product){
+      if(!(age in product.rider)){
+        console.log("AGE not in product.rider")
+        cost.notice = "The age of '"+age+"' was not found in the rate table.";
+        console.log(cost.notice);
+        return cost;
+      } else {
+        rate += product.rider[age]
+      }
+    }
+
     cost.annual = rate * (_.toInteger(faceValue) / product.multiplier) + product.fee;
     if(product.id===403)
       cost.annual = (rate * (_.toInteger(faceValue) / product.multiplier) + product.fee) * 12;
     cost.month = cost.annual * product.monthFactor;
     return cost;
   }
-
   updateCalculatorValues = (updatedFaceValue, updatedTerms) => {
     getProductCostAvailability = this.getProductCostAvailability;
     // console.log("state:");
@@ -814,9 +1028,10 @@ export default class Applify extends Component {
     // console.log("updatedTerms: ");
     // console.log(updatedTerms);
 
-    let calc = this.state.calculator;
+    calc = this.state.calculator;
     this.setState({calculatorHiddenProducts: []});
-    let hiddenIds = this.state.calculatorHiddenProducts;
+    notices = []
+    hiddenIds = []
 
     _.each(Providers,function(provider){
       // console.log("==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-== Provider ==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==");
@@ -847,41 +1062,81 @@ export default class Applify extends Component {
           // console.log("rate table");
           // console.log(calculatorProduct.table);
 
-          let cost = getProductCostAvailability(calculatorProduct,age,gender,smokerStatus,updatedFaceValue,updatedTerms);
+          // Check rate tables
+          cost = getProductCostAvailability(calculatorProduct,age,gender,smokerStatus,updatedFaceValue,updatedTerms);
           calc[calculatorProduct.id] = cost;
           if(cost.annual == 0) hiddenIds.push(calculatorProduct.id);
 
-          // console.log("-0-0-0-0-0-0-0-0 CALCULATOR 0-0-0-0-0-0-0-0-0-");
-          // console.log(calc);
+          // Check the coverage limits
+          console.log("======="+product.nickname+"========");
+          face = updatedFaceValue/1000;
+          console.log("faceValue: "+face);
+          console.log("coverage Limits");
+          console.log(CoverageLimits[product.nickname]);
+          const cMin = CoverageLimits[product.nickname].min
+          const cMax = CoverageLimits[product.nickname].max
+          ages = CoverageLimits[product.nickname]
+          // delete ages.min, delete ages.max
+          console.log("cMin: "+cMin);
+          console.log("cMax: "+cMax);
+          console.log("ages: ");
+          console.log(ages);
+
+          if(cMin != null && cMax != null){
+            if(face<cMin){
+              hiddenIds.push(calculatorProduct.id)
+              notices.push(calculatorProduct.name+" does not support coverage of less than "+cMin+"k")
+            }
+            if(face>cMax){
+              hiddenIds.push(calculatorProduct.id)
+              notices.push(calculatorProduct.name+" does not support coverage of more than "+cMax+"k")
+            }
+          }
+
 
         })
       })
     })
 
-    // console.log("=== Hidden Calculator Products ===");
-    // console.log(hiddenIds);
+    console.log("=== Hidden Calculator Products ===");
+    console.log(_.sortedUniq(hiddenIds));
 
-    // console.log("=== CALCULATOR OUTPUT ===");
-    // console.log(calc);
+    console.log("=== Hidden Calculator Notices ===");
+    console.log(notices);
 
-    // this.setState({calculator: calc});
-    // this.setState({calculatorHiddenProducts: hiddenIds});
+    console.log("=== CALCULATOR OUTPUT ===");
+    console.log(calc);
+
+    this.setState({calculator: calc});
+    this.setState({calculatorHiddenProducts: _.sortedUniq(hiddenIds)},console.log("hidden IDs state set"));
+
+    this.updateProviders()
+    return 1
   }
-
   renderCalculatorProduct = (provider, product, calculatorProduct) => {
-    // console.log("=== renderCalculatorProduct() ===");
-    // console.log(provider);
-    // console.log(product);
-    // console.log(calculatorProduct);
+    console.log("=== renderCalculatorProduct() ===");
+    console.log(provider);
+    console.log(product);
+    console.log(calculatorProduct);
+    console.log(this.state.calculatorHiddenProducts);
+
+    function renderStarRating(productId){
+      const ratings = {200:4,201:5,202:4,203:5,2021:3,2031:4,2041:3};
+      const rating = productId in ratings ? ratings[productId] : _.random(2,5);
+      return (<Text style={{color: '#b0b10d'}}>{_.repeat('★',rating)}{"\n"} {rating} stars </Text>)
+    }
 
     // Hide products from the hide array
-    if(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id)>0) return false;
+    console.log('index check:')
+    console.log(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id))
+
+    if(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id)!=-1) return false
     if(this.state.calculator[calculatorProduct.id].annual===0) return false;
 
     return (
       <View style={styles.calculatorCompanyWrap} key={calculatorProduct.id}>
-        <Image source={logos[provider.id]} style={styles.calculatorLogo}/>
         <View style={styles.calculatorProductWrap}>
+          <Image source={logos[provider.id]} style={styles.calculatorLogo}/>
           <View style={styles.calculatorProductPeriodCostWrapProduct}>
             <Text style={styles.calculatorProductWrapProduct}>{calculatorProduct.name}</Text>
           </View>
@@ -890,9 +1145,6 @@ export default class Applify extends Component {
             <Text style={styles.calculatorProductWrapSubtitle}>
               ${number_format(this.state.calculator[calculatorProduct.id].month,2)}
               </Text>
-            <Text
-              value={this.state.questionAnswer}
-              style={styles.calculatorProductWrapSubtitle}></Text>
           </View>
           <View style={styles.calculatorProductPeriodCostWrap}>
             <Text style={styles.calculatorProductWrapTitle}>Annual</Text>
@@ -901,17 +1153,15 @@ export default class Applify extends Component {
               </Text>
           </View>
           <View style={styles.calculatorProductPeriodCostWrap}>
-            <Hyperlink
-              linkDefault={true}
-              linkText={url => url === 'https://adfs.americo.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn%3aagent.americo.com%3asharepoint&wctx=https%3a%2f%2fagent.americo.com%2f_layouts%2fAuthenticate.aspx%3fSource%3d%252F' ? 'Select' : url }>
-              <Text>Americo</Text>
-            </Hyperlink>
+            {/*<Hyperlink linkDefault={true} linkText={url => url === 'https://adfs.americo.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn%3aagent.americo.com%3asharepoint&wctx=https%3a%2f%2fagent.americo.com%2f_layouts%2fAuthenticate.aspx%3fSource%3d%252F' ? 'Select' : url }>*/}
+              {/*<Text>Americo</Text>*/}
+            {/*</Hyperlink>*/}
+            {renderStarRating(calculatorProduct.id)}
           </View>
         </View>
       </View>
     )
   }
-
   renderCalculator = () => {
 
     // console.log(" --- RENDER CALCULATOR ---");
@@ -921,11 +1171,13 @@ export default class Applify extends Component {
     self = this;
     renderCalculatorProduct = this.renderCalculatorProduct;
     let productsRender = [];
+    LayoutAnimation.configureNext(CustomLayoutLinear);
+
     return (
-       <View style={styles.calculator}>
-         <View style={{ position:'absolute', top: 20, right: 20, zIndex:999 }}>
+       <View style={[styles.calculator,{top: 22}]}>
+         <View style={{ position:'absolute', top: 20, left: 20, zIndex:999 }}>
            <TouchableHighlight onPress={()=>{this.setState({calculatorVisible: false})}}>
-             <Text>Close</Text>
+             <Text style={{fontSize:16}}><Text style={{fontWeight:'900'}}>&lsaquo;</Text> Questions</Text>
            </TouchableHighlight>
          </View>
          {/*<Text style={{fontSize: 20}}>Coverage Options for {this.state.clientInfo.firstName}</Text>*/}
@@ -1033,8 +1285,18 @@ export default class Applify extends Component {
 
          </View>
 
+         <View style={styles.calculatorProductsCounter}>
+           <Text>
+             Showing
+             <Text style={styles.calculatorProductsCounterHighlight}> {Object.keys(this.state.calculator).length - this.state.calculatorHiddenProducts.length} </Text>
+             eligible of
+             <Text style={styles.calculatorProductsCounterHighlight}> {Object.keys(this.state.calculator).length} </Text>
+             products:
+           </Text>
+         </View>
 
-         <ScrollView>
+
+         <ScrollView style={styles.calculatorContentScrollView}>
 
 
            {Providers.map(function(provider){
@@ -1048,74 +1310,509 @@ export default class Applify extends Component {
 
            {productsRender}
 
-
-
+           <Text>&nbsp;</Text>
 
         </ScrollView>
+         {this.renderProviderStatus(Providers)}
       </View>
     )
   };
+  renderExport = () => {
+    buttons = this.state.buttons;
+    medButtons = _.filter(buttons,function(b){return b.category==='MED'});
+    conButtons = _.filter(buttons,function(b){return b.category==='CON'});
+    return (
+      <View style={styles.exportView}>
+        <View style={{ position:'absolute', top: 5, left: 20, zIndex:999 }}>
+          <TouchableHighlight onPress={()=>{this.setState({exportVisible: false})}}>
+            <Text style={{fontSize:16}}><Text style={styles.backButton}>&lsaquo;</Text> Questions</Text>
+          </TouchableHighlight>
+        </View>
+        <Text style={{marginBottom: 20, fontSize: 20}}>Underwriting Info Export</Text>
+        <View style={styles.exportContentWrap}>
+          {_.filter(this.state.buttons,function(b){return b.category!='MED' && b.category!='CON'}).map(b => (
+            <View style={styles.exportLineItemWrap} key={b.id}>
+              <Text style={styles.exportLineItemHeader}>{b.title}</Text>
+              <Text style={styles.exportLineItem}>{b.subtitle}</Text>
+            </View>
+          ))}
+          <View style={styles.exportLineItemWrap} key="10001">
+            <Text style={styles.exportLineItemHeader}>Medications</Text>
+            {medButtons.map(b => ( <Text key={b.id} style={styles.exportLineItem}>{b.title}, </Text> ))}
+          </View>
+          <View style={styles.exportLineItemWrap} key="10002">
+            <Text style={styles.exportLineItemHeader}>Conditions</Text>
+            {conButtons.length && conButtons.map(b => ( <Text key={b.id} style={styles.exportLineItem}>{b.title}, </Text> ))}
+          </View>
+
+        </View>
+      </View>
+    )
+  }
+  toggleMenu = () => {
+    vis = this.state.menuVisible
+    if(!vis) this.setState({menuVisible: true, modalMaskVisible: true})
+    Animated.timing(this.state.menuPosition, {
+      toValue: vis ? -250 : -50,
+      easing: Easing.back(),
+      duration: 200,
+    }).start(()=>{
+      this.setState({menuVisible: !vis, modalMaskVisible: !vis})
+    })
+
+  }
+  renderLoginHeader = () => {
+    return (
+      <View style={styles.headerTopRight}>
+        <View style={styles.loginRegisterLinks}>
+          <Button title="☰" style={[styles.signOutLink,{marginRight: 20}]} onPress={()=>{this.toggleMenu()}} color="#ffb601"/>
+        </View>
+      </View>
+    )
+  }
+  // renderLoginHeader = () => {
+  //   if(this.state.loading) {
+  //     return (
+  //       <View style={styles.headerTopRight}>
+  //         <View><Text style={styles.loggedInUserName}>Updating...</Text></View>
+  //       </View>
+  //     )
+  //   } else {
+  //     let user = firebase.auth().currentUser;
+  //     if(user === null){
+  //       return (
+  //         <View style={styles.headerTopRight}>
+  //           <View style={styles.loginRegisterLinks}>
+  //             <Button title="Register" style={[styles.signOutLink,{marginRight: 20}]} onPress={()=>{this.setState({registerVisible: true, loginVisible: false})}} color="#ffb601"/>
+  //             <Button title="Sign In" style={[styles.signOutLink,{marginRight: 20}]} onPress={()=>{this.setState({registerVisible: false, loginVisible: true})}} color="#ffb601"/>
+  //           </View>
+  //         </View>
+  //       )
+  //     } else {
+  //       return (
+  //         <View style={styles.headerTopRight}>
+  //           <View style={styles.loginRegisterLinks}>
+  //             <Button title="☰" style={[styles.signOutLink,{marginRight: 20}]} onPress={()=>{firebase.auth().signOut()}} color="#ffb601"/>
+  //           </View>
+  //         </View>
+  //       )
+  //     }
+  //   }
+  // }
+  setFormError = (code,message) => {
+    this.setState({formError: code, formErrorNotice: message},console.log(this.state.formErrorNotice));
+  }
+  clearFormError = () => {
+    this.setState({formErrorNotice: '', formError: false});
+  }
+  onLogin = () => {
+    this.clearFormError();
+    const email = this.state.loginEmail;
+    const password = this.state.loginPassword;
+    // const phone = this.state.registerPhone;
+    if(email==''||email==null) {this.setFormError(1,'Please enter your email.'); return false}
+    if(password==''||password==null) {this.setFormError(1,'Please enter your password.'); return false}
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        // this.setState({user: user},console.log(this.state.user));
+        console.log(this.state.user);
+        this.setState({loginVisible: false});
+        console.log("SUCCESSFUL LOGIN");
+      })
+      .catch((error) => {
+        const { code, message } = error;
+        console.log(message);
+        this.setFormError(code,message);
+      });
+  }
+  charge=()=>{
+    console.log("running charge()")
+    console.log(this.state.registerCC)
+    cc = this.state.registerCC.values
+    m = cc.expiry.split('/')
+  }
+  onRegister = () => {
+    this.clearFormError();
+    let ccNoticeField = false;
+
+    const email =                   this.state.registerEmail
+    const password =                this.state.registerPassword
+    const confirmPassword =         this.state.registerConfirmPassword
+    const fullName =                this.state.registerFullName
+    if(fullName != null) {
+      const {firstName,lastName} =  fullName.toString().trim().split(' ')
+    }
+    const planId =                  this.state.registerPlanID
+    const cc =                      this.state.registerCC
+
+    if(fullName==''|| fullName==null)   {this.setFormError(1,'A full name is required to register.'); return false}
+    if(email==''||    email==null)      {this.setFormError(1,'An email is required to register.');    return false}
+    if(password==''|| password==null)   {this.setFormError(1,'A password is required to register.');  return false}
+    if(password!==    confirmPassword)  {this.setFormError(1,'Your passwords do not match.');         return false}
+    if(!cc.valid)                       {this.setFormError(9,"Please confirm you card numbers.");     return false}
+
+    const client = new StripeToken(STRIPE_API_KEY)
+    let card_error = false
+    date = cc.values.expiry.split('/')
+    console.log(cc)
+    console.log(cc.values.number)
+    client.createToken({number:cc.values.number, exp_month: date[0], exp_year: date[1], cvc: cc.values.cvc})
+      .then(token=>{
+        console.log("token:")
+        console.log(token)
+        if(token.error){
+          console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************")
+          this.setFormError('1009',token.error.message);
+          card_error = true
+        }
+        const customer = Stripe.createCustomer(token.id, email)
+          .then(customer=>{
+            if(customer.error){
+              console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************")
+              if(!card_error) this.setFormError('1008',customer.error.message);
+              card_error = true
+            }
+            console.log("customer:")
+            console.log(customer)
+            Stripe.subscribe(customer.id,planId)
+              .then(subscribe=>{
+                console.log("subscription:")
+                console.log(subscribe)
+                if(subscribe.error){
+                  console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************")
+                  if(!card_error) this.setFormError('1008',subscribe.error.message);
+                  card_error = true
+                }
+                if(!card_error){
+                  firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then((user) => {
+
+                      this.setState({user: user},console.log(this.state.user))
+                      let verifyEmail = firebase.auth().currentUser.sendEmailVerification()
+                      this.setState({registerVisible: false},()=>this.setState({loginVisible: true}))
+                      console.log("creating user with email and password...")
+                      u = firebase.auth().currentUser;
+                      this.setUser(u.uid,fullName,email,null);
+                    })
+                    .catch((error) => {
+                      console.log("FIREBASE ERROR: COULD NOT CREATE AN ACCOUNT ****************")
+                      const { code, message } = error;
+                      this.setFormError(code,message);
+                    });
+                } else {
+                  console.log("========= CARD ERROR ===========")
+                }
+
+              })
+              .catch(err=>{
+                console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************");
+                card_error = true
+                console.log(err)
+              })
+          })
+          .catch(err=>{
+            console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************");
+            card_error = true
+            console.log(err)
+          })
+      })
+      .catch(err=>{
+        console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************");
+        this.setFormError('1009',error.message);
+        card_error = true
+        console.log(err)
+      })
+
+  }
+  registerPhone = () => {
+    firebase.auth().signInWithPhoneNumber(phone).then((res) => {
+      console.log("phone confirmation result object:"); console.log(res);
+      this.setState({registerPhoneResult: res});
+    }).catch((err)=>{
+      this.setFormError(err.code, err.message);
+    })
+  }
+  registerModal = () => {
+    return(
+      <KeyboardAvoidingView style={styles.modalWrap}>
+        <View style={styles.modal}>
+          {/*<TouchableHighlight onPress={()=>{this.setState({registerVisible: false})}}>*/}
+            {/*<Text style={{fontSize:16,marginBottom:13}}><Text style={{fontWeight:'900'}}>&nbsp;</Text> &nbsp;</Text>*/}
+          {/*</TouchableHighlight>*/}
+          <View style={{position: 'absolute',right: 15, top: 15}}>
+            <TouchableHighlight onPress={()=>{this.setState({registerVisible: false, loginVisible: true})}}>
+              <Text style={{fontSize:16,marginBottom:13}}>Log In <Text style={{fontWeight:'900'}}>&rsaquo;</Text></Text>
+            </TouchableHighlight>
+          </View>
+          <Text style={styles.modalHeading}>Register New Account</Text>
+          {/*<Text style={{marginBottom: 10}}>Please enter your account info:</Text>*/}
+          <TextInput
+            ref="registerFullName"
+            placeholder="First & Last Name"
+            style={styles.modalInput}
+            onChangeText={(v)=>this.setState({registerFullName: v})}
+            value={this.state.registerFullName}
+            autoCapitalize='words'
+          />
+          <TextInput
+            ref="registerEmail"
+            placeholder="Email"
+            style={styles.modalInput}
+            onChangeText={(v)=>this.setState({registerEmail: v})}fLoginz
+            value={this.state.registerEmail}
+            autoCapitalize='none'
+          />
+          <TextInput
+            ref="registerPassword"
+            placeholder="Password"
+            style={styles.modalInput}
+            onChangeText={(v)=>this.setState({registerPassword: v})}
+            value={this.state.registerPassword}
+            autoCapitalize='none'
+            secureTextEntry={true}
+          />
+          <TextInput
+            ref="registerPasswor2"
+            placeholder="Confirm Password"
+            style={styles.modalInput}
+            onChangeText={(v)=>this.setState({registerConfirmPassword: v})}
+            value={this.state.registerConfirmPassword}
+            autoCapitalize='none'
+            secureTextEntry={true}
+          />
+          <Text style={{marginBottom: 10, marginTop: 15}}>Select a plan:</Text>
+          <RNPickerSelect
+            items={[
+              {label:'Monthly – $89 – 7 Day Trial',value:'plan_D2F3s5CVgtPEkC'},
+              {label:'6 Months – $400 – 15 Day Trial',value:'plan_D2F7qblyYSuea2'},
+              {label:'Annual – $530 – 30 Day Trial',value:'plan_D2F9m6oyVdqmGD'},
+            ]}
+            onValueChange={(value) => {this.setState({registerPlanID:value})}}
+            onUpArrow={() => { this.inputRefs.name.focus(); }}
+            onDownArrow={() => {
+              this.inputRefs.picker4.togglePicker();
+            }}
+            style={{icon: {marginTop:-16, marginRight:0 }, inputIOS: {fontSize: 14, borderBottomWidth: 1, borderBottomColor: '#c8cffd', paddingBottom: 7,marginBottom: 3 }}}
+            value={this.state.registerPlanID}
+            ref="terms"
+          />
+          <LiteCreditCardInput onChange={(cc)=>{this.setState({registerCC: cc})}} />
+          <Text style={{marginTop: 10}}>Please provide a credit or debit card for the plan.</Text>
+          {/*<Text style={{marginBottom: 10}}>The first payment is charged after your trial.</Text>*/}
+
+          <Text style={styles.formErrorMessage}>
+            {this.state.formErrorNotice && this.state.formErrorNotice}
+          </Text>
+          <View style={styles.modalSubmit}>
+            <Button
+              title="Submit"
+              onPress={()=>{this.onRegister();console.log(this.state.registerErr)}}
+            />
+
+          </View>
+        </View>
+      </KeyboardAvoidingView>
+    );
+  }
+  loginModal = () => {
+    return(
+      <View style={styles.modalWrap}>
+        <View style={styles.modal}>
+          {/*<View style={{position: 'absolute',right: 15, top: 15}}>*/}
+            {/*<TouchableHighlight onPress={()=>{this.setState({registerVisible: true, loginVisible: false})}}>*/}
+              {/*<Text style={{fontSize:16,marginBottom:13}}>Register <Text style={{fontWeight:'900'}}>&rsaquo;</Text></Text>*/}
+            {/*</TouchableHighlight>*/}
+          {/*</View>*/}
+          <TouchableHighlight onPress={()=>{this.setState({registerVisible: true, loginVisible: false})}} style={{width: 100}}>
+            <Text style={{fontSize:16,marginBottom:13}}><Text style={{fontWeight:'900'}}>&lsaquo;</Text> Register</Text>
+          </TouchableHighlight>
+          <Text style={styles.modalHeading}>Sign In</Text>
+          <Text style={{marginBottom: 10}}>Please enter your account credentials:</Text>
+          <TextInput
+            ref="loginEmail"
+            placeholder="Email"
+            style={styles.modalInput}
+            onChangeText={(v)=>this.setState({loginEmail: v})}
+            value={this.state.loginEmail}
+            autoCapitalize='none'
+          />
+          {/*<TextInput*/}
+            {/*ref="registerPhone"*/}
+            {/*placeholder="Phone Number"*/}
+            {/*style={styles.modalInput}*/}
+            {/*onChangeText={(v)=>this.setState({registerPhone: v})}*/}
+            {/*value={this.state.registerPhone}*/}
+          {/*/>*/}
+          <TextInput
+            ref="loginPassword"
+            placeholder="Password"
+            style={styles.modalInput}
+            onChangeText={(v)=>this.setState({loginPassword: v})}
+            value={this.state.loginPassword}
+            autoCapitalize='none'
+            secureTextEntry={true}
+          />
+          <Text style={styles.formErrorMessage}>
+            {this.state.formErrorNotice && this.state.formErrorNotice}
+          </Text>
+
+          <View style={styles.modalSubmit}>
+            <Button
+              title="Sign In"
+              onPress={()=>{this.onLogin();console.log(this.state.registerErr)}}
+              // disabled={(this.state.formError !== false)}
+            />
+            <Button
+              title="Reset Password"
+              onPress={()=>{this.setState()}}
+              // disabled={(this.state.formError !== false)}
+            />
+
+          </View>
+        </View>
+      </View>
+    );
+  }
+  pressMenuSaveNewClient=()=>{this.saveAndClear(); this.toggleMenu()}
+  pressMenuScanLicense=()=>{this.scan.bind(this)(); this.toggleMenu()}
+  pressMenuExportPDF=()=>{this.setState({exportVisible: true}); this.toggleMenu()}
+  pressMenuLogOut=()=>{firebase.auth().signOut(); this.toggleMenu(); this.setState({modalMaskVisible: true})}
+  menuModal = () => {
+    self=this
+    var menuItems = [
+      {title: 'Save & New Client',callback: this.pressMenuSaveNewClient },
+      {title: 'Scan Driver\'s License',callback: this.pressMenuScanLicense },
+      {title: 'Export PDF',callback: this.pressMenuExportPDF },
+      {title: 'Log Out',callback: this.pressMenuLogOut },
+    ]
+    return (
+      <Animated.View style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        position: 'absolute',
+        top: 0,
+        right: this.state.menuPosition,
+        backgroundColor: '#FFF',
+        width: 300,
+        paddingRight: 50,
+        paddingTop: 20,
+        height: '100%',
+        zIndex: 101,
+        borderWidth: 1,
+        borderLeftColor: '#7680a1',
+        shadowOffset:{  width: -20,  height: 10,  },
+        shadowColor: 'black',
+        shadowOpacity: 0.4,
+        opacity: 0.95
+      }}>
+        <TouchableHighlight style={styles.menuCloseIcon} onPress={this.toggleMenu}>
+          <Text style={{fontSize:30,fontWeight:'100',color: '#979797'}}>&rsaquo;</Text>
+        </TouchableHighlight>
+        <Text style={styles.menuLogo}>insura</Text>
+        <View style={styles.menuItemWrap}>
+          {menuItems.map(function (m,i) {
+            return (<TouchableHighlight key={i} onPress={()=>{self.toggleMenu; m.callback()}}><Text style={styles.menuItem}>{m.title.toUpperCase()}</Text></TouchableHighlight>)
+          })}
+        </View>
+      </Animated.View>
+    )
+  }
+  renderModalMask = () => {
+    return (
+      <TouchableHighlight style={styles.modalMask} onPress={()=>{this.toggleMenu()}}>
+        <View>&nbsp;</View>
+      </TouchableHighlight>
+    )
+  }
+  renderMasterInputNotice=()=>{
+    return (
+      <View style={styles.masterInputNoticeWrap}>
+        <Text style={styles.masterInputNoticeText}>{_.upperCase(this.state.masterInputNotice)}</Text>
+      </View>
+    )
+  }
   render() {
     StatusBar.setBarStyle('light-content', true);
     return (
       <View style={styles.masterWrap}>
 
-        {/* CONSOLE */}
-        <ScrollView style={styles.console}>
-          <Text>{this.state.consoleContent}</Text>
-        </ScrollView>
+        {/* Modal Mask */}
+        {this.state.modalMaskVisible ? this.renderModalMask() : null}
+
+        {/* Export */}
+        {this.state.exportVisible ? this.renderExport() : null}
 
         {/* CALCULATOR */}
         {this.state.calculatorVisible ? this.renderCalculator() : null}
 
-        {/* HEADER */}
-        <View style={styles.header}>
-          {/*<View><Text style={styles.logo}>Insurā <Text style={{fontWeight: '300', fontSize: 13}}>BETA</Text></Text></View>*/}
-          <View style={styles.headerTopRight}>
-            <View><Text style={styles.loggedInUserName}>Guest User</Text></View>
-            <View><Text style={styles.signOutLink}>Sign Out</Text></View>
-          </View>
-        </View>
+        {/* REGISTER */}
+        {this.state.registerVisible ? this.registerModal() : null}
 
-        {/* QUESTION */}
-        <View style={styles.masterQuestionWrap}>
-          <View style={styles.innerQuestionWraps}>
-            <Text style={styles.masterQuestion}>{Questions[this.state.activeQuestionId].text}</Text>
+        {/* LOGIN */}
+        {this.state.loginVisible ? this.loginModal() : null}
+
+        {/* MENU */}
+        {this.state.menuVisible ? this.menuModal() : null}
+
+        <View style={styles.paddingWrap}>
+
+          {/* CONSOLE */}
+          <ScrollView style={styles.console}>
+            <Text>{this.state.consoleContent}</Text>
+          </ScrollView>
+
+          {/* HEADER */}
+          <View style={styles.header}>
+            {this.renderLoginHeader()}
           </View>
-          <TextInput
-            ref="answer"
-            autoFocus={true}
-            spellCheck={false}
-            autoCorrect={false}
-            blurOnSubmit={false}
-            autoComplete="off"
-            value={this.state.questionAnswer}
-            style={styles.masterInput}
-            placeholder={Questions[this.state.activeQuestionId].placeholder}
-            onChangeText={(text)=> this.watchAnswer(text)}
-            onSubmitEditing={(event) => {
-              if(Questions[this.state.activeQuestionId].submitByReturn){
-                this.nextQuestion();
-                this.refs.answer.focus();
-              }
-            }}
-          />
-          {this.state.answerButtonsVisible ? this.renderAnswerButtons(Questions[this.state.activeQuestionId].answerOptions||[]) : null}
-          {this.state.autoSuggestVisible ? this.renderOptions() : null}
-          <View style={styles.questionLinksWrap}>
-            <Button title="Prev" color="#ffb601" onPress={this.prevQuestion}><Text>Prev</Text></Button>
-            <Button title="Next" color="#ffb601" onPress={this.nextQuestion}><Text>Next</Text></Button>
-            <Text style={{color: '#b6b8be', marginTop: 11, marginLeft: 13}}>{this.state.questionCounter} of {Questions.length}</Text>
-            {this.renderIdScanButton()}
+
+          {/* QUESTION */}
+          <View style={styles.masterQuestionWrap}>
+            <View style={styles.innerQuestionWraps}>
+              <Text style={styles.masterQuestion}>{Questions[this.state.activeQuestionId].text}</Text>
+            </View>
+            <TextInput
+              ref="answer"
+              autoFocus={true}
+              spellCheck={false}
+              autoCorrect={false}
+              blurOnSubmit={false}
+              autoComplete="off"
+              autoCapitalize="none"
+              value={typeof this.state.questionAnswer === undefined ? '' : this.state.questionAnswer.toString()}
+              style={styles.masterInput}
+              placeholder={"  "+Questions[this.state.activeQuestionId].placeholder}
+              placeholderTextColor='#5e6579'
+              selectionColor="white"
+              onChangeText={(text)=> this.watchAnswer(text)}
+              onSubmitEditing={(event) => {
+                if(Questions[this.state.activeQuestionId].submitByReturn){
+                  this.nextQuestion();
+                  this.refs.answer.focus();
+                }
+              }}
+            />
+            {this.state.answerButtonsVisible ? this.renderAnswerButtons(Questions[this.state.activeQuestionId].answerOptions||[]) : null}
+            {this.state.autoSuggestVisible ? this.renderOptions() : null}
+            {this.state.masterInputNotice ? this.renderMasterInputNotice() : null}
+            <View style={styles.questionLinksWrap}>
+              <Button title="Prev" color="#ffb601" onPress={()=>this.prevQuestion()}><Text>Prev</Text></Button>
+              <Button title="Next" color="#ffb601" onPress={()=>this.nextQuestion()}><Text>Next</Text></Button>
+              <Text style={{color: '#b6b8be', marginTop: 11, marginLeft: 13}}>{this.state.questionCounter} of {Questions.length}</Text>
+              {this.renderIdScanButton()}
+            </View>
+            {this.renderButtons(this.state.buttons)}
           </View>
-          {this.renderButtons(this.state.buttons)}
+          <View style={styles.footer}>
+            {this.renderProviderStatus(this.state.Providers)}
+          </View>
         </View>
-        <View style={styles.footer}>
-          {this.renderProviderStatus(this.state.Providers)}
-        </View>
+        <Image source={logos[0]} style={styles.backgroundLogo}/>
       </View>
     );
   }
+
   renderAnswerButtons = (options) => {
     if(options.length > 0) {
       return (
@@ -1136,33 +1833,47 @@ export default class Applify extends Component {
       )
     }
   };
-  clearForm = () => {
+  prepareSavedState = (s) => {
+    s.menuPosition = null
+    return s
+  }
+  saveAndClear = () => {
+    c = this.state.clientInfo
+    this.saveClient(
+      firebase.auth().currentUser.uid,
+      _.replace(c.name+"--".trim(),/ /g,'')+_.replace(c.dob,/[^0-9]/g,''),
+      c
+    );
+    // this.setState({menuPosition: null});
     this.setState({buttons: []},()=>{});
     this.setState({activeQuestionId: 0});
     this.setState({questionCounter: 1});
     this.updateProviders(true);
+    console.log("saveAndClear()");
+    console.log(this.state);
   };
   renderIdScanButton() {
     return (
       <View style={styles.idScanButtonContainer}>
+        {/*<Button onPress={()=>{this.setState({exportVisible: true})}} title="Export" color="#d2d2d4"/>*/}
         <Button onPress={this.scan.bind(this)} title="Scan DL" color="#d2d2d4"/>
-        <Button onPress={()=>{
-          AlertIOS.alert(
-            'Clear All Data',
-            'This action cannot be undone.',
-            [
-              {
-                text: 'Cancel',
-                onPress: () => console.log('Cancel Clear Form Pressed'),
-                style: 'cancel',
-              },
-              {
-                text: 'Clear Form',
-                onPress: () => this.clearForm(),
-              },
-            ]
-          );
-        }} title="Clear" color="#d2d2d4"/>
+        {/*<Button onPress={()=>{*/}
+          {/*AlertIOS.alert(*/}
+            {/*'Clear All Data',*/}
+            {/*'This action cannot be undone.',*/}
+            {/*[*/}
+              {/*{*/}
+                {/*text: 'Cancel',*/}
+                {/*onPress: () => console.log('Cancel Clear Form Pressed'),*/}
+                {/*style: 'cancel',*/}
+              {/*},*/}
+              {/*{*/}
+                {/*text: 'Clear Form',*/}
+                {/*onPress: () => this.saveAndClear(),*/}
+              {/*},*/}
+            {/*]*/}
+          {/*);*/}
+        {/*}} title="Save & Clear" color="#d2d2d4"/>*/}
       </View>
     );
   }
@@ -1229,9 +1940,39 @@ export default class Applify extends Component {
     } catch(error) {
       this.setState({ BlinkShowImage: false, BlinkResultImage: '', BlinkResults: error.message});
     }
-
   }
+  setUser=(id,name,email,card)=>{
+    console.log("setUser()")
+    console.log(u)
+    res = firebase.database().ref('users/'+id).set({
+      id: id,
+      name: name,
+      email: email,
+      stripe_customer_id: 'null',
+      stripe_token_id: 'null',
+      activeSubscription: true
+    })
+      .then(res=>console.log(res))
+      .catch(err=>console.log(err))
+  }
+  saveClient=(userId,clientId,state)=>{
+    console.log("saveClient()")
+    console.log(userId)
+    console.log(clientId)
+    console.log(state)
+    state.user = null
+    state.autoSuggestOptions = null
+    res = firebase.database().ref('clients/'+clientId).set({
+      userId: userId,
+      clientId: clientId,
+      state: state,
+    })
+      .then(res=>console.log(res))
+      .catch(err=>console.log(err))
+  }
+
 }
+
 Number.prototype.toCurrencyString = function(prefix, suffix) {
   if (typeof prefix === 'undefined') { prefix = '$'; }
   if (typeof suffix === 'undefined') { suffix = ''; }
