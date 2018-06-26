@@ -183,7 +183,10 @@ export default class Applify extends Component {
       loginPassword: null,
       resetPasswordVisible: false,
       menuVisible: false,
-      menuPosition: new Animated.Value(-250)
+      menuPosition: new Animated.Value(-250),
+      supportVisible: true,
+      supportInput: '',
+      supportMessages: []
     };
   }
   componentDidMount() {
@@ -205,6 +208,7 @@ export default class Applify extends Component {
         this.setState({modalMaskVisible: true, registerVisible: true});
       } else {
         this.setState({modalMaskVisible: false, registerVisible: false, loginVisible: false});
+        this.getSupportMessages()
       }
     });
 
@@ -669,6 +673,7 @@ export default class Applify extends Component {
     let data = [];
     if(category==="MED"||category==="MED_OLD"){
       data = Medications;
+      // console.log(data)
     }
     else if(category==="CON") {
       data = Conditions
@@ -686,6 +691,11 @@ export default class Applify extends Component {
     matches = _.filter(searchData, function(o) { return _.includes(_.toLower(o.name),_.toLower(terms[0])) }).slice(0,100);
     terms.shift();
 
+    // console.log("matches:")
+    // console.log(matches)
+    // console.log("terms:")
+    // console.log(terms)
+
     // filter matches by all remaining terms
     if(terms.length){
       let matchesTmp = [];
@@ -697,7 +707,7 @@ export default class Applify extends Component {
         }
     });
     }
-    matches = _.uniqBy(matches,'id'); // force unique (thanks Obama)
+    matches = _.uniqBy(matches,'key'); // force unique (thanks Obama)
     if(category==="MED"||category==="MED_OLD") matches = matches.sort(function(a,b) { return a.name.length - b.name.length; }); // order by shortest name
     if(category==="CON") matches = _.orderBy(matches,'mifts','desc'); // order by shortest name
     LayoutAnimation.configureNext(CustomLayoutSpring);
@@ -720,7 +730,7 @@ export default class Applify extends Component {
         <View style={styles.autoSuggestWrap}>
           <ScrollView keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
             {this.state.autoSuggestOptions.map(option => (
-              <TouchableHighlight onPress={() => this.clickAnswer(option)} key={(option.id)} underlayColor="#FFF">
+              <TouchableHighlight onPress={() => this.clickAnswer(option)} key={(option.key)} underlayColor="#FFF">
                 <View style={styles.autoSuggestItem}>
                 <Text
                   style={styles.autoSuggestItemTitle}>
@@ -1433,6 +1443,7 @@ export default class Applify extends Component {
   }
   onRegister = () => {
     this.clearFormError();
+    this.setState({formErrorNotice: "Processing. Please wait..."})
     let ccNoticeField = false;
 
     const email =                   this.state.registerEmail
@@ -1677,12 +1688,14 @@ export default class Applify extends Component {
   pressMenuScanLicense=()=>{this.scan.bind(this)(); this.toggleMenu()}
   pressMenuExportPDF=()=>{this.setState({exportVisible: true}); this.toggleMenu()}
   pressMenuLogOut=()=>{firebase.auth().signOut(); this.toggleMenu(); this.setState({modalMaskVisible: true})}
+  pressMenuSupport=()=>{this.toggleMenu(); this.setState({modalMaskVisible: true, supportVisible: true})}
   menuModal = () => {
     self=this
     var menuItems = [
       {title: 'Save & New Client',callback: this.pressMenuSaveNewClient },
       {title: 'Scan Driver\'s License',callback: this.pressMenuScanLicense },
       {title: 'Export PDF',callback: this.pressMenuExportPDF },
+      {title: 'Support',callback: this.pressMenuSupport },
       {title: 'Log Out',callback: this.pressMenuLogOut },
     ]
     return (
@@ -1716,6 +1729,31 @@ export default class Applify extends Component {
           })}
         </View>
       </Animated.View>
+    )
+  }
+  sendSupportMessage = () => {
+    console.log("sendSupportMessage Called =======")
+    console.log(this.state.supportInput)
+    this.saveSupportMessage(this.state.supportInput)
+  }
+  supportModal = () => {
+    return (
+      <View style={styles.supportModal}>
+        <ScrollView style={styles.supportMessagesWrap}>
+          {this.state.supportMessages.length && this.state.supportMessages.map(m=>{
+            <Text>{m.content}</Text>
+          })}
+        </ScrollView>
+        <TextInput
+          value={this.state.supportInput}
+          placeholder={"test"}
+          // multiline
+          blurOnSubmit
+          onChangeText={(text)=>this.setState({supportInput:text})}
+          onSubmitEditing={()=>this.sendSupportMessage()}
+          style={styles.supportMessageInput}
+        />
+      </View>
     )
   }
   renderModalMask = () => {
@@ -1754,6 +1792,9 @@ export default class Applify extends Component {
 
         {/* MENU */}
         {this.state.menuVisible ? this.menuModal() : null}
+
+        {/* SUPPORT */}
+        {this.state.supportVisible ? this.supportModal() : null}
 
         <View style={styles.paddingWrap}>
 
@@ -1969,6 +2010,28 @@ export default class Applify extends Component {
     })
       .then(res=>console.log(res))
       .catch(err=>console.log(err))
+  }
+  saveSupportMessage=(message)=>{
+    t = (new Date).getTime()
+    ref = firebase.database().ref('support/'+firebase.auth().currentUser.uid)
+    msgRef = ref.push()
+    console.log("new msg ref key")
+    console.log(msgRef.key)
+    msgRef.setWithPriority({
+      time: t,
+      content: message
+    },-t).done(
+      this.setState({supportInput: ''})
+    )
+  }
+  getSupportMessages=()=>{
+    self=this
+    messagesRef = firebase.database().ref('support/'+firebase.auth().currentUser.uid)
+    messagesRef.on('value',function(snap) {
+      messages = self.state.supportMessages
+      messages.push(snap.val())
+      self.setState({supportMessages: messages},console.log(supportMessages))
+    })
   }
 
 }

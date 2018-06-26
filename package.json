@@ -11,16 +11,19 @@
     "appcenter": "^1.6.0",
     "appcenter-analytics": "^1.6.0",
     "appcenter-crashes": "^1.6.0",
+    "appcenter-push": "^1.6.0",
     "blinkid-react-native": "^1.4.2",
     "electron": "^1.8.7",
+    "eslint": "^5.0.0",
     "expo": "^27.1.0",
-    "firebase": "^5.0.4",
+    "firebase": "^5.1.0",
+    "glog": "^1.7.0",
     "http": "0.0.0",
     "lodash": "^4.17.10",
     "npm": "^6.1.0",
-    "react": "16.2.0",
+    "react": "16.3.1",
     "react-devtools": "^3.2.3",
-    "react-native": "0.54.2",
+    "react-native": "0.55.4",
     "react-native-credit-card-input": "^0.4.1",
     "react-native-firebase": "^4.2.0",
     "react-native-hyperlink": "0.0.12",
@@ -30,7 +33,8 @@
     "react-native-testfairy": "^2.11.0",
     "react-native-vector-icons": "^4.6.0",
     "react-stripe-elements": "^2.0.0",
-    "stringify-object": "^3.2.2"
+    "stringify-object": "^3.2.2",
+    "webpack": "^2.7.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -48,7 +52,8 @@
     "setupFiles": [
       "./node_modules/appcenter/test/AppCenterMock.js",
       "./node_modules/appcenter-analytics/test/AppCenterAnalyticsMock.js",
-      "./node_modules/appcenter-crashes/test/AppCenterCrashesMock.js"
+      "./node_modules/appcenter-crashes/test/AppCenterCrashesMock.js",
+      "./node_modules/appcenter-push/test/AppCenterPushMock.js"
     ]
   }
 }

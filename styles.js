@@ -735,7 +735,42 @@ export default StyleSheet.create({
     backgroundColor: '#f9f9f9',
     marginBottom: 2,
     color: '#000046',
-  }
+  },
 
+
+
+
+
+  // SUPPORT MODAL ====================
+  supportModal: {
+    flex: 1,
+    position: 'absolute',
+    justifyContent: 'flex-start',
+    top: 70,
+    right: -1,
+    backgroundColor: '#FFF',
+    minWidth: 350,
+    width: '75%',
+    marginBottom: 54,
+    minHeight: 380,
+    aspectRatio: 2,
+    zIndex: 10,
+    borderWidth: 1,
+    borderLeftColor: '#7680a1',
+    shadowOffset:{  width: -3,  height: -3,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.4,
+    opacity: 0.95,
+  },
+  supportMessagesWrap: {
+    backgroundColor: '#ddeeee',
+    width: '100%',
+    flexGrow: 1
+  },
+  supportMessageInput: {
+    paddingLeft: 14,
+    // height: 40,
+    width: '100%'
+  }
 
 });
