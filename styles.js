@@ -1,4 +1,11 @@
-import React, {StyleSheet} from 'react-native';
+import React, {Component, StyleSheet} from 'react-native';
+import Device from "react-native-responsive-ui/lib/Device";
+import MediaQuerySelector from "react-native-responsive-ui/lib/MediaQuerySelector";
+
+const {width, height} = Device.dimensions.window;
+const IPHONE_X = MediaQuerySelector.query({ minHeight: 812, minWidth: 375 }, width, height);
+const PHONE = MediaQuerySelector.query({ minHeight: 1, orientation: 'portrait' }, width, height);
+
 export default StyleSheet.create({
   masterWrap: {
     flex: 1,
@@ -12,9 +19,9 @@ export default StyleSheet.create({
   paddingWrap: {
     flex: 1,
     flexDirection: 'column',
-    paddingTop: 25,
-    marginLeft: 20,
-    marginRight: 20,
+    paddingTop: IPHONE_X ? 40 : 20,
+    marginLeft: 15,
+    marginRight: 15,
   },
   header: {
     flexDirection: 'row',
@@ -32,7 +39,7 @@ export default StyleSheet.create({
   backgroundLogo: {
     position: 'absolute',
     top: 0,
-    left: -200,
+    left: -100,
     height: '100%',
     width: '100%',
     resizeMode: 'contain',
@@ -137,6 +144,14 @@ export default StyleSheet.create({
     borderWidth: 0,
     borderColor: 'red',
   },
+  masterQuestion_portrait: {
+    marginTop: 20,
+    marginBottom: 7,
+    fontSize: 18,
+    color: '#d2d2d4',
+    borderWidth: 0,
+    borderColor: 'red',
+  },
   masterQuestionWrap: {
     flex: 1,
     borderColor: 'blue',
@@ -145,8 +160,22 @@ export default StyleSheet.create({
     marginTop: 0,
   },
   answerButtonsWrap: {
-    position: 'absolute',
-    top: 59,
+    position: 'relative',
+    top: -110,
+    marginBottom: -49,
+    left: 0,
+    flexDirection: 'row',
+    zIndex: 3,
+    backgroundColor: 'transparent',
+    width: '100%',
+    borderRadius: 3,
+    overflow: 'hidden',
+    borderWidth: 0,
+    borderColor: 'red',
+  },
+  answerButtonsWrap_portrait: {
+    position: 'relative',
+    top: 56,
     left: 0,
     flexDirection: 'row',
     zIndex: 3,
@@ -155,6 +184,7 @@ export default StyleSheet.create({
     borderRadius: 3,
     overflow: 'hidden'
   },
+
   answerButton: {
     backgroundColor: '#676F89',
     marginRight: 0,
@@ -228,11 +258,24 @@ export default StyleSheet.create({
     // borderWidth: 1,
     paddingTop: 12
   },
+  footer_portrait: {
+    flexDirection: 'column',
+    marginBottom: IPHONE_X ? -2 : -15,
+    marginLeft: -20,
+    marginRight: -20,
+    padding: 15,
+    // borderColor: '#FFF',
+    // borderWidth: 1,
+    paddingTop: 0,
+    backgroundColor: 'rgba(0,0,0,0.425)',
+  },
+
 
   // Providers
   providerStatusContainer: {
     flexWrap: 'wrap',
     flexDirection: 'row',
+    justifyContent: PHONE ? 'center' : 'flex-start',
     // borderColor: 'red',
     // borderWidth: 1,
     overflow: 'hidden',
@@ -282,6 +325,16 @@ export default StyleSheet.create({
     backgroundColor: '#4aa31a',
     borderRadius: 3,
   },
+  providerTitleProductWrap_portrait: {
+    marginBottom: 9,
+    marginLeft: 5,
+    marginRight: 5,
+    padding: 2,
+    paddingLeft: 4,
+    paddingRight: 4,
+    backgroundColor: '#4aa31a',
+    borderRadius: 2,
+  },
   providerTitleProductWrapStatus_1: {
     backgroundColor: '#a3000e',
   },
@@ -307,6 +360,7 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     zIndex: 10,
     margin: 0,
+    marginTop: IPHONE_X ? 20 : 0,
     padding: 20,
     paddingTop: 50,
     paddingBottom: 80,
@@ -314,15 +368,17 @@ export default StyleSheet.create({
     // display: 'none'
   },
   calculatorHeader: {
-    marginBottom: 0,
-    flexDirection: 'row'
+    marginBottom: 10,
+    flexDirection: 'row',
+    height: 140
   },
   calculatorLogo: {
     // flex: 1,
+    marginRight: 15,
     height: 50,
     width: 100,
     resizeMode: 'contain',
-    borderWidth: 1,
+    borderWidth: 0,
     borderColor: '#fbfbfb',
   },
   calculatorProductsCounter: {
@@ -337,10 +393,21 @@ export default StyleSheet.create({
     borderBottomColor: '#e9e9e9',
     borderBottomWidth: 1,
     backgroundColor: '#fafafa',
+    height: '100%'
   },
   calculatorCompanyWrap: {
     flex: 1,
     flexDirection: 'row',
+  },
+  calculatorCompanyWrap_portrait: {
+    flex: 1,
+    flexDirection: 'column',
+    borderWidth: 0,
+    borderColor: 'red',
+    marginTop: 8,
+    paddingBottom: 8,
+    borderBottomWidth: 0.3,
+    borderBottomColor: '#cccccc'
   },
   calculatorFaceValue: {
     borderWidth: 1,
@@ -381,13 +448,25 @@ export default StyleSheet.create({
   calculatorProductPeriodCostWrap: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 25,
-    marginRight: 25,
-    marginTop: 5,
+    // marginLeft: 25,
+    // marginRight: 25,
+    marginTop: 10,
     borderWidth: 0,
     borderColor: 'green',
     maxHeight: 42,
     width: 100
+  },
+  calculatorProductPeriodCostWrap_portrait: {
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 2,
+    borderWidth: 0,
+    borderColor: 'green',
+    // maxHeight: 42,
+    width: 80,
+    // overflow: 'hidden',
   },
   calculatorProductPeriodCostWrapProduct: {
     alignItems: 'stretch',
@@ -396,7 +475,19 @@ export default StyleSheet.create({
     marginRight: 10,
     marginTop: 0,
     minWidth: 300,
-    // textAlign: 'left'
+  },
+  calculatorProductPeriodCostWrapProduct_portrait: {
+    // flex: 1,
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    justifyContent: 'center',
+    width: 200,
+    marginLeft: 0,
+    marginRight: 0,
+    marginTop: 0,
+    borderWidth: 0,
+    borderColor: 'red',
+    // overflow: 'hidden',
   },
   calculatorProductWrapTitle: {
     fontSize: 14,
@@ -404,6 +495,7 @@ export default StyleSheet.create({
   },
   calculatorProductWrapProduct: {
     fontSize: 14,
+    marginBottom: 10,
     fontWeight: '900',
     borderWidth: 0,
     borderColor: 'blue'
@@ -411,6 +503,10 @@ export default StyleSheet.create({
   calculatorProductWrapSubtitle: {
     fontSize: 20,
   },
+  calculatorProductWrapSubtitle_portrait: {
+    fontSize: 17,
+  },
+
 
 
 
@@ -426,8 +522,19 @@ export default StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
     marginTop: 0,
-    // borderColor: '#373737',
-    // borderWidth: 0.5
+    borderColor: 'orange',
+    borderWidth: 0,
+    alignItems: 'stretch',
+  },
+  infoButtonsWrap_portrait: {
+    flexDirection: 'column',
+    // flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    marginTop: 0,
+    borderColor: 'orange',
+    // borderWidth: 0.5,
+    alignItems: 'stretch',
+    // height: 300
   },
   infoButton: {
     minWidth: 170,
@@ -437,7 +544,7 @@ export default StyleSheet.create({
     paddingLeft: 10,
     margin: 10,
     alignItems: 'center',
-    alignSelf: 'stretch',
+    // alignSelf: 'stretch',
     borderRadius: 15,
     borderColor: '#373737',
     borderWidth: 0,
@@ -445,6 +552,23 @@ export default StyleSheet.create({
     shadowColor: 'black',
     shadowOpacity: 0.15,
   },
+  infoButton_portrait: {
+    minWidth: 170,
+    paddingTop: 6,
+    paddingRight: 5,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    marginTop: 15,
+    alignItems: 'center',
+    // alignSelf: 'stretch',
+    borderRadius: 8,
+    borderColor: '#373737',
+    borderWidth: 0,
+    shadowOffset:{  width: 2,  height: 2,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.15,
+  },
+
   infoButtonTitle: {
     marginBottom: 2,
     marginTop: 0,
@@ -736,6 +860,11 @@ export default StyleSheet.create({
     marginBottom: 2,
     color: '#000046',
   },
+  menuEmail: {
+    marginTop: 15,
+    fontSize: 10,
+    color: '#6f6f6f'
+  },
 
 
 
@@ -743,16 +872,17 @@ export default StyleSheet.create({
 
   // SUPPORT MODAL ====================
   supportModal: {
-    flex: 1,
+    // flex: 1,
     position: 'absolute',
-    justifyContent: 'flex-start',
+    // justifyContent: 'flex-start',
     top: 70,
     right: -1,
     backgroundColor: '#FFF',
-    minWidth: 350,
+    minWidth: 360,
     width: '75%',
+    maxWidth: 500,
     marginBottom: 54,
-    minHeight: 380,
+    minHeight: 340,
     aspectRatio: 2,
     zIndex: 10,
     borderWidth: 1,
@@ -760,15 +890,62 @@ export default StyleSheet.create({
     shadowOffset:{  width: -3,  height: -3,  },
     shadowColor: 'black',
     shadowOpacity: 0.4,
-    opacity: 0.95,
+    opacity: 1,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+    overflow: 'hidden'
+  },
+  supportModalHeader:{
+    height: 40,
+    paddingLeft: 45,
+    paddingTop: 2,
+    justifyContent: 'center',
+  },
+  supportCloseIcon: {
+    position: 'absolute',
+    top: 0,
+    left: 20,
+    padding: 0,
+    borderWidth: 0,
+    borderColor: 'red'
   },
   supportMessagesWrap: {
-    backgroundColor: '#ddeeee',
+    backgroundColor: '#f7f7f9',
     width: '100%',
-    flexGrow: 1
+    flexDirection: 'column',
+  },
+  messageBubble: {
+    // flex: -1,
+    // minWidth: 20,
+    // minHeight: 10,
+    // flexShrink: 1,
+    flex: 1,
+    // borderRadius: 20,
+    overflow: 'hidden',
+    maxWidth: 500,
+  },
+  messageBubbleText: {
+    flexWrap: 'wrap',
+    color: '#000034',
+    padding: 5,
+    margin: 3,
+  },
+  messageBubble_user: {
+    textAlign: 'left',
+    backgroundColor: '#ced4e3',
+    borderRadius: 20,
+    marginLeft: 40
+  },
+  messageBubble_admin: {
+    textAlign: 'left',
+    backgroundColor: '#e1efde',
+    borderRadius: 20,
+    marginRight: 40
   },
   supportMessageInput: {
-    paddingLeft: 14,
+    borderTopWidth: 1,
+    borderTopColor: '#ccc',
+    padding: 10,
     // height: 40,
     width: '100%'
   }

@@ -1,20 +1,8 @@
 export default {
   questions: [
     {
-      id: 90,
-      text: 'What is your email?',
-      placeholder: "john@example.com",
-      category: 'BIO',
-      title: "EMAIL",
-      subtitle: null,
-      answer: null,
-      field: 'email',
-      fieldType: 'email',
-      submitByReturn: true
-    },
-    {
       id: 100,
-      text: 'What is your full name?',
+      text: 'Full name?',
       placeholder: "First (Middle) Last",
       category: 'BIO',
       title: "NAME",
@@ -26,7 +14,7 @@ export default {
     },
     {
       id: 101,
-      text: 'What is your gender?',
+      text: 'Gender?',
       placeholder: "",
       category: 'BIO',
       title: "GENDER",
@@ -41,7 +29,7 @@ export default {
     },
     {
       id: 200,
-      text: 'What is your Date of Birth?*',
+      text: 'Date of Birth?',
       placeholder: "MM/DD/YY",
       category: 'BIO',
       title: "DOB",
@@ -53,7 +41,7 @@ export default {
     },
     {
       id: 300,
-      text: 'What is your height?',
+      text: 'Height?',
       placeholder: "0-00 (feet-inches)",
       category: 'BIO',
       title: "HEIGHT",
@@ -66,7 +54,7 @@ export default {
     },
     {
       id: 400,
-      text: 'What is your weight?',
+      text: 'Weight?',
       placeholder: "000",
       category: 'BIO',
       title: "WEIGHT",
@@ -78,63 +66,8 @@ export default {
       answerOptions: [{"id":1,"value":65,"name":65},{"id":2,"value":70,"name":70},{"id":3,"value":75,"name":75},{"id":4,"value":80,"name":80},{"id":5,"value":85,"name":85},{"id":6,"value":90,"name":90},{"id":7,"value":95,"name":95},{"id":8,"value":100,"name":100},{"id":9,"value":105,"name":105},{"id":10,"value":110,"name":110},{"id":11,"value":115,"name":115},{"id":12,"value":120,"name":120},{"id":13,"value":125,"name":125},{"id":14,"value":130,"name":130},{"id":15,"value":135,"name":135},{"id":16,"value":140,"name":140},{"id":17,"value":145,"name":145},{"id":18,"value":150,"name":150},{"id":19,"value":155,"name":155},{"id":20,"value":160,"name":160},{"id":21,"value":165,"name":165},{"id":22,"value":170,"name":170},{"id":23,"value":175,"name":175},{"id":24,"value":180,"name":180},{"id":25,"value":185,"name":185},{"id":26,"value":190,"name":190},{"id":27,"value":195,"name":195},{"id":28,"value":200,"name":200},{"id":29,"value":205,"name":205},{"id":30,"value":210,"name":210},{"id":31,"value":215,"name":215},{"id":32,"value":220,"name":220},{"id":33,"value":225,"name":225},{"id":34,"value":230,"name":230},{"id":35,"value":235,"name":235},{"id":36,"value":240,"name":240},{"id":37,"value":245,"name":245},{"id":38,"value":250,"name":250},{"id":39,"value":255,"name":255},{"id":40,"value":260,"name":260},{"id":41,"value":265,"name":265},{"id":42,"value":270,"name":270},{"id":43,"value":275,"name":275},{"id":44,"value":280,"name":280},{"id":45,"value":285,"name":285},{"id":46,"value":290,"name":290},{"id":47,"value":295,"name":295},{"id":48,"value":300,"name":300},{"id":49,"value":305,"name":305},{"id":50,"value":310,"name":310},{"id":51,"value":315,"name":315},{"id":52,"value":320,"name":320},{"id":53,"value":325,"name":325},{"id":54,"value":330,"name":330},{"id":55,"value":335,"name":335},{"id":56,"value":340,"name":340},{"id":57,"value":345,"name":345},{"id":58,"value":350,"name":350},{"id":59,"value":355,"name":355},{"id":60,"value":360,"name":360},{"id":61,"value":365,"name":365},{"id":62,"value":370,"name":370},{"id":63,"value":375,"name":375},{"id":64,"value":380,"name":380},{"id":65,"value":385,"name":385},{"id":66,"value":390,"name":390},{"id":67,"value":395,"name":395},{"id":68,"value":400,"name":400}]
     },
     {
-      id: 400,
-      text: 'What is the balance of your home mortgage?',
-      placeholder: "$50,000",
-      category: 'BIO',
-      title: "LOAN BALANCE",
-      subtitle: null,
-      answer: null,
-      field: 'mortgage',
-      fieldType: 'int',
-      submitByReturn: true
-    },
-    {
-      id: 401,
-      text: 'What is your mortgage term?',
-      placeholder: "10yr, 15yr, 30yr etc.",
-      category: 'BIO',
-      title: "LOAN TERM",
-      subtitle: null,
-      answer: null,
-      field: 'mortgage-term',
-      fieldType: 'buttons',
-      submitByReturn: false,
-      answerOptions: [ {"id": 1,"value": 5,"name": "5 Yr"},{"id": 2,"value": 10,"name": "10 Yr"},{"id": 3,"value": 15,"name": "15 Yr"},{"id": 4,"value": 20,"name": "20 Yr"},{"id": 5,"value": 25,"name": "25 Yr"},{"id": 6,"value": 30,"name": "30 Yr"},{"id": 7,"value": 35,"name": "35 Yr"},{"id": 8,"value": 40,"name": "40 Yr"}]
-    },
-    {
-      id: 400,
-      text: 'What is the current interest rate of your home mortgage?',
-      placeholder: "e.g. 4.5%",
-      category: 'BIO',
-      title: "INTEREST RATE",
-      subtitle: null,
-      answer: null,
-      field: 'mortgage-rate',
-      fieldType: 'float',
-      submitByReturn: true
-    },
-    {
-      id: 400,
-      text: 'What is your mortgage type?',
-      placeholder: "HELOC, Reverse, Refinanced, New Loan",
-      category: 'BIO',
-      title: "LOAN TYPE",
-      subtitle: null,
-      answer: null,
-      field: 'mortgage-type',
-      fieldType: 'buttons',
-      submitByReturn: false,
-      answerOptions: [
-        {id: 1, value: 'HELOC',   name: "HELOC"},
-        {id: 2, value: 'REVERSE', name: "Reverse"},
-        {id: 3, value: 'REFI',    name: "Refinanced"},
-        {id: 4, value: 'NEW',     name: "New Loan"},
-      ]
-    },
-    {
-      id: 402,
-      text: 'What type of tobacco products do you use?',
+      id: 450,
+      text: 'History of tobacco?',
       placeholder: "",
       category: 'BIO',
       title: "TOBACCO TYPE",
@@ -146,14 +79,68 @@ export default {
       answerOptions: [
         {id: 1, value: 'None',   name: "None"},
         {id: 2, value: 'Chewing',   name: "Chewing"},
-        {id: 3, value: 'Cigarettes', name: "Cigarettes"},
-        {id: 4, value: 'Occasional', name: "Occasional (Any)"},
+        {id: 3, value: 'Cigarettes',   name: "Cigarettes"},
+        {id: 4, value: 'Occasional',   name: "Occasional (Any)"},
       ]
     },
-
+    {
+      id: 401,
+      text: 'Home mortgage - balance?',
+      placeholder: "$50,000",
+      category: 'BIO',
+      title: "LOAN BALANCE",
+      subtitle: null,
+      answer: null,
+      field: 'mortgage',
+      fieldType: 'int',
+      submitByReturn: true
+    },
+    {
+      id: 402,
+      text: 'Home mortgage - term?',
+      placeholder: "10yr, 15yr, 30yr etc.",
+      category: 'BIO',
+      title: "LOAN TERM",
+      subtitle: null,
+      answer: null,
+      field: 'mortgage-term',
+      fieldType: 'buttons',
+      submitByReturn: false,
+      answerOptions: [ {"id": 1,"value": 5,"name": "5 Yr"},{"id": 2,"value": 10,"name": "10 Yr"},{"id": 3,"value": 15,"name": "15 Yr"},{"id": 4,"value": 20,"name": "20 Yr"},{"id": 5,"value": 25,"name": "25 Yr"},{"id": 6,"value": 30,"name": "30 Yr"},{"id": 7,"value": 35,"name": "35 Yr"},{"id": 8,"value": 40,"name": "40 Yr"}]
+    },
+    // {
+    //   id: 403,
+    //   text: 'What is the current interest rate of your home mortgage?',
+    //   placeholder: "e.g. 4.5%",
+    //   category: 'BIO',
+    //   title: "INTEREST RATE",
+    //   subtitle: null,
+    //   answer: null,
+    //   field: 'mortgage-rate',
+    //   fieldType: 'float',
+    //   submitByReturn: true
+    // },
+    // {
+    //   id: 404,
+    //   text: 'What is your mortgage type?',
+    //   placeholder: "HELOC, Reverse, Refinanced, New Loan",
+    //   category: 'BIO',
+    //   title: "LOAN TYPE",
+    //   subtitle: null,
+    //   answer: null,
+    //   field: 'mortgage-type',
+    //   fieldType: 'buttons',
+    //   submitByReturn: false,
+    //   answerOptions: [
+    //     {id: 1, value: 'HELOC',   name: "HELOC"},
+    //     {id: 2, value: 'REVERSE', name: "Reverse"},
+    //     {id: 3, value: 'REFI',    name: "Refinanced"},
+    //     {id: 4, value: 'NEW',     name: "New Loan"},
+    //   ]
+    // },
     {
       id: 500,
-      text: 'What medications are you currently on?',
+      text: 'All current medications:',
       placeholder: "e.g. Omeprazole",
       category: 'MED',
       title: null,
@@ -166,7 +153,7 @@ export default {
     },
     {
       id: 600,
-      text: 'Medications within the last 7 years?',
+      text: 'Medications - last 7 years?',
       placeholder: "e.g. Metoprolol",
       category: 'MED_OLD',
       title: null,
@@ -176,6 +163,31 @@ export default {
       field: 'prev_medication',
       fieldType: 'options',
       submitByReturn: false
+    },
+    {
+      id: 700,
+      text: 'All current medical conditions?',
+      placeholder: 'e.g. Type 2 Diabetes',
+      category: 'CON',
+      title: null,
+      subtitle: null,
+      answer: null,
+      suggest: true,
+      field: 'condition',
+      fieldType: 'options',
+      submitByReturn: false
+    },
+    {
+      id: 90,
+      text: 'Email address?',
+      placeholder: "john@example.com",
+      category: 'BIO',
+      title: "EMAIL",
+      subtitle: null,
+      answer: null,
+      field: 'email',
+      fieldType: 'email',
+      submitByReturn: true
     },
     // {
     //   id: 601,
@@ -190,19 +202,6 @@ export default {
     //   fieldType: 'options',
     //   submitByReturn: false
     // },
-    {
-      id: 700,
-      text: 'What medical conditions do you currently have?',
-      placeholder: 'e.g. Type 2 Diabetes',
-      category: 'CON',
-      title: null,
-      subtitle: null,
-      answer: null,
-      suggest: true,
-      field: 'condition',
-      fieldType: 'options',
-      submitByReturn: false
-    },
     // {
     //   id: 702,
     //   text: 'Treated/advised for heart/circulatory disorders by a professional?',

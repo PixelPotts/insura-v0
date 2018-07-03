@@ -866,7 +866,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 610;
-				ORGANIZATIONNAME = Facebook;
+				ORGANIZATIONNAME = Insura;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -1544,7 +1544,7 @@
 				CODE_SIGN_ENTITLEMENTS = AwesomeProject/AwesomeProject.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = NH5J65QW37;
 				HEADER_SEARCH_PATHS = (
@@ -1569,7 +1569,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.Applify;
 				PRODUCT_NAME = AwesomeProject;
-				PROVISIONING_PROFILE = "6153c751-493d-4621-a2ac-9b7f23057961";
+				PROVISIONING_PROFILE = "9725da1a-f91c-43ab-a2e1-71596b3ae07f";
 				PROVISIONING_PROFILE_SPECIFIER = testgroup1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1585,7 +1585,7 @@
 				CODE_SIGN_ENTITLEMENTS = AwesomeProject/AwesomeProject.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = NH5J65QW37;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1609,7 +1609,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.Applify;
 				PRODUCT_NAME = AwesomeProject;
-				PROVISIONING_PROFILE = "6153c751-493d-4621-a2ac-9b7f23057961";
+				PROVISIONING_PROFILE = "9725da1a-f91c-43ab-a2e1-71596b3ae07f";
 				PROVISIONING_PROFILE_SPECIFIER = testgroup1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

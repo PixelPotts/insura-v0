@@ -22,6 +22,10 @@ import {
   KeyboardAvoidingView,
   View
 } from 'react-native';
+import { MediaQuery } from "react-native-responsive-ui";
+import Device from "react-native-responsive-ui/lib/Device";
+import MediaQuerySelector from "react-native-responsive-ui/lib/MediaQuerySelector";
+import AutoScroll from 'react-native-auto-scroll'
 import StripeToken from 'react-native-stripe-api'
 import Stripe from './stripe'
 import { LiteCreditCardInput } from "react-native-credit-card-input"
@@ -34,6 +38,11 @@ const stringifyObject = require('stringify-object')
 const Providers = require('./providers').default.providers
 const DeclinedDrugs = require('./decline_drugs').default.medications
 const CoverageLimits = require('./coverage-limits').default
+var TimerMixin = require('react-timer-mixin');
+
+const {width, height} = Device.dimensions.window;
+const PHONE = MediaQuerySelector.query({ orientation: "portrait", minHeight: 1 }, width, height)
+const IPHONE_X = MediaQuerySelector.query({ minHeight: 812, minWidth: 375 }, width, height);
 
 let Build = {min:{},max:{}}
 Build.min = require('./weight-min').default.min
@@ -111,8 +120,28 @@ var CustomLayoutLinear = {
 };
 
 let clientStartAge = 50;
+let clientStartGender = 'M';
 let clientStartHeight = 69;
 let clientStartWeight = 170;
+let clientInfoStart = {
+  name: '',
+  firstName: '',
+  middleName: '',
+  lastName: '',
+  gender: clientStartGender,
+  age: clientStartAge,
+  dob: '',
+  height: clientStartHeight,
+  weight: clientStartWeight,
+  street1: '',
+  street2: '',
+  city: '',
+  state: '',
+  zip: '',
+  race: '',
+  ssn:'',
+  tobacco: 'None',
+};
 export default class Applify extends Component {
   constructor(props) {
     super(props);
@@ -134,23 +163,7 @@ export default class Applify extends Component {
       BlinkResults: '',
       BlinkLicenseKeyErrorMessage: '',
       Providers: Providers,
-      clientInfo: {
-        name: '',
-        firstName: '',
-        middleName: '',
-        lastName: '',
-        age: clientStartAge,
-        dob: '',
-        height: clientStartHeight,
-        weight: clientStartWeight,
-        street1: '',
-        street2: '',
-        city: '',
-        state: '',
-        zip: '',
-        race: '',
-        ssn:''
-      },
+      clientInfo: clientInfoStart,
       calculatorVisible: false,
       calculatorPositionX: 0,
       calculatorFaceValue: '25,000',
@@ -184,7 +197,7 @@ export default class Applify extends Component {
       resetPasswordVisible: false,
       menuVisible: false,
       menuPosition: new Animated.Value(-250),
-      supportVisible: true,
+      supportVisible: false,
       supportInput: '',
       supportMessages: []
     };
@@ -207,8 +220,11 @@ export default class Applify extends Component {
       if(firebase.auth().currentUser === null){
         this.setState({modalMaskVisible: true, registerVisible: true});
       } else {
+        this.setState({user: firebase.auth().currentUser},()=>{
+          this.getSupportMessages();
+        })
+        //console.log(this.state.user)
         this.setState({modalMaskVisible: false, registerVisible: false, loginVisible: false});
-        this.getSupportMessages()
       }
     });
 
@@ -235,16 +251,19 @@ export default class Applify extends Component {
     // console.log(button)
     if(typeof button != 'undefined') {
       if(button.field==='dob') button.subtitle = button.subtitle.replace(/\(.*\)/gm,'').trim(); // remove anything in ()s
-      this.setState({questionAnswer: button.subtitle},()=>{console.log(this.state.questionAnswer)})
+      this.setState({questionAnswer: button.subtitle},()=>{
+        //console.log(this.state.questionAnswer)
+      })
     }
   }
   nextQuestion = (skip=false) => {
     Q = Questions[this.state.activeQuestionId]
+    // require option select
     if(Q.submitByReturn===false && !skip && Q.fieldType=='buttons'){
-      this.setState({masterInputNotice:'PRESS OPTION'});
-      return false
+      // this.setState({masterInputNotice:'PRESS OPTION'});
+      // return false
     }
-    LayoutAnimation.configureNext(CustomLayoutSpring);
+    // LayoutAnimation.configureNext(CustomLayoutSpring);
     if(!this.validateAnswer()) return
     // console.log("nextQuestion, answer is validated");
     if(this.state.questionCounter < Questions.length) this.setState({questionCounter: this.state.questionCounter + 1});
@@ -266,8 +285,10 @@ export default class Applify extends Component {
   validateAnswer=()=>{
     // console.log("running validateAnswer()")
     const Q = Questions[this.state.activeQuestionId]
-    const a = this.state.questionAnswer
-    // console.log(Q); console.log(a)
+    const a = this.state.questionAnswer.toString().trim()
+    //console.log(Q); console.log(a)
+    if(!a.length) return 1
+
     stat = 1
     switch(Q.fieldType){
       case 'buttons':
@@ -313,6 +334,8 @@ export default class Applify extends Component {
     // console.log("processAnswer");
     let self = this;
     details.answer = details.value === undefined ? details.answer : details.value;
+    // console.log(details)
+    if(!details.answer && !(category==='MED' || category==='MED_OLD'||category==="CON")) return false // don't process empty answers
     Q = Questions[this.state.activeQuestionId];
     let clientInfo = this.state.clientInfo;
 
@@ -338,6 +361,14 @@ export default class Applify extends Component {
     if(Q.field==='weight'){
       clientInfo.weight = details.answer;
       details.weight = details.answer
+    }
+    if(Q.field==='gender'){
+      clientInfo.gender = details.answer;
+      details.weight = details.answer
+    }
+    if(Q.field==='tobacco-use-type'){
+      clientInfo.tobacco = details.answer;
+      details.tobacco = details.answer
     }
 
     if(Q.field==='mortgage') details.answer = '$' + number_format(details.answer);
@@ -415,13 +446,13 @@ export default class Applify extends Component {
     return age;
   };
   formatDOB = (str) => {
-    console.log("=== FORMATTING DOB ====");
-    console.log(str);
+    // console.log("=== FORMATTING DOB ====");
+    // console.log(str);
     if(_.trim(str)==='') return;
     let m = /([0-9]{1,2})[^0-9]*([0-9]{1,2})[^0-9]*([0-9]{2,4})/.exec(str);
-    console.log(m)
+    // console.log(m)
     let dob = m[1]+"/"+m[2]+"/"+m[3];
-    console.log(dob)
+    // console.log(dob)
     return dob;
   };
   formateHeight = (height) => {
@@ -681,7 +712,7 @@ export default class Applify extends Component {
 
     return data;
   };
-  updateAutoSuggestOptions = (search) => {
+  updateAutoSuggestOptions = (search, Q) => {
     let matches = [];
     let terms = _.split(search,' ');
     let searchData = this.getSearchData();
@@ -707,10 +738,13 @@ export default class Applify extends Component {
         }
     });
     }
-    matches = _.uniqBy(matches,'key'); // force unique (thanks Obama)
-    if(category==="MED"||category==="MED_OLD") matches = matches.sort(function(a,b) { return a.name.length - b.name.length; }); // order by shortest name
+
+    if(category==="MED"||category==="MED_OLD"){
+      matches = matches.sort(function(a,b) { return a.name.length - b.name.length; });
+      matches = _.uniqBy(matches,'key'); // force unique (thanks Obama)
+    } // order by shortest name
     if(category==="CON") matches = _.orderBy(matches,'mifts','desc'); // order by shortest name
-    LayoutAnimation.configureNext(CustomLayoutSpring);
+    // LayoutAnimation.configureNext(CustomLayoutSpring);
     this.setState({autoSuggestOptions: matches});
   };
   clickAnswer = (option) => {
@@ -730,7 +764,7 @@ export default class Applify extends Component {
         <View style={styles.autoSuggestWrap}>
           <ScrollView keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
             {this.state.autoSuggestOptions.map(option => (
-              <TouchableHighlight onPress={() => this.clickAnswer(option)} key={(option.key)} underlayColor="#FFF">
+              <TouchableHighlight onPress={() => this.clickAnswer(option)} key={option.key+option.id} underlayColor="#FFF">
                 <View style={styles.autoSuggestItem}>
                 <Text
                   style={styles.autoSuggestItemTitle}>
@@ -863,23 +897,42 @@ export default class Applify extends Component {
     this.updateProviders();
   }
   renderButtons = (buttons) => {
+    LayoutAnimation.configureNext(CustomLayoutLinear);
     return (
-      <ScrollView
-        contentContainerStyle={styles.infoButtonsWrap}
-        keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
-        {buttons.map((button,k) => (
-          <TouchableHighlight onPress={()=>{this.editButton(button, k)}}
-                              onLongPress={()=>{this.deleteButton(button,k)}}
-                              key={button.id}
-            underlayColor="transparent">
-            <View style={[styles.infoButton,styles['infoButton_'+button.category]]}>
-              <Text style={[styles.infoButtonTitle, styles['infoButtonTitle_'+button.category]]}>{button.title}</Text>
-              <Text style={[styles.infoButtonSubtitle, styles['infoButtonSubtitle_'+button.category]]}>{button.subtitle}</Text>
-              {this.renderButtonButtons(button)}
-            </View>
-          </TouchableHighlight>
-        ))}
-      </ScrollView>
+      <View>
+        <MediaQuery minHeight={1} orientation="portrait">
+          <AutoScroll contentContainerStyle={styles.infoButtonsWrap_portrait} keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
+            <View style={{height:100,width:'100%',borderWidth:0,borderColor:'red'}}>&nbsp;</View>
+            {buttons.map((button,k) => (
+              <TouchableHighlight onPress={()=>{this.editButton(button, k)}} onLongPress={()=>{this.deleteButton(button,k)}} key={button.id} underlayColor="transparent">
+                <View>
+                    <View style={[styles.infoButton_portrait,styles['infoButton_'+button.category]]}>
+                      <Text style={[styles.infoButtonTitle, styles['infoButtonTitle_'+button.category]]}>{button.title}</Text>
+                      <Text style={[styles.infoButtonSubtitle, styles['infoButtonSubtitle_'+button.category]]}>{button.subtitle}</Text>
+                      {this.renderButtonButtons(button)}
+                    </View>
+                </View>
+              </TouchableHighlight>
+            ))}
+            <View style={{height:220,width:'100%',borderWidth:0,borderColor:'red'}}>&nbsp;</View>
+          </AutoScroll>Bryan
+        </MediaQuery>
+        <MediaQuery minHeight={1} orientation="landscape">
+          <ScrollView contentContainerStyle={styles.infoButtonsWrap} keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
+            {buttons.map((button,k) => (
+              <TouchableHighlight onPress={()=>{this.editButton(button, k)}} onLongPress={()=>{this.deleteButton(button,k)}} key={button.id} underlayColor="transparent">
+                <View>
+                    <View style={[styles.infoButton,styles.infoButton_portrait,styles['infoButton_'+button.category]]}>
+                      <Text style={[styles.infoButtonTitle, styles['infoButtonTitle_'+button.category]]}>{button.title}</Text>
+                      <Text style={[styles.infoButtonSubtitle, styles['infoButtonSubtitle_'+button.category]]}>{button.subtitle}</Text>
+                      {this.renderButtonButtons(button)}
+                    </View>
+                </View>
+              </TouchableHighlight>
+            ))}
+          </ScrollView>
+        </MediaQuery>
+      </View>
     )
   };
   renderProviderStatus = (Providers) => {
@@ -889,20 +942,35 @@ export default class Applify extends Component {
         calculatorProduct: 1,
         updateCalculatorValues: this.updateCalculatorValues(this.state.calculatorFaceValue,this.state.calculatorTerms)
       })}}>
-      <View style={styles.providerStatusContainer}>
-          {Providers.map(provider => (
-            <View key={provider.id} style={styles.providerStatusWrap}>
-              {/*<View><Text style={styles.providerTitle}>{provider.nickname}</Text></View>*/}
-              <View><Text style={styles.providerTitle}>{provider.nickname}</Text></View>
-              {provider.products.map(product => (
-                <View key={product.id}
-                      style={[styles.providerTitleProductWrap, styles['providerTitleProductWrapStatus_'+product.status]]}>
-                  <Text style={[styles.providerTitleProduct,styles['providerTitleProduct_'+product.status]]}>{product.nickname}</Text>
+        <View>
+          <MediaQuery minHieght={1} orientation="landscape">
+            <View style={styles.providerStatusContainer}>
+              {Providers.map(provider => (
+                <View key={provider.id} style={styles.providerStatusWrap}>
+                  <View><Text style={styles.providerTitle}>{provider.nickname}</Text></View>
+                  {provider.products.map(product => (
+                    <View key={product.id}
+                          style={[styles.providerTitleProductWrap, styles['providerTitleProductWrapStatus_'+product.status]]}>
+                      <Text style={[styles.providerTitleProduct,styles['providerTitleProduct_'+product.status]]}>{product.nickname}</Text>
+                    </View>
+                  ))}
                 </View>
               ))}
             </View>
-          ))}
-      </View>
+          </MediaQuery>
+          <MediaQuery minHieght={1} orientation="portrait">
+            <View style={styles.providerStatusContainer}>
+              {Providers.map(provider => (
+                provider.products.map(product => (
+                    <View key={product.id}
+                          style={[styles.providerTitleProductWrap_portrait, styles['providerTitleProductWrapStatus_'+product.status]]}>
+                      <Text style={[styles.providerTitleProduct,styles['providerTitleProduct_'+product.status]]}>{product.nickname}</Text>
+                    </View>
+                  ))
+              ))}
+            </View>
+          </MediaQuery>
+        </View>
       </TouchableHighlight>
     )
   };
@@ -948,6 +1016,10 @@ export default class Applify extends Component {
           return cost;
         }
         if(table[age][term+"-"+smokerStatus] === undefined) return cost;
+        // console.log("=== HMS Plust cost check ===")
+        // console.log("age:"); console.log(age)
+        // console.log("term:"); console.log(term)
+        // console.log("smokerStatus:"); console.log(smokerStatus)
         rate = table[age][term+"-"+smokerStatus];
         break;
       case 'age--gender-smokerStatus':
@@ -975,9 +1047,9 @@ export default class Applify extends Component {
     // Check for riders and add to the rate
     if('rider' in product){
       if(!(age in product.rider)){
-        console.log("AGE not in product.rider")
+        // console.log("AGE not in product.rider")
         cost.notice = "The age of '"+age+"' was not found in the rate table.";
-        console.log(cost.notice);
+        // console.log(cost.notice);
         return cost;
       } else {
         rate += product.rider[age]
@@ -1008,24 +1080,11 @@ export default class Applify extends Component {
     if(updatedFaceValue<2000) updatedFaceValue = 2000;
 
     smokerButton = _.find(this.state.buttons,function(b){return b.field == "tobacco-use-type"});
-    genderButton = _.find(this.state.buttons,function(b){return b.field == "gender"});
     age = this.state.clientInfo.age;
 
-    let smokerStatus;
-    if(!smokerButton){
-      smokerStatus = "NS";
-    } else {
-      smokerStatus = smokerButton.subtitle;
-      smokerStatus = smokerStatus === smokerStatus == "None" ? "NS" : "S";
-    }
+    const smokerStatus = this.state.clientInfo.tobacco === "None" ? "NS" : "S";
 
-    let gender;
-    if(!genderButton){
-      gender = "M"
-    } else {
-      gender = genderButton.subtitle === "Male" ? "M" : "F";
-    }
-
+    const gender = this.state.clientInfo.gender
     age = this.state.clientInfo.age;
 
     // console.log("smoker status");
@@ -1078,19 +1137,19 @@ export default class Applify extends Component {
           if(cost.annual == 0) hiddenIds.push(calculatorProduct.id);
 
           // Check the coverage limits
-          console.log("======="+product.nickname+"========");
+          // console.log("======="+product.nickname+"========");
           face = updatedFaceValue/1000;
-          console.log("faceValue: "+face);
-          console.log("coverage Limits");
-          console.log(CoverageLimits[product.nickname]);
+          // console.log("faceValue: "+face);
+          // console.log("coverage Limits");
+          // console.log(CoverageLimits[product.nickname]);
           const cMin = CoverageLimits[product.nickname].min
           const cMax = CoverageLimits[product.nickname].max
           ages = CoverageLimits[product.nickname]
           // delete ages.min, delete ages.max
-          console.log("cMin: "+cMin);
-          console.log("cMax: "+cMax);
-          console.log("ages: ");
-          console.log(ages);
+          // console.log("cMin: "+cMin);
+          // console.log("cMax: "+cMax);
+          // console.log("ages: ");
+          // console.log(ages);
 
           if(cMin != null && cMax != null){
             if(face<cMin){
@@ -1108,27 +1167,29 @@ export default class Applify extends Component {
       })
     })
 
-    console.log("=== Hidden Calculator Products ===");
-    console.log(_.sortedUniq(hiddenIds));
-
-    console.log("=== Hidden Calculator Notices ===");
-    console.log(notices);
-
-    console.log("=== CALCULATOR OUTPUT ===");
-    console.log(calc);
+    // console.log("=== Hidden Calculator Products ===");
+    // console.log(_.sortedUniq(hiddenIds));
+    //
+    // console.log("=== Hidden Calculator Notices ===");
+    // console.log(notices);
+    //
+    // console.log("=== CALCULATOR OUTPUT ===");
+    // console.log(calc);
 
     this.setState({calculator: calc});
-    this.setState({calculatorHiddenProducts: _.sortedUniq(hiddenIds)},console.log("hidden IDs state set"));
+    this.setState({calculatorHiddenProducts: _.sortedUniq(hiddenIds)},
+      // console.log("hidden IDs state set")
+    );
 
     this.updateProviders()
     return 1
   }
   renderCalculatorProduct = (provider, product, calculatorProduct) => {
-    console.log("=== renderCalculatorProduct() ===");
-    console.log(provider);
-    console.log(product);
-    console.log(calculatorProduct);
-    console.log(this.state.calculatorHiddenProducts);
+    // console.log("=== renderCalculatorProduct() ===");
+    // console.log(provider);
+    // console.log(product);
+    // console.log(calculatorProduct);
+    // console.log(this.state.calculatorHiddenProducts);
 
     function renderStarRating(productId){
       const ratings = {200:4,201:5,202:4,203:5,2021:3,2031:4,2041:3};
@@ -1137,12 +1198,41 @@ export default class Applify extends Component {
     }
 
     // Hide products from the hide array
-    console.log('index check:')
-    console.log(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id))
+    // console.log('index check:')
+    // console.log(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id))
 
     if(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id)!=-1) return false
     if(this.state.calculator[calculatorProduct.id].annual===0) return false;
 
+    if(PHONE)
+      return(
+        <View style={styles.calculatorCompanyWrap_portrait} key={calculatorProduct.id}>
+          <View>
+            <Text style={styles.calculatorProductWrapProduct}>{calculatorProduct.name}</Text>
+          </View>
+          <View style={{flex:1,flexDirection:'row',borderWidth:0, borderColor: 'orange'}}>
+            <View>
+              <Image source={logos[provider.id]} style={styles.calculatorLogo}/>
+            </View>
+            <View>
+              <View style={styles.calculatorProductPeriodCostWrapProduct_portrait}>
+                <View style={styles.calculatorProductPeriodCostWrap_portrait}>
+                  <Text style={styles.calculatorProductWrapTitle}>Monthly</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle_portrait}>
+                    ${number_format(this.state.calculator[calculatorProduct.id].month,2)}
+                  </Text>
+                </View>
+                <View style={styles.calculatorProductPeriodCostWrap_portrait}>
+                  <Text style={styles.calculatorProductWrapTitle}>Annual</Text>
+                  <Text style={styles.calculatorProductWrapSubtitle_portrait}>
+                    ${number_format(this.state.calculator[calculatorProduct.id].annual,2)}
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      )
     return (
       <View style={styles.calculatorCompanyWrap} key={calculatorProduct.id}>
         <View style={styles.calculatorProductWrap}>
@@ -1163,10 +1253,7 @@ export default class Applify extends Component {
               </Text>
           </View>
           <View style={styles.calculatorProductPeriodCostWrap}>
-            {/*<Hyperlink linkDefault={true} linkText={url => url === 'https://adfs.americo.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn%3aagent.americo.com%3asharepoint&wctx=https%3a%2f%2fagent.americo.com%2f_layouts%2fAuthenticate.aspx%3fSource%3d%252F' ? 'Select' : url }>*/}
-              {/*<Text>Americo</Text>*/}
-            {/*</Hyperlink>*/}
-            {renderStarRating(calculatorProduct.id)}
+            {/*{renderStarRating(calculatorProduct.id)}*/}
           </View>
         </View>
       </View>
@@ -1175,6 +1262,7 @@ export default class Applify extends Component {
   renderCalculator = () => {
 
     // console.log(" --- RENDER CALCULATOR ---");
+    // console.log(this.state.clientInfo)
 
     //let Providers = Calculator.providers;
     this.inputRefs = {};
@@ -1191,23 +1279,16 @@ export default class Applify extends Component {
            </TouchableHighlight>
          </View>
          {/*<Text style={{fontSize: 20}}>Coverage Options for {this.state.clientInfo.firstName}</Text>*/}
-         <View style={styles.calculatorHeader}>
+         <ScrollView horizontal={true} style={styles.calculatorHeader}>
 
            {/* FACE VALUE SELECT */}
            <View style={styles.calculatorFaceValueWrap}>
              <Text>Face Value</Text>
-             {/*<TextInput style={styles.calculatorFaceValue} placeholder="10, 15, 20, or 30"/>*/}
-
              <View style={styles.calculatorTermDropDown}>
                <RNPickerSelect
-                 // placeholder={{
-                 //   label: 'Select...',
-                 //   value: null,
-                 // }}
                  items={[{"label":"1,000","value":"1,000"},{"label":"2,000","value":"2,000"},{"label":"3,000","value":"3,000"},{"label":"4,000","value":"4,000"},{"label":"5,000","value":"5,000"},{"label":"6,000","value":"6,000"},{"label":"7,000","value":"7,000"},{"label":"8,000","value":"8,000"},{"label":"9,000","value":"9,000"},{"label":"10,000","value":"10,000"},{"label":"15,000","value":"15,000"},{"label":"20,000","value":"20,000"},{"label":"25,000","value":"25,000"},{"label":"30,000","value":"30,000"},{"label":"35,000","value":"35,000"},{"label":"40,000","value":"40,000"},{"label":"45,000","value":"45,000"},{"label":"50,000","value":"50,000"},{"label":"55,000","value":"55,000"},{"label":"60,000","value":"60,000"},{"label":"65,000","value":"65,000"},{"label":"70,000","value":"70,000"},{"label":"75,000","value":"75,000"},{"label":"80,000","value":"80,000"},{"label":"85,000","value":"85,000"},{"label":"90,000","value":"90,000"},{"label":"95,000","value":"95,000"},{"label":"100,000","value":"100,000"},{"label":"110,000","value":"110,000"},{"label":"120,000","value":"120,000"},{"label":"130,000","value":"130,000"},{"label":"140,000","value":"140,000"},{"label":"150,000","value":"150,000"},{"label":"160,000","value":"160,000"},{"label":"170,000","value":"170,000"},{"label":"180,000","value":"180,000"},{"label":"190,000","value":"190,000"},{"label":"200,000","value":"200,000"},{"label":"210,000","value":"210,000"},{"label":"220,000","value":"220,000"},{"label":"230,000","value":"230,000"},{"label":"240,000","value":"240,000"},{"label":"250,000","value":"250,000"},{"label":"300,000","value":"300,000"},{"label":"350,000","value":"350,000"},{"label":"400,000","value":"400,000"},{"label":"450,000","value":"450,000"},{"label":"500,000","value":"500,000"},{"label":"550,000","value":"550,000"},{"label":"600,000","value":"600,000"},{"label":"650,000","value":"650,000"},{"label":"700,000","value":"700,000"},{"label":"750,000","value":"750,000"},{"label":"800,000","value":"800,000"},{"label":"850,000","value":"850,000"},{"label":"900,000","value":"900,000"},{"label":"950,000","value":"950,000"},{"label":"1,000,000","value":"1,000,000"},{"label":"1,100,000","value":"1,100,000"},{"label":"1,200,000","value":"1,200,000"},{"label":"1,300,000","value":"1,300,000"},{"label":"1,400,000","value":"1,400,000"},{"label":"1,500,000","value":"1,500,000"},{"label":"1,600,000","value":"1,600,000"},{"label":"1,700,000","value":"1,700,000"},{"label":"1,800,000","value":"1,800,000"},{"label":"1,900,000","value":"1,900,000"},{"label":"2,000,000","value":"2,000,000"},{"label":"2,250,000","value":"2,250,000"},{"label":"2,500,000","value":"2,500,000"},{"label":"2,750,000","value":"2,750,000"},{"label":"3,000,000","value":"3,000,000"},{"label":"3,250,000","value":"3,250,000"},{"label":"3,500,000","value":"3,500,000"},{"label":"3,750,000","value":"3,750,000"},{"label":"4,000,000","value":"4,000,000"},{"label":"4,250,000","value":"4,250,000"},{"label":"4,500,000","value":"4,500,000"},{"label":"4,750,000","value":"4,750,000"},{"label":"5,000,000","value":"5,000,000"},{"label":"5,500,000","value":"5,500,000"},{"label":"6,000,000","value":"6,000,000"},{"label":"6,500,000","value":"6,500,000"},{"label":"7,000,000","value":"7,000,000"},{"label":"7,500,000","value":"7,500,000"},{"label":"8,000,000","value":"8,000,000"},{"label":"8,500,000","value":"8,500,000"},{"label":"9,000,000","value":"9,000,000"},{"label":"9,500,000","value":"9,500,000"},{"label":"10,000,000","value":"10,000,000"},{"label":"11,000,000","value":"11,000,000"},{"label":"12,000,000","value":"12,000,000"},{"label":"13,000,000","value":"13,000,000"},{"label":"14,000,000","value":"14,000,000"},{"label":"15,000,000","value":"15,000,000"},{"label":"16,000,000","value":"16,000,000"},{"label":"17,000,000","value":"17,000,000"},{"label":"18,000,000","value":"18,000,000"},{"label":"19,000,000","value":"19,000,000"},{"label":"20,000,000","value":"20,000,000"}]}
                  onValueChange={(value) => {
-                   this.setState({ calculatorFaceValue: value });
-                   this.updateCalculatorValues(value,null);
+                   this.setState({ calculatorFaceValue: value },()=>{this.updateCalculatorValues(value,null)});
                  }}
                  onUpArrow={() => {
                    this.inputRefs.name.focus();
@@ -1220,20 +1301,14 @@ export default class Applify extends Component {
                  ref="faceValues"
                />
              </View>
-
            </View>
+
 
          {/* TERMS SELECT */}
           <View style={styles.calculatorTermsWrap}>
             <Text>Term</Text>
-            {/*<TextInput style={styles.calculatorFaceValue} placeholder="10, 15, 20, or 30"/>*/}
-
             <View style={styles.calculatorTermDropDown}>
               <RNPickerSelect
-                // placeholder={{
-                //   label: 'Select...',
-                //   value: null,
-                // }}
                 items={[
                   {label:'5',value:'5'},
                   {label:'10',value:'10'},
@@ -1243,8 +1318,7 @@ export default class Applify extends Component {
                   {label:'30',value:'30'}
                 ]}
                 onValueChange={(value) => {
-                  this.setState({ calculatorTerms: value });
-                  this.updateCalculatorValues(null,value);
+                  this.setState({ calculatorTerms: value },()=>{this.updateCalculatorValues(null,value)});
                 }}
                 onUpArrow={() => {
                   this.inputRefs.name.focus();
@@ -1257,26 +1331,19 @@ export default class Applify extends Component {
                 ref="terms"
               />
             </View>
-
           </View>
+
 
          {/* AGE SELECT */}
           <View style={styles.calculatorTermsWrap}>
             <Text>Age</Text>
-            {/*<TextInput style={styles.calculatorFaceValue} placeholder="10, 15, 20, or 30"/>*/}
-
             <View style={styles.calculatorTermDropDown}>
               <RNPickerSelect
-                // placeholder={{
-                //   label: 'Select...',
-                //   value: null,
-                // }}
                 items={[{"label":"0","value":"0"},{"label":"1","value":"1"},{"label":"2","value":"2"},{"label":"3","value":"3"},{"label":"4","value":"4"},{"label":"5","value":"5"},{"label":"6","value":"6"},{"label":"7","value":"7"},{"label":"8","value":"8"},{"label":"9","value":"9"},{"label":"10","value":"10"},{"label":"11","value":"11"},{"label":"12","value":"12"},{"label":"13","value":"13"},{"label":"14","value":"14"},{"label":"15","value":"15"},{"label":"16","value":"16"},{"label":"17","value":"17"},{"label":"18","value":"18"},{"label":"19","value":"19"},{"label":"20","value":"20"},{"label":"21","value":"21"},{"label":"22","value":"22"},{"label":"23","value":"23"},{"label":"24","value":"24"},{"label":"25","value":"25"},{"label":"26","value":"26"},{"label":"27","value":"27"},{"label":"28","value":"28"},{"label":"29","value":"29"},{"label":"30","value":"30"},{"label":"31","value":"31"},{"label":"32","value":"32"},{"label":"33","value":"33"},{"label":"34","value":"34"},{"label":"35","value":"35"},{"label":"36","value":"36"},{"label":"37","value":"37"},{"label":"38","value":"38"},{"label":"39","value":"39"},{"label":"40","value":"40"},{"label":"41","value":"41"},{"label":"42","value":"42"},{"label":"43","value":"43"},{"label":"44","value":"44"},{"label":"45","value":"45"},{"label":"46","value":"46"},{"label":"47","value":"47"},{"label":"48","value":"48"},{"label":"49","value":"49"},{"label":"50","value":"50"},{"label":"51","value":"51"},{"label":"52","value":"52"},{"label":"53","value":"53"},{"label":"54","value":"54"},{"label":"55","value":"55"},{"label":"56","value":"56"},{"label":"57","value":"57"},{"label":"58","value":"58"},{"label":"59","value":"59"},{"label":"60","value":"60"},{"label":"61","value":"61"},{"label":"62","value":"62"},{"label":"63","value":"63"},{"label":"64","value":"64"},{"label":"65","value":"65"},{"label":"66","value":"66"},{"label":"67","value":"67"},{"label":"68","value":"68"},{"label":"69","value":"69"},{"label":"70","value":"70"},{"label":"71","value":"71"},{"label":"72","value":"72"},{"label":"73","value":"73"},{"label":"74","value":"74"},{"label":"75","value":"75"},{"label":"76","value":"76"},{"label":"77","value":"77"},{"label":"78","value":"78"},{"label":"79","value":"79"},{"label":"80","value":"80"},{"label":"81","value":"81"},{"label":"82","value":"82"},{"label":"83","value":"83"},{"label":"84","value":"84"},{"label":"85","value":"85"},{"label":"86","value":"86"},{"label":"87","value":"87"},{"label":"88","value":"88"},{"label":"89","value":"89"},{"label":"90","value":"90"},{"label":"91","value":"91"},{"label":"92","value":"92"},{"label":"93","value":"93"},{"label":"94","value":"94"},{"label":"95","value":"95"},{"label":"96","value":"96"},{"label":"97","value":"97"},{"label":"98","value":"98"},{"label":"99","value":"99"},{"label":"100","value":"100"},{"label":"101","value":"101"},{"label":"102","value":"102"},{"label":"103","value":"103"},{"label":"104","value":"104"},{"label":"105","value":"105"},{"label":"106","value":"106"},{"label":"107","value":"107"},{"label":"108","value":"108"},{"label":"109","value":"109"},{"label":"110","value":"110"},{"label":"111","value":"111"},{"label":"112","value":"112"},{"label":"113","value":"113"},{"label":"114","value":"114"},{"label":"115","value":"115"},{"label":"116","value":"116"},{"label":"117","value":"117"},{"label":"118","value":"118"},{"label":"119","value":"119"},{"label":"120","value":"120"}]}
                 onValueChange={(value) => {
                   clientInfo = this.state.clientInfo;
                   clientInfo.age = parseInt(value);
-                  this.setState({ clientInfo: clientInfo });
-                  this.updateCalculatorValues(null,null);
+                  this.setState({ clientInfo: clientInfo },()=>{this.updateCalculatorValues(null,null)});
                 }}
                 onUpArrow={() => {
                   this.inputRefs.name.focus();
@@ -1289,11 +1356,59 @@ export default class Applify extends Component {
                 ref="ages"
               />
             </View>
-
           </View>
 
 
-         </View>
+         {/* GENDER SELECT */}
+          <View style={styles.calculatorTermsWrap}>
+            <Text>Gender</Text>
+            <View style={styles.calculatorTermDropDown}>
+              <RNPickerSelect
+                items={[{"label":"Male","value":"M"},{"label":"Female","value":"F"}]}
+                onValueChange={(value) => {
+                  clientInfo = this.state.clientInfo;
+                  clientInfo.gender = value;
+                  this.setState({ clientInfo: clientInfo },()=>{this.updateCalculatorValues(null,null)});
+                }}
+                onUpArrow={() => {
+                  this.inputRefs.name.focus();
+                }}
+                onDownArrow={() => {
+                  this.inputRefs.picker5.togglePicker();
+                }}
+                style={{icon: {marginTop:-16, marginRight:-8}}}
+                value={this.state.clientInfo.gender}
+                ref="ages"
+              />
+            </View>
+          </View>
+
+
+         {/* TOBACCO SELECT */}
+          <View style={styles.calculatorTermsWrap}>
+            <Text>Tobacco</Text>
+            <View style={styles.calculatorTermDropDown}>
+              <RNPickerSelect
+                items={[{"label":"Yes","value":"Cigarettes"},{"label":"No","value":"None"}]}
+                onValueChange={(value) => {
+                  clientInfo = this.state.clientInfo;
+                  clientInfo.tobacco = value;
+                  this.setState({ clientInfo: clientInfo },()=>{this.updateCalculatorValues(null,null);});
+                }}
+                onUpArrow={() => {
+                  this.inputRefs.name.focus();
+                }}
+                onDownArrow={() => {
+                  this.inputRefs.picker6.togglePicker();
+                }}
+                style={{icon: {marginTop:-16, marginRight:-8}}}
+                value={this.state.clientInfo.tobacco}
+                ref="ages"
+              />
+            </View>
+          </View>
+
+         </ScrollView>
 
          <View style={styles.calculatorProductsCounter}>
            <Text>
@@ -1304,7 +1419,6 @@ export default class Applify extends Component {
              products:
            </Text>
          </View>
-
 
          <ScrollView style={styles.calculatorContentScrollView}>
 
@@ -1323,7 +1437,7 @@ export default class Applify extends Component {
            <Text>&nbsp;</Text>
 
         </ScrollView>
-         {this.renderProviderStatus(Providers)}
+         {/*{this.renderProviderStatus(Providers)}*/}
       </View>
     )
   };
@@ -1365,7 +1479,7 @@ export default class Applify extends Component {
     Animated.timing(this.state.menuPosition, {
       toValue: vis ? -250 : -50,
       easing: Easing.back(),
-      duration: 200,
+      duration: vis===true ? 150 : 50,
     }).start(()=>{
       this.setState({menuVisible: !vis, modalMaskVisible: !vis})
     })
@@ -1410,7 +1524,9 @@ export default class Applify extends Component {
   //   }
   // }
   setFormError = (code,message) => {
-    this.setState({formError: code, formErrorNotice: message},console.log(this.state.formErrorNotice));
+    this.setState({formError: code, formErrorNotice: message},
+      // console.log(this.state.formErrorNotice)
+    );
   }
   clearFormError = () => {
     this.setState({formErrorNotice: '', formError: false});
@@ -1425,19 +1541,19 @@ export default class Applify extends Component {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => {
         // this.setState({user: user},console.log(this.state.user));
-        console.log(this.state.user);
+        // console.log(this.state.user);
         this.setState({loginVisible: false});
-        console.log("SUCCESSFUL LOGIN");
+        // console.log("SUCCESSFUL LOGIN");
       })
       .catch((error) => {
         const { code, message } = error;
-        console.log(message);
+        // console.log(message);
         this.setFormError(code,message);
       });
   }
   charge=()=>{
-    console.log("running charge()")
-    console.log(this.state.registerCC)
+    // console.log("running charge()")
+    // console.log(this.state.registerCC)
     cc = this.state.registerCC.values
     m = cc.expiry.split('/')
   }
@@ -1465,12 +1581,12 @@ export default class Applify extends Component {
     const client = new StripeToken(STRIPE_API_KEY)
     let card_error = false
     date = cc.values.expiry.split('/')
-    console.log(cc)
-    console.log(cc.values.number)
+    // console.log(cc)
+    // console.log(cc.values.number)
     client.createToken({number:cc.values.number, exp_month: date[0], exp_year: date[1], cvc: cc.values.cvc})
       .then(token=>{
-        console.log("token:")
-        console.log(token)
+        // console.log("token:")
+        // console.log(token)
         if(token.error){
           console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************")
           this.setFormError('1009',token.error.message);
@@ -1479,18 +1595,18 @@ export default class Applify extends Component {
         const customer = Stripe.createCustomer(token.id, email)
           .then(customer=>{
             if(customer.error){
-              console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************")
+              // console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************")
               if(!card_error) this.setFormError('1008',customer.error.message);
               card_error = true
             }
-            console.log("customer:")
-            console.log(customer)
+            // console.log("customer:")
+            // console.log(customer)
             Stripe.subscribe(customer.id,planId)
               .then(subscribe=>{
-                console.log("subscription:")
-                console.log(subscribe)
+                // console.log("subscription:")
+                // console.log(subscribe)
                 if(subscribe.error){
-                  console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************")
+                  // console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************")
                   if(!card_error) this.setFormError('1008',subscribe.error.message);
                   card_error = true
                 }
@@ -1503,41 +1619,42 @@ export default class Applify extends Component {
                       this.setState({registerVisible: false},()=>this.setState({loginVisible: true}))
                       console.log("creating user with email and password...")
                       u = firebase.auth().currentUser;
+                      // console.log(u)
                       this.setUser(u.uid,fullName,email,null);
                     })
                     .catch((error) => {
-                      console.log("FIREBASE ERROR: COULD NOT CREATE AN ACCOUNT ****************")
+                      // console.log("FIREBASE ERROR: COULD NOT CREATE AN ACCOUNT ****************")
                       const { code, message } = error;
                       this.setFormError(code,message);
                     });
                 } else {
-                  console.log("========= CARD ERROR ===========")
+                  // console.log("========= CARD ERROR ===========")
                 }
 
               })
               .catch(err=>{
-                console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************");
+                // console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************");
                 card_error = true
-                console.log(err)
+                // console.log(err)
               })
           })
           .catch(err=>{
-            console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************");
+            // console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************");
             card_error = true
-            console.log(err)
+            // console.log(err)
           })
       })
       .catch(err=>{
-        console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************");
+        // console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************");
         this.setFormError('1009',error.message);
         card_error = true
-        console.log(err)
+        // console.log(err)
       })
 
   }
   registerPhone = () => {
     firebase.auth().signInWithPhoneNumber(phone).then((res) => {
-      console.log("phone confirmation result object:"); console.log(res);
+      // console.log("phone confirmation result object:"); console.log(res);
       this.setState({registerPhoneResult: res});
     }).catch((err)=>{
       this.setFormError(err.code, err.message);
@@ -1617,7 +1734,10 @@ export default class Applify extends Component {
           <View style={styles.modalSubmit}>
             <Button
               title="Submit"
-              onPress={()=>{this.onRegister();console.log(this.state.registerErr)}}
+              onPress={()=>{
+                this.onRegister();
+                // console.log(this.state.registerErr)
+              }}
             />
 
           </View>
@@ -1688,7 +1808,7 @@ export default class Applify extends Component {
   pressMenuScanLicense=()=>{this.scan.bind(this)(); this.toggleMenu()}
   pressMenuExportPDF=()=>{this.setState({exportVisible: true}); this.toggleMenu()}
   pressMenuLogOut=()=>{firebase.auth().signOut(); this.toggleMenu(); this.setState({modalMaskVisible: true})}
-  pressMenuSupport=()=>{this.toggleMenu(); this.setState({modalMaskVisible: true, supportVisible: true})}
+  pressMenuSupport=()=>{this.setState({modalMaskVisible: true, supportVisible: true}); this.toggleMenu();}
   menuModal = () => {
     self=this
     var menuItems = [
@@ -1709,7 +1829,7 @@ export default class Applify extends Component {
         backgroundColor: '#FFF',
         width: 300,
         paddingRight: 50,
-        paddingTop: 20,
+        paddingTop: IPHONE_X ? 49 : 20,
         height: '100%',
         zIndex: 101,
         borderWidth: 1,
@@ -1719,7 +1839,7 @@ export default class Applify extends Component {
         shadowOpacity: 0.4,
         opacity: 0.95
       }}>
-        <TouchableHighlight style={styles.menuCloseIcon} onPress={this.toggleMenu}>
+        <TouchableHighlight style={[styles.menuCloseIcon,{top:IPHONE_X ? 30 : 0}]} onPress={this.toggleMenu}>
           <Text style={{fontSize:30,fontWeight:'100',color: '#979797'}}>&rsaquo;</Text>
         </TouchableHighlight>
         <Text style={styles.menuLogo}>insura</Text>
@@ -1728,29 +1848,70 @@ export default class Applify extends Component {
             return (<TouchableHighlight key={i} onPress={()=>{self.toggleMenu; m.callback()}}><Text style={styles.menuItem}>{m.title.toUpperCase()}</Text></TouchableHighlight>)
           })}
         </View>
+        <Text style={[styles.menuEmail,{marginBottom:-10}]}>Logged in as:</Text>
+        <Text style={styles.menuEmail}>{this.state.user && this.state.user.email}</Text>
       </Animated.View>
     )
   }
   sendSupportMessage = () => {
-    console.log("sendSupportMessage Called =======")
-    console.log(this.state.supportInput)
+    // console.log("sendSupportMessage Called =======")
+    // console.log(this.state.supportInput)
     this.saveSupportMessage(this.state.supportInput)
   }
+  closeSupport = () => {
+    this.setState({supportVisible: false, modalMaskVisible: false})
+  }
   supportModal = () => {
+    // console.log("support messages output:")
+    // console.log(this.state.supportMessages)
+    // console.log(this.state.supportMessages.length)
+    // this.setState({modalMaskVisible: true})
     return (
       <View style={styles.supportModal}>
-        <ScrollView style={styles.supportMessagesWrap}>
-          {this.state.supportMessages.length && this.state.supportMessages.map(m=>{
-            <Text>{m.content}</Text>
+
+        <View style={styles.supportModalHeader}>
+          <TouchableHighlight style={styles.supportCloseIcon} onPress={this.closeSupport}>
+            <Text style={{fontSize:30,fontWeight:'100',color: '#000'}}>&rsaquo;</Text>
+          </TouchableHighlight>
+
+          <View style={{flexDirection:'row'}}>
+            <Text style={{fontWeight:'100',fontSize:18}}>Support Chat</Text>
+            <Text style={{color:'#cecece',paddingLeft: 20,position:'relative',top:3}}>(From 8am–5pm MT)</Text>
+          </View>
+
+        </View>
+
+        <AutoScroll style={styles.supportMessagesWrap}>
+          {this.state.supportMessages.length && this.state.supportMessages.map(msg => {
+            return (
+              <View style={[styles.messageBubble]} key={msg.time}>
+                <Text style={[styles.messageBubbleText,styles['messageBubble_'+msg.senderType]]}>{msg.content}</Text>
+              </View>
+            )
           })}
-        </ScrollView>
+          {!this.state.supportMessages && (
+            <Text>Loading...</Text>
+          )}
+        </AutoScroll>
+
+        {/*<ScrollView style={styles.supportMessagesWrap}>*/}
+          {/*<Text style={styles.messageBubble}>TEST POST</Text>*/}
+          {/*{this.state.supportMessages.map(m=>(*/}
+            {/*<Text style={styles.messageBubble} key={m.time}>{m.content}</Text>*/}
+          {/*))}*/}
+        {/*</ScrollView>*/}
+
         <TextInput
+          ref="supportInput"
           value={this.state.supportInput}
-          placeholder={"test"}
+          placeholder={"Aa"}
           // multiline
-          blurOnSubmit
+          // blurOnSubmit
           onChangeText={(text)=>this.setState({supportInput:text})}
-          onSubmitEditing={()=>this.sendSupportMessage()}
+          onSubmitEditing={e=>{
+            this.sendSupportMessage()
+            this.refs.supportInput.focus();
+          }}
           style={styles.supportMessageInput}
         />
       </View>
@@ -1810,8 +1971,14 @@ export default class Applify extends Component {
 
           {/* QUESTION */}
           <View style={styles.masterQuestionWrap}>
-            <View style={styles.innerQuestionWraps}>
-              <Text style={styles.masterQuestion}>{Questions[this.state.activeQuestionId].text}</Text>
+            <View>
+              <MediaQuery minHeight={1} orientation="landscape">
+                <Text style={styles.masterQuestion}>{Questions[this.state.activeQuestionId].text}</Text>
+              </MediaQuery>
+              <MediaQuery minHeight={1} orientation="portrait">
+                <Text style={styles.masterQuestion_portrait}>{Questions[this.state.activeQuestionId].text}</Text>
+              </MediaQuery>
+
             </View>
             <TextInput
               ref="answer"
@@ -1834,7 +2001,6 @@ export default class Applify extends Component {
                 }
               }}
             />
-            {this.state.answerButtonsVisible ? this.renderAnswerButtons(Questions[this.state.activeQuestionId].answerOptions||[]) : null}
             {this.state.autoSuggestVisible ? this.renderOptions() : null}
             {this.state.masterInputNotice ? this.renderMasterInputNotice() : null}
             <View style={styles.questionLinksWrap}>
@@ -1843,11 +2009,19 @@ export default class Applify extends Component {
               <Text style={{color: '#b6b8be', marginTop: 11, marginLeft: 13}}>{this.state.questionCounter} of {Questions.length}</Text>
               {this.renderIdScanButton()}
             </View>
+            {this.state.answerButtonsVisible ? this.renderAnswerButtons(Questions[this.state.activeQuestionId].answerOptions||[]) : null}
             {this.renderButtons(this.state.buttons)}
           </View>
-          <View style={styles.footer}>
-            {this.renderProviderStatus(this.state.Providers)}
-          </View>
+          <MediaQuery minHeight={1} orientation="portrait">
+            <View style={styles.footer_portrait}>
+              {this.renderProviderStatus(this.state.Providers)}
+            </View>
+          </MediaQuery>
+          <MediaQuery minHeight={1} orientation="landscape">
+            <View style={styles.footer}>
+              {this.renderProviderStatus(this.state.Providers)}
+            </View>
+          </MediaQuery>
         </View>
         <Image source={logos[0]} style={styles.backgroundLogo}/>
       </View>
@@ -1872,6 +2046,42 @@ export default class Applify extends Component {
           </ScrollView>
         </View>
       )
+      return (
+        <View style={{position:'absolute',top:0,left:0,height:100,width:'105%',zIndex:10}}>
+          <MediaQuery minHeight={1} orientation="landscape">
+            <View style={styles.answerButtonsWrap}>
+              <ScrollView keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag' horizontal={true}>
+                {options.map(option => (
+                  <TouchableHighlight onPress={() => this.clickAnswer(option)}  key={(option.id)} underlayColor="#FFF">
+                    <View style={styles.answerButton}>
+                      <Text
+                        data-id={option.id}
+                        style={styles.answerButtonText}>
+                        {option.name}</Text>
+                    </View>
+                  </TouchableHighlight>
+                ))}
+              </ScrollView>
+            </View>
+          </MediaQuery>
+          <MediaQuery minHeight={1} orientation="portrait">
+            <View style={styles.answerButtonsWrap_portrait}>
+              <ScrollView keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag' horizontal={true}>
+                {options.map(option => (
+                  <TouchableHighlight onPress={() => this.clickAnswer(option)}  key={(option.id)} underlayColor="#FFF">
+                    <View style={styles.answerButton}>
+                      <Text
+                        data-id={option.id}
+                        style={styles.answerButtonText}>
+                        {option.name}</Text>
+                    </View>
+                  </TouchableHighlight>
+                ))}
+              </ScrollView>
+            </View>
+          </MediaQuery>
+        </View>
+      )
     }
   };
   prepareSavedState = (s) => {
@@ -1886,12 +2096,28 @@ export default class Applify extends Component {
       c
     );
     // this.setState({menuPosition: null});
-    this.setState({buttons: []},()=>{});
-    this.setState({activeQuestionId: 0});
-    this.setState({questionCounter: 1});
-    this.updateProviders(true);
-    console.log("saveAndClear()");
-    console.log(this.state);
+    this.setState({
+      buttons: [],
+      activeQuestionId: 0,
+      questionCounter: 1,
+      calculatorVisible: false,
+      calculatorPositionX: 0,
+      calculatorFaceValue: '25,000',
+      calculatorTerms: '20',
+      calculatorHiddenProducts: [],
+      calculatorClientAge: "",
+      calculatorCounter: 0,
+      calculator: {},
+      questionAnswer: '',
+      masterInputNotice: null,
+      activeButtonId: 0,
+      clientInfo: clientInfoStart,
+    },
+    ()=>{
+      // console.log("saveAndClear() finished");
+      // console.log(this.state);
+      this.updateProviders(true);
+    });
   };
   renderIdScanButton() {
     return (
@@ -1983,8 +2209,8 @@ export default class Applify extends Component {
     }
   }
   setUser=(id,name,email,card)=>{
-    console.log("setUser()")
-    console.log(u)
+    // console.log("setUser()")
+    // console.log(u)
     res = firebase.database().ref('users/'+id).set({
       id: id,
       name: name,
@@ -1997,10 +2223,10 @@ export default class Applify extends Component {
       .catch(err=>console.log(err))
   }
   saveClient=(userId,clientId,state)=>{
-    console.log("saveClient()")
-    console.log(userId)
-    console.log(clientId)
-    console.log(state)
+    // console.log("saveClient()")
+    // console.log(userId)
+    // console.log(clientId)
+    // console.log(state)
     state.user = null
     state.autoSuggestOptions = null
     res = firebase.database().ref('clients/'+clientId).set({
@@ -2015,25 +2241,44 @@ export default class Applify extends Component {
     t = (new Date).getTime()
     ref = firebase.database().ref('support/'+firebase.auth().currentUser.uid)
     msgRef = ref.push()
-    console.log("new msg ref key")
-    console.log(msgRef.key)
+    // console.log("new msg ref key")
+    // console.log(msgRef.key)
     msgRef.setWithPriority({
+      senderType: 'user',
       time: t,
       content: message
-    },-t).done(
+    },t).done(
       this.setState({supportInput: ''})
     )
   }
   getSupportMessages=()=>{
-    self=this
-    messagesRef = firebase.database().ref('support/'+firebase.auth().currentUser.uid)
-    messagesRef.on('value',function(snap) {
-      messages = self.state.supportMessages
-      messages.push(snap.val())
-      self.setState({supportMessages: messages},console.log(supportMessages))
-    })
-  }
+    // console.log("getSupportMessages()")
+    messages = this.state.supportMessages
+    messagesArray = []
+    ref = firebase.database().ref('support/'+firebase.auth().currentUser.uid)
+    // ref.once('value').then(snapshot=>{
+    //   console.log("snapshot returned")
+    //   console.log(snapshot.val())
+    //   _.each(snapshot.val(),(m,k) => {m.k=k;messagesArray.push(m)});
+    // }).done(()=>{
+    //   this.setState({supportMessages: messagesArray},()=>{
+    //     console.log("=== GET EXISTING MESSAGES ===")
+    //     console.log(this.state.supportMessages)
+    //   })
+    //
+    // })
 
+    ref.orderByChild('time')
+      .startAt(3)
+      .on('child_added',(snapshot,prevKey)=>{
+        // console.log("=== NEW support message added ===")
+        // console.log(snapshot)
+        // console.log(snapshot.val())
+        messagesArray.push(snapshot.val())
+        this.setState({supportMessages: messagesArray})
+      })
+
+  }
 }
 
 Number.prototype.toCurrencyString = function(prefix, suffix) {
