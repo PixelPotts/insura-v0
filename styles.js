@@ -100,7 +100,7 @@ export default StyleSheet.create({
     margin: 20,
     padding: 20,
     opacity: 0.3,
-    display: 'none'
+    // display: 'none'
   },
   masterInput: {
     borderBottomColor: '#575e73',

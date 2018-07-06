@@ -16,12 +16,14 @@ import {
   TextInput,
   Picker,
   TouchableHighlight,
+  TouchableOpacity,
   LayoutAnimation,
   Animated,
   Easing,
   KeyboardAvoidingView,
   View
 } from 'react-native';
+const dismissKeyboard = require('react-native/Libraries/Utilities/dismissKeyboard')
 import { MediaQuery } from "react-native-responsive-ui";
 import Device from "react-native-responsive-ui/lib/Device";
 import MediaQuerySelector from "react-native-responsive-ui/lib/MediaQuerySelector";
@@ -59,7 +61,8 @@ let Questions = require('./questions').default.questions;
 // BLINK ID License Key
 import {BlinkID, MRTDKeys, USDLKeys, EUDLKeys, MYKADKeys} from 'blinkid-react-native';
 const BlinklicenseKey = Platform.select({
-  ios: 'RIWAWJSR-CWCHEIUG-P2NBYJIL-PU65ZFWS-UE77OCVN-APB6INY3-CWDH4J6W-7BLWEEON',
+  ios: 'FPL6SITR-KEB5IB5P-23WWSG62-Q5HIUVV3-FTBHCRJS-D3V3M7OA-P6IORS2V-IRKTXM43',
+  // ios: 'RIWAWJSR-CWCHEIUG-P2NBYJIL-PU65ZFWS-UE77OCVN-APB6INY3-CWDH4J6W-7BLWEEON',
   // ios: 'R6GH6FFH-JKIYQ76Q-QGUJSEIH-DSQCNQTR-IUZB525W-PXAH7EHI-NPUGWSGI-EDRUGFHX',
 });
 
@@ -227,7 +230,6 @@ export default class Applify extends Component {
         this.setState({modalMaskVisible: false, registerVisible: false, loginVisible: false});
       }
     });
-
   }
   componentWillUnmount() {
     this.authSubscription();
@@ -331,6 +333,7 @@ export default class Applify extends Component {
     return stat
   }
   processAnswer = (category, details) => {
+    this.refs.answer.blur()
     // console.log("processAnswer");
     let self = this;
     details.answer = details.value === undefined ? details.answer : details.value;
@@ -359,6 +362,8 @@ export default class Applify extends Component {
       details.answer = this.formateHeight(details.answer);
     }
     if(Q.field==='weight'){
+      if(details.answer == 'M') details.answer = 'Male'
+      if(details.answer == 'F') details.answer = 'Female'
       clientInfo.weight = details.answer;
       details.weight = details.answer
     }
@@ -383,7 +388,7 @@ export default class Applify extends Component {
         clientInfo[Q.field] = details.answer;
         this.setState({clientInfo});
         let buttons = {...this.state.buttons};
-        buttons[this.state.activeButtonId].subtitle = details.answer;
+        if(this.state.activeButtonId in buttons) buttons[this.state.activeButtonId].subtitle = details.answer;
         this.setState([{buttons}]);
       }
 
@@ -1474,6 +1479,7 @@ export default class Applify extends Component {
     )
   }
   toggleMenu = () => {
+    this.refs.answer.blur()
     vis = this.state.menuVisible
     if(!vis) this.setState({menuVisible: true, modalMaskVisible: true})
     Animated.timing(this.state.menuPosition, {
@@ -1809,6 +1815,7 @@ export default class Applify extends Component {
   pressMenuExportPDF=()=>{this.setState({exportVisible: true}); this.toggleMenu()}
   pressMenuLogOut=()=>{firebase.auth().signOut(); this.toggleMenu(); this.setState({modalMaskVisible: true})}
   pressMenuSupport=()=>{this.setState({modalMaskVisible: true, supportVisible: true}); this.toggleMenu();}
+  pressMenuDebugLog=()=>{this.setState({consoleIsVisible: true}); this.toggleMenu();}
   menuModal = () => {
     self=this
     var menuItems = [
@@ -1817,6 +1824,7 @@ export default class Applify extends Component {
       {title: 'Export PDF',callback: this.pressMenuExportPDF },
       {title: 'Support',callback: this.pressMenuSupport },
       {title: 'Log Out',callback: this.pressMenuLogOut },
+      {title: 'Debug Log',callback: this.pressMenuDebugLog },
     ]
     return (
       <Animated.View style={{
@@ -1931,6 +1939,16 @@ export default class Applify extends Component {
       </View>
     )
   }
+  renderConsole=()=>{
+    return (
+      <ScrollView style={styles.console}>
+        <TouchableHighlight style={[styles.menuCloseIcon,{top:IPHONE_X ? 30 : 0}]} onPress={()=>{this.setState({consoleIsVisible:false})}}>
+          <Text style={{fontSize:30,fontWeight:'100',color: '#979797'}}>&rsaquo;</Text>
+        </TouchableHighlight>
+        <Text>{this.state.consoleContent}</Text>
+      </ScrollView>
+    )
+  }
   render() {
     StatusBar.setBarStyle('light-content', true);
     return (
@@ -1957,12 +1975,10 @@ export default class Applify extends Component {
         {/* SUPPORT */}
         {this.state.supportVisible ? this.supportModal() : null}
 
-        <View style={styles.paddingWrap}>
+        {/* CONSOLE */}
+        {this.state.consoleIsVisible ? this.renderConsole() : null}
 
-          {/* CONSOLE */}
-          <ScrollView style={styles.console}>
-            <Text>{this.state.consoleContent}</Text>
-          </ScrollView>
+        <View style={styles.paddingWrap}>
 
           {/* HEADER */}
           <View style={styles.header}>
@@ -1982,12 +1998,12 @@ export default class Applify extends Component {
             </View>
             <TextInput
               ref="answer"
-              autoFocus={true}
-              spellCheck={false}
+              // autoFocus={true}
+              // spellCheck={false}
               autoCorrect={false}
-              blurOnSubmit={false}
+              blurOnSubmit={true}
               autoComplete="off"
-              autoCapitalize="none"
+              autoCapitalize="words"
               value={typeof this.state.questionAnswer === undefined ? '' : this.state.questionAnswer.toString()}
               style={styles.masterInput}
               placeholder={"  "+Questions[this.state.activeQuestionId].placeholder}
@@ -2168,6 +2184,7 @@ export default class Applify extends Component {
           if (recognizerResult.resultType === "USDL result") {
             // handle USDL parsing resul
             var fields = recognizerResult.fields;
+            this.log(fields)
             // USDLKeys are keys from keys/usdl_keys.js
 
               let clientInfo = {...this.state.clientInfo};

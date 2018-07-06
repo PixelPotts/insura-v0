@@ -1,9 +1,1 @@
-55]: Command timed out after 3 seconds on try 1 of 4, trying again with a 6 second timeout...
-2018-07-01 18:44:56.298 xcodebuild[92731:5490352] warning: file type '::com.apple.instruments.instrdst' is based on missing file type 'default::com.apple.package'
-[18:44:58]: Couldn't automatically detect the provisioning profile mapping
-[18:44:58]: Since Xcode 9 you need to provide an explicit mapping of what
-[18:44:58]: provisioning profile to use for each target of your app
-[18:44:58]: [Xcodeproj] Unable to open `/Users/pottspotts/AwesomeProject/ios/Users/pottspotts/AwesomeProject/ios/AwesomeProject.xcodeproj` because it doesn't exist.
-[18:44:58]: Detected provisioning profile mapping: {:"org.Applify"=>"testgroup1"}
-[18:44:58]: Couldn't find specified configuration 'Ad Hoc Distribution'.
-
+xcodebuild -sdk iphoneos -workspace /Users/vsts/agent/2.134.2/work/1/s/ios/AwesomeProject.xcworkspace -scheme AwesomeProject clean DSTROOT=/Users/vsts/agent/2.134.2/work/1/output/build/build.dst OBJROOT=/Users/vsts/agent/2.134.2/work/1/output/build/build.obj SYMROOT=/Users/vsts/agent/2.134.2/work/1/output/build/build.sym SHARED_PRECOMPS_DIR=/Users/vsts/agent/2.134.2/work/1/output/build/build.pch CODE_SIGN_STYLE=Manual
