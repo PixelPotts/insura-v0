@@ -25,7 +25,8 @@ import {
   Animated,
   Easing,
   KeyboardAvoidingView,
-  View
+  View,
+  AsyncStorage
 } from 'react-native';
 const dismissKeyboard = require('react-native/Libraries/Utilities/dismissKeyboard')
 import { MediaQuery } from "react-native-responsive-ui";
@@ -40,6 +41,8 @@ import RNPickerSelect from 'react-native-picker-select'
 import Hyperlink from 'react-native-hyperlink'
 import _ from 'lodash'
 import styles from './styles'
+import Storage from 'react-native-storage';
+
 const stringifyObject = require('stringify-object')
 const Providers = require('./providers').default.providers
 const DeclinedDrugs = require('./decline_drugs').default.medications
@@ -922,11 +925,11 @@ export default class Applify extends Component {
     LayoutAnimation.configureNext(CustomLayoutLinear);
     return (
       <View>
-        <MediaQuery minHeight={1} orientation="portrait">
-          <AutoScroll contentContainerStyle={styles.infoButtonsWrap_portrait} keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
-            <View style={{height:100,width:'100%',borderWidth:0,borderColor:'red'}}>&nbsp;</View>
+        <MediaQuery minHeight={1} orientation={"portrait"}>
+          <AutoScroll contentContainerStyle={styles.infoButtonsWrap_portrait} keyboardShouldPersistTaps={'always'} keyboardDismissMode={'on-drag'}>
+            <Text style={{height:100,width:'100%',borderWidth:0,borderColor:'red'}}>{"&nbsp;"}</Text>
             {buttons.map((button,k) => (
-              <TouchableHighlight onPress={()=>{this.editButton(button, k)}} onLongPress={()=>{this.deleteButton(button,k)}} key={button.id} underlayColor="transparent">
+              <TouchableHighlight onPress={()=>{this.editButton(button, k)}} onLongPress={()=>{this.deleteButton(button,k)}} key={button.id} underlayColor={"transparent"}>
                 <View>
                     <View style={[styles.infoButton_portrait,styles['infoButton_'+button.category]]}>
                       <Text style={[styles.infoButtonTitle, styles['infoButtonTitle_'+button.category]]}>{button.title}</Text>
@@ -936,8 +939,8 @@ export default class Applify extends Component {
                 </View>
               </TouchableHighlight>
             ))}
-            <View style={{height:220,width:'100%',borderWidth:0,borderColor:'red'}}>&nbsp;</View>
-          </AutoScroll>Bryan
+            <Text style={{height:220,width:'100%',borderWidth:0,borderColor:'red'}}>{"&nbsp;"}</Text>
+          </AutoScroll>
         </MediaQuery>
         <MediaQuery minHeight={1} orientation="landscape">
           <ScrollView contentContainerStyle={styles.infoButtonsWrap} keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
