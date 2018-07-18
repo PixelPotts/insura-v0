@@ -833,6 +833,7 @@ export default StyleSheet.create({
     fontSize: 30,
     color: '#3b4485',
     fontStyle: 'normal',
+    marginBottom: 30,
     transform: [
       {skewX: '-2deg'},
       {skewY: '-8deg'},
@@ -849,7 +850,7 @@ export default StyleSheet.create({
   menuItemWrap: {
     width: '100%',
     marginLeft: 0,
-    marginTop: 30,
+    marginTop: 0,
   },
   menuItem: {
     fontSize: 13,
@@ -863,7 +864,8 @@ export default StyleSheet.create({
   menuEmail: {
     marginTop: 15,
     fontSize: 10,
-    color: '#6f6f6f'
+    color: '#6f6f6f',
+    alignSelf: 'center'
   },
 
 
@@ -948,6 +950,18 @@ export default StyleSheet.create({
     padding: 10,
     // height: 40,
     width: '100%'
+  },
+
+
+  // Client History ///////////////////////////
+
+  clientHistoryWrap: {
+
+  },
+  clientHistoryLink: {
+    fontSize: 15,
+    paddingBottom: 8,
+    paddingTop: 8,
   }
 
 });

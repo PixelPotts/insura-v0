@@ -8752,7 +8752,7 @@ export default {
     //   ]
     // },
     //
-    //
+
     // // AIG
     // {
     //   id: 7,
@@ -8769,29 +8769,30 @@ export default {
     //         max: 20000
     //       },
     //       guaranteedIssue: 1,
-    //       underwriting: {
-    //         age: {
-    //           min: 50,
-    //           max: 85
-    //         },
-    //         bmi: {
-    //           min: 0,
-    //           max: 999
-    //         },
-    //         drugs: {
-    //           decline: [],
-    //           info: [],
-    //           seeDecline: null
-    //         },
-    //         conditions: {
-    //           decline: [],
-    //           seeDecline: false
-    //         }
+    //       calculator: {
+    //         type: 'term',
+    //         terms: [10,15,20,25,30],
+    //         products: [
+    //           {
+    //             guaranteed: 1,
+    //             id: 402,
+    //             name: 'Simplified Issue Whole Life',
+    //             type: 'term',
+    //             multiplier: 1000,
+    //             fee: 60,
+    //             monthFactor: 0.0875,
+    //             range: {'min':1000, 'max':40000},
+    //             age: { min: 18, max: 80 },
+    //             rates: [],
+    //             tableType: 'term--age--gender-smokerStatus',
+    //             table: {}
+    //           },
+    //         ]
     //       }
     //     }
     //   ]
     // },
-    //
+
 
   ]
 }

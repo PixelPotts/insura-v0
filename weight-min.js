@@ -1,1324 +1,1324 @@
 export default {
   min: {
     "36": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "37": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "38": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "39": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "40": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "41": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "42": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "43": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "44": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "45": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "46": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "47": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "48": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "49": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "50": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "51": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "52": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "53": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "54": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "55": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "56": {
-      "HMSP": null,
-      "HMSP-DI": 74,
-      "EPL": 74,
-      "EPG": null,
-      "UP1": 74,
-      "UP2": 74,
-      "UP3": null,
-      "TLE50": 74,
-      "TLE65": 74,
-      "GULE50": 74,
-      "GULE65": 74,
-      "LPLB": 74,
-      "LPGB": 74,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"74"
+      ,"HMSP-DI":"74"
+      ,"EPL":"74"
+      ,"EPG":"A"
+      ,"UP1":"74"
+      ,"UP2":"74"
+      ,"UP3":"A"
+      ,"TLE50":"74"
+      ,"TLE65":"74"
+      ,"GULE50":"74"
+      ,"GULE65":"74"
+      ,"LPLB":"74"
+      ,"LPGB":"74"
+      ,"IS":"74"
+      ,"ES":"74"
+      ,"10P":"74"
+      ,"PR":"IC"
+      ,"SF":"74"
+      ,"SUL":"74"
+      ,"DCFE":"74"
+      ,"SIWL":"74"
+      ,"SI-WL":"A"
     },
     "57": {
-      "HMSP": null,
-      "HMSP-DI": 77,
-      "EPL": 77,
-      "EPG": null,
-      "UP1": 77,
-      "UP2": 77,
-      "UP3": null,
-      "TLE50": 77,
-      "TLE65": 77,
-      "GULE50": 77,
-      "GULE65": 77,
-      "LPLB": 77,
-      "LPGB": 77,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"77"
+      ,"HMSP-DI":"77"
+      ,"EPL":"77"
+      ,"EPG":"A"
+      ,"UP1":"77"
+      ,"UP2":"77"
+      ,"UP3":"A"
+      ,"TLE50":"77"
+      ,"TLE65":"77"
+      ,"GULE50":"77"
+      ,"GULE65":"77"
+      ,"LPLB":"77"
+      ,"LPGB":"77"
+      ,"IS":"77"
+      ,"ES":"77"
+      ,"10P":"77"
+      ,"PR":"IC"
+      ,"SF":"77"
+      ,"SUL":"77"
+      ,"DCFE":"77"
+      ,"SIWL":"77"
+      ,"SI-WL":"A"
     },
     "58": {
-      "HMSP": null,
-      "HMSP-DI": 79,
-      "EPL": 79,
-      "EPG": null,
-      "UP1": 79,
-      "UP2": 79,
-      "UP3": null,
-      "TLE50": 79,
-      "TLE65": 79,
-      "GULE50": 79,
-      "GULE65": 79,
-      "LPLB": 79,
-      "LPGB": 79,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 80,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"79"
+      ,"HMSP-DI":"79"
+      ,"EPL":"79"
+      ,"EPG":"A"
+      ,"UP1":"79"
+      ,"UP2":"79"
+      ,"UP3":"A"
+      ,"TLE50":"79"
+      ,"TLE65":"79"
+      ,"GULE50":"79"
+      ,"GULE65":"79"
+      ,"LPLB":"79"
+      ,"LPGB":"79"
+      ,"IS":"79"
+      ,"ES":"79"
+      ,"10P":"79"
+      ,"PR":"80"
+      ,"SF":"79"
+      ,"SUL":"79"
+      ,"DCFE":"79"
+      ,"SIWL":"79"
+      ,"SI-WL":"A"
     },
     "59": {
-      "HMSP": null,
-      "HMSP-DI": 82,
-      "EPL": 82,
-      "EPG": null,
-      "UP1": 82,
-      "UP2": 82,
-      "UP3": null,
-      "TLE50": 82,
-      "TLE65": 82,
-      "GULE50": 82,
-      "GULE65": 82,
-      "LPLB": 82,
-      "LPGB": 82,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 83,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"82"
+      ,"HMSP-DI":"82"
+      ,"EPL":"82"
+      ,"EPG":"A"
+      ,"UP1":"82"
+      ,"UP2":"82"
+      ,"UP3":"A"
+      ,"TLE50":"82"
+      ,"TLE65":"82"
+      ,"GULE50":"82"
+      ,"GULE65":"82"
+      ,"LPLB":"82"
+      ,"LPGB":"82"
+      ,"IS":"82"
+      ,"ES":"82"
+      ,"10P":"82"
+      ,"PR":"83"
+      ,"SF":"82"
+      ,"SUL":"82"
+      ,"DCFE":"82"
+      ,"SIWL":"82"
+      ,"SI-WL":"A"
     },
     "60": {
-      "HMSP": null,
-      "HMSP-DI": 85,
-      "EPL": 85,
-      "EPG": null,
-      "UP1": 85,
-      "UP2": 85,
-      "UP3": null,
-      "TLE50": 85,
-      "TLE65": 85,
-      "GULE50": 85,
-      "GULE65": 85,
-      "LPLB": 85,
-      "LPGB": 85,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 86,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"85"
+      ,"HMSP-DI":"85"
+      ,"EPL":"85"
+      ,"EPG":"A"
+      ,"UP1":"85"
+      ,"UP2":"85"
+      ,"UP3":"A"
+      ,"TLE50":"85"
+      ,"TLE65":"85"
+      ,"GULE50":"85"
+      ,"GULE65":"85"
+      ,"LPLB":"85"
+      ,"LPGB":"85"
+      ,"IS":"85"
+      ,"ES":"85"
+      ,"10P":"85"
+      ,"PR":"86"
+      ,"SF":"85"
+      ,"SUL":"85"
+      ,"DCFE":"85"
+      ,"SIWL":"85"
+      ,"SI-WL":"A"
     },
     "61": {
-      "HMSP": null,
-      "HMSP-DI": 88,
-      "EPL": 88,
-      "EPG": null,
-      "UP1": 88,
-      "UP2": 88,
-      "UP3": null,
-      "TLE50": 88,
-      "TLE65": 88,
-      "GULE50": 88,
-      "GULE65": 88,
-      "LPLB": 88,
-      "LPGB": 88,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 89,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"88"
+      ,"HMSP-DI":"88"
+      ,"EPL":"88"
+      ,"EPG":"A"
+      ,"UP1":"88"
+      ,"UP2":"88"
+      ,"UP3":"A"
+      ,"TLE50":"88"
+      ,"TLE65":"88"
+      ,"GULE50":"88"
+      ,"GULE65":"88"
+      ,"LPLB":"88"
+      ,"LPGB":"88"
+      ,"IS":"88"
+      ,"ES":"88"
+      ,"10P":"88"
+      ,"PR":"89"
+      ,"SF":"88"
+      ,"SUL":"88"
+      ,"DCFE":"88"
+      ,"SIWL":"88"
+      ,"SI-WL":"A"
     },
     "62": {
-      "HMSP": null,
-      "HMSP-DI": 91,
-      "EPL": 91,
-      "EPG": null,
-      "UP1": 91,
-      "UP2": 91,
-      "UP3": null,
-      "TLE50": 91,
-      "TLE65": 91,
-      "GULE50": 91,
-      "GULE65": 91,
-      "LPLB": 91,
-      "LPGB": 91,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 92,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"91"
+      ,"HMSP-DI":"91"
+      ,"EPL":"91"
+      ,"EPG":"A"
+      ,"UP1":"91"
+      ,"UP2":"91"
+      ,"UP3":"A"
+      ,"TLE50":"91"
+      ,"TLE65":"91"
+      ,"GULE50":"91"
+      ,"GULE65":"91"
+      ,"LPLB":"91"
+      ,"LPGB":"91"
+      ,"IS":"91"
+      ,"ES":"91"
+      ,"10P":"91"
+      ,"PR":"92"
+      ,"SF":"91"
+      ,"SUL":"91"
+      ,"DCFE":"91"
+      ,"SIWL":"91"
+      ,"SI-WL":"A"
     },
     "63": {
-      "HMSP": null,
-      "HMSP-DI": 94,
-      "EPL": 94,
-      "EPG": null,
-      "UP1": 94,
-      "UP2": 94,
-      "UP3": null,
-      "TLE50": 94,
-      "TLE65": 94,
-      "GULE50": 94,
-      "GULE65": 94,
-      "LPLB": 94,
-      "LPGB": 94,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 95,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"94"
+      ,"HMSP-DI":"94"
+      ,"EPL":"94"
+      ,"EPG":"A"
+      ,"UP1":"94"
+      ,"UP2":"94"
+      ,"UP3":"A"
+      ,"TLE50":"94"
+      ,"TLE65":"94"
+      ,"GULE50":"94"
+      ,"GULE65":"94"
+      ,"LPLB":"94"
+      ,"LPGB":"94"
+      ,"IS":"94"
+      ,"ES":"94"
+      ,"10P":"94"
+      ,"PR":"95"
+      ,"SF":"94"
+      ,"SUL":"94"
+      ,"DCFE":"94"
+      ,"SIWL":"94"
+      ,"SI-WL":"A"
     },
     "64": {
-      "HMSP": null,
-      "HMSP-DI": 97,
-      "EPL": 97,
-      "EPG": null,
-      "UP1": 97,
-      "UP2": 97,
-      "UP3": null,
-      "TLE50": 97,
-      "TLE65": 97,
-      "GULE50": 97,
-      "GULE65": 97,
-      "LPLB": 97,
-      "LPGB": 97,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 98,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"97"
+      ,"HMSP-DI":"97"
+      ,"EPL":"97"
+      ,"EPG":"A"
+      ,"UP1":"97"
+      ,"UP2":"97"
+      ,"UP3":"A"
+      ,"TLE50":"97"
+      ,"TLE65":"97"
+      ,"GULE50":"97"
+      ,"GULE65":"97"
+      ,"LPLB":"97"
+      ,"LPGB":"97"
+      ,"IS":"97"
+      ,"ES":"97"
+      ,"10P":"97"
+      ,"PR":"98"
+      ,"SF":"97"
+      ,"SUL":"97"
+      ,"DCFE":"97"
+      ,"SIWL":"97"
+      ,"SI-WL":"A"
     },
     "65": {
-      "HMSP": null,
-      "HMSP-DI": 100,
-      "EPL": 100,
-      "EPG": null,
-      "UP1": 100,
-      "UP2": 100,
-      "UP3": null,
-      "TLE50": 100,
-      "TLE65": 100,
-      "GULE50": 100,
-      "GULE65": 100,
-      "LPLB": 100,
-      "LPGB": 100,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 101,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"100"
+      ,"HMSP-DI":"100"
+      ,"EPL":"100"
+      ,"EPG":"A"
+      ,"UP1":"100"
+      ,"UP2":"100"
+      ,"UP3":"A"
+      ,"TLE50":"100"
+      ,"TLE65":"100"
+      ,"GULE50":"100"
+      ,"GULE65":"100"
+      ,"LPLB":"100"
+      ,"LPGB":"100"
+      ,"IS":"100"
+      ,"ES":"100"
+      ,"10P":"100"
+      ,"PR":"101"
+      ,"SF":"100"
+      ,"SUL":"100"
+      ,"DCFE":"100"
+      ,"SIWL":"100"
+      ,"SI-WL":"A"
     },
     "66": {
-      "HMSP": null,
-      "HMSP-DI": 103,
-      "EPL": 103,
-      "EPG": null,
-      "UP1": 103,
-      "UP2": 103,
-      "UP3": null,
-      "TLE50": 103,
-      "TLE65": 103,
-      "GULE50": 103,
-      "GULE65": 103,
-      "LPLB": 103,
-      "LPGB": 103,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 104,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"103"
+      ,"HMSP-DI":"103"
+      ,"EPL":"103"
+      ,"EPG":"A"
+      ,"UP1":"103"
+      ,"UP2":"103"
+      ,"UP3":"A"
+      ,"TLE50":"103"
+      ,"TLE65":"103"
+      ,"GULE50":"103"
+      ,"GULE65":"103"
+      ,"LPLB":"103"
+      ,"LPGB":"103"
+      ,"IS":"103"
+      ,"ES":"103"
+      ,"10P":"103"
+      ,"PR":"104"
+      ,"SF":"103"
+      ,"SUL":"103"
+      ,"DCFE":"103"
+      ,"SIWL":"103"
+      ,"SI-WL":"A"
     },
     "67": {
-      "HMSP": null,
-      "HMSP-DI": 106,
-      "EPL": 106,
-      "EPG": null,
-      "UP1": 106,
-      "UP2": 106,
-      "UP3": null,
-      "TLE50": 106,
-      "TLE65": 106,
-      "GULE50": 106,
-      "GULE65": 106,
-      "LPLB": 106,
-      "LPGB": 106,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 107,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"106"
+      ,"HMSP-DI":"106"
+      ,"EPL":"106"
+      ,"EPG":"A"
+      ,"UP1":"106"
+      ,"UP2":"106"
+      ,"UP3":"A"
+      ,"TLE50":"106"
+      ,"TLE65":"106"
+      ,"GULE50":"106"
+      ,"GULE65":"106"
+      ,"LPLB":"106"
+      ,"LPGB":"106"
+      ,"IS":"106"
+      ,"ES":"106"
+      ,"10P":"106"
+      ,"PR":"107"
+      ,"SF":"106"
+      ,"SUL":"106"
+      ,"DCFE":"106"
+      ,"SIWL":"106"
+      ,"SI-WL":"A"
     },
     "68": {
-      "HMSP": null,
-      "HMSP-DI": 109,
-      "EPL": 109,
-      "EPG": null,
-      "UP1": 109,
-      "UP2": 109,
-      "UP3": null,
-      "TLE50": 109,
-      "TLE65": 109,
-      "GULE50": 109,
-      "GULE65": 109,
-      "LPLB": 109,
-      "LPGB": 109,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 110,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"109"
+      ,"HMSP-DI":"109"
+      ,"EPL":"109"
+      ,"EPG":"A"
+      ,"UP1":"109"
+      ,"UP2":"109"
+      ,"UP3":"A"
+      ,"TLE50":"109"
+      ,"TLE65":"109"
+      ,"GULE50":"109"
+      ,"GULE65":"109"
+      ,"LPLB":"109"
+      ,"LPGB":"109"
+      ,"IS":"109"
+      ,"ES":"109"
+      ,"10P":"109"
+      ,"PR":"110"
+      ,"SF":"109"
+      ,"SUL":"109"
+      ,"DCFE":"109"
+      ,"SIWL":"109"
+      ,"SI-WL":"A"
     },
     "69": {
-      "HMSP": null,
-      "HMSP-DI": 112,
-      "EPL": 112,
-      "EPG": null,
-      "UP1": 112,
-      "UP2": 112,
-      "UP3": null,
-      "TLE50": 112,
-      "TLE65": 112,
-      "GULE50": 112,
-      "GULE65": 112,
-      "LPLB": 112,
-      "LPGB": 112,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 113,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"112"
+      ,"HMSP-DI":"112"
+      ,"EPL":"112"
+      ,"EPG":"A"
+      ,"UP1":"112"
+      ,"UP2":"112"
+      ,"UP3":"A"
+      ,"TLE50":"112"
+      ,"TLE65":"112"
+      ,"GULE50":"112"
+      ,"GULE65":"112"
+      ,"LPLB":"112"
+      ,"LPGB":"112"
+      ,"IS":"112"
+      ,"ES":"112"
+      ,"10P":"112"
+      ,"PR":"113"
+      ,"SF":"112"
+      ,"SUL":"112"
+      ,"DCFE":"112"
+      ,"SIWL":"112"
+      ,"SI-WL":"A"
     },
     "70": {
-      "HMSP": null,
-      "HMSP-DI": 115,
-      "EPL": 115,
-      "EPG": null,
-      "UP1": 115,
-      "UP2": 115,
-      "UP3": null,
-      "TLE50": 115,
-      "TLE65": 115,
-      "GULE50": 115,
-      "GULE65": 115,
-      "LPLB": 115,
-      "LPGB": 115,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 117,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"115"
+      ,"HMSP-DI":"115"
+      ,"EPL":"115"
+      ,"EPG":"A"
+      ,"UP1":"115"
+      ,"UP2":"115"
+      ,"UP3":"A"
+      ,"TLE50":"115"
+      ,"TLE65":"115"
+      ,"GULE50":"115"
+      ,"GULE65":"115"
+      ,"LPLB":"115"
+      ,"LPGB":"115"
+      ,"IS":"115"
+      ,"ES":"115"
+      ,"10P":"115"
+      ,"PR":"117"
+      ,"SF":"115"
+      ,"SUL":"115"
+      ,"DCFE":"115"
+      ,"SIWL":"115"
+      ,"SI-WL":"A"
     },
     "71": {
-      "HMSP": null,
-      "HMSP-DI": 119,
-      "EPL": 119,
-      "EPG": null,
-      "UP1": 119,
-      "UP2": 119,
-      "UP3": null,
-      "TLE50": 119,
-      "TLE65": 119,
-      "GULE50": 119,
-      "GULE65": 119,
-      "LPLB": 119,
-      "LPGB": 119,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 121,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"119"
+      ,"HMSP-DI":"119"
+      ,"EPL":"119"
+      ,"EPG":"A"
+      ,"UP1":"119"
+      ,"UP2":"119"
+      ,"UP3":"A"
+      ,"TLE50":"119"
+      ,"TLE65":"119"
+      ,"GULE50":"119"
+      ,"GULE65":"119"
+      ,"LPLB":"119"
+      ,"LPGB":"119"
+      ,"IS":"119"
+      ,"ES":"119"
+      ,"10P":"119"
+      ,"PR":"121"
+      ,"SF":"119"
+      ,"SUL":"119"
+      ,"DCFE":"119"
+      ,"SIWL":"119"
+      ,"SI-WL":"A"
     },
     "72": {
-      "HMSP": null,
-      "HMSP-DI": 122,
-      "EPL": 122,
-      "EPG": null,
-      "UP1": 122,
-      "UP2": 122,
-      "UP3": null,
-      "TLE50": 122,
-      "TLE65": 122,
-      "GULE50": 122,
-      "GULE65": 122,
-      "LPLB": 122,
-      "LPGB": 122,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 125,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"122"
+      ,"HMSP-DI":"122"
+      ,"EPL":"122"
+      ,"EPG":"A"
+      ,"UP1":"122"
+      ,"UP2":"122"
+      ,"UP3":"A"
+      ,"TLE50":"122"
+      ,"TLE65":"122"
+      ,"GULE50":"122"
+      ,"GULE65":"122"
+      ,"LPLB":"122"
+      ,"LPGB":"122"
+      ,"IS":"122"
+      ,"ES":"122"
+      ,"10P":"122"
+      ,"PR":"125"
+      ,"SF":"122"
+      ,"SUL":"122"
+      ,"DCFE":"122"
+      ,"SIWL":"122"
+      ,"SI-WL":"A"
     },
     "73": {
-      "HMSP": null,
-      "HMSP-DI": 126,
-      "EPL": 126,
-      "EPG": null,
-      "UP1": 126,
-      "UP2": 126,
-      "UP3": null,
-      "TLE50": 126,
-      "TLE65": 126,
-      "GULE50": 126,
-      "GULE65": 126,
-      "LPLB": 126,
-      "LPGB": 126,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 129,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"126"
+      ,"HMSP-DI":"126"
+      ,"EPL":"126"
+      ,"EPG":"A"
+      ,"UP1":"126"
+      ,"UP2":"126"
+      ,"UP3":"A"
+      ,"TLE50":"126"
+      ,"TLE65":"126"
+      ,"GULE50":"126"
+      ,"GULE65":"126"
+      ,"LPLB":"126"
+      ,"LPGB":"126"
+      ,"IS":"126"
+      ,"ES":"126"
+      ,"10P":"126"
+      ,"PR":"129"
+      ,"SF":"126"
+      ,"SUL":"126"
+      ,"DCFE":"126"
+      ,"SIWL":"126"
+      ,"SI-WL":"A"
     },
     "74": {
-      "HMSP": null,
-      "HMSP-DI": 129,
-      "EPL": 129,
-      "EPG": null,
-      "UP1": 129,
-      "UP2": 129,
-      "UP3": null,
-      "TLE50": 129,
-      "TLE65": 129,
-      "GULE50": 129,
-      "GULE65": 129,
-      "LPLB": 129,
-      "LPGB": 129,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 133,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"129"
+      ,"HMSP-DI":"129"
+      ,"EPL":"129"
+      ,"EPG":"A"
+      ,"UP1":"129"
+      ,"UP2":"129"
+      ,"UP3":"A"
+      ,"TLE50":"129"
+      ,"TLE65":"129"
+      ,"GULE50":"129"
+      ,"GULE65":"129"
+      ,"LPLB":"129"
+      ,"LPGB":"129"
+      ,"IS":"129"
+      ,"ES":"129"
+      ,"10P":"129"
+      ,"PR":"133"
+      ,"SF":"129"
+      ,"SUL":"129"
+      ,"DCFE":"129"
+      ,"SIWL":"129"
+      ,"SI-WL":"A"
     },
     "75": {
-      "HMSP": null,
-      "HMSP-DI": 133,
-      "EPL": 133,
-      "EPG": null,
-      "UP1": 133,
-      "UP2": 133,
-      "UP3": null,
-      "TLE50": 133,
-      "TLE65": 133,
-      "GULE50": 133,
-      "GULE65": 133,
-      "LPLB": 133,
-      "LPGB": 133,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 137,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"133"
+      ,"HMSP-DI":"133"
+      ,"EPL":"133"
+      ,"EPG":"A"
+      ,"UP1":"133"
+      ,"UP2":"133"
+      ,"UP3":"A"
+      ,"TLE50":"133"
+      ,"TLE65":"133"
+      ,"GULE50":"133"
+      ,"GULE65":"133"
+      ,"LPLB":"133"
+      ,"LPGB":"133"
+      ,"IS":"133"
+      ,"ES":"133"
+      ,"10P":"133"
+      ,"PR":"137"
+      ,"SF":"133"
+      ,"SUL":"133"
+      ,"DCFE":"133"
+      ,"SIWL":"133"
+      ,"SI-WL":"A"
     },
     "76": {
-      "HMSP": null,
-      "HMSP-DI": 136,
-      "EPL": 136,
-      "EPG": null,
-      "UP1": 136,
-      "UP2": 136,
-      "UP3": null,
-      "TLE50": 136,
-      "TLE65": 136,
-      "GULE50": 136,
-      "GULE65": 136,
-      "LPLB": 136,
-      "LPGB": 136,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 142,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"136"
+      ,"HMSP-DI":"136"
+      ,"EPL":"136"
+      ,"EPG":"A"
+      ,"UP1":"136"
+      ,"UP2":"136"
+      ,"UP3":"A"
+      ,"TLE50":"136"
+      ,"TLE65":"136"
+      ,"GULE50":"136"
+      ,"GULE65":"136"
+      ,"LPLB":"136"
+      ,"LPGB":"136"
+      ,"IS":"136"
+      ,"ES":"136"
+      ,"10P":"136"
+      ,"PR":"142"
+      ,"SF":"136"
+      ,"SUL":"136"
+      ,"DCFE":"136"
+      ,"SIWL":"136"
+      ,"SI-WL":"A"
     },
     "77": {
-      "HMSP": null,
-      "HMSP-DI": 140,
-      "EPL": 140,
-      "EPG": null,
-      "UP1": 140,
-      "UP2": 140,
-      "UP3": null,
-      "TLE50": 140,
-      "TLE65": 140,
-      "GULE50": 140,
-      "GULE65": 140,
-      "LPLB": 140,
-      "LPGB": 140,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 147,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"140"
+      ,"HMSP-DI":"140"
+      ,"EPL":"140"
+      ,"EPG":"A"
+      ,"UP1":"140"
+      ,"UP2":"140"
+      ,"UP3":"A"
+      ,"TLE50":"140"
+      ,"TLE65":"140"
+      ,"GULE50":"140"
+      ,"GULE65":"140"
+      ,"LPLB":"140"
+      ,"LPGB":"140"
+      ,"IS":"140"
+      ,"ES":"140"
+      ,"10P":"140"
+      ,"PR":"147"
+      ,"SF":"140"
+      ,"SUL":"140"
+      ,"DCFE":"140"
+      ,"SIWL":"140"
+      ,"SI-WL":"A"
     },
     "78": {
-      "HMSP": null,
-      "HMSP-DI": 143,
-      "EPL": 143,
-      "EPG": null,
-      "UP1": 143,
-      "UP2": 143,
-      "UP3": null,
-      "TLE50": 143,
-      "TLE65": 143,
-      "GULE50": 143,
-      "GULE65": 143,
-      "LPLB": 143,
-      "LPGB": 143,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 152,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"143"
+      ,"HMSP-DI":"143"
+      ,"EPL":"143"
+      ,"EPG":"A"
+      ,"UP1":"143"
+      ,"UP2":"143"
+      ,"UP3":"A"
+      ,"TLE50":"143"
+      ,"TLE65":"143"
+      ,"GULE50":"143"
+      ,"GULE65":"143"
+      ,"LPLB":"143"
+      ,"LPGB":"143"
+      ,"IS":"143"
+      ,"ES":"143"
+      ,"10P":"143"
+      ,"PR":"152"
+      ,"SF":"143"
+      ,"SUL":"143"
+      ,"DCFE":"143"
+      ,"SIWL":"143"
+      ,"SI-WL":"A"
     },
     "79": {
-      "HMSP": null,
-      "HMSP-DI": 147,
-      "EPL": 147,
-      "EPG": null,
-      "UP1": 147,
-      "UP2": 147,
-      "UP3": null,
-      "TLE50": 147,
-      "TLE65": 147,
-      "GULE50": 147,
-      "GULE65": 147,
-      "LPLB": 147,
-      "LPGB": 147,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 159,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"147"
+      ,"HMSP-DI":"147"
+      ,"EPL":"147"
+      ,"EPG":"A"
+      ,"UP1":"147"
+      ,"UP2":"147"
+      ,"UP3":"A"
+      ,"TLE50":"147"
+      ,"TLE65":"147"
+      ,"GULE50":"147"
+      ,"GULE65":"147"
+      ,"LPLB":"147"
+      ,"LPGB":"147"
+      ,"IS":"147"
+      ,"ES":"147"
+      ,"10P":"147"
+      ,"PR":"159"
+      ,"SF":"147"
+      ,"SUL":"147"
+      ,"DCFE":"147"
+      ,"SIWL":"147"
+      ,"SI-WL":"A"
     },
     "80": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": 151,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": 151,
-      "TLE65": 151,
-      "GULE50": 151,
-      "GULE65": 151,
-      "LPLB": 151,
-      "LPGB": 151,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 162,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"151"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"151"
+      ,"TLE65":"151"
+      ,"GULE50":"151"
+      ,"GULE65":"151"
+      ,"LPLB":"151"
+      ,"LPGB":"151"
+      ,"IS":"151"
+      ,"ES":"151"
+      ,"10P":"151"
+      ,"PR":"162"
+      ,"SF":"151"
+      ,"SUL":"151"
+      ,"DCFE":"151"
+      ,"SIWL":"151"
+      ,"SI-WL":"A"
     },
     "81": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": 154,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": 154,
-      "TLE65": 154,
-      "GULE50": 154,
-      "GULE65": 154,
-      "LPLB": 154,
-      "LPGB": 154,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": 167,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"154"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"154"
+      ,"TLE65":"154"
+      ,"GULE50":"154"
+      ,"GULE65":"154"
+      ,"LPLB":"154"
+      ,"LPGB":"154"
+      ,"IS":"154"
+      ,"ES":"154"
+      ,"10P":"154"
+      ,"PR":"167"
+      ,"SF":"154"
+      ,"SUL":"154"
+      ,"DCFE":"154"
+      ,"SIWL":"154"
+      ,"SI-WL":"A"
     },
     "82": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": 158,
-      "TLE65": 158,
-      "GULE50": 158,
-      "GULE65": 158,
-      "LPLB": 158,
-      "LPGB": 158,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"158"
+      ,"TLE65":"158"
+      ,"GULE50":"158"
+      ,"GULE65":"158"
+      ,"LPLB":"158"
+      ,"LPGB":"158"
+      ,"IS":"158"
+      ,"ES":"158"
+      ,"10P":"158"
+      ,"PR":"IC"
+      ,"SF":"158"
+      ,"SUL":"158"
+      ,"DCFE":"158"
+      ,"SIWL":"158"
+      ,"SI-WL":"A"
     },
     "83": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "84": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "85": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "86": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "87": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "88": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "89": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     },
     "90": {
-      "HMSP": null,
-      "HMSP-DI": null,
-      "EPL": null,
-      "EPG": null,
-      "UP1": null,
-      "UP2": null,
-      "UP3": null,
-      "TLE50": null,
-      "TLE65": null,
-      "GULE50": null,
-      "GULE65": null,
-      "LPLB": null,
-      "LPGB": null,
-      "IS": null,
-      "ES": null,
-      "10P": null,
-      "PR": null,
-      "SF": null,
-      "SUL": null,
-      "DCFE": null,
-      "SIWL": null,
-      "SI-WL": null
+      "HMSP":"IC"
+      ,"HMSP-DI":"IC"
+      ,"EPL":"IC"
+      ,"EPG":"A"
+      ,"UP1":"IC"
+      ,"UP2":"IC"
+      ,"UP3":"A"
+      ,"TLE50":"IC"
+      ,"TLE65":"IC"
+      ,"GULE50":"IC"
+      ,"GULE65":"IC"
+      ,"LPLB":"IC"
+      ,"LPGB":"IC"
+      ,"IS":"IC"
+      ,"ES":"IC"
+      ,"10P":"IC"
+      ,"PR":"IC"
+      ,"SF":"IC"
+      ,"SUL":"IC"
+      ,"DCFE":"IC"
+      ,"SIWL":"IC"
+      ,"SI-WL":"A"
     }
   }
 }

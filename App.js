@@ -48,7 +48,6 @@ const Providers = require('./providers').default.providers
 const DeclinedDrugs = require('./decline_drugs').default.medications
 const CoverageLimits = require('./coverage-limits').default
 var TimerMixin = require('react-timer-mixin');
-
 const {width, height} = Device.dimensions.window;
 const PHONE = MediaQuerySelector.query({ orientation: "portrait", minHeight: 1 }, width, height)
 const IPHONE_X = MediaQuerySelector.query({ minHeight: 812, minWidth: 375 }, width, height);
@@ -63,6 +62,18 @@ const Conditions = require('./decline_conditions').default.conditions;
 const Medications = require('./medications2').default.all;
 const Calculator = require('./calculatorData').default;
 let Questions = require('./questions').default.questions;
+
+const uniqueId = "CDf0zu-cs24N64lIw-t2OAxvvQA-PbXIxjhNv-Hdk7LxQ0k-pXK1pehOItc-bG79adAAPk"
+
+var storage = new Storage({
+  size: 1000,
+  storageBackend: AsyncStorage,
+  defaultExpires: null,
+  enableCache: true,
+  sync : {
+    // we'll talk about the details later.
+  }
+})
 
 // BLINK ID License Key
 import {BlinkID, MRTDKeys, USDLKeys, EUDLKeys, MYKADKeys} from 'blinkid-react-native';
@@ -127,17 +138,20 @@ var CustomLayoutLinear = {
     type: LayoutAnimation.Types.easeInEaseOut,
   },
 };
-let calculatorTermStart = '20'
-let calculatorFaceValueStart = '25,000'
-let clientStartAge = 50;
-let clientStartGender = 'M';
-let clientStartHeight = 69;
-let clientStartWeight = 170;
+
+let calculatorTermStart       = '20'
+let calculatorFaceValueStart  = '25,000'
+let clientStartAge            = 50;
+let clientStartGender         = 'M';
+let clientStartHeight         = 69;
+let clientStartWeight         = 170;
+let clientStartName           = getRandomName()
 let clientInfoStart = {
-  name: '',
-  firstName: '',
+  key: clientStartName.key,
+  name: clientStartName.first +' '+ clientStartName.last,
+  firstName: clientStartName.first,
   middleName: '',
-  lastName: '',
+  lastName: clientStartName.last,
   gender: clientStartGender,
   age: clientStartAge,
   dob: '',
@@ -154,6 +168,7 @@ let clientInfoStart = {
 };
 export default class Applify extends Component {
   constructor(props) {
+
     super(props);
     this.setState = this.setState.bind(this);
     this.state = {
@@ -183,6 +198,8 @@ export default class Applify extends Component {
       calculatorCounter: 0,
       calculator: {},
       exportVisible: false,
+      clientHistoryVisible: false,
+      clientHistory: [],
 
       // Form / Login
       modalMaskVisible: false,
@@ -232,11 +249,14 @@ export default class Applify extends Component {
       } else {
         this.setState({user: firebase.auth().currentUser},()=>{
           this.getSupportMessages();
+          this.getClientHistory();
         })
         //console.log(this.state.user)
         this.setState({modalMaskVisible: false, registerVisible: false, loginVisible: false});
       }
     });
+
+    // this.updateProviders()
   }
 
   componentWillUnmount() {
@@ -342,7 +362,7 @@ export default class Applify extends Component {
   }
   processAnswer = (category, details) => {
     this.refs.answer.blur()
-    // console.log("processAnswer");
+    console.log("processAnswer");
     let self = this;
     details.answer = details.value === undefined ? details.answer : details.value;
     const rawAnswer = details.answer
@@ -368,8 +388,10 @@ export default class Applify extends Component {
       details.answer = dob +" ("+ age+"yo)";
     }
     if(Q.field==='height'){
-      clientInfo.height = details.answer;
+      console.log("setting clientInfo.height to :"); console.log(details.value)
+      clientInfo.height = details.value;
       details.answer = this.formateHeight(details.answer);
+      console.log(this.state)
     }
     if(Q.field==='weight'){
       clientInfo.weight = details.answer;
@@ -393,7 +415,7 @@ export default class Applify extends Component {
 
       // BIO
       if(category==="BIO") { // Update an existing button
-        clientInfo[Q.field] = details.answer;
+        // clientInfo[Q.field] = details.answer;
         this.setState({clientInfo});
         let buttons = {...this.state.buttons};
         if(this.state.activeButtonId in buttons) buttons[this.state.activeButtonId].subtitle = details.answer;
@@ -439,6 +461,8 @@ export default class Applify extends Component {
     }
 
     this.setState({clientInfo: clientInfo}, ()=>{
+      console.log("=== UPDATED CLIENT INFO AFTER PROCESS ANSWER ====")
+      console.log(this.state.clientInfo)
       this.clearAnswer()
       this.updateProviders()
     });
@@ -479,9 +503,9 @@ export default class Applify extends Component {
     return parseInt(height/12) +"' "+height%12+"'' or "+ height+"''";
   };
   updateProviders = (restart=false) => {
-    // console.log("--- Updating providers ---");
-    // console.log(this.state.buttons);
-    // console.log(this.state.clientInfo);
+    console.log("--- Updating providers ---");
+    console.log(this.state.buttons);
+    console.log(this.state.clientInfo);
     let self = this;
     let age = this.state.clientInfo.age;
     let Providers = {...this.state.Providers};
@@ -496,14 +520,13 @@ export default class Applify extends Component {
 
         // Check that the products in this product support the uses current age
         let guaranteed = false;
-        _.each(product.calculator.products, function(product){
-          if(product.guaranteedIssue) guaranteed = true;
+        _.each(product.calculator.products, function(calcProduct){
+          if(calcProduct.guaranteedIssue) guaranteed = true;
           // console.log("========= PRODUCT AGE CHECK ==========");
-          // console.log(product);
-          table = product.table;
+          table = calcProduct.table;
           // CALCULATE MONTHLY AND ANUUAL COST
           let anyTermSupported = false;
-          switch (product.tableType) {
+          switch (calcProduct.tableType) {
             case 'term--age--gender-smokerStatus':
               anyTermSupported = false;
               _.each(table,function(term){
@@ -512,7 +535,7 @@ export default class Applify extends Component {
                 if(typeof term[age] !== "undefined") anyTermSupported = true;
               })
               if(! anyTermSupported){
-                notices.push(product.name+" does not have a term that supports age "+age);
+                notices.push(calcProduct.name+" does not have a term that supports age "+age);
                 statuses.push(1);
               } else {
                 statuses.push(3);
@@ -520,7 +543,7 @@ export default class Applify extends Component {
               break;
             case 'age--term-smokerStatus':
               if(typeof table[age]==="undefined"){
-                notices.push(product.name+" does not support age of "+age);
+                notices.push(calcProduct.name+" does not support age of "+age);
                 statuses.push(1);
               } else {
                 statuses.push(3);
@@ -528,7 +551,7 @@ export default class Applify extends Component {
               break;
             case 'age--gender-smokerStatus':
               if(typeof table[age]==="undefined"){
-                notices.push(product.name+" does not support age of "+age);
+                notices.push(calcProduct.name+" does not support age of "+age);
                 statuses.push(1);
               } else {
                 statuses.push(3);
@@ -536,48 +559,66 @@ export default class Applify extends Component {
               break;
             case 'age--gender':
               if(typeof table[age]==="undefined"){
-                notices.push(product.name+" does not support age of "+age);
+                notices.push(calcProduct.name+" does not support age of "+age);
                 statuses.push(1);
               } else {
                 statuses.push(3);
               }
               break;
           }
+
+
+          // If the age is supported in any of the products in the loop above, force approval
+          // console.log("statuses: "); console.log(statuses);
+          if(_.max(statuses)===3) statuses = [3];
+
+
+          // Check the build charts for height/weight requirements
+          //
+          // console.log("====== checking product height/weight reqs ======");
+          // console.log(product);
+
+          if(client.height in Build.min && client.height in Build.max){
+            // console.log("=== checking height and weight ===");
+            let minWeight = Build.min[client.height][product.nickname];
+            let maxWeight = Build.max[client.height][product.nickname];
+
+            // Return ICs for numbers out of bounds
+            if(maxWeight==='IC' || minWeight==='IC') {
+              notices.push(calcProduct.name+" does not list BMI requirements for a height of "+client.height+"in. ");
+              statuses.push(2);
+
+            // Return As for accepted (usually guranteed issue products without specific BMI requirements)
+            } else if(maxWeight==='D' || minWeight==='D') {
+              notices.push(calcProduct.name+" declines BMI for a height of "+client.height+"in. and weight of "+client.weight);
+              statuses.push(1);
+
+            // Accepted (probably guaranteed issue)
+            } else if(maxWeight==='A' && minWeight==='A') {
+              statuses.push(3);
+              console.log("BMI Accepted (guaranteed).");
+            }
+
+            // If we're through the ICs and As, parse these as INTs and let's get this party started
+            minWeight = parseInt(minWeight);
+            maxWeight = parseInt(maxWeight);
+            clientWeight = parseInt(client.weight);
+
+            if(clientWeight < minWeight){
+              notices.push(calcProduct.name+" declines BMI as under-weight: weight of "+client.weight);
+              statuses.push(1);
+            }
+            if(clientWeight > maxWeight){
+              notices.push(calcProduct.name+" declines BMI as over-weight: weight of "+client.weight);
+              statuses.push(1);
+            }
+
+          } else {
+            notices.push(calcProduct.name+" does not list BMI requirements for a height of "+client.height+"in.");
+            statuses.push(2);
+          }
         })
 
-        // If the age is supported in any of the products in the loop above, force approval
-        // console.log("statuses: "); console.log(statuses);
-        if(_.max(statuses)===3) statuses = [3];
-
-
-
-        // Check the build charts for height/weight requirements
-        if(client.height in Build.min && client.height in Build.max){
-          // console.log("=== checking height and weight ===");
-          let minWeight = Build.min[client.height][product.nickname];
-          let maxWeight = Build.max[client.height][product.nickname];
-          // console.log("min weight: " + minWeight);
-          // console.log("max weight: " + maxWeight);
-
-          if(maxWeight !== null){
-            // console.log("checking max weight...");
-            if(client.weight > maxWeight){
-              // console.log("max weight is in excess!");
-              if(!guaranteed) statuses.push(1);
-              notices.push(product.name+" does not support weight in excess of "+maxWeight);
-              if(minWeight !== null) {
-                if(client.weight < minWeight){
-                  if(!guaranteed) statuses.push(1);
-                  notices.push(product.name+" does not support weight under "+minWeight);
-                }
-              }
-            } else {
-              // console.log("max weight is NOT in excess!");
-            }
-          }
-        } else {
-          // console.log("Did not find height in build charts...");
-        }
 
 
         // check medications and conditions
@@ -593,17 +634,19 @@ export default class Applify extends Component {
             // console.log("checking drug list:")
 
             medication = _.filter(DeclinedDrugs, function (dd) {
-
+              //
               // console.log("Filtering %s", dd.name)
               //
               // console.log("dd.name"+_.toLower(dd.name))
-              // console.log("medication.name)"+_.toLower(medication.name))
-              return _.includes(_.toLower(dd.name), _.toLower(medication.name))
+              // console.log("medication.name: "+_.toLower(medication.name))
+              const ret = _.includes(_.toLower(dd.name), _.toLower(medication.name))
+              // console.log(ret)
+              return ret
             })[0]
 
 
             // If the drug exists in our databases
-            if(medication !== undefined){
+            if(medication){
               // console.log("Medication is not undefined...")
 
 
@@ -699,11 +742,19 @@ export default class Applify extends Component {
         // Update Provider and Product
         Providers[ProviderKey].products[productKey].status = _.min(statuses);
         if(restart) Providers[ProviderKey].products[productKey].status = 3;
+
+        // console.log("STATUS NUMBERS");
+        // console.log(statuses)
+
       })
     });
-    this.setState(Providers);
-    // console.log(notices);
-    // console.log(this.state);
+    this.setState(Providers,()=>{
+      console.log("Providers state updated...")
+      console.log(this.state)
+    });
+    console.log("UPDATE PROVIDERS Notices:")
+    console.log(notices);
+    console.log(this.state);
   };
   watchAnswer = (questionAnswer) => {
     // console.log("watchAnswer()")
@@ -927,7 +978,7 @@ export default class Applify extends Component {
       <View>
         <MediaQuery minHeight={1} orientation={"portrait"}>
           <AutoScroll contentContainerStyle={styles.infoButtonsWrap_portrait} keyboardShouldPersistTaps={'always'} keyboardDismissMode={'on-drag'}>
-            <Text style={{height:100,width:'100%',borderWidth:0,borderColor:'red'}}>{"&nbsp;"}</Text>
+            <View style={{height:100,width:'100%',borderWidth:0,borderColor:'red'}}><Text> </Text></View>
             {buttons.map((button,k) => (
               <TouchableHighlight onPress={()=>{this.editButton(button, k)}} onLongPress={()=>{this.deleteButton(button,k)}} key={button.id} underlayColor={"transparent"}>
                 <View>
@@ -939,7 +990,7 @@ export default class Applify extends Component {
                 </View>
               </TouchableHighlight>
             ))}
-            <Text style={{height:220,width:'100%',borderWidth:0,borderColor:'red'}}>{"&nbsp;"}</Text>
+            <View style={{height:220,width:'100%',borderWidth:0,borderColor:'red'}}><Text> </Text></View>
           </AutoScroll>
         </MediaQuery>
         <MediaQuery minHeight={1} orientation="landscape">
@@ -1141,25 +1192,25 @@ export default class Applify extends Component {
         _.each(product.calculator.products,function(calculatorProduct){
           // console.log(calculatorProduct);
 
-          console.log("product.calculator.type: ");
-          console.log(product.calculator.type);
-          console.log("calculatorProduct");
-          console.log(calculatorProduct);
-          console.log(" === COST VARIABLES ===");
-          console.log("updatedTerms");
-          console.log(updatedTerms);
-          console.log("updatedFaceValue");
-          console.log(updatedFaceValue);
-          console.log("age");
-          console.log(age);
-          console.log("gender");
-          console.log(gender);
-          console.log("calculatorProduct.multiplier");
-          console.log(calculatorProduct.multiplier);
-          console.log("multiplier applied:");
-          console.log(_.toInteger(updatedFaceValue) / calculatorProduct.multiplier);
-          console.log("rate table");
-          console.log(calculatorProduct.table);
+          // console.log("product.calculator.type: ");
+          // console.log(product.calculator.type);
+          // console.log("calculatorProduct");
+          // console.log(calculatorProduct);
+          // console.log(" === COST VARIABLES ===");
+          // console.log("updatedTerms");
+          // console.log(updatedTerms);
+          // console.log("updatedFaceValue");
+          // console.log(updatedFaceValue);
+          // console.log("age");
+          // console.log(age);
+          // console.log("gender");
+          // console.log(gender);
+          // console.log("calculatorProduct.multiplier");
+          // console.log(calculatorProduct.multiplier);
+          // console.log("multiplier applied:");
+          // console.log(_.toInteger(updatedFaceValue) / calculatorProduct.multiplier);
+          // console.log("rate table");
+          // console.log(calculatorProduct.table);
 
           // Check rate tables
           cost = getProductCostAvailability(calculatorProduct,age,gender,smokerStatus,updatedFaceValue,updatedTerms);
@@ -1215,15 +1266,15 @@ export default class Applify extends Component {
     return 1
   }
   renderCalculatorProduct = (provider, product, calculatorProduct) => {
-    console.log("=== renderCalculatorProduct() ===");
-    console.log(provider);
-    console.log(product);
-    console.log(calculatorProduct);
-    console.log(this.state.calculatorHiddenProducts);
+    // console.log("=== renderCalculatorProduct() ===");
+    // console.log(provider);
+    // console.log(product);
+    // console.log(calculatorProduct);
+    // console.log(this.state.calculatorHiddenProducts);
 
     // Hide products from the hide array
-    console.log('index check:')
-    console.log(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id))
+    // console.log('index check:')
+    // console.log(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id))
 
     if(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id)!=-1) return false
     if(this.state.calculator[calculatorProduct.id].annual===0) return false;
@@ -1484,19 +1535,61 @@ export default class Applify extends Component {
               <Text style={styles.exportLineItem}>{b.subtitle}</Text>
             </View>
           ))}
-          <View style={styles.exportLineItemWrap} key="10001">
+          <View style={styles.exportLineItemWrap} key={"10001"}>
             <Text style={styles.exportLineItemHeader}>Medications</Text>
-            {medButtons.map(b => ( <Text key={b.id} style={styles.exportLineItem}>{b.title}, </Text> ))}
+            {medButtons && medButtons.map(b => ( <Text key={b.id} style={styles.exportLineItem}>{b.title}, </Text> ))}
           </View>
-          <View style={styles.exportLineItemWrap} key="10002">
+          <View style={styles.exportLineItemWrap} key={"10002"}>
             <Text style={styles.exportLineItemHeader}>Conditions</Text>
-            {conButtons.length && conButtons.map(b => ( <Text key={b.id} style={styles.exportLineItem}>{b.title}, </Text> ))}
+            {conButtons && conButtons.map(b => ( <Text key={b.id} style={styles.exportLineItem}>{b.title}, </Text> ))}
           </View>
-
         </View>
       </View>
     )
   }
+  loadClientFromHistory = (client) => {
+    this.saveAndClear(false,()=>{
+      this.setState({
+        buttons: client.buttons,
+        clientInfo: client.clientInfo
+      },()=>{
+        this.updateProviders()
+        console.log(this.state)
+      })
+      console.log("inside save and clear callback")
+      client.buttons.forEach((button,k)=>{
+        if(button.category=='BIO'){
+
+        }
+      })
+    })
+  }
+  renderClientHistory = () => {
+    return (
+      <View style={styles.exportView}>
+        <View style={{ position:'absolute', top: 5, left: 20, zIndex:999 }}>
+          <TouchableHighlight onPress={()=>{this.setState({clientHistoryVisible: false})}}>
+            <Text style={{fontSize:16}}><Text style={styles.backButton}>&lsaquo;</Text> Back</Text>
+          </TouchableHighlight>
+        </View>
+        <Text style={{marginBottom: 20, fontSize: 20}}>Client History</Text>
+        <View style={styles.clientHistoryWrap}>
+          <ScrollView style={{flex:0,height:'100%',width:'100%'}}>
+            {this.state.clientHistory && this.state.clientHistory.map((client,k)=>{
+              return (
+                <View key={k} style={styles.clientHistoryLink}>
+                  <TouchableOpacity onPress={()=>this.loadClientFromHistory(client)}>
+                    <Text>{client.linkText}</Text>
+                  </TouchableOpacity>
+                </View>
+              )
+            })}
+          </ScrollView>
+        </View>
+      </View>
+    )
+  }
+
   toggleMenu = () => {
     this.refs.answer.blur()
     vis = this.state.menuVisible
@@ -1830,17 +1923,19 @@ export default class Applify extends Component {
       </View>
     );
   }
-  pressMenuSaveNewClient=()=>{this.saveAndClear(true); this.toggleMenu()}
-  pressMenuScanLicense=()=>{this.scan.bind(this)(); this.toggleMenu()}
-  pressMenuExportPDF=()=>{this.setState({exportVisible: true}); this.toggleMenu()}
-  pressMenuLogOut=()=>{firebase.auth().signOut(); this.toggleMenu(); this.setState({modalMaskVisible: true})}
-  pressMenuSupport=()=>{this.setState({modalMaskVisible: true, supportVisible: true}); this.toggleMenu();}
-  pressMenuDebugLog=()=>{this.setState({consoleIsVisible: true}); this.toggleMenu();}
-  menuModal = () => {
+  pressMenuSaveNewClient =()=> {this.saveAndClear(true); this.toggleMenu()}
+  pressMenuScanLicense =()=>   {this.scan.bind(this)(); this.toggleMenu()}
+  pressMenuExportPDF =()=>     {this.setState({exportVisible: true}); this.toggleMenu()}
+  pressMenuClientHistory =()=> {this.setState({clientHistoryVisible: true}); this.toggleMenu()}
+  pressMenuLogOut =()=>        {firebase.auth().signOut(); this.toggleMenu(); this.setState({modalMaskVisible: true})}
+  pressMenuSupport =()=>       {this.setState({modalMaskVisible: true, supportVisible: true}); this.toggleMenu()}
+  pressMenuDebugLog =()=>      {this.setState({consoleIsVisible: true}); this.toggleMenu()}
+  menuModal =()=> {
     self=this
     var menuItems = [
       {title: 'Save & New Client',callback: this.pressMenuSaveNewClient },
       {title: 'Scan Driver\'s License',callback: this.pressMenuScanLicense },
+      {title: 'Client History',callback: this.pressMenuClientHistory },
       {title: 'Export PDF',callback: this.pressMenuExportPDF },
       {title: 'Support',callback: this.pressMenuSupport },
       {title: 'Log Out',callback: this.pressMenuLogOut },
@@ -1867,17 +1962,19 @@ export default class Applify extends Component {
         shadowOpacity: 0.4,
         opacity: 0.95
       }}>
-        <TouchableOpacity style={[styles.menuCloseIcon,{top:IPHONE_X ? 30 : 0}]} onPress={this.toggleMenu}>
-          <Text style={{fontSize:30,fontWeight:'100',color: '#979797'}}>&rsaquo;</Text>
-        </TouchableOpacity>
-        <Text style={styles.menuLogo}>insura</Text>
-        <View style={styles.menuItemWrap}>
-          {menuItems.map(function (m,i) {
-            return (<TouchableHighlight key={i} onPress={()=>{self.toggleMenu; m.callback()}}><Text style={styles.menuItem}>{m.title.toUpperCase()}</Text></TouchableHighlight>)
-          })}
-        </View>
-        <Text style={[styles.menuEmail,{marginBottom:-10}]}>Logged in as:</Text>
-        <Text style={styles.menuEmail}>{this.state.user && this.state.user.email}</Text>
+          <TouchableOpacity style={[styles.menuCloseIcon,{top:IPHONE_X ? 30 : 0}]} onPress={this.toggleMenu}>
+            <Text style={{fontSize:30,fontWeight:'100',color: '#979797'}}>&rsaquo;</Text>
+          </TouchableOpacity>
+          <Text style={styles.menuLogo}>insura</Text>
+          <ScrollView style={{width: '100%', height: '100%'}}>
+            <View style={styles.menuItemWrap}>
+                {menuItems.map(function (m,i) {
+                  return (<TouchableHighlight key={i} onPress={()=>{self.toggleMenu; m.callback()}}><Text style={styles.menuItem}>{m.title.toUpperCase()}</Text></TouchableHighlight>)
+                })}
+            </View>
+            <Text style={[styles.menuEmail,{marginBottom:-10}]}>Logged in as:</Text>
+            <Text style={styles.menuEmail}>{this.state.user && this.state.user.email}</Text>
+          </ScrollView>
       </Animated.View>
     )
   }
@@ -1979,6 +2076,9 @@ export default class Applify extends Component {
 
         {/* Export */}
         {this.state.exportVisible ? this.renderExport() : null}
+
+        {/* Clients */}
+        {this.state.clientHistoryVisible ? this.renderClientHistory() : null}
 
         {/* CALCULATOR */}
         {this.state.calculatorVisible ? this.renderCalculator() : null}
@@ -2124,12 +2224,12 @@ export default class Applify extends Component {
     s.menuPosition = null
     return s
   }
-  saveAndClear = (clear=false) => {
+  saveAndClear = (clear=false, callback=undefined) => {
     console.log("Saving client...")
-    const clientInfo = c = this.state.clientInfo
-    const buttons = this.state.buttons
-    const userNameDobID = _.replace(c.name+"--".trim(),/ /g,'')+_.replace(c.dob,/[^0-9]/g,'')
-    const userId = firebase.auth().currentUser.uid;
+    const clientInfo      = c = this.state.clientInfo
+    const buttons         = this.state.buttons
+    const userNameDobID   = c.lastName +'-'+ c.firstName +'-'+ c.key;
+    const userId          = firebase.auth().currentUser.uid;
     this.saveClient(
       userId,
       userNameDobID,
@@ -2137,11 +2237,13 @@ export default class Applify extends Component {
       buttons
     );
     if(clear) {
+      name = getRandomName()
       let clientInfoRetart = {
-        name: '',
-        firstName: '',
+        key: name.key,
+        name: name.first +' '+name.last,
+        firstName: name.first,
         middleName: '',
-        lastName: '',
+        lastName: name.last,
         gender: clientStartGender,
         age: clientStartAge,
         dob: '',
@@ -2183,6 +2285,7 @@ export default class Applify extends Component {
         }
       );
     }
+    if(callback) callback()
   };
   renderIdScanButton() {
     return (
@@ -2246,7 +2349,8 @@ export default class Applify extends Component {
               let m = /(.{2})(.{2})(.{4})/.exec(fields[USDLKeys.DateOfBirth]);
               clientInfo.dob = m[1]+"/"+m[2]+"/"+m[3];
 
-              clientInfo.height = Math.floor(parseInt(fields[USDLKeys.HeightIn]) / 12) +"-"+ parseInt(fields[USDLKeys.HeightIn]) %12;
+              // clientInfo.height = Math.floor(parseInt(fields[USDLKeys.HeightIn]) / 12) +"-"+ parseInt(fields[USDLKeys.HeightIn]) %12;
+              clientInfo.height = Math.floor(parseInt(fields[USDLKeys.HeightIn]));
               clientInfo.weight = fields[USDLKeys.WeightPounds];
               clientInfo.street1 = fields[USDLKeys.AddressStreet];
               clientInfo.city = fields[USDLKeys.AddressCity];
@@ -2289,14 +2393,15 @@ export default class Applify extends Component {
       .catch(err=>console.log(err))
   }
   saveClient=(userId,clientId,clientInfo,buttons)=>{
-    // console.log("saveClient()")
+    console.log("saveClient()")
     console.log(buttons)
-    res = firebase.database().ref('clients/'+clientId).set({
-      userId:     userId,
+    res = firebase.database().ref('clients/'+userId+'/'+clientId).set({
+      t:          (new Date).getTime(),
       clientId:   clientId,
-      clientInfo: clientInfo,
+      linkText:   clientInfo.lastName+', '+clientInfo.firstName,
       buttons:    buttons,
-      version:    2
+      clientInfo: clientInfo,
+      version:    3
     })
       .then(res=>console.log(res))
       .catch(err=>console.log(err))
@@ -2343,7 +2448,28 @@ export default class Applify extends Component {
       })
 
   }
+  getClientHistory=(callback)=>{
+    console.log("getClientHistory() ...")
+    clients = this.state.clientHistory
+    clientsArray = []
+    ref = firebase.database().ref('clients/'+firebase.auth().currentUser.uid)
+    ref.once('value').then(snapshot=>{
+      console.log("snapshot returned")
+      console.log(snapshot.val())
+      _.each(snapshot.val(),(client,k)=>{
+        client.k = k;
+        clientsArray.push(client)
+      });
+    }).done(()=>{
+      this.setState({clientHistory: clientsArray},()=>{
+        console.log("=== GET EXISTING MESSAGES ===")
+        console.log(this.state.clientHistory)
+      })
+    })
+  }
 }
+
+function getRandomName(){return {first: 'John', last: 'Doe', key: (Math.ceil(Math.random()*100000000)).toString()}}
 
 Number.prototype.toCurrencyString = function(prefix, suffix) {
   if (typeof prefix === 'undefined') { prefix = '$'; }

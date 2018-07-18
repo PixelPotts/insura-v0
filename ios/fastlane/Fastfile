@@ -11,25 +11,19 @@
 #
 
 # Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+update_fastlane
+
+# ENV["GYM_PROJECT"] = "/Users/pottspotts/AwesomeProject/ios/AwesomeProject.xcworkspace"
 
 default_platform(:ios)
-
-platform :ios do
-  desc "Push a new beta build to TestFlight"
-  lane :beta do
-    increment_build_number(xcodeproj: "AwesomeProject.xcodeproj")
-    build_app(workspace: "AwesomeProject.xcworkspace", scheme: "AwesomeProject")
-    upload_to_testflight
-  end
-end
 
 lane :beta do
   #get_certificates           # invokes cert
   #get_provisioning_profile   # invokes sigh
 
-  gym(scheme: "AwesomeProject",
-        workspace: "AwesomeProject.xcworkspace",
+  gym(scheme: "/Users/pottspotts/AwesomeProject/ios/AwesomeProject",
+        #project: "/Users/pottspotts/AwesomeProject/ios/AwesomeProject.xcodeproj",
+        workspace: "/Users/pottspotts/AwesomeProject/ios/AwesomeProject.xcworkspace",
         configuration: "Ad Hoc Distribution",
         export_method: "ad-hoc",
         export_options:{

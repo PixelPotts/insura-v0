@@ -44,7 +44,9 @@
 	<key>NSMainNibFile~ipad</key>
 	<string>LaunchScreen</string>
 	<key>UIAppFonts</key>
-	<array/>
+	<array>
+		<string>Material</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
