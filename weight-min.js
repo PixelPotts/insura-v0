@@ -22,7 +22,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "37": {
       "HMSP":"IC"
@@ -46,7 +50,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "38": {
       "HMSP":"IC"
@@ -70,7 +78,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "39": {
       "HMSP":"IC"
@@ -94,7 +106,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "40": {
       "HMSP":"IC"
@@ -118,7 +134,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "41": {
       "HMSP":"IC"
@@ -142,7 +162,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "42": {
       "HMSP":"IC"
@@ -166,7 +190,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "43": {
       "HMSP":"IC"
@@ -190,7 +218,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "44": {
       "HMSP":"IC"
@@ -214,7 +246,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "45": {
       "HMSP":"IC"
@@ -238,7 +274,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "46": {
       "HMSP":"IC"
@@ -262,7 +302,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "47": {
       "HMSP":"IC"
@@ -286,7 +330,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "48": {
       "HMSP":"IC"
@@ -310,7 +358,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "49": {
       "HMSP":"IC"
@@ -334,7 +386,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "50": {
       "HMSP":"IC"
@@ -358,7 +414,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "51": {
       "HMSP":"IC"
@@ -382,7 +442,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "52": {
       "HMSP":"IC"
@@ -406,7 +470,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "53": {
       "HMSP":"IC"
@@ -430,7 +498,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "54": {
       "HMSP":"IC"
@@ -454,7 +526,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "55": {
       "HMSP":"IC"
@@ -478,7 +554,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "56": {
       "HMSP":"74"
@@ -502,7 +582,11 @@ export default {
       ,"SUL":"74"
       ,"DCFE":"74"
       ,"SIWL":"74"
+      ,"SIWLG":"74"
       ,"SI-WL":"A"
+      ,"SGT":"74"
+      ,"NLUL":"74"
+      ,"SGWL":"74"
     },
     "57": {
       "HMSP":"77"
@@ -526,7 +610,11 @@ export default {
       ,"SUL":"77"
       ,"DCFE":"77"
       ,"SIWL":"77"
+      ,"SIWLG":"77"
       ,"SI-WL":"A"
+      ,"SGT":"77"
+      ,"NLUL":"77"
+      ,"SGWL":"77"
     },
     "58": {
       "HMSP":"79"
@@ -550,7 +638,11 @@ export default {
       ,"SUL":"79"
       ,"DCFE":"79"
       ,"SIWL":"79"
+      ,"SIWLG":"79"
       ,"SI-WL":"A"
+      ,"SGT":"79"
+      ,"NLUL":"79"
+      ,"SGWL":"79"
     },
     "59": {
       "HMSP":"82"
@@ -574,7 +666,11 @@ export default {
       ,"SUL":"82"
       ,"DCFE":"82"
       ,"SIWL":"82"
+      ,"SIWLG":"82"
       ,"SI-WL":"A"
+      ,"SGT":"82"
+      ,"NLUL":"82"
+      ,"SGWL":"82"
     },
     "60": {
       "HMSP":"85"
@@ -598,7 +694,11 @@ export default {
       ,"SUL":"85"
       ,"DCFE":"85"
       ,"SIWL":"85"
+      ,"SIWLG":"85"
       ,"SI-WL":"A"
+      ,"SGT":"85"
+      ,"NLUL":"85"
+      ,"SGWL":"85"
     },
     "61": {
       "HMSP":"88"
@@ -622,7 +722,11 @@ export default {
       ,"SUL":"88"
       ,"DCFE":"88"
       ,"SIWL":"88"
+      ,"SIWLG":"88"
       ,"SI-WL":"A"
+      ,"SGT":"88"
+      ,"NLUL":"88"
+      ,"SGWL":"88"
     },
     "62": {
       "HMSP":"91"
@@ -646,7 +750,11 @@ export default {
       ,"SUL":"91"
       ,"DCFE":"91"
       ,"SIWL":"91"
+      ,"SIWLG":"91"
       ,"SI-WL":"A"
+      ,"SGT":"91"
+      ,"NLUL":"91"
+      ,"SGWL":"91"
     },
     "63": {
       "HMSP":"94"
@@ -670,7 +778,11 @@ export default {
       ,"SUL":"94"
       ,"DCFE":"94"
       ,"SIWL":"94"
+      ,"SIWLG":"94"
       ,"SI-WL":"A"
+      ,"SGT":"94"
+      ,"NLUL":"94"
+      ,"SGWL":"94"
     },
     "64": {
       "HMSP":"97"
@@ -694,7 +806,11 @@ export default {
       ,"SUL":"97"
       ,"DCFE":"97"
       ,"SIWL":"97"
+      ,"SIWLG":"97"
       ,"SI-WL":"A"
+      ,"SGT":"97"
+      ,"NLUL":"97"
+      ,"SGWL":"97"
     },
     "65": {
       "HMSP":"100"
@@ -718,7 +834,11 @@ export default {
       ,"SUL":"100"
       ,"DCFE":"100"
       ,"SIWL":"100"
+      ,"SIWLG":"100"
       ,"SI-WL":"A"
+      ,"SGT":"100"
+      ,"NLUL":"100"
+      ,"SGWL":"100"
     },
     "66": {
       "HMSP":"103"
@@ -742,7 +862,11 @@ export default {
       ,"SUL":"103"
       ,"DCFE":"103"
       ,"SIWL":"103"
+      ,"SIWLG":"103"
       ,"SI-WL":"A"
+      ,"SGT":"103"
+      ,"NLUL":"103"
+      ,"SGWL":"103"
     },
     "67": {
       "HMSP":"106"
@@ -766,7 +890,11 @@ export default {
       ,"SUL":"106"
       ,"DCFE":"106"
       ,"SIWL":"106"
+      ,"SIWLG":"106"
       ,"SI-WL":"A"
+      ,"SGT":"106"
+      ,"NLUL":"106"
+      ,"SGWL":"106"
     },
     "68": {
       "HMSP":"109"
@@ -790,7 +918,11 @@ export default {
       ,"SUL":"109"
       ,"DCFE":"109"
       ,"SIWL":"109"
+      ,"SIWLG":"109"
       ,"SI-WL":"A"
+      ,"SGT":"109"
+      ,"NLUL":"109"
+      ,"SGWL":"109"
     },
     "69": {
       "HMSP":"112"
@@ -814,7 +946,11 @@ export default {
       ,"SUL":"112"
       ,"DCFE":"112"
       ,"SIWL":"112"
+      ,"SIWLG":"112"
       ,"SI-WL":"A"
+      ,"SGT":"112"
+      ,"NLUL":"112"
+      ,"SGWL":"112"
     },
     "70": {
       "HMSP":"115"
@@ -838,7 +974,11 @@ export default {
       ,"SUL":"115"
       ,"DCFE":"115"
       ,"SIWL":"115"
+      ,"SIWLG":"115"
       ,"SI-WL":"A"
+      ,"SGT":"115"
+      ,"NLUL":"115"
+      ,"SGWL":"115"
     },
     "71": {
       "HMSP":"119"
@@ -862,7 +1002,11 @@ export default {
       ,"SUL":"119"
       ,"DCFE":"119"
       ,"SIWL":"119"
+      ,"SIWLG":"119"
       ,"SI-WL":"A"
+      ,"SGT":"119"
+      ,"NLUL":"119"
+      ,"SGWL":"119"
     },
     "72": {
       "HMSP":"122"
@@ -886,7 +1030,11 @@ export default {
       ,"SUL":"122"
       ,"DCFE":"122"
       ,"SIWL":"122"
+      ,"SIWLG":"122"
       ,"SI-WL":"A"
+      ,"SGT":"122"
+      ,"NLUL":"122"
+      ,"SGWL":"122"
     },
     "73": {
       "HMSP":"126"
@@ -910,7 +1058,11 @@ export default {
       ,"SUL":"126"
       ,"DCFE":"126"
       ,"SIWL":"126"
+      ,"SIWLG":"126"
       ,"SI-WL":"A"
+      ,"SGT":"126"
+      ,"NLUL":"126"
+      ,"SGWL":"126"
     },
     "74": {
       "HMSP":"129"
@@ -934,7 +1086,11 @@ export default {
       ,"SUL":"129"
       ,"DCFE":"129"
       ,"SIWL":"129"
+      ,"SIWLG":"129"
       ,"SI-WL":"A"
+      ,"SGT":"129"
+      ,"NLUL":"129"
+      ,"SGWL":"129"
     },
     "75": {
       "HMSP":"133"
@@ -958,7 +1114,11 @@ export default {
       ,"SUL":"133"
       ,"DCFE":"133"
       ,"SIWL":"133"
+      ,"SIWLG":"133"
       ,"SI-WL":"A"
+      ,"SGT":"133"
+      ,"NLUL":"133"
+      ,"SGWL":"133"
     },
     "76": {
       "HMSP":"136"
@@ -982,7 +1142,11 @@ export default {
       ,"SUL":"136"
       ,"DCFE":"136"
       ,"SIWL":"136"
+      ,"SIWLG":"136"
       ,"SI-WL":"A"
+      ,"SGT":"136"
+      ,"NLUL":"136"
+      ,"SGWL":"136"
     },
     "77": {
       "HMSP":"140"
@@ -1006,7 +1170,11 @@ export default {
       ,"SUL":"140"
       ,"DCFE":"140"
       ,"SIWL":"140"
+      ,"SIWLG":"140"
       ,"SI-WL":"A"
+      ,"SGT":"140"
+      ,"NLUL":"140"
+      ,"SGWL":"140"
     },
     "78": {
       "HMSP":"143"
@@ -1030,7 +1198,11 @@ export default {
       ,"SUL":"143"
       ,"DCFE":"143"
       ,"SIWL":"143"
+      ,"SIWLG":"143"
       ,"SI-WL":"A"
+      ,"SGT":"143"
+      ,"NLUL":"143"
+      ,"SGWL":"143"
     },
     "79": {
       "HMSP":"147"
@@ -1054,7 +1226,11 @@ export default {
       ,"SUL":"147"
       ,"DCFE":"147"
       ,"SIWL":"147"
+      ,"SIWLG":"147"
       ,"SI-WL":"A"
+      ,"SGT":"147"
+      ,"NLUL":"147"
+      ,"SGWL":"147"
     },
     "80": {
       "HMSP":"IC"
@@ -1078,7 +1254,11 @@ export default {
       ,"SUL":"151"
       ,"DCFE":"151"
       ,"SIWL":"151"
+      ,"SIWLG":"151"
       ,"SI-WL":"A"
+      ,"SGT":"151"
+      ,"NLUL":"151"
+      ,"SGWL":"151"
     },
     "81": {
       "HMSP":"IC"
@@ -1102,7 +1282,11 @@ export default {
       ,"SUL":"154"
       ,"DCFE":"154"
       ,"SIWL":"154"
+      ,"SIWLG":"154"
       ,"SI-WL":"A"
+      ,"SGT":"154"
+      ,"NLUL":"154"
+      ,"SGWL":"154"
     },
     "82": {
       "HMSP":"IC"
@@ -1126,7 +1310,11 @@ export default {
       ,"SUL":"158"
       ,"DCFE":"158"
       ,"SIWL":"158"
+      ,"SIWLG":"158"
       ,"SI-WL":"A"
+      ,"SGT":"158"
+      ,"NLUL":"158"
+      ,"SGWL":"158"
     },
     "83": {
       "HMSP":"IC"
@@ -1150,7 +1338,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "84": {
       "HMSP":"IC"
@@ -1174,7 +1366,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "85": {
       "HMSP":"IC"
@@ -1198,7 +1394,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "86": {
       "HMSP":"IC"
@@ -1222,7 +1422,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "87": {
       "HMSP":"IC"
@@ -1246,7 +1450,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "88": {
       "HMSP":"IC"
@@ -1270,7 +1478,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "89": {
       "HMSP":"IC"
@@ -1294,7 +1506,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     },
     "90": {
       "HMSP":"IC"
@@ -1318,7 +1534,11 @@ export default {
       ,"SUL":"IC"
       ,"DCFE":"IC"
       ,"SIWL":"IC"
+      ,"SIWLG":"IC"
       ,"SI-WL":"A"
+      ,"SGT":"IC"
+      ,"NLUL":"IC"
+      ,"SGWL":"IC"
     }
   }
 }

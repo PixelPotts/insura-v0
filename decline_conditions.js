@@ -3,7 +3,8 @@ export default {
     {
       "id": 11800,
       "name": "Achilles Tendonitis",
-      "HMSP": "D",
+      "TYPE": "MUSC",
+      "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
       "EPG": "",
@@ -24,11 +25,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 11900,
       "name": "Acid Reflux",
+      "TYPE": "GAST",
       "HMSP": "IC",
       "HMSP-DI": "",
       "EPL": "",
@@ -50,14 +56,19 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 100,
       "name": "AIDS",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
-      "EPL": "",
+      "EPL": "D",
       "EPG": "",
       "UP1": "D",
       "UP2": "D",
@@ -76,11 +87,16 @@ export default {
       "SUL": "D",
       "DCFE": "D",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 200,
       "name": "Alcohol Abuse < 2 years",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -97,16 +113,21 @@ export default {
       "IS": "Q-2",
       "ES": "Q-2",
       "10P": "Q-2",
-      "PR": "",
+      "PR": "M-2",
       "SF": "D",
       "SUL": "D",
       "DCFE": "D",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 200,
       "name": "Alcohol Abuse > 2 years",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -128,11 +149,16 @@ export default {
       "SUL": "Q-5",
       "DCFE": "Q-3",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 300,
       "name": "ALS (Lou Gehrig’s Disease)",
+      "TYPE": "MUSC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -153,12 +179,17 @@ export default {
       "SF": "D",
       "SUL": "D",
       "DCFE": "D",
-      "SIWL": "G-2",
-      "SI-WL": ""
+      "SIWL": "Q-2",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 400,
       "name": "Alzheimer’s Disease",
+      "TYPE": "NEUR",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -180,11 +211,16 @@ export default {
       "SUL": "D",
       "DCFE": "D",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 700,
       "name": "Amputations -  Kidney or bladder dysfunction",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -206,11 +242,16 @@ export default {
       "SUL": "D",
       "DCFE": "D",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 800,
       "name": "Amputations -  Wheelchair bound",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -232,11 +273,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 500,
       "name": "Amputations - Accidental - fully recovered working full time",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -258,14 +304,19 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 600,
       "name": "Amputations - Associated with diabetes/vascular disease",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
-      "EPL": "",
+      "EPL": "D",
       "EPG": "",
       "UP1": "D",
       "UP2": "D",
@@ -280,15 +331,20 @@ export default {
       "ES": "D",
       "10P": "D",
       "PR": "D",
-      "SF": "",
+      "SF": "D",
       "SUL": "",
       "DCFE": "D",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 12500,
       "name": "Anemia - Iron Deficiency",
+      "TYPE": "CIRC",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -310,11 +366,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 900,
       "name": "Aneurysm - Abdominal or Thoracic - no surgery",
+      "TYPE": "NEUR",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -336,11 +397,16 @@ export default {
       "SUL": "D",
       "DCFE": "Q-2",
       "SIWL": "IC",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 1000,
       "name": "Aneurysm - Abdominal or Thoracic - with surgery after 6 mo.",
+      "TYPE": "NEUR",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -362,11 +428,16 @@ export default {
       "SUL": "D",
       "DCFE": "Q-2",
       "SIWL": "IC",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 1200,
       "name": "Angina Pectoris (chest pain)",
+      "TYPE": "CIRC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -388,11 +459,16 @@ export default {
       "SUL": "D",
       "DCFE": "Q-2",
       "SIWL": "IC",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 13000,
       "name": "Ankylosing Spondylitis",
+      "TYPE": "MUSC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -414,13 +490,18 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 1300,
       "name": "Anxiety",
+      "TYPE": "NEUR",
       "HMSP": "",
-      "HMSP-DI": "",
+      "HMSP-DI": "D",
       "EPL": "",
       "EPG": "",
       "UP1": "",
@@ -440,11 +521,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 13200,
       "name": "Aortic Stenosis - Significant heart murmur",
+      "TYPE": "CIRC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -465,12 +551,17 @@ export default {
       "SF": "D",
       "SUL": "D",
       "DCFE": "Q-2",
-      "SIWL": "D",
-      "SI-WL": ""
+      "SIWL": "",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 13300,
       "name": "Appendectomy Full Recovery",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -492,11 +583,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 13400,
       "name": "Arteriosclerosis (Plaque, Artery Blockage)",
+      "TYPE": "CIRC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -518,11 +614,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 1800,
       "name": "Arthritis - Disabled due to arthritis",
+      "TYPE": "MUSC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -544,11 +645,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 1900,
       "name": "Arthritis - Methotrexate or steroid medications",
+      "TYPE": "MUSC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -570,11 +676,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 1700,
       "name": "Arthritis - Psoriatic mild working full time",
+      "TYPE": "MUSC",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -596,11 +707,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 1600,
       "name": "Arthritis - Rheumatoid",
+      "TYPE": "MUSC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -622,11 +738,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 2300,
       "name": "Asthma - ER visit/hospitalization within last year",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -648,11 +769,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "IC",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 2200,
       "name": "Asthma - Smoking",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -674,11 +800,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "IC",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 2100,
       "name": "Asthma - Steroid use",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -700,11 +831,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 2000,
       "name": "Asthma - Well controlled seasonal with allergies",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -726,11 +862,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 1400,
       "name": "Atrial Fibrillation -",
+      "TYPE": "CIRC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -752,11 +893,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 1500,
       "name": "Atrial Fibrillation - with RF ablation no re-occurrence after 3 months",
+      "TYPE": "CIRC",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -778,11 +924,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 1401,
       "name": "Atrial Flutter ",
+      "TYPE": "CIRC",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -804,11 +955,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 14100,
       "name": "Attention Deficit Disorder (ADD/ADHD) Diagnosed as an adult requiring medication >2 years",
+      "TYPE": "NEUR",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -830,11 +986,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 14000,
       "name": "Attention Deficit Disorder (ADD/ADHD) Diagnosed as an adult requiring medication 0-2 years",
+      "TYPE": "NEUR",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -856,11 +1017,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 14200,
       "name": "Aviation",
+      "TYPE": "MUSC",
       "HMSP": "D",
       "HMSP-DI": "",
       "EPL": "",
@@ -882,11 +1048,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 14400,
       "name": "Back Disorders - Current treatment no surgery",
+      "TYPE": "MUSC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -908,11 +1079,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 14500,
       "name": "Back Disorders - Curvatures",
+      "TYPE": "MUSC",
       "HMSP": "D",
       "HMSP-DI": "",
       "EPL": "",
@@ -934,11 +1110,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 14300,
       "name": "Back Disorders - History of strains/sprains or prior surgery with full recovery",
+      "TYPE": "MUSC",
       "HMSP": "D",
       "HMSP-DI": "",
       "EPL": "",
@@ -960,11 +1141,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 14600,
       "name": "Barrett’s Esophagus",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -986,11 +1172,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 14700,
       "name": "Bell’s Palsy ",
+      "TYPE": "NEUR",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1012,11 +1203,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 14800,
       "name": "Bipolar Disorder",
+      "TYPE": "NEUR",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1038,11 +1234,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 14900,
       "name": "Blindness Diabetic or both eyes impaired",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1063,12 +1264,17 @@ export default {
       "SF": "D",
       "SUL": "D",
       "DCFE": "",
-      "SIWL": "",
-      "SI-WL": ""
+      "SIWL": "D",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 2400,
       "name": "Blood Clots - Pulmonary Embolism",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1090,11 +1296,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 2500,
       "name": "Blood Clots - Thrombophlebitis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1116,11 +1327,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 15000,
       "name": "Blood Pressure - Controlled with Medication",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1142,11 +1358,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 15200,
       "name": "Bone/cartilage disorders",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -1168,11 +1389,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 15300,
       "name": "Bronchitis - Acute treated and recovered (not COPD)",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1194,11 +1420,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 15400,
       "name": "Bronchitis - Chronic or ongoing  chronic obstructive lung disease or COPD",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1216,15 +1447,20 @@ export default {
       "ES": "IC",
       "10P": "IC",
       "PR": "",
-      "SF": "",
+      "SF": "D",
       "SUL": "",
       "DCFE": "",
-      "SIWL": "",
-      "SI-WL": ""
+      "SIWL": "D",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 15500,
       "name": "Bursitis - Acute episode fully recovered",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1246,11 +1482,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 15600,
       "name": "Bursitis - Chronic or recurrent",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "",
       "EPL": "",
@@ -1272,11 +1513,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 15700,
       "name": "Bypass surgery (Heart)",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1294,15 +1540,20 @@ export default {
       "ES": "IC",
       "10P": "IC",
       "PR": "M-2",
-      "SF": "",
+      "SF": "D",
       "SUL": "",
       "DCFE": "",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 15800,
       "name": "Cancer - internal >10 years no recurrence",
+      "TYPE": "CANC",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -1323,12 +1574,17 @@ export default {
       "SF": "",
       "SUL": "",
       "DCFE": "",
-      "SIWL": "",
-      "SI-WL": ""
+      "SIWL": "Q-2",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 15900,
       "name": "Cancer - Skin - Basal Cell Carcinoma",
+      "TYPE": "CANC",
       "HMSP": "IC",
       "HMSP-DI": "",
       "EPL": "",
@@ -1345,16 +1601,21 @@ export default {
       "IS": "Q-2",
       "ES": "Q-2",
       "10P": "Q-2",
-      "PR": "M-3",
+      "PR": "",
       "SF": "",
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 16000,
       "name": "Cancer - Skin - Melanoma < 5 years",
+      "TYPE": "CANC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1372,15 +1633,20 @@ export default {
       "ES": "Q-2",
       "10P": "Q-2",
       "PR": "M-3",
-      "SF": "",
+      "SF": "D",
       "SUL": "",
       "DCFE": "",
-      "SIWL": "",
-      "SI-WL": ""
+      "SIWL": "Q-2",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 16100,
       "name": "Cancer - Skin - Squamous Cell Carcinoma",
+      "TYPE": "CANC",
       "HMSP": "D",
       "HMSP-DI": "R",
       "EPL": "",
@@ -1402,11 +1668,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 2600,
       "name": "Cancer - Within 1 year",
+      "TYPE": "CANC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -1428,11 +1699,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 2604,
       "name": "Cancer - Within 10 years, no recurrence",
+      "TYPE": "CANC",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1449,16 +1725,21 @@ export default {
       "IS": "",
       "ES": "",
       "10P": "",
-      "PR": "",
-      "SF": "",
+      "PR": "M-3",
+      "SF": "D",
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 2601,
       "name": "Cancer - Within 2 years",
+      "TYPE": "CANC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -1475,16 +1756,21 @@ export default {
       "IS": "D",
       "ES": "D",
       "10P": "D",
-      "PR": "D",
+      "PR": "M-3",
       "SF": "D",
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "Q-2",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 2602,
       "name": "Cancer - Within 3 years",
+      "TYPE": "CANC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1501,16 +1787,21 @@ export default {
       "IS": "",
       "ES": "",
       "10P": "",
-      "PR": "",
+      "PR": "M-3",
       "SF": "D",
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 2603,
       "name": "Cancer - Within 5 years, no recurrence",
+      "TYPE": "CANC",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1532,11 +1823,47 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 2502,
       "name": "Cardiomyopathy - more than 2 years",
+      "TYPE": "CIRC",
+      "HMSP": "D",
+      "HMSP-DI": "D",
+      "EPL": "D",
+      "EPG": "",
+      "UP1": "D",
+      "UP2": "D",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE65": "D",
+      "GULE50": "D",
+      "GULE65": "D",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "ES": "",
+      "10P": "",
+      "PR": "",
+      "SF": "D",
+      "SUL": "D",
+      "DCFE": "IC",
+      "SIWL": "",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
+    },
+    {
+      "id": 2501,
+      "name": "Cardiomyopathy - within 2 years",
+      "TYPE": "CIRC",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -1553,42 +1880,21 @@ export default {
       "IS": "",
       "ES": "",
       "10P": "",
-      "PR": "",
-      "SF": "D",
-      "SUL": "D",
-      "DCFE": "IC",
-      "SIWL": "",
-      "SI-WL": ""
-    },
-    {
-      "id": 2501,
-      "name": "Cardiomyopathy - within 2 years",
-      "HMSP": "D",
-      "HMSP-DI": "D",
-      "EPL": "D",
-      "EPG": "",
-      "UP1": "D",
-      "UP2": "D",
-      "UP3": "",
-      "TLE50": "D",
-      "TLE65": "D",
-      "GULE50": "D",
-      "GULE65": "D",
-      "LPLB": "",
-      "LPGB": "",
-      "IS": "",
-      "ES": "",
-      "10P": "",
-      "PR": "",
+      "PR": "M-2",
       "SF": "D",
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 16400,
       "name": "Carpal Tunnel Syndrome",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -1610,11 +1916,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 16500,
       "name": "Cataracts",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -1635,12 +1946,17 @@ export default {
       "SF": "",
       "SUL": "",
       "DCFE": "",
-      "SIWL": "",
-      "SI-WL": ""
+      "SIWL": "D",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 2700,
       "name": "Cerebral Palsy",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1662,11 +1978,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 16900,
       "name": "Chronic Fatigue Syndrome",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1688,11 +2009,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 2800,
       "name": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1709,16 +2035,21 @@ export default {
       "IS": "IC",
       "ES": "IC",
       "10P": "IC",
-      "PR": "",
+      "PR": "G",
       "SF": "IC",
       "SUL": "D",
       "DCFE": "IC",
-      "SIWL": "IC",
-      "SI-WL": ""
+      "SIWL": "Q-2",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 2900,
       "name": "Cirrhosis of the Liver",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -1740,11 +2071,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 3000,
       "name": "Colitis - IBS - Irritable Bowel Syndrom",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1766,11 +2102,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 3100,
       "name": "Colitis - Ulcerative Colitis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1792,11 +2133,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 16600,
       "name": "Concussion - Mild full recovery no residuals",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1818,11 +2164,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 16700,
       "name": "Concussion - Recurrent or residuals",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -1844,11 +2195,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 3300,
       "name": "Concussion after 6 months",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1870,11 +2226,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 3400,
       "name": "Congestive Heart Failure",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -1896,11 +2257,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 3500,
       "name": "Coronary Artery Disease - Angioplasty (stent) or bypass",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1922,11 +2288,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 3600,
       "name": "Coronary Artery Disease - Heart Attack",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1948,11 +2319,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "IC",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 3700,
       "name": "Coronary Artery Disease - Recurrent episodes onset before age 40",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -1974,11 +2350,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 17300,
       "name": "Crohn’s Disease",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2000,11 +2381,16 @@ export default {
       "SUL": "Q-5",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 3800,
       "name": "Cystic Fibrosis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2026,11 +2412,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 17500,
       "name": "Cystitis History of Interstitial or recurrent",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -2052,11 +2443,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 3900,
       "name": "Dementia",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -2078,11 +2474,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 4000,
       "name": "Depression -  Mild with no hospitalizations within 3 years no more than 1 medication",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2100,15 +2501,20 @@ export default {
       "ES": "",
       "10P": "",
       "PR": "",
-      "SF": "",
+      "SF": "Q-1",
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 4100,
       "name": "Depression - Otherwise or with alcohol abuse and/or narcotic pain medications",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2130,11 +2536,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 17700,
       "name": "Detached Retina",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "",
       "EPL": "",
@@ -2156,11 +2567,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 4300,
       "name": "Diabetes - Onset age 20-30",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2173,20 +2589,25 @@ export default {
       "GULE50": "D",
       "GULE65": "D",
       "LPLB": "D",
-      "LPGB": "D",
+      "LPGB": "",
       "IS": "IC",
       "ES": "IC",
       "10P": "IC",
       "PR": "",
-      "SF": "D",
+      "SF": "IC",
       "SUL": "D",
       "DCFE": "IC",
-      "SIWL": "",
-      "SI-WL": ""
+      "SIWL": "D",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 4400,
       "name": "Diabetes - Onset under age 20",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2199,20 +2620,25 @@ export default {
       "GULE50": "D",
       "GULE65": "D",
       "LPLB": "D",
-      "LPGB": "D",
+      "LPGB": "",
       "IS": "IC",
       "ES": "IC",
       "10P": "IC",
       "PR": "",
-      "SF": "D",
+      "SF": "IC",
       "SUL": "D",
       "DCFE": "IC",
-      "SIWL": "",
-      "SI-WL": ""
+      "SIWL": "D",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 4600,
       "name": "Diabetes - Type 2 Onset under age 20",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2225,20 +2651,25 @@ export default {
       "GULE50": "D",
       "GULE65": "D",
       "LPLB": "D",
-      "LPGB": "D",
+      "LPGB": "",
       "IS": "IC",
       "ES": "IC",
       "10P": "IC",
       "PR": "",
-      "SF": "D",
+      "SF": "IC",
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 4500,
       "name": "Diabetes - Type 2 - Under Control w/ Oral Meds",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2250,8 +2681,8 @@ export default {
       "TLE65": "D",
       "GULE50": "D",
       "GULE65": "D",
-      "LPLB": "D",
-      "LPGB": "D",
+      "LPLB": "",
+      "LPGB": "",
       "IS": "IC",
       "ES": "IC",
       "10P": "IC",
@@ -2260,37 +2691,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
-      "id": 4200,
-      "name": "Diabetes - Type I or with insulin - onset under age 60",
-      "HMSP": "D",
-      "HMSP-DI": "D",
-      "EPL": "",
-      "EPG": "",
-      "UP1": "D",
-      "UP2": "D",
-      "UP3": "",
-      "TLE50": "D",
-      "TLE65": "D",
-      "GULE50": "D",
-      "GULE65": "D",
-      "LPLB": "D",
-      "LPGB": "D",
-      "IS": "IC",
-      "ES": "IC",
-      "10P": "IC",
-      "PR": "",
-      "SF": "D",
-      "SUL": "",
-      "DCFE": "",
-      "SIWL": "",
-      "SI-WL": ""
-    },
-    {
-      "id": 4501,
-      "name": "Diabetes Type 2 - Onset after age 50",
+      "id": 4205,
+      "name": "Neuphropathy",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2304,19 +2714,241 @@ export default {
       "GULE65": "",
       "LPLB": "",
       "LPGB": "",
+      "IS": "",
+      "ES": "",
+      "10P": "",
+      "PR": "",
+      "SF": "",
+      "SUL": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
+    },
+    {
+      "id": 4204,
+      "name": "Neuropathy",
+      "TYPE": "",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "",
+      "TLE65": "",
+      "GULE50": "",
+      "GULE65": "",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "ES": "",
+      "10P": "",
+      "PR": "",
+      "SF": "",
+      "SUL": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
+    },
+    {
+      "id": null,
+      "name": "Diabetic Retinopathy ",
+      "TYPE": "",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "",
+      "TLE65": "",
+      "GULE50": "",
+      "GULE65": "",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "ES": "",
+      "10P": "",
+      "PR": "M-2",
+      "SF": "",
+      "SUL": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
+    },
+    {
+      "id": 4202,
+      "name": "Diabetic Neuropathy",
+      "TYPE": "",
+      "HMSP": "D",
+      "HMSP-DI": "D",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "D",
+      "UP2": "D",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE65": "D",
+      "GULE50": "D",
+      "GULE65": "D",
+      "LPLB": "D",
+      "LPGB": "",
+      "IS": "IC",
+      "ES": "IC",
+      "10P": "IC",
+      "PR": "M-2",
+      "SF": "D",
+      "SUL": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
+    },
+    {
+      "id": 4203,
+      "name": "Diabetic Neuphropathy",
+      "TYPE": "",
+      "HMSP": "D",
+      "HMSP-DI": "D",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "D",
+      "UP2": "D",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE65": "D",
+      "GULE50": "D",
+      "GULE65": "D",
+      "LPLB": "D",
+      "LPGB": "",
+      "IS": "IC",
+      "ES": "IC",
+      "10P": "IC",
+      "PR": "M-2",
+      "SF": "D",
+      "SUL": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
+    },
+    {
+      "id": 4201,
+      "name": "Diabetes - Type I or with insulin - onset under age 50",
+      "TYPE": "",
+      "HMSP": "D",
+      "HMSP-DI": "D",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "D",
+      "UP2": "D",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE65": "D",
+      "GULE50": "D",
+      "GULE65": "D",
+      "LPLB": "D",
+      "LPGB": "",
       "IS": "IC",
       "ES": "IC",
       "10P": "IC",
       "PR": "",
-      "SF": "D",
+      "SF": "IC",
+      "SUL": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
+    },
+    {
+      "id": 4200,
+      "name": "Diabetes - Type I or with insulin - onset under age 60",
+      "TYPE": "",
+      "HMSP": "D",
+      "HMSP-DI": "D",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "D",
+      "UP2": "D",
+      "UP3": "",
+      "TLE50": "D",
+      "TLE65": "D",
+      "GULE50": "D",
+      "GULE65": "D",
+      "LPLB": "D",
+      "LPGB": "",
+      "IS": "IC",
+      "ES": "IC",
+      "10P": "IC",
+      "PR": "",
+      "SF": "IC",
+      "SUL": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
+    },
+    {
+      "id": 4501,
+      "name": "Diabetes Type 2 - Onset after age 50",
+      "TYPE": "",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "IC",
+      "TLE65": "IC",
+      "GULE50": "IC",
+      "GULE65": "IC",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "IC",
+      "ES": "IC",
+      "10P": "IC",
+      "PR": "",
+      "SF": "",
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 17900,
       "name": "Diverticulitis/Diverticulosis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2338,11 +2970,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 18000,
       "name": "Down’s Syndrome",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2364,11 +3001,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 18300,
       "name": "Drug Abuse",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2390,11 +3032,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 4700,
       "name": "DUI/DWI - multiple or last occurred under age 25",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2416,11 +3063,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 18400,
       "name": "Duodenitis",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2442,11 +3094,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 18500,
       "name": "Eating Disorders",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2468,11 +3125,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 18600,
       "name": "Emphysema",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -2489,16 +3151,21 @@ export default {
       "IS": "",
       "ES": "",
       "10P": "",
-      "PR": "",
+      "PR": "G",
       "SF": "D",
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 18700,
       "name": "Endometriosis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -2520,11 +3187,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 18800,
       "name": "Epilepsy - (no occupational hazard) Petit Mal - no seizures within 2 years",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2546,11 +3218,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 18900,
       "name": "Epilepsy - Grand Mal - no seizures within 5 years",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2572,11 +3249,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "IC",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 4900,
       "name": "Epilepsy - Grand Mal attack over 6 months",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -2598,11 +3280,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "IC",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 4800,
       "name": "Epilepsy - Grand Mal attack within 6 months",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2624,11 +3311,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 5100,
       "name": "Epilepsy - Petit Mal attack over 6 months",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -2650,11 +3342,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "IC",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 5000,
       "name": "Epilepsy - Petit Mal attack within 6 months",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2676,11 +3373,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 19100,
       "name": "Esophagus Disorders - Other",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "",
       "EPL": "",
@@ -2702,11 +3404,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 19200,
       "name": "Eye Disorder",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -2728,11 +3435,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 19300,
       "name": "Eye Surgery (Corrective) Lasik or RK over one year",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2754,11 +3466,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 19400,
       "name": "Fatty Liver",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -2780,11 +3497,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 19401,
       "name": "Felony Conviction",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2806,11 +3528,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 19700,
       "name": "Fibrocystic Breast Disease - Biopsy recommended not done",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -2832,11 +3559,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 19600,
       "name": "Fibrocystic Breast Disease - Definite Diagnosis",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "",
       "EPL": "",
@@ -2858,11 +3590,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 19800,
       "name": "Fibroid Uterus",
+      "TYPE": "",
       "HMSP": "R",
       "HMSP-DI": "",
       "EPL": "",
@@ -2884,11 +3621,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 5200,
       "name": "Fibromyalgia",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2910,11 +3652,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 20100,
       "name": "Fractures  - Residuals or complications",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -2936,11 +3683,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 20000,
       "name": "Fractures  - Simple or full recovery",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2962,11 +3714,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 20200,
       "name": "Gallbladder Disorders - No surgery planned",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2988,11 +3745,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 20400,
       "name": "Gastric Bypass/Stapling - < 5 years",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3010,15 +3772,20 @@ export default {
       "ES": "",
       "10P": "",
       "PR": "",
-      "SF": "",
+      "SF": "Q-1",
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 20300,
       "name": "Gastric Bypass/Stapling - > 5 years no complications Acceptable build",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -3040,11 +3807,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 20500,
       "name": "Gastritis/GERD Mild infrequent Usually",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3066,11 +3838,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 20600,
       "name": "Glaucoma",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -3092,11 +3869,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 20700,
       "name": "Gout",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -3118,11 +3900,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 20800,
       "name": "Hearing Loss",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -3144,11 +3931,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 5400,
       "name": "Heart Bypass (see Coronary Artery Disease)",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3170,11 +3962,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 21000,
       "name": "Heart Failure - Heart valve impairment",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3196,11 +3993,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 5500,
       "name": "Heart Murmur - Aortic Insufficiency",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3218,15 +4020,20 @@ export default {
       "ES": "Q-2",
       "10P": "Q-2",
       "PR": "",
-      "SF": "",
+      "SF": "IC",
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 5600,
       "name": "Heart Murmur - Aortic Stenosis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3244,15 +4051,20 @@ export default {
       "ES": "Q-2",
       "10P": "Q-2",
       "PR": "",
-      "SF": "",
+      "SF": "IC",
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 5700,
       "name": "Heart Murmur - Mitral Regurgitation",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3270,15 +4082,20 @@ export default {
       "ES": "",
       "10P": "",
       "PR": "",
-      "SF": "",
+      "SF": "IC",
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 5800,
       "name": "Heart Murmur - Mitral Valve Prolapse - no medications",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3296,15 +4113,20 @@ export default {
       "ES": "",
       "10P": "",
       "PR": "",
-      "SF": "",
+      "SF": "IC",
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 5900,
       "name": "Heart Murmur - Mitral Valve Prolapse - with medications",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3326,11 +4148,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 6000,
       "name": "Heart Murmur - Mitral Valve Replacement - mitral and aortic",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3352,11 +4179,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 21100,
       "name": "Heart Murmur Heard as child Innocent - no symptoms",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -3378,11 +4210,16 @@ export default {
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 6200,
       "name": "Heart Transplant",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3404,11 +4241,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 6100,
       "name": "Heart Valve Repair",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3430,11 +4272,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 6300,
       "name": "Hemophilia",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3456,11 +4303,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 21300,
       "name": "Hemorrhoids",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3482,11 +4334,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 6400,
       "name": "Hepatitis - Alcoholic",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3508,11 +4365,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 6500,
       "name": "Hepatitis - Hepatitis  with full recovery",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3534,11 +4396,16 @@ export default {
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 6600,
       "name": "Hepatitis - Hepatitis B",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3560,11 +4427,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 6700,
       "name": "Hepatitis - Hepatitis C",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3586,11 +4458,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC",
+      "NLUL": "IC",
+      "SGWL": "IC"
     },
     {
       "id": 21400,
       "name": "Hernia - (Hiatus) Surgery pending",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3612,11 +4489,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 21500,
       "name": "Hernia - No symptoms / Surgically corrected",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3638,11 +4520,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 21600,
       "name": "Hernia Inguinal (groin) - No Surgery",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "",
       "EPL": "",
@@ -3664,11 +4551,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 21700,
       "name": "Hernia Inguinal (groin) - Surgically corrected > 1 year",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3690,11 +4582,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 6800,
       "name": "High Blood Pressure (hypertension): Controlled",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3716,11 +4613,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 21800,
       "name": "Hip Disorder",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -3742,11 +4644,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 6900,
       "name": "Hodgkin’s Disease",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3768,11 +4675,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 6901,
       "name": "Huntington’s Disease",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3794,11 +4706,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 7100,
       "name": "Hysterectomy - Cancerous Cause (see cancer)",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3816,15 +4733,20 @@ export default {
       "ES": "Q-2",
       "10P": "Q-2",
       "PR": "",
-      "SF": "",
+      "SF": "Q-10",
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 7000,
       "name": "Hysterectomy - No cancer",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3846,11 +4768,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 22200,
       "name": "Irritable Bowel Syndrome - Mild",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3872,11 +4799,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 22300,
       "name": "Irritable Bowel Syndrome - Moderate-to-severe attacks",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -3898,11 +4830,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 7200,
       "name": "Kidney - Dialysis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -3924,11 +4861,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 22400,
       "name": "Kidney Disorders - Donor > 6 months ",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3950,11 +4892,16 @@ export default {
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 22500,
       "name": "Kidney Disorders - Infection - fully recovered",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3976,11 +4923,16 @@ export default {
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 22700,
       "name": "Kidney Disorders - Stone",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "",
       "EPL": "",
@@ -4002,11 +4954,16 @@ export default {
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 22600,
       "name": "Kidney Disorders - Transplant recipient",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4024,15 +4981,20 @@ export default {
       "ES": "D",
       "10P": "D",
       "PR": "",
-      "SF": "",
+      "SF": "D",
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 7300,
       "name": "Kidney Removal (see Nephrectomy)",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -4054,11 +5016,16 @@ export default {
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 7500,
       "name": "Kidney Transplant Donor",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -4080,11 +5047,16 @@ export default {
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 7400,
       "name": "Kidney Transplant Recipient",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -4106,11 +5078,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 22800,
       "name": "Knee Disorders",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "",
       "EPL": "",
@@ -4132,11 +5109,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 22900,
       "name": "Labyrinthitis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4158,11 +5140,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 7600,
       "name": "Leukemia (see cancer)",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4180,15 +5167,20 @@ export default {
       "ES": "Q-2",
       "10P": "Q-2",
       "PR": "M-3",
-      "SF": "",
+      "SF": "D",
       "SUL": "",
       "DCFE": "Q-2",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "Q-6",
+      "NLUL": "Q-6",
+      "SGWL": "Q-6"
     },
     {
       "id": 23100,
       "name": "Liver Function Tests Elevated - Minimally elevated. No evidence of liver disease or alcoholism",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "D",
@@ -4210,11 +5202,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 23200,
       "name": "Liver Function Tests Elevated - Others",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -4232,15 +5229,20 @@ export default {
       "ES": "",
       "10P": "",
       "PR": "",
-      "SF": "",
+      "SF": "IC",
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 23300,
       "name": "Liver Impairments Abscess cirrhosis enlarged hepatitis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4258,15 +5260,20 @@ export default {
       "ES": "IC",
       "10P": "IC",
       "PR": "",
-      "SF": "",
+      "SF": "D",
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 7700,
       "name": "Liver Transplant",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4287,12 +5294,17 @@ export default {
       "SF": "D",
       "SUL": "D",
       "DCFE": "IC",
-      "SIWL": "",
-      "SI-WL": ""
+      "SIWL": "D",
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 7800,
       "name": "Lou Gehrig’s disease (see ALS)",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4314,11 +5326,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 7900,
       "name": "Lung Transplant",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4340,11 +5357,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 8000,
       "name": "Lupus - Discoid",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -4361,16 +5383,21 @@ export default {
       "IS": "",
       "ES": "",
       "10P": "",
-      "PR": "G",
+      "PR": "",
       "SF": "",
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 8100,
       "name": "Lupus - Systemic",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4383,7 +5410,7 @@ export default {
       "GULE50": "D",
       "GULE65": "D",
       "LPLB": "",
-      "LPGB": "",
+      "LPGB": "Q-4",
       "IS": "",
       "ES": "",
       "10P": "",
@@ -4392,11 +5419,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 23600,
       "name": "Lyme Disease",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4418,11 +5450,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 8200,
       "name": "Melanoma (see cancer)",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4440,15 +5477,20 @@ export default {
       "ES": "Q-2",
       "10P": "Q-2",
       "PR": "M-3",
-      "SF": "",
+      "SF": "Q-10",
       "SUL": "",
       "DCFE": "Q-2",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 23700,
       "name": "Melanoma < 5 years",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4466,15 +5508,20 @@ export default {
       "ES": "Q-2",
       "10P": "Q-2",
       "PR": "",
-      "SF": "",
+      "SF": "D",
       "SUL": "",
       "DCFE": "Q-2",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 23800,
       "name": "Meniere’s Disease",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4496,11 +5543,47 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
+    },
+    {
+      "id": 8301,
+      "name": "Mental Incapacitation",
+      "TYPE": "",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "",
+      "TLE65": "",
+      "GULE50": "",
+      "GULE65": "",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "ES": "",
+      "10P": "",
+      "PR": "",
+      "SF": "",
+      "SUL": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 8300,
       "name": "Mental Retardation",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4513,7 +5596,7 @@ export default {
       "GULE50": "D",
       "GULE65": "D",
       "LPLB": "D",
-      "LPGB": "D",
+      "LPGB": "",
       "IS": "D",
       "ES": "D",
       "10P": "D",
@@ -4522,11 +5605,16 @@ export default {
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 23900,
       "name": "Migraine",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "",
       "EPL": "",
@@ -4548,11 +5636,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 24000,
       "name": "Mitral Insufficiency or Stenosis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4574,11 +5667,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 24100,
       "name": "Mitral Valve Prolapse - No medication/No symptoms",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -4600,11 +5698,16 @@ export default {
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 24200,
       "name": "Mitral Valve Prolapse - Symptoms or chronic medication",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4626,11 +5729,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 24300,
       "name": "Mononucleosis",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -4652,11 +5760,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 8400,
       "name": "Multiple Myeloma",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4678,11 +5791,16 @@ export default {
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 8600,
       "name": "Multiple Sclerosis - Chronic or Unemployed",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4704,11 +5822,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 8500,
       "name": "Multiple Sclerosis - Mild employed full time no medications",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4730,11 +5853,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 8800,
       "name": "Muscular Dystrophy",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "D",
@@ -4756,11 +5884,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 8700,
       "name": "Myasthenia Gravis diagnosed over 1 year",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4782,11 +5915,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 24700,
       "name": "Narcolepsy",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4804,15 +5942,20 @@ export default {
       "ES": "",
       "10P": "",
       "PR": "",
-      "SF": "",
+      "SF": "IC",
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 9100,
       "name": "Nephrectomy (kidney removal)",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4834,11 +5977,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 15100,
       "name": "One eye impaired - congenital or trauma",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -4860,11 +6008,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 9200,
       "name": "Osteoporosis",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -4886,11 +6039,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 24900,
       "name": "Osteoporosis - Others",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4912,11 +6070,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 24800,
       "name": "Osteoporosis - Over age 50 present not symptomatic Usually",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -4938,11 +6101,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 25100,
       "name": "Ovarian Cyst - Others",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -4964,11 +6132,16 @@ export default {
       "SUL": "IC",
       "DCFE": "Q-2",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 25000,
       "name": "Ovarian Cyst - Surgically removed benign full recovery",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -4990,11 +6163,16 @@ export default {
       "SUL": "",
       "DCFE": "Q-2",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 9300,
       "name": "Pacemaker",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5016,11 +6194,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 25400,
       "name": "Pain Management - Narcotic pain medication",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5042,11 +6225,16 @@ export default {
       "SUL": "IC",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 25300,
       "name": "Pain Management - Over-the-counter drugs and prescription NSAIDS",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "",
       "EPL": "",
@@ -5068,11 +6256,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 9400,
       "name": "Pancreatitis - Acute full recovery over 1 year",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5094,11 +6287,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 9500,
       "name": "Pancreatitis - Chronic",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5120,11 +6318,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 25600,
       "name": "Panic Disorder",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5146,11 +6349,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 25700,
       "name": "Paralysis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5172,11 +6380,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 9600,
       "name": "Paraplegic",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5198,11 +6411,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 9700,
       "name": "Parkinson’s Disease",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5224,11 +6442,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 25800,
       "name": "Pelvic Inflammatory Disease",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -5250,11 +6473,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "IC",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 25900,
       "name": "Pericarditis - Current treatment of within one year",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5276,11 +6504,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 26000,
       "name": "Pericarditis - Fully recovered over one year",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -5302,11 +6535,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 9800,
       "name": "Peripheral Vascular Disease",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5328,11 +6566,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 26300,
       "name": "Pleurisy - Recurrent episode",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -5354,11 +6597,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 26200,
       "name": "Pleurisy - Single episode full recovery",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -5380,11 +6628,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 26500,
       "name": "Pneumonia - Recurrent episodes",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5406,11 +6659,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 26400,
       "name": "Pneumonia - Single episode full recovery",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -5432,11 +6690,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 26600,
       "name": "Pneumothorax - 0-1 year",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5458,11 +6721,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 26700,
       "name": "Pneumothorax - Over 1 year",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -5484,11 +6752,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 26800,
       "name": "Polio",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5510,11 +6783,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 9900,
       "name": "Polycystic kidney disease",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5536,11 +6814,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 27600,
       "name": "Post Traumatic Stress Disorder (PTSD)",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5562,11 +6845,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 27000,
       "name": "Pregnancy - 1st or 2nd trimester No complications",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "",
       "EPL": "",
@@ -5588,11 +6876,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 27100,
       "name": "Pregnancy - 3rd trimester",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5614,11 +6907,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 27300,
       "name": "Prostatitis - Recurrent",
+      "TYPE": "",
       "HMSP": "R",
       "HMSP-DI": "R",
       "EPL": "",
@@ -5640,11 +6938,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 27200,
       "name": "Prostatitis - Single Episode Full Recovery",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -5666,11 +6969,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 27400,
       "name": "Psoriasis - Mild Usually",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -5692,11 +7000,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 27500,
       "name": "Psoriasis - Severe or with Arthritis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5718,11 +7031,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 10200,
       "name": "Psychosis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5744,11 +7062,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 27700,
       "name": "Pulmonary Stenosis or Regurgitation",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5770,11 +7093,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 27800,
       "name": "Pyloric Stenosis - Present not corrected",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5796,11 +7124,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 27900,
       "name": "Pyloric Stenosis - Surgically corrected over one year",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "",
       "EPL": "",
@@ -5822,11 +7155,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 10300,
       "name": "Quadriplegic",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5844,15 +7182,20 @@ export default {
       "ES": "D",
       "10P": "D",
       "PR": "D",
-      "SF": "",
+      "SF": "D",
       "SUL": "",
       "DCFE": "D",
       "SIWL": "D",
-      "SI-WL": ""
+      "SIWLG": "D",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 28000,
       "name": "Rheumatic Fever",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5874,11 +7217,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 10400,
       "name": "Sarcoidosis - Current treatment or with residual lung impairment",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5900,11 +7248,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 10500,
       "name": "Sarcoidosis - Recovered over 1 year no residuals",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5926,11 +7279,16 @@ export default {
       "SUL": "",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 10600,
       "name": "Schizophrenia",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -5952,11 +7310,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 28200,
       "name": "Shoulder Disorders Rotator Cuff tendonitis bursitis etc.",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -5978,11 +7341,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 28300,
       "name": "Sinusitis",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "",
       "EPL": "",
@@ -6004,11 +7372,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 8201,
       "name": "Skin Cancer - Basal Cell Carcinoma ",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -6030,11 +7403,16 @@ export default {
       "SUL": "",
       "DCFE": "Q-2",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 8202,
       "name": "Skin Cancer - Squamous Cell Carcinoma",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -6056,11 +7434,16 @@ export default {
       "SUL": "Q-10",
       "DCFE": "Q-2",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 10700,
       "name": "Skin Cancer (except melanoma)",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -6082,11 +7465,16 @@ export default {
       "SUL": "Q-10",
       "DCFE": "Q-2",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 28400,
       "name": "Sleep Apnea - Uncontrolled",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -6104,15 +7492,20 @@ export default {
       "ES": "",
       "10P": "",
       "PR": "",
-      "SF": "",
+      "SF": "IC",
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 10800,
       "name": "Sleep Apnea current successful treatment w/CPAP or BIPAP",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -6134,11 +7527,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 28500,
       "name": "Spinal Disorders",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -6160,11 +7558,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 11000,
       "name": "Stroke - Multiple Strokes",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -6181,16 +7584,21 @@ export default {
       "IS": "Q-1",
       "ES": "Q-1",
       "10P": "Q-1",
-      "PR": "",
+      "PR": "M-2",
       "SF": "D",
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 10900,
       "name": "Stroke - No residuals - over 1 year",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -6212,11 +7620,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 11100,
       "name": "Stroke - TIA (Mini Stroke)",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -6238,11 +7651,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 11200,
       "name": "Suicide attempt over 1 year",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -6260,15 +7678,51 @@ export default {
       "ES": "",
       "10P": "",
       "PR": "",
+      "SF": "D",
+      "SUL": "",
+      "DCFE": "",
+      "SIWL": "",
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
+    },
+    {
+      "id": 11201,
+      "name": "Scleroderma",
+      "TYPE": "",
+      "HMSP": "",
+      "HMSP-DI": "",
+      "EPL": "",
+      "EPG": "",
+      "UP1": "",
+      "UP2": "",
+      "UP3": "",
+      "TLE50": "",
+      "TLE65": "",
+      "GULE50": "",
+      "GULE65": "",
+      "LPLB": "",
+      "LPGB": "",
+      "IS": "",
+      "ES": "",
+      "10P": "",
+      "PR": "",
       "SF": "",
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 11300,
       "name": "Thyroid impairments - No Cancer",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -6290,11 +7744,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 29100,
       "name": "TMJ",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "",
       "EPL": "",
@@ -6316,11 +7775,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 29300,
       "name": "Tremor",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -6342,11 +7806,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 11400,
       "name": "Tuberculosis - Current Disease / Treatment",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -6368,11 +7837,16 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 11500,
       "name": "Tuberculosis - Positive Skin Test with treatment completed",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -6394,11 +7868,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 11600,
       "name": "Ulcer",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "",
@@ -6420,11 +7899,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 11700,
       "name": "Ulcerative Colitis",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -6446,11 +7930,16 @@ export default {
       "SUL": "IC",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 29700,
       "name": "Urinary Disorder",
+      "TYPE": "",
       "HMSP": "IC",
       "HMSP-DI": "",
       "EPL": "",
@@ -6472,11 +7961,16 @@ export default {
       "SUL": "",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "",
+      "NLUL": "",
+      "SGWL": ""
     },
     {
       "id": 29800,
       "name": "Heart - Valve Replacement",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -6498,11 +7992,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "Q-2",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "IC-R",
+      "NLUL": "IC-R",
+      "SGWL": "IC-R"
     },
     {
       "id": 28501,
       "name": "Spina Bifida",
+      "TYPE": "",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -6524,11 +8023,16 @@ export default {
       "SUL": "D",
       "DCFE": "IC",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     },
     {
       "id": 99901,
       "name": "Sickle Cell Anemia",
+      "TYPE": "",
       "HMSP": "D",
       "HMSP-DI": "D",
       "EPL": "",
@@ -6550,7 +8054,11 @@ export default {
       "SUL": "D",
       "DCFE": "",
       "SIWL": "",
-      "SI-WL": ""
+      "SIWLG": "",
+      "SI-WL": "",
+      "SGT": "D",
+      "NLUL": "D",
+      "SGWL": "D"
     }
   ]
 }

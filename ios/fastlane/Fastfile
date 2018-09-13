@@ -11,7 +11,7 @@
 #
 
 # Uncomment the line if you want fastlane to automatically update itself
-update_fastlane
+# update_fastlane
 
 # ENV["GYM_PROJECT"] = "/Users/pottspotts/AwesomeProject/ios/AwesomeProject.xcworkspace"
 
@@ -21,12 +21,16 @@ lane :beta do
   #get_certificates           # invokes cert
   #get_provisioning_profile   # invokes sigh
 
-  gym(scheme: "/Users/pottspotts/AwesomeProject/ios/AwesomeProject",
-        #project: "/Users/pottspotts/AwesomeProject/ios/AwesomeProject.xcodeproj",
-        workspace: "/Users/pottspotts/AwesomeProject/ios/AwesomeProject.xcworkspace",
+  #cert
+  #sigh(force: true)
+
+  gym(scheme: "AwesomeProject",
+
+        #project: "AwesomeProject.xcodeproj",
+        workspace: "AwesomeProject.xcworkspace",
         configuration: "Ad Hoc Distribution",
         export_method: "ad-hoc",
-        export_options:{
+        export_options: {
             compileBitcode: false,
             signingStyle: "manual",
             provisioningProfiles:{

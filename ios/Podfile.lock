@@ -8,6 +8,9 @@ PODS:
     - AppCenter/Core
   - AppCenterReactNativeShared (1.6.0):
     - AppCenter/Core (= 1.7.1)
+  - Crashlytics (3.10.5):
+    - Fabric (~> 1.7.9)
+  - Fabric (1.7.9)
   - Firebase/Core (4.8.2):
     - FirebaseAnalytics (= 4.0.9)
     - FirebaseCore (= 4.0.14)
@@ -35,12 +38,16 @@ DEPENDENCIES:
   - AppCenter/Crashes (~> 1.7.1)
   - AppCenter/Push (~> 1.7.1)
   - AppCenterReactNativeShared (~> 1.6.0)
+  - Crashlytics (~> 3.10.5)
+  - Fabric (~> 1.7.9)
   - Firebase/Core
   - PPBlinkID (~> 2.15.0)
 
 SPEC CHECKSUMS:
   AppCenter: 53349f138e596f2514f7559bb50a7e6e55219f17
   AppCenterReactNativeShared: 9174f9a976f5d4b1949dccfac7f3a38399478c87
+  Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
+  Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
   Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
   FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
   FirebaseCore: 2e0b98fb2d64ca8140136beff15772bdd14d2dd7
@@ -49,6 +56,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   PPBlinkID: c48ed2cab5b326449921eb187784c7f3e58e70a2
 
-PODFILE CHECKSUM: 4c1b8daaf068e91dc5b457ce869340d76c98ff6a
+PODFILE CHECKSUM: 275156cb0f8ffa2b97249c3be5076dbc0f21931e
 
 COCOAPODS: 1.4.0

@@ -78,7 +78,9 @@ var storage = new Storage({
 // BLINK ID License Key
 import {BlinkID, MRTDKeys, USDLKeys, EUDLKeys, MYKADKeys} from 'blinkid-react-native';
 const BlinklicenseKey = Platform.select({
-  ios: 'FPL6SITR-KEB5IB5P-23WWSG62-Q5HIUVV3-FTBHCRJS-D3V3M7OA-P6IORS2V-IRKTXM43',
+  ios: 'SRMELRJ7-4M3EPIDG-TZB5OYNW-R2GLIL5W-PXAH7EHI-NPUGX2DL-5BV6RS2V-IRKTXS2R',
+  // ios: '3HBSIDEC-NXOIDNPN-C6K3JV2W-JA2GVKHH-NXPHCRJS-D3V3M7OA-P6IORS2V-IRKTX25T',
+  // ios: 'FPL6SITR-KEB5IB5P-23WWSG62-Q5HIUVV3-FTBHCRJS-D3V3M7OA-P6IORS2V-IRKTXM43',
   // ios: 'RIWAWJSR-CWCHEIUG-P2NBYJIL-PU65ZFWS-UE77OCVN-APB6INY3-CWDH4J6W-7BLWEEON',
   // ios: 'R6GH6FFH-JKIYQ76Q-QGUJSEIH-DSQCNQTR-IUZB525W-PXAH7EHI-NPUGWSGI-EDRUGFHX',
 });
@@ -99,7 +101,8 @@ const logos = {
   4: require('./images/logo_for.png'),
   5: require('./images/logo_cfg.jpeg'),
   6: require('./images/logo_roy.jpeg'),
-  7: require('./images/logo_aig.png')
+  7: require('./images/logo_aig.png'),
+  8: require('./images/logo_sag.jpg')
 };
 
 var CustomLayoutSpring = {
@@ -248,8 +251,8 @@ export default class Applify extends Component {
         this.setState({modalMaskVisible: true, registerVisible: true});
       } else {
         this.setState({user: firebase.auth().currentUser},()=>{
-          this.getSupportMessages();
-          this.getClientHistory();
+          // this.getSupportMessages();
+          // this.getClientHistory();
         })
         //console.log(this.state.user)
         this.setState({modalMaskVisible: false, registerVisible: false, loginVisible: false});
@@ -268,8 +271,8 @@ export default class Applify extends Component {
     // let str = stringifyObject(content) + " " + Math.floor(Date.now() / 1000) + "\n" + this.state.consoleContent;
     let str = stringifyObject(content) + "\n" + this.state.consoleContent;
     this.state.consoleContent = str.substr(0,4999);
-    // console.log(str);
-    // this.setState({consoleContent: updateContent});
+    console.log(str);
+    this.setState({consoleContent: updateContent});
   };
   setAnswerFromButton=(questionId)=>{
     // console.log("setAnswerFromButt() =====================")
@@ -362,11 +365,11 @@ export default class Applify extends Component {
   }
   processAnswer = (category, details) => {
     this.refs.answer.blur()
-    console.log("processAnswer");
+   // console.log("processAnswer");
     let self = this;
     details.answer = details.value === undefined ? details.answer : details.value;
     const rawAnswer = details.answer
-    console.log(details)
+   // console.log(details)
 
     if(!details.answer && !(category==='MED' || category==='MED_OLD'||category==="CON")) return false // don't process empty answers
     Q = Questions[this.state.activeQuestionId];
@@ -388,10 +391,10 @@ export default class Applify extends Component {
       details.answer = dob +" ("+ age+"yo)";
     }
     if(Q.field==='height'){
-      console.log("setting clientInfo.height to :"); console.log(details.value)
+     // console.log("setting clientInfo.height to :"); console.log(details.value)
       clientInfo.height = details.value;
       details.answer = this.formateHeight(details.answer);
-      console.log(this.state)
+     // console.log(this.state)
     }
     if(Q.field==='weight'){
       clientInfo.weight = details.answer;
@@ -430,20 +433,22 @@ export default class Applify extends Component {
         field:          Q.field,
         questionId:     this.state.activeQuestionId,
         buttonButtonId: 0,
-        raw:            details.answer
+        raw:            details.answer,
+        manualEntry:    false
       };
       if(category==="BIO") {
         let clientInfo = {...this.state.clientInfo};
         clientInfo[Q.field] = details.answer;
         // console.log("== NEW bio button ==");
-        this.setState({clientInfo}, ()=>{this.updateProviders()});
+        // this.setState({clientInfo}, ()=>{this.updateProviders()});
         B.title = Q.title;
         B.subtitle = details.answer.toString().trim();
       }
       else if(category==="MED" || category==="MED_OLD"){
         B.title = B.raw = _.startCase(_.toLower(details.name));
         B.subtitle = details.dosage;
-        B.key = details.id
+        B.key = details.id;
+        B.manualEntry = details.manualEntry
       }
       else if(category==="CON"){
         B.title = B.raw = _.startCase(_.toLower(details.name));
@@ -453,7 +458,7 @@ export default class Applify extends Component {
       if(_.trim(B.title)==='') return;
       this.setState(prevState => ({buttons: [...prevState.buttons, B]}),()=>{
         this.updateProviders;
-        this.saveAndClear()
+        //this.saveAndClear()
       });
     }
     if('answerOptions' in Q){
@@ -461,8 +466,8 @@ export default class Applify extends Component {
     }
 
     this.setState({clientInfo: clientInfo}, ()=>{
-      console.log("=== UPDATED CLIENT INFO AFTER PROCESS ANSWER ====")
-      console.log(this.state.clientInfo)
+     // console.log("=== UPDATED CLIENT INFO AFTER PROCESS ANSWER ====")
+     // console.log(this.state.clientInfo)
       this.clearAnswer()
       this.updateProviders()
     });
@@ -503,9 +508,9 @@ export default class Applify extends Component {
     return parseInt(height/12) +"' "+height%12+"'' or "+ height+"''";
   };
   updateProviders = (restart=false) => {
-    console.log("--- Updating providers ---");
-    console.log(this.state.buttons);
-    console.log(this.state.clientInfo);
+   console.log("--- Updating providers ---");
+   // console.log(this.state.buttons);
+   // console.log(this.state.clientInfo);
     let self = this;
     let age = this.state.clientInfo.age;
     let Providers = {...this.state.Providers};
@@ -596,7 +601,7 @@ export default class Applify extends Component {
             // Accepted (probably guaranteed issue)
             } else if(maxWeight==='A' && minWeight==='A') {
               statuses.push(3);
-              console.log("BMI Accepted (guaranteed).");
+             // console.log("BMI Accepted (guaranteed).");
             }
 
             // If we're through the ICs and As, parse these as INTs and let's get this party started
@@ -624,6 +629,8 @@ export default class Applify extends Component {
         // check medications and conditions
         _.each(self.state.buttons,function(button){
 
+          if(button.manualEntry) return false;
+
           // If this is a medication...
           if(button.category==='MED'){
             let medication = _.find(Medications,function(o){return o.id == button.key});
@@ -634,12 +641,12 @@ export default class Applify extends Component {
             // console.log("checking drug list:")
 
             medication = _.filter(DeclinedDrugs, function (dd) {
-              //
+
               // console.log("Filtering %s", dd.name)
-              //
+
               // console.log("dd.name"+_.toLower(dd.name))
               // console.log("medication.name: "+_.toLower(medication.name))
-              const ret = _.includes(_.toLower(dd.name), _.toLower(medication.name))
+              const ret = _.includes(_.toLower(medication.name), _.toLower(dd.name))
               // console.log(ret)
               return ret
             })[0]
@@ -749,15 +756,15 @@ export default class Applify extends Component {
       })
     });
     this.setState(Providers,()=>{
-      console.log("Providers state updated...")
-      console.log(this.state)
+     // console.log("Providers state updated...")
+     // console.log(this.state)
     });
-    console.log("UPDATE PROVIDERS Notices:")
-    console.log(notices);
-    console.log(this.state);
+   console.log("UPDATE PROVIDERS Notices:")
+   console.log(notices);
+   console.log(this.state);
   };
   watchAnswer = (questionAnswer) => {
-    // console.log("watchAnswer()")
+    console.log("watchAnswer()")
     this.setState({questionAnswer: questionAnswer});
     if(questionAnswer===''){
       this.setState({autoSuggestVisible: false});
@@ -824,8 +831,7 @@ export default class Applify extends Component {
     this.setState({autoSuggestOptions: matches});
   };
   clickAnswer = (option) => {
-    // console.log("clicked ");
-    // console.log(option);
+    option.manualEntry = option.manualEntry === undefined ? false : option.manualEntry
     this.processAnswer(Questions[this.state.activeQuestionId].category,option);
     this.state.autoSuggestVisible = false;
     this.clearAnswer();
@@ -852,7 +858,7 @@ export default class Applify extends Component {
         </View>
       )
     } else {
-      option = {id: _.random(1000000), name: this.state.questionAnswer, dosage: '', manualEntry: true };
+      option = {id: _.random(1000000), name: this.state.questionAnswer, dosage: 'N/A', manualEntry: true };
       return (
         <View style={styles.autoSuggestWrap}>
           <ScrollView keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
@@ -1063,11 +1069,11 @@ export default class Applify extends Component {
     let cost = { month: 0, annual: 0, notice: '' };
     let rate = 0;
 
-    console.log("=-=-=-=-=-= PRODUCT TABLE =-=-=-=-=-=-=");
+   // console.log("=-=-=-=-=-= PRODUCT TABLE =-=-=-=-=-=-=");
     table = product.table;
-    console.log(table);
+   // console.log(table);
     // CALCULATE SHOW/HIDE STATUS
-    console.log(product.tableType);
+   // console.log(product.tableType);
 
     // CALCULATE MONTHLY AND ANUUAL COST
     switch (product.tableType) {
@@ -1081,9 +1087,9 @@ export default class Applify extends Component {
           return cost;
         }
         rate = table[term][age][gender+"-"+smokerStatus];
-        console.log(" RATE: : %f", rate)
-        console.log(rate)
-        console.log(" gender: : %s", gender)
+       // console.log(" RATE: : %f", rate)
+       // console.log(rate)
+       // console.log(" gender: : %s", gender)
         break;
       case 'age--term-smokerStatus':
         if(!(age in table)){
@@ -1128,7 +1134,7 @@ export default class Applify extends Component {
       if(!(age in product.rider)){
         // console.log("AGE not in product.rider")
         cost.notice = "The age of '"+age+"' was not found in the rate table.";
-        console.log(cost.notice);
+       // console.log(cost.notice);
         return cost;
       } else {
         rate += product.rider[age]
@@ -1172,11 +1178,11 @@ export default class Applify extends Component {
     // console.log(smokerStatus);
 
 
-    // console.log("PROPS UPDATED:");
-    // console.log("updatedFaceValue: ");
-    // console.log(updatedFaceValue);
-    // console.log("updatedTerms: ");
-    // console.log(updatedTerms);
+    console.log("PROPS UPDATED:");
+    console.log("updatedFaceValue: ");
+    console.log(updatedFaceValue);
+    console.log("updatedTerms: ");
+    console.log(updatedTerms);
 
     calc = this.state.calculator;
     this.setState({calculatorHiddenProducts: []});
@@ -1184,33 +1190,33 @@ export default class Applify extends Component {
     hiddenIds = []
 
     _.each(Providers,function(provider){
-      // console.log("==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-== Provider ==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==");
-      // console.log(provider);
+      console.log("==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-== Provider ==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==");
+      console.log(provider);
       _.each(provider.products,function(product){
-        // console.log("==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-== Product === ");
-        // console.log(product);
+        console.log("==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-== Product === ");
+        console.log(product);
         _.each(product.calculator.products,function(calculatorProduct){
-          // console.log(calculatorProduct);
+          console.log(calculatorProduct);
 
-          // console.log("product.calculator.type: ");
-          // console.log(product.calculator.type);
-          // console.log("calculatorProduct");
-          // console.log(calculatorProduct);
-          // console.log(" === COST VARIABLES ===");
-          // console.log("updatedTerms");
-          // console.log(updatedTerms);
-          // console.log("updatedFaceValue");
-          // console.log(updatedFaceValue);
-          // console.log("age");
-          // console.log(age);
-          // console.log("gender");
-          // console.log(gender);
-          // console.log("calculatorProduct.multiplier");
-          // console.log(calculatorProduct.multiplier);
-          // console.log("multiplier applied:");
-          // console.log(_.toInteger(updatedFaceValue) / calculatorProduct.multiplier);
-          // console.log("rate table");
-          // console.log(calculatorProduct.table);
+          console.log("product.calculator.type: ");
+          console.log(product.calculator.type);
+          console.log("calculatorProduct");
+          console.log(calculatorProduct);
+          console.log(" === COST VARIABLES ===");
+          console.log("updatedTerms");
+          console.log(updatedTerms);
+          console.log("updatedFaceValue");
+          console.log(updatedFaceValue);
+          console.log("age")
+          console.log(age);
+          console.log("gender");
+          console.log(gender);
+          console.log("calculatorProduct.multiplier");
+          console.log(calculatorProduct.multiplier);
+          console.log("multiplier applied:");
+          console.log(_.toInteger(updatedFaceValue) / calculatorProduct.multiplier);
+          console.log("rate table");
+          console.log(calculatorProduct.table);
 
           // Check rate tables
           cost = getProductCostAvailability(calculatorProduct,age,gender,smokerStatus,updatedFaceValue,updatedTerms);
@@ -1218,11 +1224,11 @@ export default class Applify extends Component {
           if(cost.annual == 0) hiddenIds.push(calculatorProduct.id);
 
           // Check the coverage limits
-          // console.log("======="+product.nickname+"========");
+          console.log("======="+product.nickname+"========");
           face = updatedFaceValue/1000;
-          // console.log("faceValue: "+face);
-          // console.log("coverage Limits");
-          // console.log(CoverageLimits[product.nickname]);
+          console.log("faceValue: "+face);
+          console.log("coverage Limits");
+          console.log(CoverageLimits[product.nickname]);
           const cMin = CoverageLimits[product.nickname].min
           const cMax = CoverageLimits[product.nickname].max
           ages = CoverageLimits[product.nickname]
@@ -1248,14 +1254,14 @@ export default class Applify extends Component {
       })
     })
 
-    console.log("=== Hidden Calculator Products ===");
-    console.log(_.sortedUniq(hiddenIds));
+   console.log("=== Hidden Calculator Products ===");
+   console.log(_.sortedUniq(hiddenIds));
 
-    console.log("=== Hidden Calculator Notices ===");
-    console.log(notices);
+   console.log("=== Hidden Calculator Notices ===");
+   console.log(notices);
 
-    console.log("=== CALCULATOR OUTPUT ===");
-    console.log(calc);
+   console.log("=== CALCULATOR OUTPUT ===");
+   console.log(calc);
 
     this.setState({calculator: calc});
     this.setState({calculatorHiddenProducts: _.sortedUniq(hiddenIds)},
@@ -1554,9 +1560,9 @@ export default class Applify extends Component {
         clientInfo: client.clientInfo
       },()=>{
         this.updateProviders()
-        console.log(this.state)
+       // console.log(this.state)
       })
-      console.log("inside save and clear callback")
+     // console.log("inside save and clear callback")
       client.buttons.forEach((button,k)=>{
         if(button.category=='BIO'){
 
@@ -1565,6 +1571,7 @@ export default class Applify extends Component {
     })
   }
   renderClientHistory = () => {
+    console.log(this.state.clientHistory)
     return (
       <View style={styles.exportView}>
         <View style={{ position:'absolute', top: 5, left: 20, zIndex:999 }}>
@@ -1707,7 +1714,7 @@ export default class Applify extends Component {
         // console.log("token:")
         // console.log(token)
         if(token.error){
-          console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************")
+         // console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************")
           this.setFormError('1009',token.error.message);
           card_error = true
         }
@@ -1736,7 +1743,7 @@ export default class Applify extends Component {
                       this.setState({user: user},console.log(this.state.user))
                       let verifyEmail = firebase.auth().currentUser.sendEmailVerification()
                       this.setState({registerVisible: false},()=>this.setState({loginVisible: true}))
-                      console.log("creating user with email and password...")
+                     // console.log("creating user with email and password...")
                       u = firebase.auth().currentUser;
                       // console.log(u)
                       this.setUser(u.uid,fullName,email,null);
@@ -1930,16 +1937,18 @@ export default class Applify extends Component {
   pressMenuLogOut =()=>        {firebase.auth().signOut(); this.toggleMenu(); this.setState({modalMaskVisible: true})}
   pressMenuSupport =()=>       {this.setState({modalMaskVisible: true, supportVisible: true}); this.toggleMenu()}
   pressMenuDebugLog =()=>      {this.setState({consoleIsVisible: true}); this.toggleMenu()}
+  pressMenuCrash =()=>      {this.setState({consoleIsVisible: true}); this.toggleMenu()}
   menuModal =()=> {
     self=this
     var menuItems = [
       {title: 'Save & New Client',callback: this.pressMenuSaveNewClient },
-      {title: 'Scan Driver\'s License',callback: this.pressMenuScanLicense },
-      {title: 'Client History',callback: this.pressMenuClientHistory },
+      // {title: 'Scan Driver\'s License',callback: this.pressMenuScanLicense },
+      // {title: 'Client History',callback: this.pressMenuClientHistory },
       {title: 'Export PDF',callback: this.pressMenuExportPDF },
-      {title: 'Support',callback: this.pressMenuSupport },
+      // {title: 'Support',callback: this.pressMenuSupport },
       {title: 'Log Out',callback: this.pressMenuLogOut },
-      {title: 'Debug Log',callback: this.pressMenuDebugLog },
+      // {title: 'Debug Log',callback: this.pressMenuDebugLog },
+      {title: 'Crash Test Dummy',callback: this.pressMenuCrash },
     ]
     return (
       <Animated.View style={{
@@ -2225,7 +2234,7 @@ export default class Applify extends Component {
     return s
   }
   saveAndClear = (clear=false, callback=undefined) => {
-    console.log("Saving client...")
+   // console.log("Saving client...")
     const clientInfo      = c = this.state.clientInfo
     const buttons         = this.state.buttons
     const userNameDobID   = c.lastName +'-'+ c.firstName +'-'+ c.key;
@@ -2277,9 +2286,9 @@ export default class Applify extends Component {
           clientInfo: clientInfoRetart,
         },
         () => {
-          console.log("saveAndClear() finished");
-          console.log(clientInfoRetart)
-          console.log(this.state);
+         // console.log("saveAndClear() finished");
+         // console.log(clientInfoRetart)
+         // console.log(this.state);
           this.updateProviders(true);
           alert("The client has been saved successfully.")
         }
@@ -2350,7 +2359,8 @@ export default class Applify extends Component {
               clientInfo.dob = m[1]+"/"+m[2]+"/"+m[3];
 
               // clientInfo.height = Math.floor(parseInt(fields[USDLKeys.HeightIn]) / 12) +"-"+ parseInt(fields[USDLKeys.HeightIn]) %12;
-              clientInfo.height = Math.floor(parseInt(fields[USDLKeys.HeightIn]));
+              // clientInfo.height = Math.floor(parseInt(fields[USDLKeys.HeightIn]));
+              clientInfo.height = fields[USDLKeys.HeightIn];
               clientInfo.weight = fields[USDLKeys.WeightPounds];
               clientInfo.street1 = fields[USDLKeys.AddressStreet];
               clientInfo.city = fields[USDLKeys.AddressCity];
@@ -2393,12 +2403,13 @@ export default class Applify extends Component {
       .catch(err=>console.log(err))
   }
   saveClient=(userId,clientId,clientInfo,buttons)=>{
-    console.log("saveClient()")
-    console.log(buttons)
+   // console.log("saveClient()")
+   // console.log(buttons)
+    const t = (new Date).getTime()
     res = firebase.database().ref('clients/'+userId+'/'+clientId).set({
-      t:          (new Date).getTime(),
+      t:          t,
       clientId:   clientId,
-      linkText:   clientInfo.lastName+', '+clientInfo.firstName,
+      linkText:   clientInfo.lastName+', '+clientInfo.firstName+', '+/^.{21}/gm.exec(epochToDate(t))[0],
       buttons:    buttons,
       clientInfo: clientInfo,
       version:    3
@@ -2449,24 +2460,30 @@ export default class Applify extends Component {
 
   }
   getClientHistory=(callback)=>{
-    console.log("getClientHistory() ...")
+   // console.log("getClientHistory() ...")
     clients = this.state.clientHistory
     clientsArray = []
     ref = firebase.database().ref('clients/'+firebase.auth().currentUser.uid)
     ref.once('value').then(snapshot=>{
-      console.log("snapshot returned")
-      console.log(snapshot.val())
+     // console.log("snapshot returned")
+     // console.log(snapshot.val())
       _.each(snapshot.val(),(client,k)=>{
         client.k = k;
         clientsArray.push(client)
       });
     }).done(()=>{
       this.setState({clientHistory: clientsArray},()=>{
-        console.log("=== GET EXISTING MESSAGES ===")
-        console.log(this.state.clientHistory)
+       // console.log("=== GET EXISTING MESSAGES ===")
+       // console.log(this.state.clientHistory)
       })
     })
   }
+}
+
+function epochToDate(t){
+  var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+  d.setUTCSeconds(t / 1000);
+  return d
 }
 
 function getRandomName(){return {first: 'John', last: 'Doe', key: (Math.ceil(Math.random()*100000000)).toString()}}

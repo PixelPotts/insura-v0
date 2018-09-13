@@ -272,9 +272,9 @@ export default {
     80:null,
     85:null
   },
-  "SI-WL": {
-    min:null,
-    max:null,
+  "SGT": {
+    min:50,
+    max:1000,
     45:null,
     50:null,
     55:null,
@@ -284,5 +284,32 @@ export default {
     75:null,
     80:null,
     85:null
-  }
+  },
+  "NLUL": {
+    min:25,
+    max:400,
+    45:null,
+    50:null,
+    55:null,
+    60:null,
+    65:null,
+    70:null,
+    75:null,
+    80:null,
+    85:null
+  },
+  "SGWL": {
+    min:25,
+    max:250,
+    45:null,
+    50:null,
+    55:null,
+    60:null,
+    65:null,
+    70:null,
+    75:null,
+    80:null,
+    85:null
+  },
+
 }
