@@ -232,7 +232,9 @@ export default class Applify extends Component {
       menuPosition: new Animated.Value(-250),
       supportVisible: false,
       supportInput: '',
-      supportMessages: []
+      supportMessages: [],
+      underwritingNotices: [],
+
     };
   }
   componentDidMount() {
@@ -1260,9 +1262,8 @@ export default class Applify extends Component {
    // console.log(calc);
 
     this.setState({calculator: calc});
-    this.setState({calculatorHiddenProducts: _.sortedUniq(hiddenIds)},
-      // console.log("hidden IDs state set")
-    );
+    this.setState({calculatorHiddenProducts: _.sortedUniq(hiddenIds)});
+    this.setState({underwritingNotices: notices})
 
     this.updateProviders()
     return 1
@@ -1560,23 +1561,10 @@ export default class Applify extends Component {
             <Text style={{fontSize:16}}><Text style={styles.backButton}>&lsaquo;</Text> Questions</Text>
           </TouchableHighlight>
         </View>
-        <Text style={{marginBottom: 20, fontSize: 20}}>Underwriting Info Export</Text>
-        <View style={styles.exportContentWrap}>
-          {_.filter(this.state.buttons,function(b){return b.category!='MED' && b.category!='CON'}).map(b => (
-            <View style={styles.exportLineItemWrap} key={b.id}>
-              <Text style={styles.exportLineItemHeader}>{b.title}</Text>
-              <Text style={styles.exportLineItem}>{b.subtitle}</Text>
-            </View>
-          ))}
-          <View style={styles.exportLineItemWrap} key={"10001"}>
-            <Text style={styles.exportLineItemHeader}>Medications</Text>
-            {medButtons && medButtons.map(b => ( <Text key={b.id} style={styles.exportLineItem}>{b.title}, </Text> ))}
-          </View>
-          <View style={styles.exportLineItemWrap} key={"10002"}>
-            <Text style={styles.exportLineItemHeader}>Conditions</Text>
-            {conButtons && conButtons.map(b => ( <Text key={b.id} style={styles.exportLineItem}>{b.title}, </Text> ))}
-          </View>
-        </View>
+        <Text style={{marginBottom: 20, fontSize: 20}}>Underwriting Decision Log</Text>
+        <Scrollview style={styles.exportContentWrap}>
+
+        </Scrollview>
       </View>
     )
   }
@@ -2068,8 +2056,8 @@ export default class Applify extends Component {
       {title: 'Export PDF',callback: this.pressMenuExportPDF },
       // {title: 'Support',callback: this.pressMenuSupport },
       {title: 'Debug Log',callback: this.pressMenuDebugLog },
-      {title: 'Crash Test Dummy',callback: this.pressMenuCrash },
       {title: 'Simulate ID Scan',callback: this.pressMenuSimulateIDScan },
+      {title: 'Simulate App Crash',callback: this.pressMenuCrash },
       {title: 'Log Out',callback: this.pressMenuLogOut },
     ]
     return (
