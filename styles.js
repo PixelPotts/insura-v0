@@ -99,7 +99,7 @@ export default StyleSheet.create({
     zIndex: 1000,
     margin: 20,
     padding: 20,
-    opacity: 0.3,
+    // opacity: 0.3,
     // display: 'none'
   },
   masterInput: {
