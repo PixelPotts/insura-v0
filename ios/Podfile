@@ -8,11 +8,9 @@ target 'AwesomeProject' do
   pod 'Fabric', '~> 1.7.9'
   pod 'Crashlytics', '~> 3.10.5'
 
-  # Pods for AppCenter
-  pod 'AppCenter/Push', '~> 1.7.1'
-  pod 'AppCenter/Crashes', '~> 1.7.1'
-  pod 'AppCenter/Analytics', '~> 1.7.1'
-  pod 'AppCenterReactNativeShared', '~> 1.6.0'
+  pod 'AppCenterReactNativeShared', '~> 1.8.1'
+  pod 'AppCenter/Crashes', '~> 1.9.0'
+  pod 'AppCenter/Analytics', '~> 1.9.0'
 
 # pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 # pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'

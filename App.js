@@ -2171,7 +2171,7 @@ export default class Applify extends Component {
       // {title: 'Scan Driver\'s License',callback: this.pressMenuScanLicense },
       {title: 'Client History ('+this.state.clientHistory.length+')',callback: this.pressMenuClientHistory },
       // {title: 'Export PDF',callback: this.pressMenuExportPDF },
-      // {title: 'Support',callback: this.pressMenuSupport },
+      {title: 'Support',callback: this.pressMenuSupport },
       {title: 'Debug Log',callback: this.pressMenuDebugLog },
       // {title: 'Simulate ID Scan',callback: this.pressMenuSimulateIDScan },
       // {title: 'Simulate App Crash',callback: this.pressMenuCrash },

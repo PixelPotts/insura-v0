@@ -12,7 +12,6 @@
     "appcenter": "^1.8.1",
     "appcenter-analytics": "^1.8.1",
     "appcenter-crashes": "^1.8.1",
-    "appcenter-push": "^1.8.1",
     "blinkid-react-native": "^1.4.2",
     "electron": "^1.8.8",
     "eslint": "^5.6.1",

@@ -1,24 +1,41 @@
- at throwVersionError (/Users/pottspotts/AwesomeProject/node_modules/@babel/helper-plugin-utils/lib/index.js:65:11)
-    at Object.assertVersion (/Users/pottspotts/AwesomeProject/node_modules/@babel/helper-plugin-utils/lib/index.js:13:11)
-    at _default (/Users/pottspotts/AwesomeProject/node_modules/@babel/plugin-proposal-optional-chaining/lib/index.js:41:7)
-    at /Users/pottspotts/AwesomeProject/node_modules/@babel/helper-plugin-utils/lib/index.js:19:12
-    at Function.memoisePluginContainer (/usr/local/lib/node_modules/react-native-git-upgrade/node_modules/babel-core/lib/transformation/file/options/option-manager.js:113:13)
-    at Function.normalisePlugin (/usr/local/lib/node_modules/react-native-git-upgrade/node_modules/babel-core/lib/transformation/file/options/option-manager.js:146:32)
-    at /usr/local/lib/node_modules/react-native-git-upgrade/node_modules/babel-core/lib/transformation/file/options/option-manager.js:184:30
-    at Array.map (<anonymous>)
-    at Function.normalisePlugins (/usr/local/lib/node_modules/react-native-git-upgrade/node_modules/babel-core/lib/transformation/file/options/option-manager.js:158:20)
-    at OptionManager.mergeOptions (/usr/local/lib/node_modules/react-native-git-upgrade/node_modules/babel-core/lib/transformation/file/options/option-manager.js:234:36)
-    at OptionManager.init (/usr/local/lib/node_modules/react-native-git-upgrade/node_modules/babel-core/lib/transformation/file/options/option-manager.js:368:12)
-    at compile (/usr/local/lib/node_modules/react-native-git-upgrade/node_modules/babel-register/lib/node.js:103:45)
-    at loader (/usr/local/lib/node_modules/react-native-git-upgrade/node_modules/babel-register/lib/node.js:144:14)
-    at Object.require.extensions.(anonymous function) [as .js] (/usr/local/lib/node_modules/react-native-git-upgrade/node_modules/babel-register/lib/node.js:154:7)
-    at Module.load (internal/modules/cjs/loader.js:599:32)
-    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
-    at Function.Module._load (internal/modules/cjs/loader.js:530:3)
-    at Module.require (internal/modules/cjs/loader.js:637:17)
-    at require (internal/modules/cjs/helpers.js:20:18)
-    at runCopyAndReplace (/usr/local/lib/node_modules/react-native-git-upgrade/cliEntry.js:164:41)
-    at generateTemplates (/usr/local/lib/node_modules/react-native-git-upgrade/cliEntry.js:151:12)
-    at Object.<anonymous> (/usr/local/lib/node_modules/react-native-git-upgrade/cliEntry.js:288:11)
-    at Generator.next (<anonymous>)
-    at step (/usr/local/lib/node_modules/react-native-git-upgrade/cliEntry.js:171:191)
+=== BUILD TARGET AppCenterReactNative OF PROJECT AppCenterReactNative WITH CONFIGURATION Release ===
+
+Check dependencies
+
+Write auxiliary files
+/bin/mkdir -p /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/AppCenterReactNative.build/Release-iphoneos/AppCenterReactNative.build/Objects-normal/armv7
+write-file /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/AppCenterReactNative.build/Release-iphoneos/AppCenterReactNative.build/Objects-normal/armv7/AppCenterReactNative.LinkFileList
+write-file /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/AppCenterReactNative.build/Release-iphoneos/AppCenterReactNative.build/AppCenterReactNative-generated-files.hmap
+/bin/mkdir -p /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/AppCenterReactNative.build/Release-iphoneos/AppCenterReactNative.build/Objects-normal/arm64
+write-file /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/AppCenterReactNative.build/Release-iphoneos/AppCenterReactNative.build/Objects-normal/arm64/AppCenterReactNative.LinkFileList
+write-file /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/AppCenterReactNative.build/Release-iphoneos/AppCenterReactNative.build/AppCenterReactNative.hmap
+write-file /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/AppCenterReactNative.build/Release-iphoneos/AppCenterReactNative.build/AppCenterReactNative-project-headers.hmap
+write-file /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/AppCenterReactNative.build/Release-iphoneos/AppCenterReactNative.build/AppCenterReactNative-all-non-framework-target-headers.hmap
+write-file /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/AppCenterReactNative.build/Release-iphoneos/AppCenterReactNative.build/AppCenterReactNative-own-target-headers.hmap
+write-file /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/AppCenterReactNative.build/Release-iphoneos/AppCenterReactNative.build/AppCenterReactNative-all-target-headers.hmap
+
+SymLink /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/BuildProductsPath/Release-iphoneos/libAppCenterReactNative.a /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/libAppCenterReactNative.a
+    cd /Users/vsts/agent/2.140.2/work/1/s/node_modules/appcenter/ios
+    export PATH="/Applications/Xcode_9.4.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode_9.4.1.app/Contents/Developer/usr/bin:/Library/Frameworks/Mono.framework/Versions/4/bin:/Users/vsts/.nvm/versions/node/v8.12.0/bin:/usr/local/bin:/usr/local/sbin:/Users/vsts/bin:/Users/vsts/.yarn/bin:/usr/local/go/bin:/Users/vsts/Library/Android/sdk/tools:/Users/vsts/Library/Android/sdk/platform-tools:/Users/vsts/Library/Android/sdk/ndk-bundle:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/vsts/.azcopy"
+    /bin/ln -sfh /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/libAppCenterReactNative.a /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/BuildProductsPath/Release-iphoneos/libAppCenterReactNative.a
+
+CompileC /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/AppCenterReactNative.build/Release-iphoneos/AppCenterReactNative.build/Objects-normal/armv7/AppCenterReactNative.o AppCenterReactNative/AppCenterReactNative.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/vsts/agent/2.140.2/work/1/s/node_modules/appcenter/ios
+    export LANG=en_US.US-ASCII
+    export PATH="/Applications/Xcode_9.4.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode_9.4.1.app/Contents/Developer/usr/bin:/Library/Frameworks/Mono.framework/Versions/4/bin:/Users/vsts/.nvm/versions/node/v8.12.0/bin:/usr/local/bin:/usr/local/sbin:/Users/vsts/bin:/Users/vsts/.yarn/bin:/usr/local/go/bin:/Users/vsts/Library/Android/sdk/tools:/Users/vsts/Library/Android/sdk/platform-tools:/Users/vsts/Library/Android/sdk/ndk-bundle:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/vsts/.azcopy"
+    /Applications/Xcode_9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/vsts/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -fmodules-prune-interval=86400 -fmodules-prune-after=345600 -fbuild-session-file=/Users/vsts/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -fmodules-validate-once-per-build-session -Wnon-modular-include-in-framework-module -Werror=non-modular-include-in-framework-module -Wno-trigraphs -fpascal-strings -Os -fno-common -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wunreachable-code -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-param...
+/Users/vsts/agent/2.140.2/work/1/s/node_modules/appcenter/ios/AppCenterReactNative/AppCenterReactNative.m:42:26: error: no known class method for selector 'startFromLibraryWithServices:'
+            [MSAppCenter startFromLibraryWithServices:@[serviceClass]];
+                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+CompileC /Users/vsts/Library/Developer/Xcode/DerivedData/AwesomeProject-dqmjpgceplekmwamioyvviahdnlx/Build/Intermediates.noindex/ArchiveIntermediates/AwesomeProject/IntermediateBuildFilesPath/AppCenterReactNative.build/Release-iphoneos/AppCenterReactNative.build/Objects-normal/arm64/AppCenterReactNative.o AppCenterReactNative/AppCenterReactNative.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/vsts/agent/2.140.2/work/1/s/node_modules/appcenter/ios
+    export LANG=en_US.US-ASCII
+    export PATH="/Applications/Xcode_9.4.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode_9.4.1.app/Contents/Developer/usr/bin:/Library/Frameworks/Mono.framework/Versions/4/bin:/Users/vsts/.nvm/versions/node/v8.12.0/bin:/usr/local/bin:/usr/local/sbin:/Users/vsts/bin:/Users/vsts/.yarn/bin:/usr/local/go/bin:/Users/vsts/Library/Android/sdk/tools:/Users/vsts/Library/Android/sdk/platform-tools:/Users/vsts/Library/Android/sdk/ndk-bundle:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/vsts/.azcopy"
+    /Applications/Xcode_9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch arm64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/vsts/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -fmodules-prune-interval=86400 -fmodules-prune-after=345600 -fbuild-session-file=/Users/vsts/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -fmodules-validate-once-per-build-session -Wnon-modular-include-in-framework-module -Werror=non-modular-include-in-framework-module -Wno-trigraphs -fpascal-strings -Os -fno-common -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wunreachable-code -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-param...
+/Users/vsts/agent/2.140.2/work/1/s/node_modules/appcenter/ios/AppCenterReactNative/AppCenterReactNative.m:42:26: error: no known class method for selector 'startFromLibraryWithServices:'
+            [MSAppCenter startFromLibraryWithServices:@[serviceClass]];
+                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+** ARCHIVE FAILED **
