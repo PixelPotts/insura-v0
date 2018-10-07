@@ -85,7 +85,7 @@ export default {
     },
     {
       id: 401,
-      text: 'Home mortgage - balance?',
+      text: 'Mortgage balance / face amount?',
       placeholder: "$50,000",
       category: 'BIO',
       title: "LOAN BALANCE",

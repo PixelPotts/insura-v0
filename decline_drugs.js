@@ -188,7 +188,7 @@ export default {
     },
     {
       "id": 7,
-      "name": "Aceon ",
+      "name": "Aceon",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -219,7 +219,7 @@ export default {
     },
     {
       "id": 8,
-      "name": "Acldinium bromide ",
+      "name": "Acldinium bromide",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -250,7 +250,7 @@ export default {
     },
     {
       "id": 9,
-      "name": "Acetyl L- Carnitine ",
+      "name": "Acetyl L- Carnitine",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -312,7 +312,7 @@ export default {
     },
     {
       "id": 11,
-      "name": "Activase ",
+      "name": "Activase",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -405,7 +405,7 @@ export default {
     },
     {
       "id": 14,
-      "name": "Adalat ",
+      "name": "Adalat",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -436,7 +436,7 @@ export default {
     },
     {
       "id": 15,
-      "name": "Adriamycin ",
+      "name": "Adriamycin",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -467,7 +467,7 @@ export default {
     },
     {
       "id": 16,
-      "name": "Adrucil ",
+      "name": "Adrucil",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -498,7 +498,7 @@ export default {
     },
     {
       "id": 17,
-      "name": "Advair ",
+      "name": "Advair",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -746,7 +746,7 @@ export default {
     },
     {
       "id": 25,
-      "name": "Aldactazide ",
+      "name": "Aldactazide",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1087,7 +1087,7 @@ export default {
     },
     {
       "id": 36,
-      "name": "Amifostine ",
+      "name": "Amifostine",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1211,7 +1211,7 @@ export default {
     },
     {
       "id": 40,
-      "name": "Antabuse ",
+      "name": "Antabuse",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1273,7 +1273,7 @@ export default {
     },
     {
       "id": 42,
-      "name": "Anoro Ellipta ",
+      "name": "Anoro Ellipta",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1552,7 +1552,7 @@ export default {
     },
     {
       "id": 51,
-      "name": "Arcapta Neohaler ",
+      "name": "Arcapta Neohaler",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1614,7 +1614,7 @@ export default {
     },
     {
       "id": 53,
-      "name": "Argatroban ",
+      "name": "Argatroban",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1676,7 +1676,7 @@ export default {
     },
     {
       "id": 55,
-      "name": "Arformoterol Tartate ",
+      "name": "Arformoterol Tartate",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1769,7 +1769,7 @@ export default {
     },
     {
       "id": 58,
-      "name": "Arranon ",
+      "name": "Arranon",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -1800,7 +1800,7 @@ export default {
     },
     {
       "id": 59,
-      "name": "Arsenic Trioxide ",
+      "name": "Arsenic Trioxide",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2296,7 +2296,7 @@ export default {
     },
     {
       "id": 75,
-      "name": "Bromocriptine Mesylate ",
+      "name": "Bromocriptine Mesylate",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2358,7 +2358,7 @@ export default {
     },
     {
       "id": 77,
-      "name": "Bumetanide ",
+      "name": "Bumetanide",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2420,7 +2420,7 @@ export default {
     },
     {
       "id": 79,
-      "name": "Calcium Acetrate ",
+      "name": "Calcium Acetrate",
       "HMSP": "IC",
       "HMSP-DI": "IC",
       "EPL": "IC",
@@ -2699,7 +2699,7 @@ export default {
     },
     {
       "id": 88,
-      "name": "Calcitriol ",
+      "name": "Calcitriol",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -2854,7 +2854,7 @@ export default {
     },
     {
       "id": 93,
-      "name": "Clopidogrel ",
+      "name": "Clopidogrel",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3319,7 +3319,7 @@ export default {
     },
     {
       "id": 108,
-      "name": "Dilantin ",
+      "name": "Dilantin",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3784,7 +3784,7 @@ export default {
     },
     {
       "id": 123,
-      "name": "Emtriva ",
+      "name": "Emtriva",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -3815,7 +3815,7 @@ export default {
     },
     {
       "id": 124,
-      "name": "Effient ",
+      "name": "Effient",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -4001,7 +4001,7 @@ export default {
     },
     {
       "id": 130,
-      "name": "Ethotoin ",
+      "name": "Ethotoin",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -4249,7 +4249,7 @@ export default {
     },
     {
       "id": 138,
-      "name": "Flutamide ",
+      "name": "Flutamide",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -4311,7 +4311,7 @@ export default {
     },
     {
       "id": 140,
-      "name": "Fosphenytoin sodium ",
+      "name": "Fosphenytoin sodium",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -4404,7 +4404,7 @@ export default {
     },
     {
       "id": 143,
-      "name": "Ganciclovir ",
+      "name": "Ganciclovir",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -4776,7 +4776,7 @@ export default {
     },
     {
       "id": 155,
-      "name": "Hydergine ",
+      "name": "Hydergine",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -4993,7 +4993,7 @@ export default {
     },
     {
       "id": 162,
-      "name": "Ismo ",
+      "name": "Ismo",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -5086,7 +5086,7 @@ export default {
     },
     {
       "id": 165,
-      "name": "Ipratropium bromide ",
+      "name": "Ipratropium bromide",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -5117,7 +5117,7 @@ export default {
     },
     {
       "id": 166,
-      "name": "IsoDitrate ",
+      "name": "IsoDitrate",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -5148,7 +5148,7 @@ export default {
     },
     {
       "id": 167,
-      "name": "Isordil ",
+      "name": "Isordil",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -5737,7 +5737,7 @@ export default {
     },
     {
       "id": 186,
-      "name": "Memantine ",
+      "name": "Memantine",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -5799,7 +5799,7 @@ export default {
     },
     {
       "id": 188,
-      "name": "Mercaptopurine ",
+      "name": "Mercaptopurine",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -6326,7 +6326,7 @@ export default {
     },
     {
       "id": 205,
-      "name": "Nintedanib ",
+      "name": "Nintedanib",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -6729,7 +6729,7 @@ export default {
     },
     {
       "id": 218,
-      "name": "Pletal ",
+      "name": "Pletal",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -6791,7 +6791,7 @@ export default {
     },
     {
       "id": 220,
-      "name": "Procyclidine HCL ",
+      "name": "Procyclidine HCL",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -7287,7 +7287,7 @@ export default {
     },
     {
       "id": 236,
-      "name": "Renagel ",
+      "name": "Renagel",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -7442,7 +7442,7 @@ export default {
     },
     {
       "id": 241,
-      "name": "Rotigotine ",
+      "name": "Rotigotine",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -7938,7 +7938,7 @@ export default {
     },
     {
       "id": 257,
-      "name": "Stiolto Respimat ",
+      "name": "Stiolto Respimat",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -8217,7 +8217,7 @@ export default {
     },
     {
       "id": 266,
-      "name": "Tiotropium Bromide ",
+      "name": "Tiotropium Bromide",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -8496,7 +8496,7 @@ export default {
     },
     {
       "id": 275,
-      "name": "Umeclidinium ",
+      "name": "Umeclidinium",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",
@@ -8589,7 +8589,7 @@ export default {
     },
     {
       "id": 278,
-      "name": "Vilanterol ",
+      "name": "Vilanterol",
       "HMSP": "",
       "HMSP-DI": "",
       "EPL": "",

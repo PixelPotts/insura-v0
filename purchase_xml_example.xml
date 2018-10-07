@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://apple.com/itunes/importer" version="software5.10">
+    <provider>CyberInteractive</provider>
+    <team_id>A9B8C7D6E5</team_id>
+    <software>
+        <vendor_id>CI0009</vendor_id>
+        <software_metadata>
+            <in_app_purchases>
+                <subscription_group name="Streaming All Access">
+                    <locales>
+                        <locale name="en-US">
+                            <title>Streaming All Access</title>
+                            <app_name>Super Streaming</app_name>
+                        </locale>
+                    </locales>
+                    <in_app_purchase>
+                        <reference_name>Every Movie In The World Plus One Month</reference_name>
+                        <locales>
+                            <locale name="en-US">
+                                <title>Every Movie In The World Plus One Month</title>
+                                <description>Every movie ever plus extra stuff for one month.</description>
+                            </locale>
+                        </locales>
+                        <product_id>every_movie_in_the_world_plus_1month</product_id>
+                        <type>auto-renewable</type>
+                        <duration>1 Month</duration>
+                        <bonus_duration>7 Days</bonus_duration>
+                        <cleared_for_sale>true</cleared_for_sale>
+                        <rank>1</rank>
+                        <review_screenshot>
+                            <file_name>every_movie_in_the_world_plus_1month.png</file_name>
+                            <size>286243</size>
+                            <checksum type="md5">c0f4c46dc16c4153cef37f6c868b7c5c</checksum>
+                        </review_screenshot>
+                        <review_notes>Some notes for the reviewer.</review_notes>
+                        <prices>
+                            <!-- Before submitting the in-app purchase for review, you can supply only initial prices and you must supply prices for all 155 territories. Once the review process occurs and it is approved, initial prices can no longer be added or changed. -->
+                            <price>
+                                <territory>US</territory>
+                                <tier>5</tier>
+                            </price>
+                            <!-- Additional territories here -->
+                        </prices>
+                    </in_app_purchase>
+                    <in_app_purchase>
+                        <reference_name>Every Movie In The World Plus Six Months</reference_name>
+                        <locales>
+                            <locale name="en-US">
+                                <title>Every Movie In The World Plus Six Months</title>
+                                <description>Every movie ever plus extra stuff for six months.</description>
+                            </locale>
+                        </locales>
+                        <product_id>every_movie_in_the_world_plus_6months</product_id>
+                        <type>auto-renewable</type>
+                        <duration>6 Months</duration>
+                        <bonus_duration>1 Month</bonus_duration>
+                        <cleared_for_sale>true</cleared_for_sale>
+                        <rank>1</rank>
+                        <review_screenshot>
+                            <file_name>every_movie_in_the_world_plus_6months.png</file_name>
+                            <size>266253</size>
+                            <checksum type="md5">4c46cc5c6c4153ce868b7fcdc137f60f</checksum>
+                        </review_screenshot>
+                        <review_notes>Some notes for the reviewer.</review_notes>
+                        <prices>
+                            <price>
+                                <territory>US</territory>
+                                <tier>7</tier>
+                            </price>
+                            <price>
+                                <start_date>2017-05-30</start_date>
+                                <territory>US</territory>
+                                <tier>8</tier>
+                                <keep_previous_tier>true</keep_previous_tier>
+                            </price>
+                            <!-- Additional territories here -->
+                        </prices>
+                        <offers>
+                            <offer>
+                                <territory>US</territory>
+                                <type>introductory</type>
+                                <tier>1</tier>
+                                <mode>pay-as-you-go</mode>
+                                <duration>1 month</duration>
+                                <number_of_periods>2</number_of_periods>
+                                <start_date>2017-09-09</start_date>
+                                <end_date>2017-12-12</end_date>
+                            </offer>
+                        </offers>
+                    </in_app_purchase>
+                    <in_app_purchase>
+                        <reference_name>Every Movie In The World One Month</reference_name>
+                        <locales>
+                            <locale name="en-US">
+                                <title>Every Movie In The World One Month</title>
+                                <description>Every movie ever for one month.</description>
+                            </locale>
+                        </locales>
+                        <product_id>every_movie_in_the_world_1month</product_id>
+                        <type>auto-renewable</type>
+                        <duration>1 Month</duration>
+                        <bonus_duration>7 Days</bonus_duration>
+                        <cleared_for_sale>true</cleared_for_sale>
+                        <rank>2</rank>
+                        <review_screenshot>
+                            <file_name>every_movie_in_the_world_1month.png</file_name>
+                            <size>243862</size>
+                            <checksum type="md5">cef37f6c0f53c868b7c5c4c46dc16c41</checksum>
+                        </review_screenshot>
+                        <review_notes>Some notes for the reviewer.</review_notes>
+                        <prices>
+                            <price>
+                                <territory>US</territory>
+                                <tier>4</tier>
+                            </price>
+                            <price>
+                                <start_date>2017-05-30</start_date>
+                                <territory>US</territory>
+                                <tier>5</tier>
+                                <keep_previous_tier>true</keep_previous_tier>
+                            </price>
+                            <!-- Additional territories here -->
+                        </prices>
+                    </in_app_purchase>
+                    <in_app_purchase>
+                        <reference_name>Every Movie In The World Six Months</reference_name>
+                        <locales>
+                        <locales>
+                            <locale name="en-US">
+                                <title>Every Movie In The World Six Months</title>
+                                <description>Every movie ever for six months.</description>
+                            </locale>
+                        </locales>
+                        <product_id>every_movie_in_the_world_6months</product_id>
+                        <type>auto-renewable</type>
+                        <duration>6 Months</duration>
+                        <bonus_duration>1 Month</bonus_duration>
+                        <cleared_for_sale>true</cleared_for_sale>
+                        <rank>2</rank>
+                        <review_screenshot>
+                            <file_name>every_movie_in_the_world_6months.png</file_name>
+                            <size>293253</size>
+                            <checksum type="md5">b7c5c6c53cefcf4c46dc137f868c4160</checksum>
+                        </review_screenshot>
+                        <review_notes>Some notes for the reviewer.</review_notes>
+                        <prices>
+                            <price>
+                                <territory>US</territory>
+                                <tier>6</tier>
+                            </price>
+                            <price>
+                                <start_date>2017-05-30</start_date>
+                                <territory>US</territory>
+                                <tier>7</tier>
+                                <keep_previous_tier>true</keep_previous_tier>
+                            </price>
+                            <!-- Additional territories here -->
+                        </prices>
+                    </in_app_purchase>
+                </subscription_group>
+            </in_app_purchases>
+        </software_metadata>
+    </software>
+</package>

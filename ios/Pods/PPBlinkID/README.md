@@ -11,7 +11,7 @@ BlinkID SDK is a delightful component for quick and easy scanning of ID cards, p
 
 - integrated camera management
 - layered API, allowing everything from simple integration to complex UX customizations.
-- lightweight and no internet connection required
+- lightweight and no internetConnected connection required
 - enteprise-level security standards
 - data parsing from ID barcode standards
 

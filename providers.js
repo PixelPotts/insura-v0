@@ -6303,51 +6303,51 @@ export default {
       nickname: "F",
       logoUrl: './images/logo_for.png',
       products: [
-        {
-          id: 401,
-          name: "PlanRight Whole Life",
-          nickname: "PR",
-          payout: {
-            min: 2000,
-            max: 20000
-          },
-          underwriting: {
-            age: {
-              min: 45,
-              max: 80
-            },
-            bmi: {
-              min: 16.6,
-              max: 41.1
-            },
-            drugs: {
-              decline: [],
-              info: [],
-              seeDecline: null
-            },
-            conditions: {
-              decline: [],
-              seeDecline: false
-            }
-          },
-          calculator: {
-            type: 'term',
-            terms: [10,15,25,30],
-            products: [
-              {
-                id: 401,
-                name: 'Plan Right – Whole Life',
-                type: 'term',
-                multiplier: 1000,
-                fee: 60,
-                range: {'min':1000, 'max':40000},
-                age: { min: 18, max: 80 },
-                rates: [],
-                table: {}
-              },
-            ]
-          }
-        },
+        // {
+        //   id: 401,
+        //   name: "PlanRight Whole Life",
+        //   nickname: "PR",
+        //   payout: {
+        //     min: 2000,
+        //     max: 20000
+        //   },
+        //   underwriting: {
+        //     age: {
+        //       min: 45,
+        //       max: 80
+        //     },
+        //     bmi: {
+        //       min: 16.6,
+        //       max: 41.1
+        //     },
+        //     drugs: {
+        //       decline: [],
+        //       info: [],
+        //       seeDecline: null
+        //     },
+        //     conditions: {
+        //       decline: [],
+        //       seeDecline: false
+        //     }
+        //   },
+        //   calculator: {
+        //     type: 'term',
+        //     terms: [10,15,25,30],
+        //     products: [
+        //       {
+        //         id: 401,
+        //         name: 'Plan Right – Whole Life',
+        //         type: 'term',
+        //         multiplier: 1000,
+        //         fee: 60,
+        //         range: {'min':1000, 'max':40000},
+        //         age: { min: 18, max: 80 },
+        //         rates: [],
+        //         table: {}
+        //       },
+        //     ]
+        //   }
+        // },
         {
           id: 402,
           name: "Strong Foundations",
@@ -11130,8 +11130,7 @@ export default {
     //   ]
     // },
 
-
-    // // AIG
+    // AIG
     // {
     //   id: 7,
     //   name: "AIG",
@@ -11170,7 +11169,6 @@ export default {
     //     }
     //   ]
     // },
-
 
   ]
 }

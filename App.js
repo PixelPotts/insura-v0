@@ -26,7 +26,7 @@ import {
   Easing,
   KeyboardAvoidingView,
   View,
-  AsyncStorage
+  AsyncStorage,
 } from 'react-native';
 
 const dismissKeyboard = require('react-native/Libraries/Utilities/dismissKeyboard')
@@ -43,6 +43,7 @@ import Hyperlink from 'react-native-hyperlink'
 import _ from 'lodash'
 import styles from './styles'
 import Storage from 'react-native-storage';
+import moment from 'moment';
 
 const stringifyObject = require('stringify-object')
 const Providers = require('./providers').default.providers
@@ -52,6 +53,7 @@ var TimerMixin = require('react-timer-mixin');
 const {width, height} = Device.dimensions.window;
 const PHONE = MediaQuerySelector.query({ orientation: "portrait", minHeight: 1 }, width, height)
 const IPHONE_X = MediaQuerySelector.query({ minHeight: 812, minWidth: 375 }, width, height);
+import Swipeout from 'react-native-swipeout';
 
 let Build = {min:{},max:{}}
 Build.min = require('./weight-min').default.min
@@ -75,15 +77,12 @@ var storage = new Storage({
     // we'll talk about the details later.
   }
 })
+global.storage = storage;
 
 // BLINK ID License Key
 import {BlinkID, MRTDKeys, USDLKeys, EUDLKeys, MYKADKeys} from 'blinkid-react-native';
 const BlinklicenseKey = Platform.select({
   ios: 'SRMELRJ7-4M3EPIDG-TZB5OYNW-R2GLIL5W-PXAH7EHI-NPUGX2DL-5BV6RS2V-IRKTXS2R',
-  // ios: '3HBSIDEC-NXOIDNPN-C6K3JV2W-JA2GVKHH-NXPHCRJS-D3V3M7OA-P6IORS2V-IRKTX25T',
-  // ios: 'FPL6SITR-KEB5IB5P-23WWSG62-Q5HIUVV3-FTBHCRJS-D3V3M7OA-P6IORS2V-IRKTXM43',
-  // ios: 'RIWAWJSR-CWCHEIUG-P2NBYJIL-PU65ZFWS-UE77OCVN-APB6INY3-CWDH4J6W-7BLWEEON',
-  // ios: 'R6GH6FFH-JKIYQ76Q-QGUJSEIH-DSQCNQTR-IUZB525W-PXAH7EHI-NPUGWSGI-EDRUGFHX',
 });
 
 // STRIPE KEYS
@@ -143,6 +142,7 @@ var CustomLayoutLinear = {
   },
 };
 
+let conditionsToFlag          = 5
 let calculatorTermStart       = '20'
 let calculatorFaceValueStart  = '25,000'
 let clientStartAge            = 50;
@@ -169,6 +169,7 @@ let clientInfoStart = {
   race: '',
   ssn:'',
   tobacco: 'None',
+  modified: false
 };
 export default class Applify extends Component {
   constructor(props) {
@@ -208,25 +209,30 @@ export default class Applify extends Component {
       // Form / Login
       modalMaskVisible: false,
       loading: true,
+      loadingClientHistory: true,
       user: null,
       formError: false,
       formErrorNotice: false,
       registerVisible: false,
       registerFullName: null,
+      // registerFullName: 'Bryan Potts',
       registerEmail: null,
+      // registerEmail: 'pottspotts+2@gmail.com',
       registerPhone: null,
       registerPhoneResult: null,
       registerPassword: null,
+      // registerPassword: 'merchan1',
       registerConfirmPassword: null,
+      // registerConfirmPassword: 'merchan1',
       registerCC: {},
       registerCCStatuses: {},
       refisterCCValid: false,
       registerPlanID: 'plan_D2F3s5CVgtPEkC',
       loginVisible: false,
       loginEmail: null,
-      loginEmail: 'pottspotts+100@gmail.com',
+      // loginEmail: 'pottspotts+100@gmail.com',
       loginPassword: null,
-      loginPassword: 'merchan1',
+      // loginPassword: 'merchan1',
       resetPasswordVisible: false,
       menuVisible: false,
       menuPosition: new Animated.Value(-250),
@@ -234,9 +240,9 @@ export default class Applify extends Component {
       supportInput: '',
       supportMessages: [],
       underwritingNotices: [],
-
     };
   }
+
   componentDidMount() {
 
     // Initialize Firebase
@@ -250,21 +256,25 @@ export default class Applify extends Component {
     const firebaseApp = firebase.initializeApp(firebaseConfig);
     let db = firebase.database();
 
+    // Listen for internet connection status and update our state var
+    // var connectedRef = firebase.database().ref(".info/connected");
+    // connectedRef.on("value", (snap) => {this.setState({internetConnected:snap.val()});
+
     this.authSubscription = firebase.auth().onAuthStateChanged((user)=>{
+
       this.setState({loading: false, user});
       if(firebase.auth().currentUser === null){
         this.setState({modalMaskVisible: true, registerVisible: true});
       } else {
         this.setState({user: firebase.auth().currentUser},()=>{
-          // this.getSupportMessages();
-          // this.getClientHistory();
+          this.getSupportMessages();
+          this.getClientHistory();
         })
         //console.log(this.state.user)
         this.setState({modalMaskVisible: false, registerVisible: false, loginVisible: false});
       }
     });
 
-    // this.updateProviders()
   }
 
   componentWillUnmount() {
@@ -415,8 +425,12 @@ export default class Applify extends Component {
       clientInfo.tobacco = details.answer;
       details.tobacco = details.answer
     }
+    if(Q.field==='mortgage'){
+      clientInfo.calculatorFaceValue = details.answer;
+      console.log("setting face value to: "+details.answer)
+      details.answer = '$' + number_format(details.answer);
+    }
 
-    if(Q.field==='mortgage') details.answer = '$' + number_format(details.answer);
     if(Q.field==='mortgage-rate') details.answer = parseFloat(details.answer) + "%";
 
     // UPDATE EXISTING BUTTON
@@ -473,11 +487,13 @@ export default class Applify extends Component {
       this.nextQuestion(true);
     }
 
+    clientInfo.modified = true;
     this.setState({clientInfo: clientInfo}, ()=>{
-     // console.log("=== UPDATED CLIENT INFO AFTER PROCESS ANSWER ====")
-     // console.log(this.state.clientInfo)
+      console.log("=== UPDATED CLIENT INFO AFTER PROCESS ANSWER ====")
+      console.log(this.state.clientInfo)
       this.clearAnswer()
       this.updateProviders()
+      this.updateCalculatorValues(this.state.calculatorFaceValue,this.state.calculatorTerms)
     });
 
   };
@@ -520,13 +536,14 @@ export default class Applify extends Component {
    // console.log(this.state.buttons);
    // console.log(this.state.clientInfo);
     let self = this;
-    let age = this.state.clientInfo.age;
+    const age = this.state.clientInfo.age;
     let Providers = {...this.state.Providers};
-    let client = this.state.clientInfo;
-    let term = this.state.calculatorTerms;
+    const client = this.state.clientInfo;
+    const term = this.state.calculatorTerms;
     let notices = [];
     _.each(Providers,function(Provider,ProviderKey){
       _.each(Provider.products,function(product,productKey){
+        let numConditions = 0;
         let uw = product.underwriting;
         let statuses = [];
 
@@ -703,6 +720,7 @@ export default class Applify extends Component {
           }
 
           if(button.category==='CON'){
+            numConditions++
             let condition = _.find(Conditions,function(o){return o.id == button.key});
             // console.log("checking condition...........");
             // console.log(condition);
@@ -750,11 +768,17 @@ export default class Applify extends Component {
               statuses.push(3);
             }
           }
+          // Check to see if they have exceeded the number of allowed conditions and turn this to IC (unless its guaranteed)
+          if(numConditions >= conditionsToFlag && product.guaranteed !== 1) {
+            console.log("Number of conditions: "+ numConditions);
+            statuses.push(2)
+            notices.push(product.name+" needs review if the client has 5 or more conditions.");
+          }
         });
 
         // Update Provider and Product
         Providers[ProviderKey].products[productKey].status = _.min(statuses);
-        if(restart) Providers[ProviderKey].products[productKey].status = 3;
+        if(restart) Providers[ProviderKey].products[productKey].status = 3; // restart hack to force an initial approval state for all
 
         // console.log("STATUS NUMBERS");
         // console.log(statuses)
@@ -765,10 +789,10 @@ export default class Applify extends Component {
      // console.log("Providers state updated...")
      // console.log(this.state)
     });
-   // console.log("UPDATE PROVIDERS Notices:")
-   //  console.log()
-   // console.log(notices);
-   // console.log(this.state);
+    console.log("UPDATE PROVIDERS Notices:")
+    console.log()
+    console.log(notices);
+    console.log(this.state);
   };
   watchAnswer = (questionAnswer) => {
     console.log("watchAnswer()")
@@ -853,7 +877,7 @@ export default class Applify extends Component {
         <View style={styles.autoSuggestWrap}>
           <ScrollView keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
             {this.state.autoSuggestOptions.map(option => (
-              <TouchableHighlight onPress={() => this.clickAnswer(option)} key={option.key+option.id} underlayColor="#FFF">
+              <TouchableHighlight onPress={() => this.clickAnswer(option)} key={option.name+option.id+option.key} underlayColor="#FFF">
                 <View style={styles.autoSuggestItem}>
                 <Text
                   style={styles.autoSuggestItemTitle}>
@@ -939,7 +963,7 @@ export default class Applify extends Component {
     }
 
     let buttons = '';
-    let numbers = [1,2,3,5,10];
+    let numbers = [1,2,3,4,5,10];
 
     // console.log("needMoreButtons:");
     // console.log(needMoreButtons);
@@ -1149,13 +1173,13 @@ export default class Applify extends Component {
   }
   updateCalculatorValues = (updatedFaceValue, updatedTerms) => {
     getProductCostAvailability = this.getProductCostAvailability;
-    // console.log("state:");
-    // console.log(this.state);
-    // console.log("==== start updateCalculatorValues ====");
-    // console.log("updatedFaceValue: ");
-    // console.log(updatedFaceValue);
-    // console.log("updatedTerms: ");
-    // console.log(updatedTerms);
+    console.log("state:");
+    console.log(this.state);
+    console.log("==== start updateCalculatorValues ====");
+    console.log("updatedFaceValue: ");
+    console.log(updatedFaceValue);
+    console.log("updatedTerms: ");
+    console.log(updatedTerms);
 
     updatedFaceValue = updatedFaceValue === null ? this.state.calculatorFaceValue : updatedFaceValue;
     updatedTerms = updatedTerms === null ? this.state.calculatorTerms : updatedTerms;
@@ -1561,10 +1585,10 @@ export default class Applify extends Component {
             <Text style={{fontSize:16}}><Text style={styles.backButton}>&lsaquo;</Text> Questions</Text>
           </TouchableHighlight>
         </View>
-        <Text style={{marginBottom: 20, fontSize: 20}}>Underwriting Decision Log</Text>
-        <Scrollview style={styles.exportContentWrap}>
+        <Text style={{marginBottom: 20, fontSize: 20}}>Insura App - Underwriting Log</Text>
+        <ScrollView style={styles.exportContentWrap}>
 
-        </Scrollview>
+        </ScrollView>
       </View>
     )
   }
@@ -1586,7 +1610,21 @@ export default class Applify extends Component {
     })
   }
   renderClientHistory = () => {
+    // this.getClientHistory()
+    console.log("Client History:")
     console.log(this.state.clientHistory)
+
+    deleteClientFromHistory = (clientId) => {
+      console.log("deleting: "+clientId)
+      res = firebase.database().ref('clients/'+this.state.user.uid+'/'+clientId)
+        .set(null)
+        .then(res=>{
+          console.log(res)
+          this.setState({clientHistory: _.filter(this.state.clientHistory, function(o){return o.clientId !== clientId})})
+        })
+        .catch(err=>console.log(err))
+    }
+
     return (
       <View style={styles.exportView}>
         <View style={{ position:'absolute', top: 5, left: 20, zIndex:999 }}>
@@ -1596,16 +1634,42 @@ export default class Applify extends Component {
         </View>
         <Text style={{marginBottom: 20, fontSize: 20}}>Client History</Text>
         <View style={styles.clientHistoryWrap}>
-          <ScrollView style={{flex:0,height:'100%',width:'100%'}}>
+          <ScrollView style={{flex:0,height:'90%',width:'100%'}}>
             {this.state.clientHistory && this.state.clientHistory.map((client,k)=>{
+              {console.log('test')}
               return (
-                <View key={k} style={styles.clientHistoryLink}>
-                  <TouchableOpacity onPress={()=>this.loadClientFromHistory(client)}>
-                    <Text>{client.linkText}</Text>
-                  </TouchableOpacity>
+                <View key={k} style={{...styles.clientHistoryLink,borderTopWidth: first_child(k) ? 1:0}}>
+                  <Swipeout
+                    right={[{
+                      text: 'Delete',
+                      backgroundColor: 'red',
+                      onPress: ()=>deleteClientFromHistory(client.clientId)
+                    }]}
+                    backgroundColor="transparent"
+                    autoClose={true}
+                  >
+                    <TouchableOpacity style={{paddingBottom: 18, paddingTop: 18}} onPress={()=>{
+                      this.loadClientFromHistory(client)
+                      this.setState({clientHistoryVisible: false});
+                    }}>
+                      <Text>{client.linkText}</Text>
+                    </TouchableOpacity>
+                  </Swipeout>
                 </View>
               )
             })}
+
+            {this.state.loadingClientHistory &&
+            <Text style={{padding:20}}>
+              Loading...
+            </Text>
+            }
+            {this.state.clientHistory.length === 0 && this.state.loadingClientHistory !== true &&
+              <Text style={{padding:20}}>
+                No saved clients were found...
+              </Text>
+            }
+
           </ScrollView>
         </View>
       </View>
@@ -1672,8 +1736,9 @@ export default class Applify extends Component {
     this.setState({formErrorNotice: '', formError: false});
   }
   onLogin = () => {
+    storage.load({key:'user'});
     this.clearFormError();
-    this.setState({formErrorNotice: "Processing. Please wait..."})
+    this.setState({formErrorNotice: "Processing. Please wait..."});
     const email = this.state.loginEmail;
     const password = this.state.loginPassword;
     // const phone = this.state.registerPhone;
@@ -1685,6 +1750,12 @@ export default class Applify extends Component {
         // console.log(this.state.user);
         this.setState({loginVisible: false});
         // console.log("SUCCESSFUL LOGIN");
+        storage.load({key:'user'}).then((res)=>{
+          this.setState({user:res},()=>{
+            console.log("loaded user from storage:")
+            console.log(this.state.user);
+          })
+        })
       })
       .catch((error) => {
         const { code, message } = error;
@@ -1753,9 +1824,12 @@ export default class Applify extends Component {
                 }
                 if(!card_error){
                   firebase.auth().createUserWithEmailAndPassword(email, password)
-                    .then((user) => {
+                    .then((data) => {
 
-                      this.setState({user: user},console.log(this.state.user))
+                      this.setState({user: user},()=>{
+                        console.log(this.state.user)
+                        // storage.save({key:user, data: data.user.uid})
+                      })
                       let verifyEmail = firebase.auth().currentUser.sendEmailVerification()
                       this.setState({registerVisible: false},()=>this.setState({loginVisible: true}))
                      // console.log("creating user with email and password...")
@@ -1810,7 +1884,7 @@ export default class Applify extends Component {
           {/*</TouchableHighlight>*/}
           <View style={{position: 'absolute',right: 15, top: 15}}>
             <TouchableHighlight onPress={()=>{this.setState({registerVisible: false, loginVisible: true})}}>
-              <Text style={{fontSize:16,marginBottom:13}}>Log In <Text style={{fontWeight:'900'}}>&rsaquo;</Text></Text>
+              <Text style={{fontSize:16,marginBottom:13}}>Sign In <Text style={{fontWeight:'900'}}>&rsaquo;</Text></Text>
             </TouchableHighlight>
           </View>
           <Text style={styles.modalHeading}>Register New Account</Text>
@@ -1852,14 +1926,14 @@ export default class Applify extends Component {
           <Text style={{marginBottom: 10, marginTop: 15}}>Select a plan:</Text>
           <RNPickerSelect
             items={[
-              {label:'Monthly – $89 – 7 Day Trial',value:'plan_D2F3s5CVgtPEkC'},
-              {label:'6 Months – $400 – 15 Day Trial',value:'plan_D2F7qblyYSuea2'},
-              {label:'Annual – $530 – 30 Day Trial',value:'plan_D2F9m6oyVdqmGD'},
+              {label:'Monthly – $40 – 1 Day Trial',           value:'plan_Djw2e1ZLm760HT'},
+              {label:'Every 3 Months – $100 – 3 Day Trial',   value:'plan_Djw3SwKvedkMA7'},
+              {label:'Annually – $320 – 7 Day Trial',         value:'plan_Djw5NQCQM8fqfr'},
             ]}
             onValueChange={(value) => {this.setState({registerPlanID:value})}}
             onUpArrow={() => { this.inputRefs.name.focus(); }}
             onDownArrow={() => {
-              this.inputRefs.picker4.togglePicker();
+              this.inputRefs.picker4.togglePickyr();
             }}
             style={{icon: {marginTop:-16, marginRight:0 }, inputIOS: {fontSize: 14, borderBottomWidth: 1, borderBottomColor: '#c8cffd', paddingBottom: 7,marginBottom: 3 }}}
             value={this.state.registerPlanID}
@@ -1936,10 +2010,53 @@ export default class Applify extends Component {
             />
             <Button
               title="Reset Password"
-              onPress={()=>{this.setState()}}
+              onPress={()=>{this.setState({loginVisible: false, resetPasswordVisible: true})}}
               // disabled={(this.state.formError !== false)}
             />
 
+          </View>
+        </View>
+      </View>
+    );
+  }
+  onResetPassword = () => {
+    const email = _.trim(this.state.loginEmail)
+    this.setFormError(1,'Processing. Please wait...');
+    if(email=='') {this.setFormError(1,'A valid email is required.'); return false}
+    firebase.auth().sendPasswordResetEmail(email).then(() => {
+      this.setState({resetPasswordVisible: false, loginVisible: true},()=>{
+        this.setFormError(1,'SUCCESS: A link to reset your password has been sent to '+email+'. If it is valid, you should have an email within a few minutes.')
+      })
+    }).catch((error) => {
+      this.setFormError(1, error+'');
+    });
+  }
+  resetPasswordModal = () => {
+    return(
+      <View style={styles.modalWrap}>
+        <View style={styles.modal}>
+          <TouchableHighlight onPress={()=>{this.setState({resetPasswordVisible: false, loginVisible: true})}} style={{width: 100}}>
+            <Text style={{fontSize:16,marginBottom:13}}><Text style={{fontWeight:'900'}}>&lsaquo;</Text> Login</Text>
+          </TouchableHighlight>
+          <Text style={styles.modalHeading}>Password Reset</Text>
+          <Text style={{marginBottom: 10}}>Please enter your accoount email and a password reset link will be emailed to you.</Text>
+          <TextInput
+            ref="loginEmail"
+            placeholder="Email"
+            style={styles.modalInput}
+            onChangeText={(v)=>this.setState({loginEmail: v})}
+            value={this.state.loginEmail}
+            autoCapitalize='none'
+          />
+          <Text style={styles.formErrorMessage}>
+            {this.state.formErrorNotice && this.state.formErrorNotice}
+          </Text>
+          <View style={styles.modalSubmit}>
+            <Button
+              title="Request Reset Email"
+              onPress={()=>{this.onResetPassword()}}
+              // disabled={(this.state.formError !== false)}
+            />
           </View>
         </View>
       </View>
@@ -1963,7 +2080,7 @@ export default class Applify extends Component {
       'Document Issue Date': '12112017',
       'Inventory control number': '17345AZ0141087540301',
       'Country Identification': 'USA',
-      'Sex': '1',
+      'Sex': '2',
       'Issuing jurisdiction': 'ZA',
       'Customer ID Number': 'D09939538',
       'Weight Range': '9',
@@ -2003,7 +2120,7 @@ export default class Applify extends Component {
     // current keys
     clientInfo.name = _.startCase(_.toLower(clientInfo.firstName +" "+ clientInfo.middleName +" "+ clientInfo.lastName));
     clientInfo.dob = m[1]+"/"+m[2]+"/"+m[3];
-    clientInfo.gender = fields[USDLKeys.Sex] == 1 ? 'M' : 'F';
+    clientInfo.gender = fields[USDLKeys.Sex] === '1' ? 'M' : 'F';
     clientInfo.height = parseInt(fields[USDLKeys.HeightIn])
     console.log("HEIGHT: ")
     console.log(clientInfo.height)
@@ -2040,7 +2157,7 @@ export default class Applify extends Component {
   pressMenuSaveNewClient =()=>    {this.saveAndClear(true); this.toggleMenu()}
   pressMenuScanLicense =()=>      {this.scan.bind(this)(); this.toggleMenu()}
   pressMenuExportPDF =()=>        {this.setState({exportVisible: true}); this.toggleMenu()}
-  pressMenuClientHistory =()=>    {this.setState({clientHistoryVisible: true}); this.toggleMenu()}
+  pressMenuClientHistory =()=>    {this.setState({clientHistoryVisible: true, loadingClientHistory: true},()=>{this.getClientHistory()}); this.toggleMenu()}
   pressMenuLogOut =()=>           {firebase.auth().signOut(); this.toggleMenu(); this.setState({modalMaskVisible: true})}
   pressMenuSupport =()=>          {this.setState({modalMaskVisible: true, supportVisible: true}); this.toggleMenu()}
   pressMenuDebugLog =()=>         {this.setState({consoleIsVisible: true}); this.toggleMenu()}
@@ -2052,12 +2169,12 @@ export default class Applify extends Component {
     var menuItems = [
       {title: 'Save & New Client',callback: this.pressMenuSaveNewClient },
       // {title: 'Scan Driver\'s License',callback: this.pressMenuScanLicense },
-      // {title: 'Client History',callback: this.pressMenuClientHistory },
-      {title: 'Export PDF',callback: this.pressMenuExportPDF },
+      {title: 'Client History ('+this.state.clientHistory.length+')',callback: this.pressMenuClientHistory },
+      // {title: 'Export PDF',callback: this.pressMenuExportPDF },
       // {title: 'Support',callback: this.pressMenuSupport },
       {title: 'Debug Log',callback: this.pressMenuDebugLog },
-      {title: 'Simulate ID Scan',callback: this.pressMenuSimulateIDScan },
-      {title: 'Simulate App Crash',callback: this.pressMenuCrash },
+      // {title: 'Simulate ID Scan',callback: this.pressMenuSimulateIDScan },
+      // {title: 'Simulate App Crash',callback: this.pressMenuCrash },
       {title: 'Log Out',callback: this.pressMenuLogOut },
     ]
     return (
@@ -2219,6 +2336,9 @@ export default class Applify extends Component {
         {/* LOGIN */}
         {this.state.loginVisible ? this.loginModal() : null}
 
+        {/* RESET PASSWORD */}
+        {this.state.resetPasswordVisible ? this.resetPasswordModal() : null}
+
         {/* MENU */}
         {this.state.menuVisible ? this.menuModal() : null}
 
@@ -2253,8 +2373,8 @@ export default class Applify extends Component {
               autoCorrect={false}
               blurOnSubmit={true}
               autoComplete="off"
-              autoCapitalize="words"
-              value={typeof this.state.questionAnswer === undefined ? '' : this.state.questionAnswer.toString()}
+              autoCapitalize="none"
+              value={typeof this.state.questionAnswer === undefined ? '' : _.toString(this.state.questionAnswer)}
               style={styles.masterInput}
               placeholder={"  "+Questions[this.state.activeQuestionId].placeholder}
               placeholderTextColor='#5e6579'
@@ -2359,16 +2479,18 @@ export default class Applify extends Component {
     const clientInfo      = c = this.state.clientInfo
     const buttons         = this.state.buttons
     const userNameDobID   = c.lastName +'-'+ c.firstName +'-'+ c.key;
-    const userId          = firebase.auth().currentUser.uid;
-    this.saveClient(
-      userId,
-      userNameDobID,
-      clientInfo,
-      buttons
-    );
+    const userId          = this.state.user.uid;
+    if(c.modified===true){
+      this.saveClient(
+        userId,
+        userNameDobID,
+        clientInfo,
+        buttons
+      );
+    }
     if(clear) {
       name = getRandomName()
-      let clientInfoRetart = {
+      let clientInfoRestart = {
         key: name.key,
         name: name.first +' '+name.last,
         firstName: name.first,
@@ -2404,14 +2526,13 @@ export default class Applify extends Component {
           questionAnswer: '',
           masterInputNotice: null,
           activeButtonId: 0,
-          clientInfo: clientInfoRetart,
+          clientInfo: clientInfoRestart,
         },
         () => {
          // console.log("saveAndClear() finished");
-         // console.log(clientInfoRetart)
+         // console.log(clientInfoRestart)
          // console.log(this.state);
           this.updateProviders(true);
-          alert("The client has been saved successfully.")
         }
       );
     }
@@ -2539,22 +2660,28 @@ export default class Applify extends Component {
       stripe_token_id: 'null',
       activeSubscription: true
     })
-      .then(res=>console.log(res))
+      .then(res=>{console.log(res)})
       .catch(err=>console.log(err))
   }
   saveClient=(userId,clientId,clientInfo,buttons)=>{
    // console.log("saveClient()")
    // console.log(buttons)
     const t = (new Date).getTime()
-    res = firebase.database().ref('clients/'+userId+'/'+clientId).set({
+    const data = {
       t:          t,
       clientId:   clientId,
-      linkText:   clientInfo.lastName+', '+clientInfo.firstName+', '+/^.{21}/gm.exec(epochToDate(t))[0],
+      linkText:   clientInfo.lastName+', '+clientInfo.firstName+' ('+ moment(new Date()).format("MMM[.] Do")+')',
       buttons:    buttons,
       clientInfo: clientInfo,
       version:    3
-    })
-      .then(res=>console.log(res))
+    }
+    res = firebase.database().ref('clients/'+userId+'/'+clientId)
+      .set(data)
+      .then(res=>{
+        console.log(res)
+        alert("The client has been saved successfully.")
+        this.getClientHistory();
+      })
       .catch(err=>console.log(err))
   }
   saveSupportMessage=(message)=>{
@@ -2599,22 +2726,23 @@ export default class Applify extends Component {
       })
 
   }
-  getClientHistory=(callback)=>{
+  getClientHistory=(callback=null)=>{
+    this.setState({clientHistory: []})
    // console.log("getClientHistory() ...")
     clients = this.state.clientHistory
     clientsArray = []
-    ref = firebase.database().ref('clients/'+firebase.auth().currentUser.uid)
+    ref = firebase.database().ref('clients/'+firebase.auth().currentUser.uid).orderByKey()
     ref.once('value').then(snapshot=>{
-     // console.log("snapshot returned")
-     // console.log(snapshot.val())
       _.each(snapshot.val(),(client,k)=>{
         client.k = k;
         clientsArray.push(client)
       });
     }).done(()=>{
-      this.setState({clientHistory: clientsArray},()=>{
-       // console.log("=== GET EXISTING MESSAGES ===")
+      this.setState({clientHistory: clientsArray, loadingClientHistory: false},()=>{
+       // console.log("=== GET CLIENT HISTORY ===")
        // console.log(this.state.clientHistory)
+        if(callback) callback()
+
       })
     })
   }
@@ -2660,3 +2788,5 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   }
   return s.join(dec);
 }
+function even(n) { return n % 2 }
+function first_child(n) { return n === 0 }

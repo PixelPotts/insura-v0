@@ -311,5 +311,18 @@ export default {
     80:null,
     85:null
   },
+  "SI-WL": {
+    min:25,
+    max:250,
+    45:null,
+    50:null,
+    55:null,
+    60:null,
+    65:null,
+    70:null,
+    75:null,
+    80:null,
+    85:null
+  },
 
 }

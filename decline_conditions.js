@@ -1521,7 +1521,7 @@ export default {
     },
     {
       "id": 15800,
-      "name": "Cancer - internal >10 years no recurrence",
+      "name": "Cancer - internal >10 years no recurrence ",
       "TYPE": "CANC",
       "HMSP": "IC",
       "HMSP-DI": "IC",

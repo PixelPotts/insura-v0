@@ -57,7 +57,7 @@ export default StyleSheet.create({
     fontWeight:'500',
     fontSize: 30,
     position: 'absolute',
-    marginTop: 10
+    // marginTop: 6,
   },
   headerTopRight: {
     flex: 1,
@@ -238,7 +238,7 @@ export default StyleSheet.create({
     height: 50,
     borderColor: '#FFF',
     borderWidth: 0,
-    padding: 0
+    padding: 0,
   },
   questionButton: {
     height: 50,
@@ -593,7 +593,7 @@ export default StyleSheet.create({
     width: '100%',
   },
   buttonButtonWrap: {
-    minWidth: 22,
+    minWidth: 32,
     height: 25,
     paddingTop: 3,
     marginLeft: 3,
@@ -956,12 +956,23 @@ export default StyleSheet.create({
   // Client History ///////////////////////////
 
   clientHistoryWrap: {
-
+    alignItems: 'stretch',
+    backgroundColor: '#f4f4f4',
+    borderRadius: 4,
+    paddingTop: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+    marginRight: -20,
+    marginLeft: -20
   },
   clientHistoryLink: {
     fontSize: 15,
-    paddingBottom: 8,
-    paddingTop: 8,
+    borderBottomColor: '#e6e6e6',
+    borderBottomWidth: 1,
+    borderTopColor: '#e6e6e6',
+    paddingLeft: 20,
+    shadowOffset:{  width: 2,  height: 2,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.05,
   }
-
 });
