@@ -1,0 +1,36 @@
+Failed to load bundle(http://localhost:8081/index.bundle?platform=ios&dev=true&minify=false) with error:(Error: /Users/pottspotts/AwesomeProject/node_modules/react-native/Libraries/Components/Switch/Switch.js: Support for the experimental syntax 'optionalChaining' isn't currently enabled (103:41):
+
+[0m [90m 101 | [39m    [90m// Support deprecated color props.[39m[0m
+[0m [90m 102 | [39m    let _thumbColor [33m=[39m thumbColor[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 103 | [39m    let _trackColorForFalse [33m=[39m trackColor[33m?[39m[33m.[39m[36mfalse[39m[33m;[39m[0m
+[0m [90m     | [39m                                        [31m[1m^[22m[39m[0m
+[0m [90m 104 | [39m    let _trackColorForTrue [33m=[39m trackColor[33m?[39m[33m.[39m[36mtrue[39m[33m;[39m[0m
+[0m [90m 105 | [39m[0m
+[0m [90m 106 | [39m    [90m// TODO: Remove support for these props after a couple releases.[39m[0m
+
+Add @babel/plugin-proposal-optional-chaining (https://git.io/vb4Sk) to the 'plugins' section of your Babel config to enable transformation. (null))
+
+__38-[RCTCxxBridge loadSource:onProgress:]_block_invoke.248
+    RCTCxxBridge.mm:422
+___ZL36attemptAsynchronousLoadOfBundleAtURLP5NSURLU13block_pointerFvP18RCTLoadingProgressEU13block_pointerFvP7NSErrorP9RCTSourceE_block_invoke.118
+__80-[RCTMultipartDataTask URLSession:streamTask:didBecomeInputStream:outputStream:]_block_invoke
+-[RCTMultipartStreamReader emitChunk:headers:callback:done:]
+-[RCTMultipartStreamReader readAllPartsWithCompletionCallback:progressCallback:]
+-[RCTMultipartDataTask URLSession:streamTask:didBecomeInputStream:outputStream:]
+__88-[NSURLSession delegate_streamTask:didBecomeInputStream:outputStream:completionHandler:]_block_invoke
+__NSBLOCKOPERATION_IS_CALLING_OUT_TO_A_BLOCK__
+-[NSBlockOperation main]
+-[__NSOperationInternal _start:]
+_dispatch_client_callout
+_dispatch_block_invoke_direct
+_dispatch_client_callout
+_dispatch_block_invoke_direct
+dispatch_block_perform
+__NSOQSchedule_f
+_dispatch_client_callout
+_dispatch_continuation_pop
+_dispatch_async_redirect_invoke
+_dispatch_root_queue_drain
+_dispatch_worker_thread3
+_pthread_wqthread
+start_wqthread
