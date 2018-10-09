@@ -54,6 +54,7 @@ const {width, height} = Device.dimensions.window;
 const PHONE = MediaQuerySelector.query({ orientation: "portrait", minHeight: 1 }, width, height)
 const IPHONE_X = MediaQuerySelector.query({ minHeight: 812, minWidth: 375 }, width, height);
 import Swipeout from 'react-native-swipeout';
+import codePush from "react-native-code-push";
 
 let Build = {min:{},max:{}}
 Build.min = require('./weight-min').default.min
@@ -171,7 +172,9 @@ let clientInfoStart = {
   tobacco: 'None',
   modified: false
 };
-export default class Applify extends Component {
+
+
+class Applify extends Component {
   constructor(props) {
 
     super(props);
@@ -1887,7 +1890,7 @@ export default class Applify extends Component {
               <Text style={{fontSize:16,marginBottom:13}}>Sign In <Text style={{fontWeight:'900'}}>&rsaquo;</Text></Text>
             </TouchableHighlight>
           </View>
-          <Text style={styles.modalHeading}>Register New Account</Text>
+          <Text style={styles.modalHeading}>Register For Insura</Text>
           {/*<Text style={{marginBottom: 10}}>Please enter your account info:</Text>*/}
           <TextInput
             ref="registerFullName"
@@ -2747,22 +2750,30 @@ export default class Applify extends Component {
     })
   }
 }
+let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+Applify = codePush(codePushOptions)(Applify);
+export default Applify;
 
+
+
+
+
+
+/*
+ * Utility functions
+ */
 function epochToDate(t){
   var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
   d.setUTCSeconds(t / 1000);
   return d
 }
-
 function getRandomName(){return {first: 'John', last: 'Doe', key: (Math.ceil(Math.random()*100000000)).toString()}}
-
 Number.prototype.toCurrencyString = function(prefix, suffix) {
   if (typeof prefix === 'undefined') { prefix = '$'; }
   if (typeof suffix === 'undefined') { suffix = ''; }
   var _localeBug = new RegExp((1).toLocaleString().replace(/^1/, '').replace(/\./, '\\.') + "$");
   return prefix + (~~this).toLocaleString().replace(_localeBug, '') + (this % 1).toFixed(2).toLocaleString().replace(/^[+-]?0+/,'') + suffix;
 }
-
 function number_format(number, decimals, dec_point, thousands_sep) {
 
   number = parseFloat(number.toString().replace(/[^0-9\.]/gm,''));
