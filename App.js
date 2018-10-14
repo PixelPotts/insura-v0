@@ -1,10 +1,9 @@
 /*
  * TODO:
- * - Install
- * Transported App Password: esvi-nrzl-ltfd-laxw
- *
- * -- remove .startAt(3) from chat support.. or make pagination work
- * -- David Whyte D
+ * - Fix PR
+ * - Fix AIG
+ * - Change NLUL -> TERM
+ * -
  *
  */
 
@@ -25,6 +24,7 @@ import {
   Animated,
   Easing,
   KeyboardAvoidingView,
+  SafeAreaView,
   View,
   AsyncStorage,
 } from 'react-native';
@@ -44,6 +44,7 @@ import _ from 'lodash'
 import styles from './styles'
 import Storage from 'react-native-storage';
 import moment from 'moment';
+import Push from 'appcenter-push';
 
 const stringifyObject = require('stringify-object')
 const Providers = require('./providers').default.providers
@@ -88,11 +89,10 @@ const BlinklicenseKey = Platform.select({
 
 // STRIPE KEYS
 let stripe_url = 'https://api.stripe.com/v1/';
-let stripe_mode = 'TEST';
 const stripe_test_key = "sk_test_4pJ7hGg9yxZxZCXibtxvzphX";
 const stripe_prod_key = "sk_live_c8NPJO5bonIsTxjtryiEwmrN";
-const STRIPE_API_KEY = stripe_mode === "PROD" ? stripe_prod_key : stripe_test_key;
-// console.log("Stripe API Key: "+STRIPE_API_KEY);
+const STRIPE_API_KEY = stripe_prod_key;
+console.log("Stripe API Key: "+STRIPE_API_KEY);
 
 const logos = {
   0: require('./images/insura_logo.png'),
@@ -218,15 +218,15 @@ class Applify extends Component {
       formErrorNotice: false,
       registerVisible: false,
       registerFullName: null,
-      // registerFullName: 'Bryan Potts',
+      registerFullName: 'Chris Satterlee',
       registerEmail: null,
-      // registerEmail: 'pottspotts+2@gmail.com',
+      registerEmail: 'pottspotts+25@gmail.com',
       registerPhone: null,
       registerPhoneResult: null,
       registerPassword: null,
-      // registerPassword: 'merchan1',
+      registerPassword: 'merchan1',
       registerConfirmPassword: null,
-      // registerConfirmPassword: 'merchan1',
+      registerConfirmPassword: 'merchan1',
       registerCC: {},
       registerCCStatuses: {},
       refisterCCValid: false,
@@ -239,7 +239,7 @@ class Applify extends Component {
       resetPasswordVisible: false,
       menuVisible: false,
       menuPosition: new Animated.Value(-250),
-      supportVisible: false,
+      supportVisible: true,
       supportInput: '',
       supportMessages: [],
       underwritingNotices: [],
@@ -247,6 +247,36 @@ class Applify extends Component {
   }
 
   componentDidMount() {
+
+    var onSyncStatusChange = function(SyncStatus) {
+      // alert("onSyncStatusChange()")
+      switch (SyncStatus) {
+        case codePush.SyncStatus.CHECKING_FOR_UPDATE:
+          console.log("checking for update")
+          break;
+        case codePush.SyncStatus.AWAITING_USER_ACTION:
+          console.log("waiting for user action")
+          break;
+        case codePush.SyncStatus.DOWNLOADING_PACKAGE:
+          console.log("downloading")
+          break;
+        case codePush.SyncStatus.INSTALLING_UPDATE:
+          console.log("installing update")
+          break;
+        case codePush.SyncStatus.UPDATE_INSTALLED:
+          console.log("update isntalled")
+          break;
+
+      }
+    }
+
+    // Check for app update
+    this._interval = setInterval(() => {
+      codePush.sync({ updateDialog: false }, onSyncStatusChange);
+    }, 5000);
+
+
+
 
     // Initialize Firebase
     const firebaseConfig = {
@@ -1306,7 +1336,7 @@ class Applify extends Component {
     // console.log('index check:')
     // console.log(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id))
 
-    if(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id)!=-1) return false
+    if(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id)>0) return false
     if(this.state.calculator[calculatorProduct.id].annual===0) return false;
 
     if(PHONE)
@@ -1796,32 +1826,32 @@ class Applify extends Component {
     const client = new StripeToken(STRIPE_API_KEY)
     let card_error = false
     date = cc.values.expiry.split('/')
-    // console.log(cc)
-    // console.log(cc.values.number)
+    console.log(cc)
+    console.log(cc.values.number)
     client.createToken({number:cc.values.number, exp_month: date[0], exp_year: date[1], cvc: cc.values.cvc})
       .then(token=>{
-        // console.log("token:")
-        // console.log(token)
+        console.log("token:")
+        console.log(token)
         if(token.error){
-         // console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************")
+         console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************")
           this.setFormError('1009',token.error.message);
           card_error = true
         }
         const customer = Stripe.createCustomer(token.id, email)
           .then(customer=>{
             if(customer.error){
-              // console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************")
+              console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************")
               if(!card_error) this.setFormError('1008',customer.error.message);
               card_error = true
             }
-            // console.log("customer:")
-            // console.log(customer)
+            console.log("customer:")
+            console.log(customer)
             Stripe.subscribe(customer.id,planId)
               .then(subscribe=>{
-                // console.log("subscription:")
-                // console.log(subscribe)
+                console.log("subscription:")
+                console.log(subscribe)
                 if(subscribe.error){
-                  // console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************")
+                  console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************")
                   if(!card_error) this.setFormError('1008',subscribe.error.message);
                   card_error = true
                 }
@@ -1831,42 +1861,42 @@ class Applify extends Component {
 
                       this.setState({user: user},()=>{
                         console.log(this.state.user)
-                        // storage.save({key:user, data: data.user.uid})
+                        storage.save({key:user, data: data.user.uid})
                       })
                       let verifyEmail = firebase.auth().currentUser.sendEmailVerification()
                       this.setState({registerVisible: false},()=>this.setState({loginVisible: true}))
-                     // console.log("creating user with email and password...")
+                     console.log("creating user with email and password...")
                       u = firebase.auth().currentUser;
-                      // console.log(u)
+                      console.log(u)
                       this.setUser(u.uid,fullName,email,null);
                     })
                     .catch((error) => {
-                      // console.log("FIREBASE ERROR: COULD NOT CREATE AN ACCOUNT ****************")
+                      console.log("FIREBASE ERROR: COULD NOT CREATE AN ACCOUNT ****************")
                       const { code, message } = error;
                       this.setFormError(code,message);
                     });
                 } else {
-                  // console.log("========= CARD ERROR ===========")
+                  console.log("========= CARD ERROR ===========")
                 }
 
               })
               .catch(err=>{
-                // console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************");
+                console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************");
+                console.log(err)
                 card_error = true
-                // console.log(err)
               })
           })
           .catch(err=>{
-            // console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************");
+            console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************");
+            console.log(err)
             card_error = true
-            // console.log(err)
           })
       })
       .catch(err=>{
-        // console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************");
+        console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************");
+        console.log(err)
         this.setFormError('1009',error.message);
         card_error = true
-        // console.log(err)
       })
 
   }
@@ -1880,7 +1910,7 @@ class Applify extends Component {
   }
   registerModal = () => {
     return(
-      <KeyboardAvoidingView style={styles.modalWrap}>
+      <SafeAreaView style={styles.modalWrap}>
         <View style={styles.modal}>
           {/*<TouchableHighlight onPress={()=>{this.setState({registerVisible: false})}}>*/}
             {/*<Text style={{fontSize:16,marginBottom:13}}><Text style={{fontWeight:'900'}}>&nbsp;</Text> &nbsp;</Text>*/}
@@ -1890,7 +1920,7 @@ class Applify extends Component {
               <Text style={{fontSize:16,marginBottom:13}}>Sign In <Text style={{fontWeight:'900'}}>&rsaquo;</Text></Text>
             </TouchableHighlight>
           </View>
-          <Text style={styles.modalHeading}>Register For Insura</Text>
+          <Text style={styles.modalHeading}>Register New Account</Text>
           {/*<Text style={{marginBottom: 10}}>Please enter your account info:</Text>*/}
           <TextInput
             ref="registerFullName"
@@ -1960,12 +1990,12 @@ class Applify extends Component {
 
           </View>
         </View>
-      </KeyboardAvoidingView>
+      </SafeAreaView>
     );
   }
   loginModal = () => {
     return(
-      <View style={styles.modalWrap}>
+      <SafeAreaView style={styles.modalWrap}>
         <View style={styles.modal}>
           {/*<View style={{position: 'absolute',right: 15, top: 15}}>*/}
             {/*<TouchableHighlight onPress={()=>{this.setState({registerVisible: true, loginVisible: false})}}>*/}
@@ -2019,7 +2049,7 @@ class Applify extends Component {
 
           </View>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
   onResetPassword = () => {
@@ -2160,7 +2190,7 @@ class Applify extends Component {
   pressMenuSaveNewClient =()=>    {this.saveAndClear(true); this.toggleMenu()}
   pressMenuScanLicense =()=>      {this.scan.bind(this)(); this.toggleMenu()}
   pressMenuExportPDF =()=>        {this.setState({exportVisible: true}); this.toggleMenu()}
-  pressMenuClientHistory =()=>    {this.setState({clientHistoryVisible: true, loadingClientHistory: true},()=>{this.getClientHistory()}); this.toggleMenu()}
+  pressMenuClientHistory =()=>    {this.setState({clientHistoryVisible: true, loadingClientHistory: true},()=>{this.getClientHistory()});this.toggleMenu()}
   pressMenuLogOut =()=>           {firebase.auth().signOut(); this.toggleMenu(); this.setState({modalMaskVisible: true})}
   pressMenuSupport =()=>          {this.setState({modalMaskVisible: true, supportVisible: true}); this.toggleMenu()}
   pressMenuDebugLog =()=>         {this.setState({consoleIsVisible: true}); this.toggleMenu()}
@@ -2235,7 +2265,7 @@ class Applify extends Component {
 
         <View style={styles.supportModalHeader}>
           <TouchableHighlight style={styles.supportCloseIcon} onPress={this.closeSupport}>
-            <Text style={{fontSize:30,fontWeight:'100',color: '#000'}}>&rsaquo;</Text>
+            <Text style={styles.supportCloseBtn}>&rsaquo;</Text>
           </TouchableHighlight>
 
           <View style={{flexDirection:'row'}}>
@@ -2246,7 +2276,7 @@ class Applify extends Component {
         </View>
 
         <AutoScroll style={styles.supportMessagesWrap}>
-          {this.state.supportMessages.length && this.state.supportMessages.map(msg => {
+          {this.state.supportMessages.length !== 0 && this.state.supportMessages.map(msg => {
             return (
               <View style={[styles.messageBubble]} key={msg.time}>
                 <Text style={[styles.messageBubbleText,styles['messageBubble_'+msg.senderType]]}>{msg.content}</Text>
@@ -2289,6 +2319,7 @@ class Applify extends Component {
     )
   }
   renderMasterInputNotice=()=>{
+    console.log("render modal mask")
     return (
       <View style={styles.masterInputNoticeWrap}>
         <Text style={styles.masterInputNoticeText}>{_.upperCase(this.state.masterInputNotice)}</Text>
@@ -2393,9 +2424,17 @@ class Applify extends Component {
             {this.state.autoSuggestVisible ? this.renderOptions() : null}
             {this.state.masterInputNotice ? this.renderMasterInputNotice() : null}
             <View style={styles.questionLinksWrap}>
-              <Button title="Prev" color="#ffb601" onPress={()=>this.prevQuestion()}><Text>Prev</Text></Button>
-              <Button title="Next" color="#ffb601" onPress={()=>this.nextQuestion()}><Text>Next</Text></Button>
-              <Text style={{color: '#b6b8be', marginTop: 11, marginLeft: 13}}>{this.state.questionCounter} of {Questions.length}</Text>
+              <View style={styles.nextPrevButton}>
+                <Button title="&laquo;" color="#000" onPress={()=>this.prevQuestion()} style={{marginTop: -10}}>
+                  <Text>Prev</Text>
+                </Button>
+              </View>
+              <View style={styles.nextPrevButton}>
+                <Button title="&raquo;" color="#000" onPress={()=>this.nextQuestion()}>
+                  <Text>Prev</Text>
+                </Button>
+              </View>
+              <Text style={styles.questionPos}>{this.state.questionCounter} of {Questions.length}</Text>
               {this.renderIdScanButton()}
             </View>
             {this.state.answerButtonsVisible ? this.renderAnswerButtons(Questions[this.state.activeQuestionId].answerOptions||[]) : null}
@@ -2541,11 +2580,67 @@ class Applify extends Component {
     }
     if(callback) callback()
   };
+  clear = (clear=false, callback=undefined) => {
+    if(clear) {
+      let clientInfoRestart = {
+        key: clientStartName.key,
+        name: clientStartName.first +' '+ clientStartName.last,
+        firstName: '',
+        middleName: '',
+        lastName: '',
+        gender: clientStartGender,
+        age: clientStartAge,
+        dob: '',
+        height: clientStartHeight,
+        weight: clientStartWeight,
+        street1: '',
+        street2: '',
+        city: '',
+        state: '',
+        zip: '',
+        race: '',
+        ssn: '',
+        tobacco: 'None',
+      };
+      this.setState(
+        {
+          buttons: [],
+          activeQuestionId: 0,
+          questionCounter: 1,
+          calculatorVisible: false,
+          calculatorPositionX: 0,
+          calculatorFaceValue: calculatorFaceValueStart,
+          calculatorTerms: calculatorTermStart,
+          calculatorHiddenProducts: [],
+          calculatorClientAge: clientStartAge,
+          calculatorCounter: 0,
+          calculator: {},
+          questionAnswer: '',
+          masterInputNotice: null,
+          activeButtonId: 0,
+          clientInfo: clientInfoRestart,
+        },
+        () => {
+          // console.log("saveAndClear() finished");
+          // console.log(clientInfoRestart)
+          // console.log(this.state);
+          this.updateProviders(true);
+        }
+      );
+    }
+    if(callback) callback()
+  };
   renderIdScanButton() {
     return (
       <View style={styles.idScanButtonContainer}>
         {/*<Button onPress={()=>{this.setState({exportVisible: true})}} title="Export" color="#d2d2d4"/>*/}
-        <Button onPress={this.scan.bind(this)} title="Scan DL" color="#d2d2d4"/>
+        <View style={{borderWidth:1, borderColor: '#d2d2d4', borderRadius: 4, marginRight: 10, }}>
+          <Button onPress={()=>this.clear(true)} title="Clear" color="#d2d2d4"/>
+        </View>
+        <View style={{borderWidth:1, borderColor: '#d2d2d4', borderRadius: 4, }}>
+          <Button onPress={this.scan.bind(this)} title="Scan DL" color="#d2d2d4"/>
+        </View>
+
         {/*<Button onPress={()=>{*/}
           {/*AlertIOS.alert(*/}
             {/*'Clear All Data',*/}
@@ -2750,9 +2845,43 @@ class Applify extends Component {
     })
   }
 }
-let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+
+// Code Push
+let codePushOptions = { installMode: codePush.InstallMode.IMMEDIATE };
 Applify = codePush(codePushOptions)(Applify);
 export default Applify;
+
+
+// Notifications Push (nothing to do with Code Push!)
+Push.setListener({
+  onPushNotificationReceived: function (pushNotification) {
+    let message = pushNotification.message;
+    let title = pushNotification.title;
+
+    if (message === null) {
+      // Android messages received in the background don't include a message. On Android, that fact can be used to
+      // check if the message was received in the background or foreground. For iOS the message is always present.
+      title = 'Android background';
+      message = '<empty>';
+    }
+
+    // Custom name/value pairs set in the App Center web portal are in customProperties
+    if (pushNotification.customProperties && Object.keys(pushNotification.customProperties).length > 0) {
+      message += '\nCustom properties:\n' + JSON.stringify(pushNotification.customProperties);
+    }
+
+    if (AppState.currentState === 'active') {
+      Alert.alert(title, message);
+    }
+    else {
+      // Sometimes the push callback is received shortly before the app is fully active in the foreground.
+      // In this case you'll want to save off the notification info and wait until the app is fully shown
+      // in the foreground before displaying any UI. You could use AppState.addEventListener to be notified
+      // when the app is fully in the foreground.
+    }
+  }
+});
+
 
 
 

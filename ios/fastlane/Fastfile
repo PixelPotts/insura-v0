@@ -34,7 +34,7 @@ lane :beta do
             compileBitcode: false,
             signingStyle: "manual",
             provisioningProfiles:{
-                "org.Applify": "testgroup1"
+                "com.insura": "devinsuraprovision"
             }
         }
     )

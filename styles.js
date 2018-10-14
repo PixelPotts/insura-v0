@@ -233,6 +233,7 @@ export default StyleSheet.create({
   questionLinksWrap: {
     marginTop: 10,
     marginRight: 0,
+    marginLeft: 5,
     flexDirection: 'row',
     alignContent: 'space-between',
     height: 50,
@@ -240,10 +241,27 @@ export default StyleSheet.create({
     borderWidth: 0,
     padding: 0,
   },
+  nextPrevButton: {
+    borderColor: '#ffb601',
+    backgroundColor: '#ffb601',
+    borderWidth: 1,
+    height: 40,
+    width: 40,
+    paddingTop: -3,
+    marginRight: 14,
+    borderRadius: 5
+  },
   questionButton: {
     height: 50,
     width: 100,
-    color: '#ffb601'
+    color: '#ffb601',
+  },
+  questionPos: {
+    color: '#b6b8be',
+    marginTop: 11,
+    marginLeft: 0,
+    marginRight: 13,
+    width: 55,
   },
   idScanButtonContainer: {
     flex: 1,
@@ -772,6 +790,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     // justifyContent: 'center',
     position: 'absolute',
+    top: -20,
     width: '100%',
     height: '100%',
     zIndex: 100
@@ -903,14 +922,6 @@ export default StyleSheet.create({
     paddingTop: 2,
     justifyContent: 'center',
   },
-  supportCloseIcon: {
-    position: 'absolute',
-    top: 0,
-    left: 20,
-    padding: 0,
-    borderWidth: 0,
-    borderColor: 'red'
-  },
   supportMessagesWrap: {
     backgroundColor: '#f7f7f9',
     width: '100%',
@@ -951,7 +962,24 @@ export default StyleSheet.create({
     // height: 40,
     width: '100%'
   },
-
+  supportCloseIcon: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    borderWidth: 0,
+    borderColor: 'red',
+  },
+  supportCloseBtn: {
+    paddingLeft: 14,
+    position: 'absolute',
+    left: 0,
+    fontSize:30,
+    fontWeight:'300',
+    color: '#000',
+    width: 40,
+    borderWidth: 0,
+    borderColor: 'red',
+  },
 
   // Client History ///////////////////////////
 

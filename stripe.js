@@ -1,7 +1,8 @@
 "use strict";
 
+
 let stripe_url = 'https://api.stripe.com/v1/';
-let stripe_mode = 'TEST';
+let stripe_mode = 'PROD';
 const stripe_test_key = "sk_test_4pJ7hGg9yxZxZCXibtxvzphX";
 const stripe_prod_key = "sk_live_c8NPJO5bonIsTxjtryiEwmrN";
 const STRIPE_API_KEY = stripe_mode === "PROD" ? stripe_prod_key : stripe_test_key;
