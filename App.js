@@ -92,7 +92,7 @@ const BlinklicenseKey = Platform.select({
 });
 
 // STRIPE KEYS
-const stripe_mode = "test"
+const stripe_mode = "PROD"
 const stripe_url = 'https://api.stripe.com/v1/';
 const stripe_test_key = "sk_test_4pJ7hGg9yxZxZCXibtxvzphX";
 const stripe_prod_key = "sk_live_c8NPJO5bonIsTxjtryiEwmrN";
@@ -2777,7 +2777,7 @@ class Insura extends Component {
     const clientInfo      = c = this.state.clientInfo
     const buttons         = this.state.buttons
     const userNameDobID   = c.lastName +'-'+ c.firstName +'-'+ c.key;
-    const userId          = this.state.user.uid;
+    const userId          = firebase.auth().currentUser.uid;
     if(c.modified===true){
       this.saveClient(
         userId,
@@ -3037,13 +3037,18 @@ class Insura extends Component {
     }
     console.log("data to save...")
     console.log(data)
+    console.log('saving to path: clients/'+userId+'/'+clientId)
     res = firebase.database().ref('clients/'+userId+'/'+clientId)
       .set(data)
       .then(res=>{
         console.log("saveClient() .set() res: ")
+        this.getClientHistory();
         console.log(res)
       })
-      .catch(err=>console.log(err))
+      .catch(err=>{
+        console.log("SaveClient() Error:")
+        console.log(err)
+      })
   }
   saveSupportMessage=(message)=>{
     if(message.trim()==='') return false
@@ -3083,59 +3088,35 @@ class Insura extends Component {
   }
   getClientHistory=(callback=null)=>{
     // console.log("getClientHistory(): setting this.state.clientHistory to []")
-    ref = firebase.database().ref('clients/'+firebase.auth().currentUser.uid).orderByKey()
-    clients = this.state.clientHistory
-    ref.once('value').then(snapshot=>{
-      _.each(snapshot.val(),(client,k)=>{
-        // console.log("pushing client")
-        clients.push(client)
-      });
-    }).done(()=>{
-      this.setState({clientHistory: clients},()=>{
-       // console.log("=== .once() updated this.client.history ===")
-       // console.log(this.state.clientHistory)
+    this.setState({clientHistory: []},()=>{
+      ref = firebase.database().ref('clients/'+firebase.auth().currentUser.uid).orderByKey()
+      clients = this.state.clientHistory
+      ref.once('value').then(snapshot=>{
+        _.each(snapshot.val(),(client,k)=>{
+          // console.log("pushing client")
+          clients.push(client)
+        });
+      }).done(()=>{
+        this.setState({clientHistory: clients},()=>{
+          // console.log("=== .once() updated this.client.history ===")
+          // console.log(this.state.clientHistory)
+        })
       })
     })
-    // ref = firebase.database().ref('clients/'+firebase.auth().currentUser.uid).orderByKey()
-    // clients = this.state.clientHistory
-    // ref.on('value', (snapshot) => {
-    //   console.log(snapshot.val())
-    //   // _.each(snapshot.val(),(client,k)=>{
-    //   //   clients.push(client)
-    //   // })
-    // });
-    // })
-    //   .done(()=>{
-    //   this.setState({clientHistory: clients},()=>{
-    //     console.log("=== .once() updated this.client.history ===")
-    //     console.log(this.state.clientHistory)
-    //   })
-    // })
-
   }
-
-  // getUserMeta = (k) => {
-  //   console.log("calling getUserMeta()")
-  //   let v = null
-  //   ref = firebase.database().ref('users/'+firebase.auth().currentUser.uid)
-  //   ref.once('value').then(snapshot=>{
-  //     v = snapshot.val()[k]
-  //   })
-  //   return v
-  // }
   setUserMeta = (k,v,cb=()=>{}) => {
-    console.log('setting user meta')
-    console.log(k)
-    console.log(v)
+    // console.log('setting user meta')
+    // console.log(k)
+    // console.log(v)
     value = undefined
     ref = firebase.database().ref('users/'+firebase.auth().currentUser.uid)
     ref.update({[k]:v},(err)=>{
       if(err) {
-        console.log("setUserMeta failed...")
+        // console.log("setUserMeta failed...")
       } else {
         value = v
-        console.log("Meta update successfull")
-        console.log("SET: getUserMeta set key %s to value %s",k,v)
+        // console.log("Meta update successfull")
+        // console.log("SET: getUserMeta set key %s to value %s",k,v)
       }
     })
     cb()
