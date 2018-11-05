@@ -140,8 +140,8 @@ export default {
     // },
     {
       id: 500,
-      text: 'All current medications:',
-      placeholder: "e.g. Omeprazole",
+      text: 'All meds within 7 years:',
+      placeholder: "e.g. Warfarin",
       category: 'MED',
       title: null,
       subtitle: null,
@@ -151,19 +151,19 @@ export default {
       fieldType: 'options',
       submitByReturn: false,
     },
-    {
-      id: 600,
-      text: 'Medications - last 7 years?',
-      placeholder: "e.g. Metoprolol",
-      category: 'MED_OLD',
-      title: null,
-      subtitle: null,
-      answer: null,
-      suggest: true,
-      field: 'prev_medication',
-      fieldType: 'options',
-      submitByReturn: false
-    },
+    // {
+    //   id: 600,
+    //   text: 'Medications - last 7 years?',
+    //   placeholder: "e.g. Metoprolol",
+    //   category: 'MED_OLD',
+    //   title: null,
+    //   subtitle: null,
+    //   answer: null,
+    //   suggest: true,
+    //   field: 'prev_medication',
+    //   fieldType: 'options',
+    //   submitByReturn: false
+    // },
     {
       id: 700,
       text: 'All current medical conditions?',

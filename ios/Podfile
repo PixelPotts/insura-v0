@@ -5,17 +5,13 @@ target 'AwesomeProject' do
   pod 'PPBlinkID', '~> 2.15.0'
   pod 'Firebase/Core'
 
-#  pod 'Fabric', '~> 1.7.9'
-# pod 'Crashlytics', '~> 3.10.5'
+  pod 'Fabric', '~> 1.7.9'
 
   pod 'AppCenterReactNativeShared', '~> 1.8.1'
   pod 'AppCenter/Crashes', '~> 1.9.0'
   pod 'AppCenter/Analytics', '~> 1.9.0'
   pod 'AppCenter/Push', '~> 1.9.0'
 
-# pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
-# pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
-
-#  pod 'CodePush', :path => '../node_modules/react-native-code-push'
+  pod 'RNViewShot', :path => '../node_modules/react-native-view-shot'
 
 end

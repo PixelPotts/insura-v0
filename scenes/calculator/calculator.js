@@ -2,6 +2,7 @@ import React, { Compnent } from 'react'
 import {
   View
 } from 'react-native'
+import CalculatorProduct from "../../calculatorProduct";
 
 export default class CalculatorScene extends Compnent {
   constructor(props){
@@ -18,7 +19,7 @@ export default class CalculatorScene extends Compnent {
     this.inputRefs = {};
     self = this;
     renderCalculatorProduct = this.renderCalculatorProduct;
-    let productsRender = [];w
+    let productsRender = [];
     LayoutAnimation.configureNext(CustomLayoutLinear);
 
     return (
@@ -173,16 +174,20 @@ export default class CalculatorScene extends Compnent {
         <ScrollView style={styles.calculatorContentScrollView}>
 
 
-          {Providers.map(function(provider){
-            provider.products.map(function(product){
-              product.calculator.products.map(function(calculatorProduct){
-                productsRender.push(renderCalculatorProduct(provider,product,calculatorProduct));
-                // console.log("--- Rendering ---");
-              })
-            })
+          {this.calculatorHiddenNotices.map((o,k)=>{
+            <CalculatorProduct/>
           })}
 
-          {productsRender}
+          {/*{Providers.map(function(provider){*/}
+            {/*provider.products.map(function(product){*/}
+              {/*product.calculator.products.map(function(calculatorProduct){*/}
+                {/*productsRender.push(renderCalculatorProduct(provider,product,calculatorProduct));*/}
+                {/*// console.log("--- Rendering ---");*/}
+              {/*})*/}
+            {/*})*/}
+          {/*})}*/}
+
+          {/*{productsRender}*/}
 
           <Text>&nbsp;</Text>
 

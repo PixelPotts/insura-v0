@@ -28,8 +28,8 @@ lane :beta do
 
         #project: "AwesomeProject.xcodeproj",
         workspace: "AwesomeProject.xcworkspace",
-        configuration: "Ad Hoc Distribution",
-        export_method: "ad-hoc",
+        configuration: "Development",
+        export_method: "development",
         export_options: {
             compileBitcode: false,
             signingStyle: "manual",

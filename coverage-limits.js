@@ -1,7 +1,7 @@
 export default {
     HMSP: {
-    min:20,
-    max:400,
+    1:20,
+    2:400,
     45:null,
     50:null,
     55:null,
@@ -13,8 +13,8 @@ export default {
     85:null
   },
   "HMSP-DI": {
-    min:20,
-    max:400,
+    1:20,
+    2:400,
     45:null,
     50:null,
     55:null,
@@ -26,8 +26,8 @@ export default {
     85:null
   },
   EPL: {
-    min:2,
-    max:30,
+    1:2,
+    2:30,
     45:null,
     50:null,
     55:null,
@@ -39,8 +39,8 @@ export default {
     85:null
   },
   EPG: {
-    min:2,
-    max:10,
+    1:2,
+    2:10,
     45:null,
     50:null,
     55:null,
@@ -52,8 +52,8 @@ export default {
     85:null
   },
   UP1: {
-    min:2,
-    max:30,
+    1:2,
+    2:30,
     45:null,
     50:null,
     55:null,
@@ -65,8 +65,8 @@ export default {
     85:null
   },
   UP2: {
-    min:2,
-    max:30,
+    1:2,
+    2:30,
     45:null,
     50:null,
     55:null,
@@ -78,8 +78,8 @@ export default {
     85:null
   },
   UP3: {
-    min:2,
-    max:10,
+    1:2,
+    2:10,
     45:null,
     50:null,
     55:null,
@@ -91,8 +91,8 @@ export default {
     85:null
   },
   TLE50: {
-    min:25,
-    max:300,
+    1:25,
+    2:300,
     45:null,
     50:null,
     55:null,
@@ -104,8 +104,8 @@ export default {
     85:null
   },
   TLE65: {
-    min:25,
-    max:250,
+    1:25,
+    2:250,
     45:null,
     50:null,
     55:null,
@@ -117,8 +117,8 @@ export default {
     85:null
   },
   GULE50: {
-    min:25,
-    max:300,
+    1:25,
+    2:300,
     45:null,
     50:null,
     55:null,
@@ -130,8 +130,8 @@ export default {
     85:null
   },
   GULE65: {
-    min:25,
-    max:250,
+    1:25,
+    2:250,
     45:null,
     50:null,
     55:null,
@@ -143,9 +143,9 @@ export default {
     85:null
   },
   LPLB: {
-    min:2,
-    max:40,
-    45:null,
+    1:2,
+    2:40,
+    45:100,
     50:null,
     55:null,
     60:null,
@@ -156,8 +156,8 @@ export default {
     85:null
   },
   LPGB: {
-    min:2,
-    max:20,
+    1:2,
+    2:20,
     45:null,
     50:null,
     55:null,
@@ -169,8 +169,8 @@ export default {
     85:null
   },
   IS: {
-    min:1,
-    max:50,
+    1:1,
+    2:50,
     45:null,
     50:null,
     55:null,
@@ -182,8 +182,8 @@ export default {
     85:null
   },
   ES: {
-    min:1,
-    max:25,
+    1:1,
+    2:25,
     45:null,
     50:null,
     55:50,
@@ -195,8 +195,8 @@ export default {
     85:25
   },
   "10P": {
-    min:1,
-    max:50,
+    1:1,
+    2:50,
     45:null,
     50:null,
     55:50,
@@ -208,8 +208,8 @@ export default {
     85:25
   },
   PR: {
-    min:5,
-    max:35,
+    1:5,
+    2:35,
     45:null,
     50:null,
     55:null,
@@ -217,12 +217,38 @@ export default {
     65:null,
     70:null,
     75:null,
-    80:null,
-    85:null
+    80:35,
+    85:15
+  },
+  PRM: {
+    1:5,
+    2:20,
+    45:null,
+    50:null,
+    55:null,
+    60:null,
+    65:null,
+    70:null,
+    75:null,
+    80:20,
+    85:10
+  },
+  PRG: {
+    1:5,
+    2:15,
+    45:null,
+    50:null,
+    55:null,
+    60:null,
+    65:null,
+    70:null,
+    75:null,
+    80:15,
+    85:0
   },
   SF: {
-    min:null,
-    max:null,
+    1:null,
+    2:null,
     45:null,
     50:null,
     55:null,
@@ -234,8 +260,8 @@ export default {
     85:null
   },
   SUL: {
-    min:50,
-    max:400,
+    1:50,
+    2:400,
     45:null,
     50:null,
     55:null,
@@ -247,8 +273,8 @@ export default {
     85:null
   },
   DCFE: {
-    min:5,
-    max:35,
+    1:5,
+    2:35,
     45:null,
     50:null,
     55:null,
@@ -260,8 +286,8 @@ export default {
     85:25
   },
   SIWL: {
-    min:5,
-    max:25,
+    1:5,
+    2:25,
     45:null,
     50:null,
     55:null,
@@ -273,8 +299,8 @@ export default {
     85:null
   },
   "SGT": {
-    min:50,
-    max:1000,
+    1:50,
+    2:1000,
     45:null,
     50:null,
     55:null,
@@ -286,8 +312,8 @@ export default {
     85:null
   },
   "NLUL": {
-    min:25,
-    max:400,
+    1:25,
+    2:400,
     45:null,
     50:null,
     55:null,
@@ -299,8 +325,8 @@ export default {
     85:null
   },
   "SGWL": {
-    min:25,
-    max:250,
+    1:25,
+    2:250,
     45:null,
     50:null,
     55:null,
@@ -311,9 +337,9 @@ export default {
     80:null,
     85:null
   },
-  "SI-WL": {
-    min:25,
-    max:250,
+  "GIWL": {
+    1:25,
+    2:250,
     45:null,
     50:null,
     55:null,

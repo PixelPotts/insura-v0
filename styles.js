@@ -68,6 +68,7 @@ export default StyleSheet.create({
     borderColor: '#FFF',
     borderWidth: 0,
     padding: 0,
+    backgroundColor: 'transparent'
   },
   loggedInUserName: {
     textAlign: 'right',
@@ -77,12 +78,29 @@ export default StyleSheet.create({
     marginTop: 13
   },
   loginRegisterLinks: {
-    flex: 1,
+    position: 'relative',
+    // flex: 1,
     justifyContent: 'flex-end',
     paddingTop: 0,
     flexDirection: 'row',
     borderWidth: 0,
     borderColor: 'red'
+  },
+  redNoticeDot: {
+    position: 'absolute',
+    top: 3,
+    right: -1,
+    height: 18,
+    width: 18,
+    backgroundColor: 'red',
+    borderRadius: 10,
+    borderColor: '#404861',
+    borderWidth: 3,
+    zIndex: 2,
+  },
+  redNoticeDotSupport: {
+    marginLeft: 10,
+    color: 'red'
   },
   signOutLink: {
     textAlign: 'right',
@@ -408,24 +426,30 @@ export default StyleSheet.create({
   calculatorContentScrollView: {
     borderTopColor: '#d1d1d1',
     borderTopWidth: 1,
-    borderBottomColor: '#e9e9e9',
+    borderBottomColor: '#e0e0e0',
     borderBottomWidth: 1,
     backgroundColor: '#fafafa',
-    height: '100%'
+    height: '100%',
+    marginLeft: -20,
+    marginRight: -20,
+    paddingLeft: 20
   },
   calculatorCompanyWrap: {
     flex: 1,
     flexDirection: 'row',
+    paddingTop: 20,
   },
   calculatorCompanyWrap_portrait: {
     flex: 1,
     flexDirection: 'column',
     borderWidth: 0,
     borderColor: 'red',
-    marginTop: 8,
-    paddingBottom: 8,
+    marginTop: 18,
+    paddingBottom: 18,
     borderBottomWidth: 0.3,
-    borderBottomColor: '#cccccc'
+    borderBottomColor: '#e6e6e6',
+    marginLeft: -15,
+    paddingLeft: 10,
   },
   calculatorFaceValue: {
     borderWidth: 1,
@@ -457,11 +481,14 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'stretch',
-    marginTop: 20,
-    marginBottom: 0,
-    marginLeft: 20,
-    borderWidth: 0,
-    borderColor: 'red'
+    marginTop: 0,
+    paddingTop: 0,
+    marginBottom: 20,
+    paddingBottom: 20,
+    marginLeft: -20,
+    paddingLeft: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f0f0f0',
   },
   calculatorProductPeriodCostWrap: {
     alignItems: 'center',
@@ -731,12 +758,8 @@ export default StyleSheet.create({
     left: 0,
     width: '100%',
     height: '100%',
-    paddingTop: 60,
-    backgroundColor: '#FFF',
-    // opacity: 0.1,
-    padding: 20,
-    // display: 'none',
-    zIndex: 5
+    zIndex: 5,
+    backgroundColor: 'white'
   },
   exportContentWrap: {
     flex: 1,
@@ -762,6 +785,27 @@ export default StyleSheet.create({
   },
 
 
+
+  // Export View ===================================
+
+  instructionsView: {
+    position: 'absolute',
+    top: 22,
+    left: 0,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 40,
+    width: '100%',
+    maxWidth: 500,
+    height: '100%',
+    maxHeight: 500,
+    paddingTop: 60,
+    backgroundColor: '#FFF',
+    // opacity: 0.1,
+    padding: 20,
+    // display: 'none',
+    zIndex: 5
+  },
 
 
 
@@ -821,6 +865,38 @@ export default StyleSheet.create({
     shadowOffset:{  width: 10,  height: 10,  },
     shadowColor: 'black',
     shadowOpacity: 0.2,
+  },
+  modalInstructions: {
+    top: 22,
+    padding: 30,
+    backgroundColor: '#e9e9e9',
+    // minHeight: 644,
+    // minWidth: 375,
+    maxWidth: 500,
+    maxHeight: 626,
+    width: '100%',
+    height: '100%',
+    borderRadius: 12,
+    borderColor: '#3b4485',
+    borderWidth: 1,
+    shadowOffset:{  width: 10,  height: 10,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.2,
+  },
+  modalInstructionsWrap: {
+    padding: 3,
+    margin: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  instructionsImage: {
+    // flex: 1,
+    // alignSelf: 'stretch',
+    width: 370,
+    height: 550,
+    borderWidth: 0,
+    borderColor: 'red'
   },
   modalHeading: {
     marginBottom: 20,
@@ -928,12 +1004,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
   },
   messageBubble: {
-    // flex: -1,
-    // minWidth: 20,
-    // minHeight: 10,
-    // flexShrink: 1,
     flex: 1,
-    // borderRadius: 20,
     overflow: 'hidden',
     maxWidth: 500,
   },
@@ -945,15 +1016,13 @@ export default StyleSheet.create({
   },
   messageBubble_user: {
     textAlign: 'left',
-    backgroundColor: '#ced4e3',
-    borderRadius: 20,
-    marginLeft: 40
+    backgroundColor: '#e2e8f7',
+    marginRight: 40,
   },
   messageBubble_admin: {
     textAlign: 'left',
-    backgroundColor: '#e1efde',
-    borderRadius: 20,
-    marginRight: 40
+    backgroundColor: '#e8f6e5',
+    marginLeft: 40
   },
   supportMessageInput: {
     borderTopWidth: 1,
@@ -991,7 +1060,7 @@ export default StyleSheet.create({
     paddingLeft: 0,
     paddingRight: 0,
     marginRight: -20,
-    marginLeft: -20
+    marginLeft: 0
   },
   clientHistoryLink: {
     fontSize: 15,

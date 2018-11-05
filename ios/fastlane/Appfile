@@ -1,4 +1,4 @@
-app_identifier("org.Applify") # The bundle identifier of your app
+app_identifier("com.insura") # The bundle identifier of your app
 apple_id("pottspotts@gmail.com") # Your Apple email address
 
 itc_team_id("70912800") # iTunes Connect Team ID

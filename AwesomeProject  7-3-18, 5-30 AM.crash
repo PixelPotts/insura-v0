@@ -3,12 +3,12 @@ CrashReporter Key:   5a1b3a6c3c3cfb164063c37d618fbd6921e6700b
 Hardware Model:      iPhone9,2
 Process:             AwesomeProject [2471]
 Path:                /private/var/containers/Bundle/Application/02BFC293-267E-443F-AB4F-EB7D34149F11/AwesomeProject.app/AwesomeProject
-Identifier:          org.Applify
+Identifier:          com.insura
 Version:             4 (1.0)
 Code Type:           ARM-64 (Native)
 Role:                Foreground
 Parent Process:      launchd [1]
-Coalition:           org.Applify [2204]
+Coalition:           com.insura [2204]
 
 
 Date/Time:           2018-07-03 05:30:45.2221 -0700

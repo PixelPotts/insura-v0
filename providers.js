@@ -9,7 +9,7 @@ export default {
       logoUrl: './images/logo_am.jpeg',
       products: [
         {
-          id: 201,
+          id: 210,
           name: "HMS Plus",
           nickname: "HMSP",
           payout: { min: 2000, max: 20000 },
@@ -19,12 +19,13 @@ export default {
             terms: [15,20,25,30],
             products: [
               {
-                id: 200,
+                id: 2101,
                 name: 'HMS Plus 125 - Full Guarantee',
                 type: 'term',
                 multiplier: 1000,
                 monthFactor: 0.095,
                 fee: 90,
+                age: { min: 20, max: 75 },
                 tableType: 'age--term-smokerStatus',
                 table: {
                   20: {
@@ -590,7 +591,7 @@ export default {
                 }
               },
               {
-                id: 201,
+                id: 2102,
                 name: 'HMS Plus 125 CBO - Full Guarantee ',
                 type: 'term',
                 multiplier: 1000,
@@ -1011,7 +1012,7 @@ export default {
                 }
               },
               {
-                id: 202,
+                id: 2103,
                 name: 'HMS Plus 150 - Full Guarantee',
                 type: 'term',
                 multiplier: 1000,
@@ -1021,7 +1022,7 @@ export default {
                 table: {
                   20: {
                     "20-NS": 1.74
-                    ,"20-N": 3.11
+                    ,"20-S": 3.11
                     ,"25-NS": 2.40
                     ,"25-S": 3.63
                     ,"30-NS": 2.55
@@ -1029,7 +1030,7 @@ export default {
                   },
                   21: {
                     "20-NS": 1.74
-                    ,"20-N": 3.11
+                    ,"20-S": 3.11
                     ,"25-NS": 2.40
                     ,"25-S": 3.63
                     ,"30-NS": 2.55
@@ -1037,7 +1038,7 @@ export default {
                   },
                   22: {
                     "20-NS": 1.74
-                    ,"20-N": 3.11
+                    ,"20-S": 3.11
                     ,"25-NS": 2.40
                     ,"25-S": 3.63
                     ,"30-NS": 2.55
@@ -1045,7 +1046,7 @@ export default {
                   },
                   23: {
                     "20-NS": 1.74
-                    ,"20-N": 3.11
+                    ,"20-S": 3.11
                     ,"25-NS": 2.40
                     ,"25-S": 3.63
                     ,"30-NS": 2.55
@@ -1053,7 +1054,7 @@ export default {
                   },
                   24: {
                     "20-NS": 1.74
-                    ,"20-N": 3.11
+                    ,"20-S": 3.11
                     ,"25-NS": 2.40
                     ,"25-S": 3.63
                     ,"30-NS": 2.55
@@ -1061,7 +1062,7 @@ export default {
                   },
                   25: {
                     "20-NS": 1.74
-                    ,"20-N": 3.11
+                    ,"20-S": 3.11
                     ,"25-NS": 2.40
                     ,"25-S": 3.63
                     ,"30-NS": 2.55
@@ -1069,7 +1070,7 @@ export default {
                   },
                   26: {
                     "20-NS": 1.84
-                    ,"20-N": 3.26
+                    ,"20-S": 3.26
                     ,"25-NS": 2.53
                     ,"25-S": 3.81
                     ,"30-NS": 2.67
@@ -1077,7 +1078,7 @@ export default {
                   },
                   27: {
                     "20-NS": 1.94
-                    ,"20-N": 3.42
+                    ,"20-S": 3.42
                     ,"25-NS": 2.65
                     ,"25-S": 3.99
                     ,"30-NS": 2.77
@@ -1085,7 +1086,7 @@ export default {
                   },
                   28: {
                     "20-NS": 2.03
-                    ,"20-N": 3.58
+                    ,"20-S": 3.58
                     ,"25-NS": 2.78
                     ,"25-S": 4.18
                     ,"30-NS": 2.88
@@ -1093,7 +1094,7 @@ export default {
                   },
                   29: {
                     "20-NS": 2.15
-                    ,"20-N": 3.73
+                    ,"20-S": 3.73
                     ,"25-NS": 2.92
                     ,"25-S": 4.37
                     ,"30-NS": 3.00
@@ -1101,7 +1102,7 @@ export default {
                   },
                   30: {
                     "20-NS": 2.26
-                    ,"20-N": 3.90
+                    ,"20-S": 3.90
                     ,"25-NS": 3.05
                     ,"25-S": 4.56
                     ,"30-NS": 3.11
@@ -1109,7 +1110,7 @@ export default {
                   },
                   31: {
                     "20-NS": 2.39
-                    ,"20-N": 4.19
+                    ,"20-S": 4.19
                     ,"25-NS": 3.19
                     ,"25-S": 4.93
                     ,"30-NS": 3.24
@@ -1117,7 +1118,7 @@ export default {
                   },
                   32: {
                     "20-NS": 2.51
-                    ,"20-N": 4.48
+                    ,"20-S": 4.48
                     ,"25-NS": 3.31
                     ,"25-S": 5.31
                     ,"30-NS": 3.38
@@ -1125,7 +1126,7 @@ export default {
                   },
                   33: {
                     "20-NS": 2.64
-                    ,"20-N": 4.78
+                    ,"20-S": 4.78
                     ,"25-NS": 3.45
                     ,"25-S": 5.69
                     ,"30-NS": 3.52
@@ -1133,7 +1134,7 @@ export default {
                   },
                   34: {
                     "20-NS": 2.77
-                    ,"20-N": 5.07
+                    ,"20-S": 5.07
                     ,"25-NS": 3.58
                     ,"25-S": 6.07
                     ,"30-NS": 3.64
@@ -1141,7 +1142,7 @@ export default {
                   },
                   35: {
                     "20-NS": 2.90
-                    ,"20-N": 5.36
+                    ,"20-S": 5.36
                     ,"25-NS": 3.75
                     ,"25-S": 6.45
                     ,"30-NS": 3.84
@@ -1149,7 +1150,7 @@ export default {
                   },
                   36: {
                     "20-NS": 3.18
-                    ,"20-N": 5.94
+                    ,"20-S": 5.94
                     ,"25-NS": 4.14
                     ,"25-S": 7.21
                     ,"30-NS": 4.25
@@ -1157,7 +1158,7 @@ export default {
                   },
                   37: {
                     "20-NS": 3.44
-                    ,"20-N": 6.54
+                    ,"20-S": 6.54
                     ,"25-NS": 4.53
                     ,"25-S": 7.98
                     ,"30-NS": 4.66
@@ -1165,7 +1166,7 @@ export default {
                   },
                   38: {
                     "20-NS": 3.73
-                    ,"20-N": 7.12
+                    ,"20-S": 7.12
                     ,"25-NS": 4.91
                     ,"25-S": 8.75
                     ,"30-NS": 5.07
@@ -1173,7 +1174,7 @@ export default {
                   },
                   39: {
                     "20-NS": 4.01
-                    ,"20-N": 7.72
+                    ,"20-S": 7.72
                     ,"25-NS": 5.28
                     ,"25-S": 9.53
                     ,"30-NS": 5.49
@@ -1181,7 +1182,7 @@ export default {
                   },
                   40: {
                     "20-NS": 4.28
-                    ,"20-N": 8.29
+                    ,"20-S": 8.29
                     ,"25-NS": 5.68
                     ,"25-S": 10.30
                     ,"30-NS": 5.89
@@ -1189,7 +1190,7 @@ export default {
                   },
                   41: {
                     "20-NS": 4.66
-                    ,"20-N": 9.25
+                    ,"20-S": 9.25
                     ,"25-NS": 6.25
                     ,"25-S": 11.35
                     ,"30-NS": 6.50
@@ -1197,7 +1198,7 @@ export default {
                   },
                   42: {
                     "20-NS": 5.03
-                    ,"20-N": 10.20
+                    ,"20-S": 10.20
                     ,"25-NS": 6.82
                     ,"25-S": 12.41
                     ,"30-NS": 7.12
@@ -1205,7 +1206,7 @@ export default {
                   },
                   43: {
                     "20-NS": 5.40
-                    ,"20-N": 11.15
+                    ,"20-S": 11.15
                     ,"25-NS": 7.39
                     ,"25-S": 13.46
                     ,"30-NS": 7.73
@@ -1213,7 +1214,7 @@ export default {
                   },
                   44: {
                     "20-NS": 5.77
-                    ,"20-N": 12.09
+                    ,"20-S": 12.09
                     ,"25-NS": 7.95
                     ,"25-S": 14.52
                     ,"30-NS": 8.34
@@ -1221,7 +1222,7 @@ export default {
                   },
                   45: {
                     "20-NS": 6.20
-                    ,"20-N": 13.04
+                    ,"20-S": 13.04
                     ,"25-NS": 8.64
                     ,"25-S": 15.58
                     ,"30-NS": 8.99
@@ -1229,7 +1230,7 @@ export default {
                   },
                   46: {
                     "20-NS": 6.86
-                    ,"20-N": 14.12
+                    ,"20-S": 14.12
                     ,"25-NS": 9.68
                     ,"25-S": 17.09
                     ,"30-NS": 9.89
@@ -1237,7 +1238,7 @@ export default {
                   },
                   47: {
                     "20-NS": 7.52
-                    ,"20-N": 15.20
+                    ,"20-S": 15.20
                     ,"25-NS": 10.71
                     ,"25-S": 18.61
                     ,"30-NS": 10.88
@@ -1245,7 +1246,7 @@ export default {
                   },
                   48: {
                     "20-NS": 8.18
-                    ,"20-N": 16.29
+                    ,"20-S": 16.29
                     ,"25-NS": 11.76
                     ,"25-S": 20.12
                     ,"30-NS": 11.96
@@ -1253,7 +1254,7 @@ export default {
                   },
                   49: {
                     "20-NS": 8.84
-                    ,"20-N": 17.39
+                    ,"20-S": 17.39
                     ,"25-NS": 12.79
                     ,"25-S": 21.63
                     ,"30-NS": 13.17
@@ -1261,7 +1262,7 @@ export default {
                   },
                   50: {
                     "20-NS": 9.50
-                    ,"20-N": 18.49
+                    ,"20-S": 18.49
                     ,"25-NS": 13.84
                     ,"25-S": 23.15
                     ,"30-NS": 14.48
@@ -1269,7 +1270,7 @@ export default {
                   },
                   51: {
                     "20-NS": 10.52
-                    ,"20-N": 20.17
+                    ,"20-S": 20.17
                     ,"25-NS": 15.01
                     ,"25-S": 25.15
                     ,"30-NS": 15.72
@@ -1277,7 +1278,7 @@ export default {
                   },
                   52: {
                     "20-NS": 11.53
-                    ,"20-N": 21.84
+                    ,"20-S": 21.84
                     ,"25-NS": 16.28
                     ,"25-S": 27.31
                     ,"30-NS": 17.07
@@ -1285,7 +1286,7 @@ export default {
                   },
                   53: {
                     "20-NS": 12.56
-                    ,"20-N": 23.53
+                    ,"20-S": 23.53
                     ,"25-NS": 17.67
                     ,"25-S": 29.65
                     ,"30-NS": 18.53
@@ -1293,7 +1294,7 @@ export default {
                   },
                   54: {
                     "20-NS": 13.59
-                    ,"20-N": 25.21
+                    ,"20-S": 25.21
                     ,"25-NS": 19.16
                     ,"25-S": 32.21
                     ,"30-NS": 20.12
@@ -1301,7 +1302,7 @@ export default {
                   },
                   55: {
                     "20-NS": 14.62
-                    ,"20-N": 26.91
+                    ,"20-S": 26.91
                     ,"25-NS": 20.80
                     ,"25-S": 34.99
                     ,"30-NS": 21.84
@@ -1309,7 +1310,7 @@ export default {
                   },
                   56: {
                     "20-NS": 16.52
-                    ,"20-N": 30.28
+                    ,"20-S": 30.28
                     ,"25-NS": 23.31
                     ,"25-S": 38.63
                     ,"30-NS": 24.47
@@ -1317,7 +1318,7 @@ export default {
                   },
                   57: {
                     "20-NS": 18.67
-                    ,"20-N": 34.06
+                    ,"20-S": 34.06
                     ,"25-NS": 26.12
                     ,"25-S": 42.65
                     ,"30-NS": 27.42
@@ -1325,7 +1326,7 @@ export default {
                   },
                   58: {
                     "20-NS": 21.08
-                    ,"20-N": 38.33
+                    ,"20-S": 38.33
                     ,"25-NS": 29.27
                     ,"25-S": 47.09
                     ,"30-NS": 30.72
@@ -1333,7 +1334,7 @@ export default {
                   },
                   59: {
                     "20-NS": 23.83
-                    ,"20-N": 43.12
+                    ,"20-S": 43.12
                     ,"25-NS": 32.80
                     ,"25-S": 51.99
                     ,"30-NS": 34.42
@@ -1341,7 +1342,7 @@ export default {
                   },
                   60: {
                     "20-NS": 26.92
-                    ,"20-N": 48.51
+                    ,"20-S": 48.51
                     ,"25-NS": 36.76
                     ,"25-S": 57.48
                     ,"30-NS": 38.61
@@ -1349,7 +1350,7 @@ export default {
                   },
                   61: {
                     "20-NS": 28.40
-                    ,"20-N": 51.72
+                    ,"20-S": 51.72
                     ,"25-NS": 38.97
                     ,"25-S": 61.03
                     ,"30-NS": null
@@ -1357,7 +1358,7 @@ export default {
                   },
                   62: {
                     "20-NS": 29.96
-                    ,"20-N": 55.14
+                    ,"20-S": 55.14
                     ,"25-NS": 41.31
                     ,"25-S": 64.80
                     ,"30-NS": null
@@ -1365,7 +1366,7 @@ export default {
                   },
                   63: {
                     "20-NS": 31.60
-                    ,"20-N": 58.79
+                    ,"20-S": 58.79
                     ,"25-NS": 43.79
                     ,"25-S": 68.80
                     ,"30-NS": null
@@ -1373,7 +1374,7 @@ export default {
                   },
                   64: {
                     "20-NS": 33.33
-                    ,"20-N": 62.68
+                    ,"20-S": 62.68
                     ,"25-NS": 46.42
                     ,"25-S": 73.04
                     ,"30-NS": null
@@ -1381,7 +1382,7 @@ export default {
                   },
                   65: {
                     "20-NS": 35.16
-                    ,"20-N": 66.84
+                    ,"20-S": 66.84
                     ,"25-NS": 49.22
                     ,"25-S": 77.54
                     ,"30-NS": null
@@ -1389,7 +1390,7 @@ export default {
                   },
                   66: {
                     "20-NS": 39.31
-                    ,"20-N": 73.29
+                    ,"20-S": 73.29
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1397,7 +1398,7 @@ export default {
                   },
                   67: {
                     "20-NS": 43.95
-                    ,"20-N": 80.36
+                    ,"20-S": 80.36
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1405,7 +1406,7 @@ export default {
                   },
                   68: {
                     "20-NS": 49.14
-                    ,"20-N": 88.11
+                    ,"20-S": 88.11
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1413,7 +1414,7 @@ export default {
                   },
                   69: {
                     "20-NS": 54.94
-                    ,"20-N": 96.61
+                    ,"20-S": 96.61
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1421,7 +1422,7 @@ export default {
                   },
                   70: {
                     "20-NS": 61.49
-                    ,"20-N": 105.92
+                    ,"20-S": 105.92
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1429,7 +1430,7 @@ export default {
                   },
                   71: {
                     "20-NS": null
-                    ,"20-N": null
+                    ,"20-S": null
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1437,7 +1438,7 @@ export default {
                   },
                   72: {
                     "20-NS": null
-                    ,"20-N": null
+                    ,"20-S": null
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1445,7 +1446,7 @@ export default {
                   },
                   73: {
                     "20-NS": null
-                    ,"20-N": null
+                    ,"20-S": null
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1453,7 +1454,7 @@ export default {
                   },
                   74: {
                     "20-NS": null
-                    ,"20-N": null
+                    ,"20-S": null
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1461,7 +1462,7 @@ export default {
                   },
                   75: {
                     "20-NS": null
-                    ,"20-N": null
+                    ,"20-S": null
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1470,7 +1471,7 @@ export default {
                 }
               },
               {
-                id: 203,
+                id: 2104,
                 name: 'HMS Plus 150 CBO - Full Guarantee',
                 type: 'term',
                 multiplier: 1000,
@@ -1482,7 +1483,7 @@ export default {
                     "15-NS": 15.75
                     ,"15-S": 24.00
                     ,"20-NS": 8.90
-                    ,"20-N": 13.30
+                    ,"20-S": 13.30
                     ,"25-NS": 6.25
                     ,"25-S": 9.80
                     ,"30-NS": 5.10
@@ -1492,7 +1493,7 @@ export default {
                     "15-NS": 15.75
                     ,"15-S": 24.00
                     ,"20-NS": 8.90
-                    ,"20-N": 13.30
+                    ,"20-S": 13.30
                     ,"25-NS": 6.25
                     ,"25-S": 9.80
                     ,"30-NS": 5.12
@@ -1502,7 +1503,7 @@ export default {
                     "15-NS": 15.75
                     ,"15-S": 24.00
                     ,"20-NS": 8.90
-                    ,"20-N": 13.30
+                    ,"20-S": 13.30
                     ,"25-NS": 6.25
                     ,"25-S": 9.80
                     ,"30-NS": 5.14
@@ -1512,7 +1513,7 @@ export default {
                     "15-NS": 15.75
                     ,"15-S": 24.00
                     ,"20-NS": 8.90
-                    ,"20-N": 13.30
+                    ,"20-S": 13.30
                     ,"25-NS": 6.25
                     ,"25-S": 9.80
                     ,"30-NS": 5.16
@@ -1522,7 +1523,7 @@ export default {
                     "15-NS": 15.75
                     ,"15-S": 24.00
                     ,"20-NS": 8.90
-                    ,"20-N": 13.30
+                    ,"20-S": 13.30
                     ,"25-NS": 6.25
                     ,"25-S": 9.80
                     ,"30-NS": 5.18
@@ -1532,7 +1533,7 @@ export default {
                     "15-NS": 15.75
                     ,"15-S": 24.00
                     ,"20-NS": 8.90
-                    ,"20-N": 13.30
+                    ,"20-S": 13.30
                     ,"25-NS": 6.25
                     ,"25-S": 9.80
                     ,"30-NS": 5.20
@@ -1542,7 +1543,7 @@ export default {
                     "15-NS": 16.07
                     ,"15-S": 24.66
                     ,"20-NS": 9.00
-                    ,"20-N": 13.53
+                    ,"20-S": 13.53
                     ,"25-NS": 6.35
                     ,"25-S": 10.01
                     ,"30-NS": 5.30
@@ -1552,7 +1553,7 @@ export default {
                     "15-NS": 16.39
                     ,"15-S": 25.34
                     ,"20-NS": 9.10
-                    ,"20-N": 13.77
+                    ,"20-S": 13.77
                     ,"25-NS": 6.45
                     ,"25-S": 10.23
                     ,"30-NS": 5.40
@@ -1562,7 +1563,7 @@ export default {
                     "15-NS": 16.72
                     ,"15-S": 26.04
                     ,"20-NS": 9.20
-                    ,"20-N": 14.01
+                    ,"20-S": 14.01
                     ,"25-NS": 6.55
                     ,"25-S": 10.45
                     ,"30-NS": 5.50
@@ -1572,7 +1573,7 @@ export default {
                     "15-NS": 17.06
                     ,"15-S": 26.76
                     ,"20-NS": 9.30
-                    ,"20-N": 14.25
+                    ,"20-S": 14.25
                     ,"25-NS": 6.65
                     ,"25-S": 10.67
                     ,"30-NS": 5.60
@@ -1582,7 +1583,7 @@ export default {
                     "15-NS": 17.40
                     ,"15-S": 27.50
                     ,"20-NS": 9.40
-                    ,"20-N": 14.50
+                    ,"20-S": 14.50
                     ,"25-NS": 6.75
                     ,"25-S": 10.90
                     ,"30-NS": 5.70
@@ -1592,7 +1593,7 @@ export default {
                     "15-NS": 17.77
                     ,"15-S": 28.20
                     ,"20-NS": 9.66
-                    ,"20-N": 15.09
+                    ,"20-S": 15.09
                     ,"25-NS": 6.96
                     ,"25-S": 11.38
                     ,"30-NS": 5.89
@@ -1602,7 +1603,7 @@ export default {
                     "15-NS": 18.15
                     ,"15-S": 28.92
                     ,"20-NS": 9.92
-                    ,"20-N": 15.70
+                    ,"20-S": 15.70
                     ,"25-NS": 7.17
                     ,"25-S": 11.88
                     ,"30-NS": 6.08
@@ -1612,7 +1613,7 @@ export default {
                     "15-NS": 18.54
                     ,"15-S": 29.66
                     ,"20-NS": 10.19
-                    ,"20-N": 16.34
+                    ,"20-S": 16.34
                     ,"25-NS": 7.39
                     ,"25-S": 12.40
                     ,"30-NS": 6.28
@@ -1622,7 +1623,7 @@ export default {
                     "15-NS": 18.94
                     ,"15-S": 30.42
                     ,"20-NS": 10.47
-                    ,"20-N": 17.00
+                    ,"20-S": 17.00
                     ,"25-NS": 7.62
                     ,"25-S": 12.94
                     ,"30-NS": 6.49
@@ -1632,7 +1633,7 @@ export default {
                     "15-NS": 19.35
                     ,"15-S": 31.20
                     ,"20-NS": 10.75
-                    ,"20-N": 17.70
+                    ,"20-S": 17.70
                     ,"25-NS": 7.85
                     ,"25-S": 13.50
                     ,"30-NS": 6.70
@@ -1642,7 +1643,7 @@ export default {
                     "15-NS": 20.16
                     ,"15-S": 32.75
                     ,"20-NS": 11.21
-                    ,"20-N": 18.68
+                    ,"20-S": 18.68
                     ,"25-NS": 8.21
                     ,"25-S": 14.33
                     ,"30-NS": 7.08
@@ -1652,7 +1653,7 @@ export default {
                     "15-NS": 21.00
                     ,"15-S": 34.38
                     ,"20-NS": 11.69
-                    ,"20-N": 19.72
+                    ,"20-S": 19.72
                     ,"25-NS": 8.58
                     ,"25-S": 15.21
                     ,"30-NS": 7.49
@@ -1662,7 +1663,7 @@ export default {
                     "15-NS": 21.88
                     ,"15-S": 36.09
                     ,"20-NS": 12.19
-                    ,"20-N": 20.82
+                    ,"20-S": 20.82
                     ,"25-NS": 8.97
                     ,"25-S": 16.15
                     ,"30-NS": 7.92
@@ -1672,7 +1673,7 @@ export default {
                     "15-NS": 22.80
                     ,"15-S": 37.88
                     ,"20-NS": 12.71
-                    ,"20-N": 21.98
+                    ,"20-S": 21.98
                     ,"25-NS": 9.38
                     ,"25-S": 17.14
                     ,"30-NS": 8.37
@@ -1682,7 +1683,7 @@ export default {
                     "15-NS": 23.75
                     ,"15-S": 39.75
                     ,"20-NS": 13.25
-                    ,"20-N": 23.20
+                    ,"20-S": 23.20
                     ,"25-NS": 9.80
                     ,"25-S": 18.20
                     ,"30-NS": 8.85
@@ -1692,7 +1693,7 @@ export default {
                     "15-NS": 24.97
                     ,"15-S": 42.19
                     ,"20-NS": 13.93
-                    ,"20-N": 24.62
+                    ,"20-S": 24.62
                     ,"25-NS": 10.35
                     ,"25-S": 19.35
                     ,"30-NS": 9.41
@@ -1702,7 +1703,7 @@ export default {
                     "15-NS": 26.25
                     ,"15-S": 44.78
                     ,"20-NS": 14.64
-                    ,"20-N": 26.13
+                    ,"20-S": 26.13
                     ,"25-NS": 10.93
                     ,"25-S": 20.57
                     ,"30-NS": 10.00
@@ -1712,7 +1713,7 @@ export default {
                     "15-NS": 27.60
                     ,"15-S": 47.52
                     ,"20-NS": 15.39
-                    ,"20-N": 27.73
+                    ,"20-S": 27.73
                     ,"25-NS": 11.55
                     ,"25-S": 21.87
                     ,"30-NS": 10.63
@@ -1722,7 +1723,7 @@ export default {
                     "15-NS": 29.02
                     ,"15-S": 50.43
                     ,"20-NS": 16.18
-                    ,"20-N": 29.43
+                    ,"20-S": 29.43
                     ,"25-NS": 12.20
                     ,"25-S": 23.25
                     ,"30-NS": 11.30
@@ -1732,7 +1733,7 @@ export default {
                     "15-NS": 30.50
                     ,"15-S": 53.52
                     ,"20-NS": 17.00
-                    ,"20-N": 31.25
+                    ,"20-S": 31.25
                     ,"25-NS": 12.90
                     ,"25-S": 24.70
                     ,"30-NS": 12.00
@@ -1742,7 +1743,7 @@ export default {
                     "15-NS": 32.04
                     ,"15-S": 56.79
                     ,"20-NS": 18.06
-                    ,"20-N": 32.91
+                    ,"20-S": 32.91
                     ,"25-NS": 13.74
                     ,"25-S": 26.33
                     ,"30-NS": 12.87
@@ -1752,7 +1753,7 @@ export default {
                     "15-NS": 33.65
                     ,"15-S": 60.26
                     ,"20-NS": 19.19
-                    ,"20-N": 34.66
+                    ,"20-S": 34.66
                     ,"25-NS": 14.64
                     ,"25-S": 28.07
                     ,"30-NS": 13.80
@@ -1762,7 +1763,7 @@ export default {
                     "15-NS": 35.35
                     ,"15-S": null
                     ,"20-NS": 20.39
-                    ,"20-N": 36.50
+                    ,"20-S": 36.50
                     ,"25-NS": 15.60
                     ,"25-S": 29.92
                     ,"30-NS": 14.80
@@ -1772,7 +1773,7 @@ export default {
                     "15-NS": 37.13
                     ,"15-S": null
                     ,"20-NS": 21.66
-                    ,"20-N": 38.44
+                    ,"20-S": 38.44
                     ,"25-NS": 16.62
                     ,"25-S": 31.89
                     ,"30-NS": 15.87
@@ -1782,7 +1783,7 @@ export default {
                     "15-NS": 39.00
                     ,"15-S": null
                     ,"20-NS": 23.00
-                    ,"20-N": 40.50
+                    ,"20-S": 40.50
                     ,"25-NS": 17.70
                     ,"25-S": 34.00
                     ,"30-NS": 17.00
@@ -1792,7 +1793,7 @@ export default {
                     "15-NS": 40.82
                     ,"15-S": null
                     ,"20-NS": 24.26
-                    ,"20-N": 42.49
+                    ,"20-S": 42.49
                     ,"25-NS": 18.85
                     ,"25-S": null
                     ,"30-NS": 18.55
@@ -1802,7 +1803,7 @@ export default {
                     "15-NS": 42.73
                     ,"15-S": null
                     ,"20-NS": 25.58
-                    ,"20-N": 44.58
+                    ,"20-S": 44.58
                     ,"25-NS": 20.08
                     ,"25-S": null
                     ,"30-NS": 20.14
@@ -1812,7 +1813,7 @@ export default {
                     "15-NS": 44.73
                     ,"15-S": null
                     ,"20-NS": 26.98
-                    ,"20-N": null
+                    ,"20-S": null
                     ,"25-NS": 21.39
                     ,"25-S": null
                     ,"30-NS": 21.87
@@ -1822,7 +1823,7 @@ export default {
                     "15-NS": 46.82
                     ,"15-S": null
                     ,"20-NS": 28.45
-                    ,"20-N": null
+                    ,"20-S": null
                     ,"25-NS": 22.78
                     ,"25-S": null
                     ,"30-NS": 23.74
@@ -1832,7 +1833,7 @@ export default {
                     "15-NS": 49.00
                     ,"15-S": null
                     ,"20-NS": 30.00
-                    ,"20-N": null
+                    ,"20-S": null
                     ,"25-NS": 24.25
                     ,"25-S": null
                     ,"30-NS": 25.77
@@ -1842,7 +1843,7 @@ export default {
                     "15-NS": null
                     ,"15-S": null
                     ,"20-NS": 31.03
-                    ,"20-N": null
+                    ,"20-S": null
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1852,7 +1853,7 @@ export default {
                     "15-NS": null
                     ,"15-S": null
                     ,"20-NS": 32.09
-                    ,"20-N": null
+                    ,"20-S": null
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1862,7 +1863,7 @@ export default {
                     "15-NS": null
                     ,"15-S": null
                     ,"20-NS": 33.19
-                    ,"20-N": null
+                    ,"20-S": null
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1872,7 +1873,7 @@ export default {
                     "15-NS": null
                     ,"15-S": null
                     ,"20-NS": 34.32
-                    ,"20-N": null
+                    ,"20-S": null
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1882,7 +1883,7 @@ export default {
                     "15-NS": null
                     ,"15-S": null
                     ,"20-NS": 35.50
-                    ,"20-N": null
+                    ,"20-S": null
                     ,"25-NS": null
                     ,"25-S": null
                     ,"30-NS": null
@@ -1890,12 +1891,11 @@ export default {
                   }
                 }
               },
-
             ]
           }
         },
         {
-          id: 202,
+          id: 220,
           name: "Eagle Premier Level",
           nickname: "EPL",
           payout: {
@@ -1908,7 +1908,7 @@ export default {
             terms: [15,20,25,30],
             products: [
               {
-                id: 2021,
+                id: 2201,
                 name: 'Eagle Premier - Level Benefit',
                 type: 'term',
                 multiplier: 1000,
@@ -2139,7 +2139,7 @@ export default {
           }
         },
         {
-          id: 203,
+          id: 230,
           name: "Eagle Premier Guaranteed",
           nickname: "EPG",
           payout: {
@@ -2152,7 +2152,7 @@ export default {
             terms: [15,20,25,30],
             products: [
               {
-                id: 2031,
+                id: 2301,
                 name: 'Eagle Premier - Graded Benefit',
                 type: 'term',
                 multiplier: 1000,
@@ -2291,7 +2291,7 @@ export default {
           }
         },
         {
-          id: 204,
+          id: 240,
           name: "Ultra Protector I",
           nickname: "UP1",
           payout: {
@@ -2304,7 +2304,7 @@ export default {
             terms: [15,20,25,30],
             products: [
               {
-                id: 2041,
+                id: 2401,
                 name: 'Ultra Protector I - Level',
                 type: 'whole',
                 multiplier: 1000,
@@ -2463,7 +2463,7 @@ export default {
           }
         },
         {
-          id: 205,
+          id: 250,
           name: "Ultra Protector II - Level",
           nickname: "UP2",
           payout: {
@@ -2476,7 +2476,7 @@ export default {
             terms: [15,20,25,30],
             products: [
               {
-                id: 2051,
+                id: 2501,
                 name: 'Ultra Protector II - Level',
                 type: 'whole',
                 multiplier: 1000,
@@ -2615,7 +2615,7 @@ export default {
           }
         },
         {
-          id: 206,
+          id: 260,
           name: "Ultra Protector III - Guaranteed",
           nickname: "UP3",
           payout: {
@@ -2628,7 +2628,7 @@ export default {
             terms: [15,20,25,30],
             products: [
               {
-                id: 2061,
+                id: 2601,
                 name: 'Ultra Protector III - Guaranteed',
                 type: 'whole',
                 multiplier: 1000,
@@ -2746,8 +2746,6 @@ export default {
             ]
           }
         },
-
-
       ]
     },
 
@@ -2773,7 +2771,7 @@ export default {
             terms: [10,15,20,30],
             products: [
               {
-                id: 1000,
+                id: 1001,
                 name: 'Term Life Express',
                 type: 'term',
                 multiplier: 1000,
@@ -3828,7 +3826,7 @@ export default {
           }
         },
         {
-          id: 101,
+          id: 120,
           name: "Term Life Express ",
           nickname: "TLE50",
           payout: {
@@ -3841,7 +3839,7 @@ export default {
             terms: [20,30],
             products: [
               {
-                id: 1001,
+                id: 1201,
                 name: 'Term Life Express - ROP',
                 type: 'term',
                 multiplier: 1000,
@@ -4331,7 +4329,7 @@ export default {
         //   }
         // },
         {
-          id: 120,
+          id: 130,
           name: "Living Promise Level Benefit",
           nickname: "LPLB",
           payout: {
@@ -4344,7 +4342,7 @@ export default {
             terms: null,
             products: [
               {
-                id: 121,
+                id: 1301,
                 name: 'Living Promise – Level Benefit Plan',
                 type: 'whole',
                 multiplier: 1000,
@@ -4608,7 +4606,7 @@ export default {
                 }
               },
               {
-                id: 122,
+                id: 1302,
                 name: 'Living Promise – Level w/ AD Rider',
                 type: 'whole',
                 multiplier: 1000,
@@ -4914,12 +4912,11 @@ export default {
                   85: 16.97
                 }
               },
-
             ]
           }
         },
         {
-          id: 130,
+          id: 140,
           name: "Living Promise Graded Benefit",
           nickname: "LPGB",
           payout: {
@@ -4931,7 +4928,7 @@ export default {
             terms: null,
             products: [
               {
-                id: 131,
+                id: 1401,
                 name: 'Living Promise – Graded Benefit Plan',
                 type: 'whole',
                 multiplier: 1000,
@@ -5106,7 +5103,7 @@ export default {
       logoUrl: './images/logo_ta.png',
       products: [
         {
-          id: 301,
+          id: 310,
           name: "Immediate Solution",
           nickname: "IS",
           payout: {
@@ -5118,7 +5115,7 @@ export default {
             terms: null,
             products: [
               {
-                id: 301,
+                id: 3101,
                 name: 'Immediate Solution – Preferred',
                 type: 'term',
                 multiplier: 1000,
@@ -5547,7 +5544,7 @@ export default {
           }
         },
         {
-          id: 302,
+          id: 320,
           name: "10 Pay Solution",
           nickname: "10P",
           payout: {
@@ -5559,7 +5556,7 @@ export default {
             terms: null,
             products: [
               {
-                id: 302,
+                id: 3201,
                 name: '10 Pay Solution - Preferred',
                 type: 'term',
                 multiplier: 1000,
@@ -5988,7 +5985,7 @@ export default {
           }
         },
         {
-          id: 303,
+          id: 330,
           name: "Easy Solution",
           nickname: "ES",
           payout: {
@@ -6004,22 +6001,13 @@ export default {
               min: 16.6,
               max: 41.1
             },
-            drugs: {
-              decline: [],
-              info: [],
-              seeDecline: null
-            },
-            conditions: {
-              decline: [],
-              seeDecline: false
-            }
           },
           calculator: {
             type: 'whole',
             terms: null,
             products: [
               {
-                id: 303,
+                id: 3301,
                 name: 'Easy Solution',
                 type: 'term',
                 multiplier: 1000,
@@ -6291,7 +6279,6 @@ export default {
             ]
           }
         },
-
       ]
     },
     //
@@ -6307,6 +6294,516 @@ export default {
           id: 401,
           name: "PlanRight Whole Life",
           nickname: "PR",
+          payout: {
+            min: 2000,
+            max: 35000
+          },
+          underwriting: {
+            age: {
+              min: 50,
+              max: 85
+            },
+            bmi: {
+              min: 16.6,
+              max: 41.1
+            }
+          },
+          calculator: {
+            type: 'whole',
+            terms: [],
+            products: [
+              {
+                id: 4001,
+                name: 'Plan Right – Whole Life',
+                type: 'whole',
+                multiplier: 1000,
+                monthFactor: 0.0875,
+                fee: 36,
+                range: {'min':2000, 'max':35000},
+                age: { min: 50, max: 85 },
+                rates: [],
+                tableType: 'age--gender-smokerStatus',
+                table: {
+                  50: {
+                    "M-NS": 32.97
+                    ,"M-S": 48.34
+                    ,"F-NS": 26.17
+                    ,"F-S": 39.66
+                  },
+                  51: {
+                    "M-NS": 34.08
+                    ,"M-S": 50.55
+                    ,"F-NS": 27.34
+                    ,"F-S": 41.19
+                  },
+                  52: {
+                    "M-NS": 35.19
+                    ,"M-S": 52.76
+                    ,"F-NS": 28.51
+                    ,"F-S": 42.73
+                  },
+                  53: {
+                    "M-NS": 36.31
+                    ,"M-S": 54.96
+                    ,"F-NS": 29.67
+                    ,"F-S": 44.27
+                  },
+                  54: {
+                    "M-NS": 37.42
+                    ,"M-S": 57.17
+                    ,"F-NS": 30.84
+                    ,"F-S": 45.80
+                  },
+                  55: {
+                    "M-NS": 38.53
+                    ,"M-S": 59.37
+                    ,"F-NS": 32.01
+                    ,"F-S": 47.34
+                  },
+                  56: {
+                    "M-NS": 40.43
+                    ,"M-S": 61.85
+                    ,"F-NS": 32.98
+                    ,"F-S": 49.15
+                  },
+                  57: {
+                    "M-NS": 42.34
+                    ,"M-S": 64.32
+                    ,"F-NS": 33.95
+                    ,"F-S": 50.95
+                  },
+                  58: {
+                    "M-NS": 44.24
+                    ,"M-S": 66.80
+                    ,"F-NS": 34.92
+                    ,"F-S": 52.75
+                  },
+                  59: {
+                    "M-NS": 46.14
+                    ,"M-S": 69.28
+                    ,"F-NS": 35.90
+                    ,"F-S": 54.56
+                  },
+                  60: {
+                    "M-NS": 48.04
+                    ,"M-S": 71.75
+                    ,"F-NS": 36.87
+                    ,"F-S": 56.36
+                  },
+                  61: {
+                    "M-NS": 50.45
+                    ,"M-S": 76.08
+                    ,"F-NS": 38.56
+                    ,"F-S": 59.18
+                  },
+                  62: {
+                    "M-NS": 52.87
+                    ,"M-S": 80.42
+                    ,"F-NS": 40.25
+                    ,"F-S": 62.00
+                  },
+                  63: {
+                    "M-NS": 55.28
+                    ,"M-S": 84.75
+                    ,"F-NS": 41.93
+                    ,"F-S": 64.82
+                  },
+                  64: {
+                    "M-NS": 57.69
+                    ,"M-S": 89.08
+                    ,"F-NS": 43.62
+                    ,"F-S": 67.64
+                  },
+                  65: {
+                    "M-NS": 60.11
+                    ,"M-S": 93.42
+                    ,"F-NS": 45.31
+                    ,"F-S": 70.46
+                  },
+                  66: {
+                    "M-NS": 64.03
+                    ,"M-S": 99.05
+                    ,"F-NS": 47.74
+                    ,"F-S": 72.96
+                  },
+                  67: {
+                    "M-NS": 67.95
+                    ,"M-S": 104.68
+                    ,"F-NS": 50.17
+                    ,"F-S": 75.47
+                  },
+                  68: {
+                    "M-NS": 71.87
+                    ,"M-S": 110.30
+                    ,"F-NS": 52.59
+                    ,"F-S": 77.97
+                  },
+                  69: {
+                    "M-NS": 75.79
+                    ,"M-S": 115.93
+                    ,"F-NS": 55.02
+                    ,"F-S": 80.47
+                  },
+                  70: {
+                    "M-NS": 79.72
+                    ,"M-S": 121.56
+                    ,"F-NS": 57.45
+                    ,"F-S": 82.97
+                  },
+                  71: {
+                    "M-NS": 86.53
+                    ,"M-S": 133.34
+                    ,"F-NS": 62.40
+                    ,"F-S": 89.62
+                  },
+                  72: {
+                    "M-NS": 93.33
+                    ,"M-S": 145.12
+                    ,"F-NS": 67.35
+                    ,"F-S": 96.26
+                  },
+                  73: {
+                    "M-NS": 100.14
+                    ,"M-S": 156.89
+                    ,"F-NS": 72.30
+                    ,"F-S": 102.91
+                  },
+                  74: {
+                    "M-NS": 106.95
+                    ,"M-S": 168.67
+                    ,"F-NS": 77.25
+                    ,"F-S": 109.56
+                  },
+                  75: {
+                    "M-NS": 113.76
+                    ,"M-S": 180.44
+                    ,"F-NS": 82.20
+                    ,"F-S": 116.20
+                  },
+                  76: {
+                    "M-NS": 123.83
+                    ,"M-S": 193.39
+                    ,"F-NS": 90.43
+                    ,"F-S": 126.24
+                  },
+                  77: {
+                    "M-NS": 133.90
+                    ,"M-S": 206.33
+                    ,"F-NS": 98.66
+                    ,"F-S": 136.27
+                  },
+                  78: {
+                    "M-NS": 143.97
+                    ,"M-S": 219.27
+                    ,"F-NS": 106.89
+                    ,"F-S": 146.31
+                  },
+                  79: {
+                    "M-NS": 154.03
+                    ,"M-S": 232.21
+                    ,"F-NS": 115.12
+                    ,"F-S": 156.34
+                  },
+                  80: {
+                    "M-NS": 164.10
+                    ,"M-S": 245.15
+                    ,"F-NS": 123.35
+                    ,"F-S": 166.37
+                  },
+                  81: {
+                    "M-NS": 176.45
+                    ,"M-S": 261.84
+                    ,"F-NS": 135.89
+                    ,"F-S": 180.43
+                  },
+                  82: {
+                    "M-NS": 188.79
+                    ,"M-S": 278.54
+                    ,"F-NS": 148.42
+                    ,"F-S": 194.49
+                  },
+                  83: {
+                    "M-NS": 201.14
+                    ,"M-S": 295.24
+                    ,"F-NS": 160.95
+                    ,"F-S": 208.55
+                  },
+                  84: {
+                    "M-NS": 213.48
+                    ,"M-S": 311.94
+                    ,"F-NS": 173.49
+                    ,"F-S": 222.61
+                  },
+                  85: {
+                    "M-NS": 225.83
+                    ,"M-S": 328.63
+                    ,"F-NS": 186.02
+                    ,"F-S": 236.67
+                  }
+                }
+              },
+            ]
+          }
+        },
+        {
+          id: 402,
+          name: "PlanRight Whole Life - Graded",
+          nickname: "PRG",
+          payout: {
+            min: 2000,
+            max: 20000
+          },
+          underwriting: {
+            age: {
+              min: 45,
+              max: 80
+            },
+            bmi: {
+              min: 16.6,
+              max: 41.1
+            }
+          },
+          calculator: {
+            type: 'whole',
+            terms: [],
+            products: [
+              {
+                id: 4002,
+                name: 'PlanRight WL Graded',
+                type: 'whole',
+                multiplier: 1000,
+                monthFactor: 0.0875,
+                fee: 36,
+                range: {'min':2000, 'max':20000},
+                age: { min: 50, max: 85 },
+                rates: [],
+                tableType: 'age--gender-smokerStatus',
+                table: {
+                  50: {
+                    "M-NS": 47.88
+                    ,"M-S": 65.72
+                    ,"F-NS": 38.76
+                    ,"F-S": 38.88
+                  },
+                  51: {
+                    "M-NS": 51.04
+                    ,"M-S": 75.17
+                    ,"F-NS": 40.13
+                    ,"F-S": 40.39
+                  },
+                  52: {
+                    "M-NS": 54.23
+                    ,"M-S": 79.97
+                    ,"F-NS": 41.51
+                    ,"F-S": 41.90
+                  },
+                  53: {
+                    "M-NS": 57.47
+                    ,"M-S": 84.83
+                    ,"F-NS": 42.90
+                    ,"F-S": 43.42
+                  },
+                  54: {
+                    "M-NS": 60.72
+                    ,"M-S": 89.73
+                    ,"F-NS": 44.31
+                    ,"F-S": 44.93
+                  },
+                  55: {
+                    "M-NS": 64.02
+                    ,"M-S": 94.58
+                    ,"F-NS": 45.73
+                    ,"F-S": 46.44
+                  },
+                  56: {
+                    "M-NS": 67.38
+                    ,"M-S": 99.44
+                    ,"F-NS": 47.36
+                    ,"F-S": 48.38
+                  },
+                  57: {
+                    "M-NS": 70.75
+                    ,"M-S": 104.29
+                    ,"F-NS": 49.00
+                    ,"F-S": 50.33
+                  },
+                  58: {
+                    "M-NS": 74.11
+                    ,"M-S": 104.29
+                    ,"F-NS": 50.62
+                    ,"F-S": 52.27
+                  },
+                  59: {
+                    "M-NS": 77.48
+                    ,"M-S": 109.14
+                    ,"F-NS": 52.26
+                    ,"F-S": 54.22
+                  },
+                  60: {
+                    "M-NS": 80.83
+                    ,"M-S": 113.99
+                    ,"F-NS": 53.89
+                    ,"F-S": 56.16
+                  },
+                  61: {
+                    "M-NS": 85.58
+                    ,"M-S": 120.31
+                    ,"F-NS": 57.42
+                    ,"F-S": 59.18
+                  },
+                  62: {
+                    "M-NS": 90.41
+                    ,"M-S": 126.72
+                    ,"F-NS": 61.01
+                    ,"F-S": 62.21
+                  },
+                  63: {
+                    "M-NS": 94.40
+                    ,"M-S": 131.99
+                    ,"F-NS": 64.05
+                    ,"F-S": 65.23
+                  },
+                  64: {
+                    "M-NS": 98.40
+                    ,"M-S": 137.25
+                    ,"F-NS": 67.08
+                    ,"F-S": 68.26
+                  },
+                  65: {
+                    "M-NS": 102.40
+                    ,"M-S": 142.51
+                    ,"F-NS": 70.12
+                    ,"F-S": 71.28
+                  },
+                  66: {
+                    "M-NS": 106.82
+                    ,"M-S": 148.11
+                    ,"F-NS": 74.45
+                    ,"F-S": 76.03
+                  },
+                  67: {
+                    "M-NS": 111.24
+                    ,"M-S": 153.71
+                    ,"F-NS": 78.76
+                    ,"F-S": 80.78
+                  },
+                  68: {
+                    "M-NS": 115.65
+                    ,"M-S": 159.32
+                    ,"F-NS": 83.09
+                    ,"F-S": 85.54
+                  },
+                  69: {
+                    "M-NS": 120.07
+                    ,"M-S": 164.91
+                    ,"F-NS": 87.40
+                    ,"F-S": 90.29
+                  },
+                  70: {
+                    "M-NS": 124.49
+                    ,"M-S": 170.52
+                    ,"F-NS": 91.73
+                    ,"F-S": 95.04
+                  },
+                  71: {
+                    "M-NS": 135.63
+                    ,"M-S": 183.46
+                    ,"F-NS": 100.02
+                    ,"F-S": 105.41
+                  },
+                  72: {
+                    "M-NS": 146.77
+                    ,"M-S": 196.39
+                    ,"F-NS": 108.33
+                    ,"F-S": 115.78
+                  },
+                  73: {
+                    "M-NS": 157.90
+                    ,"M-S": 209.33
+                    ,"F-NS": 116.62
+                    ,"F-S": 126.14
+                  },
+                  74: {
+                    "M-NS": 169.04
+                    ,"M-S": 222.26
+                    ,"F-NS": 124.93
+                    ,"F-S": 136.51
+                  },
+                  75: {
+                    "M-NS": 180.18
+                    ,"M-S": 235.20
+                    ,"F-NS": 133.22
+                    ,"F-S": 146.88
+                  },
+                  76: {
+                    "M-NS": 195.25
+                    ,"M-S": 255.19
+                    ,"F-NS": 145.89
+                    ,"F-S": 160.70
+                  },
+                  77: {
+                    "M-NS": 210.32
+                    ,"M-S": 275.18
+                    ,"F-NS": 158.56
+                    ,"F-S": 174.53
+                  },
+                  78: {
+                    "M-NS": 214.66
+                    ,"M-S": 281.12
+                    ,"F-NS": 163.07
+                    ,"F-S": 188.35
+                  },
+                  79: {
+                    "M-NS": 229.01
+                    ,"M-S": 300.16
+                    ,"F-NS": 175.14
+                    ,"F-S": 202.18
+                  },
+                  80: {
+                    "M-NS": 243.36
+                    ,"M-S": 319.20
+                    ,"F-NS": 187.20
+                    ,"F-S": 216.00
+                  },
+                  81: {
+                    "M-NS": 264.37
+                    ,"M-S": 340.70
+                    ,"F-NS": 206.96
+                    ,"F-S": null
+                  },
+                  82: {
+                    "M-NS": 285.38
+                    ,"M-S": 362.21
+                    ,"F-NS": 226.72
+                    ,"F-S": null
+                  },
+                  83: {
+                    "M-NS": 306.38
+                    ,"M-S": 383.71
+                    ,"F-NS": 246.48
+                    ,"F-S": null
+                  },
+                  84: {
+                    "M-NS": 327.39
+                    ,"M-S": 405.22
+                    ,"F-NS": 266.24
+                    ,"F-S": null
+                  },
+                  85: {
+                    "M-NS": 348.40
+                    ,"M-S": 426.72
+                    ,"F-NS": 286.00
+                    ,"F-S": null
+                  }
+                }
+              },
+            ]
+          }
+        },
+        {
+          id: 403,
+          name: "PlanRight Whole Life - Modified",
+          nickname: "PRM",
           payout: {
             min: 2000,
             max: 20000
@@ -6331,25 +6828,244 @@ export default {
             }
           },
           calculator: {
-            type: 'term',
-            terms: [10,15,25,30],
+            type: 'whole',
+            terms: [],
             products: [
               {
-                id: 401,
-                name: 'Plan Right – Whole Life',
-                type: 'term',
+                id: 4003,
+                name: 'PlanRight WL Modified',
+                type: 'whole',
                 multiplier: 1000,
-                fee: 60,
-                range: {'min':1000, 'max':40000},
-                age: { min: 18, max: 80 },
+                monthFactor: 0.0875,
+                fee: 36,
+                range: {'min':2000, 'max':15000},
+                age: { min: 50, max: 80 },
                 rates: [],
-                table: {}
+                tableType: 'age--gender-smokerStatus',
+                table: {
+                  50: {
+                    "M-NS": 49.68
+                    ,"M-S": 66.00
+                    ,"F-NS": 48.36
+                    ,"F-S": 60.00
+                  },
+                  51: {
+                    "M-NS": 52.70
+                    ,"M-S": 70.80
+                    ,"F-NS": 50.60
+                    ,"F-S": 63.60
+                  },
+                  52: {
+                    "M-NS": 55.73
+                    ,"M-S": 75.60
+                    ,"F-NS": 52.88
+                    ,"F-S": 67.20
+                  },
+                  53: {
+                    "M-NS": 58.75
+                    ,"M-S": 80.40
+                    ,"F-NS": 55.17
+                    ,"F-S": 70.80
+                  },
+                  54: {
+                    "M-NS": 61.78
+                    ,"M-S": 85.20
+                    ,"F-NS": 57.49
+                    ,"F-S": 74.40
+                  },
+                  55: {
+                    "M-NS": 64.80
+                    ,"M-S": 90.00
+                    ,"F-NS": 59.82
+                    ,"F-S": 78.00
+                  },
+                  56: {
+                    "M-NS": 68.04
+                    ,"M-S": 95.04
+                    ,"F-NS": 61.83
+                    ,"F-S": 79.20
+                  },
+                  57: {
+                    "M-NS": 71.28
+                    ,"M-S": 100.08
+                    ,"F-NS": 63.84
+                    ,"F-S": 80.40
+                  },
+                  58: {
+                    "M-NS": 74.52
+                    ,"M-S": 105.12
+                    ,"F-NS": 65.85
+                    ,"F-S": 81.60
+                  },
+                  59: {
+                    "M-NS": 77.76
+                    ,"M-S": 110.16
+                    ,"F-NS": 67.86
+                    ,"F-S": 82.80
+                  },
+                  60: {
+                    "M-NS": 81.00
+                    ,"M-S": 115.20
+                    ,"F-NS": 69.86
+                    ,"F-S": 84.00
+                  },
+                  61: {
+                    "M-NS": 85.75
+                    ,"M-S": 121.20
+                    ,"F-NS": 74.53
+                    ,"F-S": 86.40
+                  },
+                  62: {
+                    "M-NS": 90.50
+                    ,"M-S": 127.20
+                    ,"F-NS": 79.28
+                    ,"F-S": 88.80
+                  },
+                  63: {
+                    "M-NS": 95.26
+                    ,"M-S": 133.20
+                    ,"F-NS": 83.30
+                    ,"F-S": 91.20
+                  },
+                  64: {
+                    "M-NS": 100.01
+                    ,"M-S": 139.20
+                    ,"F-NS": 87.33
+                    ,"F-S": 93.60
+                  },
+                  65: {
+                    "M-NS": 104.76
+                    ,"M-S": 145.20
+                    ,"F-NS": 91.35
+                    ,"F-S": 96.00
+                  },
+                  66: {
+                    "M-NS": 110.16
+                    ,"M-S": 154.08
+                    ,"F-NS": 97.07
+                    ,"F-S": 102.48
+                  },
+                  67: {
+                    "M-NS": 115.56
+                    ,"M-S": 162.96
+                    ,"F-NS": 102.80
+                    ,"F-S": 108.96
+                  },
+                  68: {
+                    "M-NS": 120.96
+                    ,"M-S": 171.84
+                    ,"F-NS": 108.51
+                    ,"F-S": 115.44
+                  },
+                  69: {
+                    "M-NS": 126.36
+                    ,"M-S": 180.72
+                    ,"F-NS": 114.23
+                    ,"F-S": 121.92
+                  },
+                  70: {
+                    "M-NS": 131.76
+                    ,"M-S": 189.60
+                    ,"F-NS": 119.95
+                    ,"F-S": 128.40
+                  },
+                  71: {
+                    "M-NS": 143.86
+                    ,"M-S": 203.52
+                    ,"F-NS": 129.36
+                    ,"F-S": 138.00
+                  },
+                  72: {
+                    "M-NS": 155.95
+                    ,"M-S": 217.44
+                    ,"F-NS": 138.77
+                    ,"F-S": 147.60
+                  },
+                  73: {
+                    "M-NS": 168.05
+                    ,"M-S": 231.36
+                    ,"F-NS": 148.18
+                    ,"F-S": 157.20
+                  },
+                  74: {
+                    "M-NS": 180.14
+                    ,"M-S": 245.28
+                    ,"F-NS": 157.58
+                    ,"F-S": 166.80
+                  },
+                  75: {
+                    "M-NS": 192.24
+                    ,"M-S": 259.20
+                    ,"F-NS": 166.99
+                    ,"F-S": 176.40
+                  },
+                  76: {
+                    "M-NS": 212.33
+                    ,"M-S": 282.96
+                    ,"F-NS": 180.16
+                    ,"F-S": 192.00
+                  },
+                  77: {
+                    "M-NS": 232.42
+                    ,"M-S": 306.72
+                    ,"F-NS": 193.34
+                    ,"F-S": 207.60
+                  },
+                  78: {
+                    "M-NS": 252.50
+                    ,"M-S": 330.48
+                    ,"F-NS": 196.67
+                    ,"F-S": 223.20
+                  },
+                  79: {
+                    "M-NS": 272.59
+                    ,"M-S": 354.24
+                    ,"F-NS": 209.22
+                    ,"F-S": 238.80
+                  },
+                  80: {
+                    "M-NS": 292.68
+                    ,"M-S": 378.00
+                    ,"F-NS": 221.76
+                    ,"F-S": 254.40
+                  },
+                  81: {
+                    "M-NS": null
+                    ,"M-S": null
+                    ,"F-NS": 243.94
+                    ,"F-S": null
+                  },
+                  82: {
+                    "M-NS": null
+                    ,"M-S": null
+                    ,"F-NS": 266.11
+                    ,"F-S": null
+                  },
+                  83: {
+                    "M-NS": null
+                    ,"M-S": null
+                    ,"F-NS": 288.29
+                    ,"F-S": null
+                  },
+                  84: {
+                    "M-NS": null
+                    ,"M-S": null
+                    ,"F-NS": 310.46
+                    ,"F-S": null
+                  },
+                  85: {
+                    "M-NS": null
+                    ,"M-S": null
+                    ,"F-NS": 332.64
+                    ,"F-S": null
+                  }
+                }
               },
             ]
           }
         },
         {
-          id: 402,
+          id: 410,
           name: "Strong Foundations",
           nickname: "SF",
           payout: {
@@ -6361,7 +7077,7 @@ export default {
             terms: [10,15,20,25,30],
             products: [
               {
-                id: 402,
+                id: 4100,
                 name: 'Strong Foundations',
                 type: 'term',
                 multiplier: 1000,
@@ -8276,401 +8992,7 @@ export default {
               },
             ]
           }
-        },
-        // {
-        //   id: 403,
-        //   name: "Smart UL",
-        //   nickname: "SUL",
-        //   payout: {
-        //     min: 50000,
-        //     max: 400000
-        //   },
-        //   calculator: {
-        //     type: 'whole',
-        //     terms: null,
-        //     products: [
-        //       {
-        //         id: 403,
-        //         name: 'Smart UL',
-        //         type: 'whole',
-        //         multiplier: 1000,
-        //         fee: 12.77,
-        //         monthFactor: 0.08333,
-        //         range: {'min':50000, 'max':400000},
-        //         age: { min: 18, max: 75 },
-        //         rate: {
-        //           years: null,
-        //           NS:  { a: 0.09, b: -1.37 },
-        //           S:  { a: 0.13, b: -1.92 }
-        //         },
-        //         tableType: 'age--gender-smokerStatus',
-        //         table: {
-        //           16: {
-        //             "M-NS": 0.2947
-        //             ,"M-S": 0.3222
-        //             ,"F-NS": 0.2374
-        //             ,"F-S": 0.2525
-        //           },
-        //           17: {
-        //             "M-NS": 0.2990
-        //             ,"M-S": 0.3320
-        //             ,"F-NS": 0.2403
-        //             ,"F-S": 0.2576
-        //           },
-        //           18: {
-        //             "M-NS": 0.3027
-        //             ,"M-S": 0.3408
-        //             ,"F-NS": 0.2432
-        //             ,"F-S": 0.2629
-        //           },
-        //           19: {
-        //             "M-NS": 0.3056
-        //             ,"M-S": 0.3476
-        //             ,"F-NS": 0.2462
-        //             ,"F-S": 0.2682
-        //           },
-        //           20: {
-        //             "M-NS": 0.3082
-        //             ,"M-S": 0.3527
-        //             ,"F-NS": 0.2493
-        //             ,"F-S": 0.2738
-        //           },
-        //           21: {
-        //             "M-NS": 0.3107
-        //             ,"M-S": 0.3569
-        //             ,"F-NS": 0.2526
-        //             ,"F-S": 0.2795
-        //           },
-        //           22: {
-        //             "M-NS": 0.3132
-        //             ,"M-S": 0.3598
-        //             ,"F-NS": 0.2562
-        //             ,"F-S": 0.2857
-        //           },
-        //           23: {
-        //             "M-NS": 0.3157
-        //             ,"M-S": 0.3595
-        //             ,"F-NS": 0.2598
-        //             ,"F-S": 0.2921
-        //           },
-        //           24: {
-        //             "M-NS": 0.3183
-        //             ,"M-S": 0.3704
-        //             ,"F-NS": 0.2634
-        //             ,"F-S": 0.2992
-        //           },
-        //           25: {
-        //             "M-NS": 0.3183
-        //             ,"M-S": 0.3861
-        //             ,"F-NS": 0.2668
-        //             ,"F-S": 0.3068
-        //           },
-        //           26: {
-        //             "M-NS": 0.3176
-        //             ,"M-S": 0.3908
-        //             ,"F-NS": 0.2691
-        //             ,"F-S": 0.3149
-        //           },
-        //           27: {
-        //             "M-NS": 0.3162
-        //             ,"M-S": 0.3956
-        //             ,"F-NS": 0.2710
-        //             ,"F-S": 0.3237
-        //           },
-        //           28: {
-        //             "M-NS": 0.3243
-        //             ,"M-S": 0.4005
-        //             ,"F-NS": 0.2763
-        //             ,"F-S": 0.3332
-        //           },
-        //           29: {
-        //             "M-NS": 0.3320
-        //             ,"M-S": 0.4067
-        //             ,"F-NS": 0.2857
-        //             ,"F-S": 0.3432
-        //           },
-        //           30: {
-        //             "M-NS": 0.3362
-        //             ,"M-S": 0.4145
-        //             ,"F-NS": 0.2958
-        //             ,"F-S": 0.3537
-        //           },
-        //           31: {
-        //             "M-NS": 0.3467
-        //             ,"M-S": 0.4294
-        //             ,"F-NS": 0.3065
-        //             ,"F-S": 0.3690
-        //           },
-        //           32: {
-        //             "M-NS": 0.3585
-        //             ,"M-S": 0.4465
-        //             ,"F-NS": 0.3174
-        //             ,"F-S": 0.3849
-        //           },
-        //           33: {
-        //             "M-NS": 0.3714
-        //             ,"M-S": 0.4660
-        //             ,"F-NS": 0.3287
-        //             ,"F-S": 0.4015
-        //           },
-        //           34: {
-        //             "M-NS": 0.3856
-        //             ,"M-S": 0.4882
-        //             ,"F-NS": 0.3405
-        //             ,"F-S": 0.4192
-        //           },
-        //           35: {
-        //             "M-NS": 0.4013
-        //             ,"M-S": 0.5132
-        //             ,"F-NS": 0.3529
-        //             ,"F-S": 0.4380
-        //           },
-        //           36: {
-        //             "M-NS": 0.4197
-        //             ,"M-S": 0.5425
-        //             ,"F-NS": 0.3675
-        //             ,"F-S": 0.4593
-        //           },
-        //           37: {
-        //             "M-NS": 0.4394
-        //             ,"M-S": 0.5746
-        //             ,"F-NS": 0.3828
-        //             ,"F-S": 0.4820
-        //           },
-        //           38: {
-        //             "M-NS": 0.4609
-        //             ,"M-S": 0.6097
-        //             ,"F-NS": 0.3992
-        //             ,"F-S": 0.5068
-        //           },
-        //           39: {
-        //             "M-NS": 0.4829
-        //             ,"M-S": 0.6459
-        //             ,"F-NS": 0.4170
-        //             ,"F-S": 0.5346
-        //           },
-        //           40: {
-        //             "M-NS": 0.5059
-        //             ,"M-S": 0.6836
-        //             ,"F-NS": 0.4364
-        //             ,"F-S": 0.5659
-        //           },
-        //           41: {
-        //             "M-NS": 0.5296
-        //             ,"M-S": 0.7229
-        //             ,"F-NS": 0.4573
-        //             ,"F-S": 0.6007
-        //           },
-        //           42: {
-        //             "M-NS": 0.5548
-        //             ,"M-S": 0.7644
-        //             ,"F-NS": 0.4804
-        //             ,"F-S": 0.6397
-        //           },
-        //           43: {
-        //             "M-NS": 0.5818
-        //             ,"M-S": 0.8093
-        //             ,"F-NS": 0.5056
-        //             ,"F-S": 0.6831
-        //           },
-        //           44: {
-        //             "M-NS": 0.6107
-        //             ,"M-S": 0.8576
-        //             ,"F-NS": 0.5334
-        //             ,"F-S": 0.7311
-        //           },
-        //           45: {
-        //             "M-NS": 0.6421
-        //             ,"M-S": 0.9102
-        //             ,"F-NS": 0.5636
-        //             ,"F-S": 0.7840
-        //           },
-        //           46: {
-        //             "M-NS": 0.6717
-        //             ,"M-S": 0.9630
-        //             ,"F-NS": 0.6032
-        //             ,"F-S": 0.8487
-        //           },
-        //           47: {
-        //             "M-NS": 0.7046
-        //             ,"M-S": 1.0216
-        //             ,"F-NS": 0.6458
-        //             ,"F-S": 0.9187
-        //           },
-        //           48: {
-        //             "M-NS": 0.7412
-        //             ,"M-S": 1.0861
-        //             ,"F-NS": 0.6912
-        //             ,"F-S": 0.9939
-        //           },
-        //           49: {
-        //             "M-NS": 0.7821
-        //             ,"M-S": 1.1572
-        //             ,"F-NS": 0.7394
-        //             ,"F-S": 1.0730
-        //           },
-        //           50: {
-        //             "M-NS": 0.8275
-        //             ,"M-S": 1.2355
-        //             ,"F-NS": 0.7906
-        //             ,"F-S": 1.1566
-        //           },
-        //           51: {
-        //             "M-NS": 0.8781
-        //             ,"M-S": 1.3218
-        //             ,"F-NS": 0.8436
-        //             ,"F-S": 1.2436
-        //           },
-        //           52: {
-        //             "M-NS": 0.9349
-        //             ,"M-S": 1.4178
-        //             ,"F-NS": 0.8996
-        //             ,"F-S": 1.3350
-        //           },
-        //           53: {
-        //             "M-NS": 0.9989
-        //             ,"M-S": 1.5244
-        //             ,"F-NS": 0.9522
-        //             ,"F-S": 1.4115
-        //           },
-        //           54: {
-        //             "M-NS": 1.0709
-        //             ,"M-S": 1.6428
-        //             ,"F-NS": 0.9909
-        //             ,"F-S": 1.4713
-        //           },
-        //           55: {
-        //             "M-NS": 1.1507
-        //             ,"M-S": 1.7715
-        //             ,"F-NS": 1.0682
-        //             ,"F-S": 1.5909
-        //           },
-        //           56: {
-        //             "M-NS": 1.2834
-        //             ,"M-S": 1.9550
-        //             ,"F-NS": 1.1209
-        //             ,"F-S": 1.6694
-        //           },
-        //           57: {
-        //             "M-NS": 1.4239
-        //             ,"M-S": 2.1283
-        //             ,"F-NS": 1.1736
-        //             ,"F-S": 1.7478
-        //           },
-        //           58: {
-        //             "M-NS": 1.5719
-        //             ,"M-S": 2.2599
-        //             ,"F-NS": 1.2263
-        //             ,"F-S": 1.8263
-        //           },
-        //           59: {
-        //             "M-NS": 1.6729
-        //             ,"M-S": 2.4578
-        //             ,"F-NS": 1.2790
-        //             ,"F-S": 1.9372
-        //           },
-        //           60: {
-        //             "M-NS": 1.8285
-        //             ,"M-S": 2.6585
-        //             ,"F-NS": 1.3844
-        //             ,"F-S": 2.0746
-        //           },
-        //           61: {
-        //             "M-NS": 1.9463
-        //             ,"M-S": 2.8241
-        //             ,"F-NS": 1.4574
-        //             ,"F-S": 2.2173
-        //           },
-        //           62: {
-        //             "M-NS": 2.0641
-        //             ,"M-S": 2.9996
-        //             ,"F-NS": 1.5304
-        //             ,"F-S": 2.3681
-        //           },
-        //           63: {
-        //             "M-NS": 2.1818
-        //             ,"M-S": 3.1942
-        //             ,"F-NS": 1.6307
-        //             ,"F-S": 2.5338
-        //           },
-        //           64: {
-        //             "M-NS": 2.2996
-        //             ,"M-S": 3.4088
-        //             ,"F-NS": 1.7409
-        //             ,"F-S": 2.7127
-        //           },
-        //           65: {
-        //             "M-NS": 2.5351
-        //             ,"M-S": 3.6388
-        //             ,"F-NS": 1.8616
-        //             ,"F-S": 2.9077
-        //           },
-        //           66: {
-        //             "M-NS": 2.6863
-        //             ,"M-S": 3.8843
-        //             ,"F-NS": 1.9869
-        //             ,"F-S": 3.1090
-        //           },
-        //           67: {
-        //             "M-NS": 2.8375
-        //             ,"M-S": 4.1563
-        //             ,"F-NS": 2.1219
-        //             ,"F-S": 3.3252
-        //           },
-        //           68: {
-        //             "M-NS": 3.0543
-        //             ,"M-S": 4.4594
-        //             ,"F-NS": 2.2676
-        //             ,"F-S": 3.5543
-        //           },
-        //           69: {
-        //             "M-NS": 3.3202
-        //             ,"M-S": 4.7968
-        //             ,"F-NS": 2.4282
-        //             ,"F-S": 3.7972
-        //           },
-        //           70: {
-        //             "M-NS": 3.6196
-        //             ,"M-S": 5.1665
-        //             ,"F-NS": 2.6049
-        //             ,"F-S": 4.0513
-        //           },
-        //           71: {
-        //             "M-NS": 3.9402
-        //             ,"M-S": 5.5559
-        //             ,"F-NS": 2.7976
-        //             ,"F-S": 4.3139
-        //           },
-        //           72: {
-        //             "M-NS": 4.2994
-        //             ,"M-S": 5.9896
-        //             ,"F-NS": 3.0161
-        //             ,"F-S": 4.6028
-        //           },
-        //           73: {
-        //             "M-NS": 4.6993
-        //             ,"M-S": 6.4609
-        //             ,"F-NS": 3.2638
-        //             ,"F-S": 4.9184
-        //           },
-        //           74: {
-        //             "M-NS": 5.1364
-        //             ,"M-S": 6.9735
-        //             ,"F-NS": 3.5401
-        //             ,"F-S": 5.2799
-        //           },
-        //           75: {
-        //             "M-NS": 5.6119
-        //             ,"M-S": 7.5110
-        //             ,"F-NS": 3.8482
-        //             ,"F-S": 5.6942
-        //           }
-        //         }
-        //       },
-        //     ]
-        //   }
-        // },
-
+        }
       ]
     },
 
@@ -9119,1935 +9441,1935 @@ export default {
             ]
           }
         },
-        {
-          id: 802,
-          name: "Sage No Lapse Universal Life",
-          nickname: "NLUL",
-          payout: {
-            min: 1,
-            max: 400000
-          },
-          calculator: {
-            type: 'whole',
-            terms: [10, 15, 20, 25, 30],
-            products: [
-              {
-                id: 8002,
-                name: 'Sage No Lapse Universal',
-                type: 'whole',
-                multiplier: 1000,
-                fee: 50,
-                monthFactor: 0.09,
-                range: {'min': 1, 'max': 400000},
-                age: {min: 18, max: 65},
-                rates: [],
-                tableType: 'term--age--gender-smokerStatus',
-                table: {
-                  10: {
-                    18: {
-                      "M-NS": 1.07
-                      , "M-S": 1.89
-                      , "F-NS": 0.73
-                      , "F-S": 0.83
-                    },
-                    19: {
-                      "M-NS": 1.07
-                      , "M-S": 1.94
-                      , "F-NS": 0.73
-                      , "F-S": 0.84
-                    },
-                    20: {
-                      "M-NS": 1.07
-                      , "M-S": 1.95
-                      , "F-NS": 0.73
-                      , "F-S": 0.94
-                    },
-                    21: {
-                      "M-NS": 1.07
-                      , "M-S": 2.07
-                      , "F-NS": 0.74
-                      , "F-S": 0.96
-                    },
-                    22: {
-                      "M-NS": 1.07
-                      , "M-S": 2.08
-                      , "F-NS": 0.76
-                      , "F-S": 1.07
-                    },
-                    23: {
-                      "M-NS": 1.24
-                      , "M-S": 2.37
-                      , "F-NS": 0.76
-                      , "F-S": 1.15
-                    },
-                    24: {
-                      "M-NS": 1.43
-                      , "M-S": 2.54
-                      , "F-NS": 1.23
-                      , "F-S": 1.47
-                    },
-                    25: {
-                      "M-NS": 1.74
-                      , "M-S": 2.71
-                      , "F-NS": 1.32
-                      , "F-S": 1.65
-                    },
-                    26: {
-                      "M-NS": 1.77
-                      , "M-S": 2.73
-                      , "F-NS": 1.35
-                      , "F-S": 2.03
-                    },
-                    27: {
-                      "M-NS": 1.79
-                      , "M-S": 2.78
-                      , "F-NS": 1.38
-                      , "F-S": 2.17
-                    },
-                    28: {
-                      "M-NS": 1.83
-                      , "M-S": 2.84
-                      , "F-NS": 1.41
-                      , "F-S": 2.29
-                    },
-                    29: {
-                      "M-NS": 1.83
-                      , "M-S": 2.96
-                      , "F-NS": 1.44
-                      , "F-S": 2.43
-                    },
-                    30: {
-                      "M-NS": 1.91
-                      , "M-S": 3.04
-                      , "F-NS": 1.47
-                      , "F-S": 2.56
-                    },
-                    31: {
-                      "M-NS": 1.97
-                      , "M-S": 3.10
-                      , "F-NS": 1.54
-                      , "F-S": 2.73
-                    },
-                    32: {
-                      "M-NS": 2.03
-                      , "M-S": 3.24
-                      , "F-NS": 1.59
-                      , "F-S": 2.90
-                    },
-                    33: {
-                      "M-NS": 2.09
-                      , "M-S": 3.40
-                      , "F-NS": 1.65
-                      , "F-S": 3.10
-                    },
-                    34: {
-                      "M-NS": 2.13
-                      , "M-S": 3.58
-                      , "F-NS": 1.71
-                      , "F-S": 3.32
-                    },
-                    35: {
-                      "M-NS": 2.23
-                      , "M-S": 3.79
-                      , "F-NS": 1.77
-                      , "F-S": 3.57
-                    },
-                    36: {
-                      "M-NS": 2.30
-                      , "M-S": 4.06
-                      , "F-NS": 1.88
-                      , "F-S": 3.84
-                    },
-                    37: {
-                      "M-NS": 2.44
-                      , "M-S": 4.38
-                      , "F-NS": 1.99
-                      , "F-S": 4.14
-                    },
-                    38: {
-                      "M-NS": 2.55
-                      , "M-S": 4.74
-                      , "F-NS": 2.10
-                      , "F-S": 4.46
-                    },
-                    39: {
-                      "M-NS": 2.68
-                      , "M-S": 5.16
-                      , "F-NS": 2.22
-                      , "F-S": 4.81
-                    },
-                    40: {
-                      "M-NS": 2.80
-                      , "M-S": 5.64
-                      , "F-NS": 2.32
-                      , "F-S": 5.17
-                    },
-                    41: {
-                      "M-NS": 2.95
-                      , "M-S": 6.18
-                      , "F-NS": 2.51
-                      , "F-S": 5.55
-                    },
-                    42: {
-                      "M-NS": 3.15
-                      , "M-S": 6.79
-                      , "F-NS": 2.71
-                      , "F-S": 5.97
-                    },
-                    43: {
-                      "M-NS": 3.36
-                      , "M-S": 7.48
-                      , "F-NS": 2.91
-                      , "F-S": 6.42
-                    },
-                    44: {
-                      "M-NS": 3.61
-                      , "M-S": 8.23
-                      , "F-NS": 3.11
-                      , "F-S": 6.90
-                    },
-                    45: {
-                      "M-NS": 3.87
-                      , "M-S": 9.06
-                      , "F-NS": 3.30
-                      , "F-S": 7.43
-                    },
-                    46: {
-                      "M-NS": 4.16
-                      , "M-S": 9.08
-                      , "F-NS": 3.56
-                      , "F-S": 8.00
-                    },
-                    47: {
-                      "M-NS": 4.49
-                      , "M-S": 10.30
-                      , "F-NS": 3.83
-                      , "F-S": 8.63
-                    },
-                    48: {
-                      "M-NS": 4.86
-                      , "M-S": 11.72
-                      , "F-NS": 4.08
-                      , "F-S": 9.32
-                    },
-                    49: {
-                      "M-NS": 5.29
-                      , "M-S": 12.93
-                      , "F-NS": 4.35
-                      , "F-S": 10.09
-                    },
-                    50: {
-                      "M-NS": 5.71
-                      , "M-S": 14.24
-                      , "F-NS": 4.61
-                      , "F-S": 10.92
-                    },
-                    51: {
-                      "M-NS": 6.23
-                      , "M-S": 15.16
-                      , "F-NS": 4.97
-                      , "F-S": 11.84
-                    },
-                    52: {
-                      "M-NS": 6.86
-                      , "M-S": 16.26
-                      , "F-NS": 5.33
-                      , "F-S": 12.84
-                    },
-                    53: {
-                      "M-NS": 7.51
-                      , "M-S": 17.27
-                      , "F-NS": 5.68
-                      , "F-S": 13.93
-                    },
-                    54: {
-                      "M-NS": 8.15
-                      , "M-S": 18.31
-                      , "F-NS": 6.04
-                      , "F-S": 15.12
-                    },
-                    55: {
-                      "M-NS": 8.74
-                      , "M-S": 19.28
-                      , "F-NS": 6.41
-                      , "F-S": 16.41
-                    },
-                    56: {
-                      "M-NS": 9.68
-                      , "M-S": 22.63
-                      , "F-NS": 7.07
-                      , "F-S": 17.84
-                    },
-                    57: {
-                      "M-NS": 10.62
-                      , "M-S": 24.74
-                      , "F-NS": 7.73
-                      , "F-S": 19.38
-                    },
-                    58: {
-                      "M-NS": 11.55
-                      , "M-S": 27.27
-                      , "F-NS": 8.40
-                      , "F-S": 21.06
-                    },
-                    59: {
-                      "M-NS": 12.49
-                      , "M-S": 28.03
-                      , "F-NS": 9.06
-                      , "F-S": 22.90
-                    },
-                    60: {
-                      "M-NS": 13.43
-                      , "M-S": 32.53
-                      , "F-NS": 9.72
-                      , "F-S": 25.38
-                    },
-                    61: {
-                      "M-NS": 14.68
-                      , "M-S": 36.33
-                      , "F-NS": 10.90
-                      , "F-S": 27.88
-                    },
-                    62: {
-                      "M-NS": 16.13
-                      , "M-S": 39.38
-                      , "F-NS": 12.09
-                      , "F-S": 29.89
-                    },
-                    63: {
-                      "M-NS": 17.58
-                      , "M-S": 43.10
-                      , "F-NS": 13.27
-                      , "F-S": 31.90
-                    },
-                    64: {
-                      "M-NS": 19.03
-                      , "M-S": 46.38
-                      , "F-NS": 14.45
-                      , "F-S": 33.91
-                    },
-                    65: {
-                      "M-NS": 20.08
-                      , "M-S": 50.48
-                      , "F-NS": 15.31
-                      , "F-S": 35.21
-                    },
-                    66: {
-                      "M-NS": 22.78
-                      , "M-S": 56.56
-                      , "F-NS": 17.68
-                      , "F-S": 39.07
-                    },
-                    67: {
-                      "M-NS": 25.48
-                      , "M-S": 62.63
-                      , "F-NS": 20.03
-                      , "F-S": 42.95
-                    },
-                    68: {
-                      "M-NS": 28.19
-                      , "M-S": 68.70
-                      , "F-NS": 22.40
-                      , "F-S": 46.82
-                    },
-                    69: {
-                      "M-NS": 30.89
-                      , "M-S": 74.77
-                      , "F-NS": 24.75
-                      , "F-S": 50.68
-                    },
-                    70: {
-                      "M-NS": 33.59
-                      , "M-S": 79.45
-                      , "F-NS": 27.12
-                      , "F-S": 54.56
-                    },
-                    71: {
-                      "M-NS": 39.29
-                      , "M-S": 93.34
-                      , "F-NS": 31.12
-                      , "F-S": 60.19
-                    },
-                    72: {
-                      "M-NS": 45.00
-                      , "M-S": 105.62
-                      , "F-NS": 35.12
-                      , "F-S": 65.81
-                    },
-                    73: {
-                      "M-NS": 50.70
-                      , "M-S": 117.89
-                      , "F-NS": 39.12
-                      , "F-S": 71.45
-                    },
-                    74: {
-                      "M-NS": 56.40
-                      , "M-S": 127.74
-                      , "F-NS": 43.13
-                      , "F-S": 77.08
-                    },
-                    75: {
-                      "M-NS": 62.10
-                      , "M-S": 133.13
-                      , "F-NS": 47.14
-                      , "F-S": 82.71
-                    },
-                    76: {
-                      "M-NS": 71.71
-                      , "M-S": 137.87
-                      , "F-NS": 56.57
-                      , "F-S": 95.07
-                    },
-                    77: {
-                      "M-NS": 81.32
-                      , "M-S": 139.75
-                      , "F-NS": 65.99
-                      , "F-S": 107.42
-                    },
-                    78: {
-                      "M-NS": 90.94
-                      , "M-S": 141.44
-                      , "F-NS": 75.43
-                      , "F-S": 119.77
-                    },
-                    79: {
-                      "M-NS": 100.55
-                      , "M-S": 142.95
-                      , "F-NS": 84.86
-                      , "F-S": 125.83
-                    },
-                    80: {
-                      "M-NS": 104.10
-                      , "M-S": 144.26
-                      , "F-NS": 89.80
-                      , "F-S": 128.66
-                    }
-                  },
-                  15: {
-                    18: {
-                      "M-NS": 1.23
-                      , "M-S": 2.29
-                      , "F-NS": 0.96
-                      , "F-S": 1.14
-                    },
-                    19: {
-                      "M-NS": 1.23
-                      , "M-S": 2.53
-                      , "F-NS": 1.15
-                      , "F-S": 1.31
-                    },
-                    20: {
-                      "M-NS": 1.72
-                      , "M-S": 2.64
-                      , "F-NS": 1.37
-                      , "F-S": 1.68
-                    },
-                    21: {
-                      "M-NS": 1.72
-                      , "M-S": 2.64
-                      , "F-NS": 1.38
-                      , "F-S": 1.73
-                    },
-                    22: {
-                      "M-NS": 1.72
-                      , "M-S": 2.65
-                      , "F-NS": 1.41
-                      , "F-S": 1.77
-                    },
-                    23: {
-                      "M-NS": 1.72
-                      , "M-S": 2.69
-                      , "F-NS": 1.43
-                      , "F-S": 1.92
-                    },
-                    24: {
-                      "M-NS": 1.73
-                      , "M-S": 2.69
-                      , "F-NS": 1.47
-                      , "F-S": 1.99
-                    },
-                    25: {
-                      "M-NS": 1.74
-                      , "M-S": 2.74
-                      , "F-NS": 1.50
-                      , "F-S": 2.09
-                    },
-                    26: {
-                      "M-NS": 1.77
-                      , "M-S": 2.76
-                      , "F-NS": 1.57
-                      , "F-S": 2.19
-                    },
-                    27: {
-                      "M-NS": 1.81
-                      , "M-S": 2.81
-                      , "F-NS": 1.62
-                      , "F-S": 2.23
-                    },
-                    28: {
-                      "M-NS": 1.85
-                      , "M-S": 2.86
-                      , "F-NS": 1.67
-                      , "F-S": 2.36
-                    },
-                    29: {
-                      "M-NS": 1.89
-                      , "M-S": 3.00
-                      , "F-NS": 1.73
-                      , "F-S": 2.50
-                    },
-                    30: {
-                      "M-NS": 1.95
-                      , "M-S": 3.07
-                      , "F-NS": 1.81
-                      , "F-S": 2.64
-                    },
-                    31: {
-                      "M-NS": 1.98
-                      , "M-S": 3.13
-                      , "F-NS": 1.87
-                      , "F-S": 2.81
-                    },
-                    32: {
-                      "M-NS": 2.05
-                      , "M-S": 3.28
-                      , "F-NS": 1.93
-                      , "F-S": 2.98
-                    },
-                    33: {
-                      "M-NS": 2.09
-                      , "M-S": 3.43
-                      , "F-NS": 1.99
-                      , "F-S": 3.19
-                    },
-                    34: {
-                      "M-NS": 2.14
-                      , "M-S": 3.62
-                      , "F-NS": 2.08
-                      , "F-S": 3.42
-                    },
-                    35: {
-                      "M-NS": 2.24
-                      , "M-S": 3.83
-                      , "F-NS": 2.17
-                      , "F-S": 3.67
-                    },
-                    36: {
-                      "M-NS": 2.31
-                      , "M-S": 4.10
-                      , "F-NS": 2.25
-                      , "F-S": 3.96
-                    },
-                    37: {
-                      "M-NS": 2.44
-                      , "M-S": 4.42
-                      , "F-NS": 2.38
-                      , "F-S": 4.25
-                    },
-                    38: {
-                      "M-NS": 2.55
-                      , "M-S": 4.78
-                      , "F-NS": 2.49
-                      , "F-S": 4.59
-                    },
-                    39: {
-                      "M-NS": 2.68
-                      , "M-S": 5.21
-                      , "F-NS": 2.61
-                      , "F-S": 4.95
-                    },
-                    40: {
-                      "M-NS": 2.81
-                      , "M-S": 5.70
-                      , "F-NS": 2.74
-                      , "F-S": 5.31
-                    },
-                    41: {
-                      "M-NS": 2.95
-                      , "M-S": 6.25
-                      , "F-NS": 2.89
-                      , "F-S": 5.71
-                    },
-                    42: {
-                      "M-NS": 3.15
-                      , "M-S": 6.86
-                      , "F-NS": 3.05
-                      , "F-S": 6.15
-                    },
-                    43: {
-                      "M-NS": 3.37
-                      , "M-S": 7.55
-                      , "F-NS": 3.21
-                      , "F-S": 6.60
-                    },
-                    44: {
-                      "M-NS": 3.61
-                      , "M-S": 8.31
-                      , "F-NS": 3.41
-                      , "F-S": 7.10
-                    },
-                    45: {
-                      "M-NS": 3.88
-                      , "M-S": 9.15
-                      , "F-NS": 3.62
-                      , "F-S": 7.65
-                    },
-                    46: {
-                      "M-NS": 4.17
-                      , "M-S": 9.17
-                      , "F-NS": 3.87
-                      , "F-S": 8.23
-                    },
-                    47: {
-                      "M-NS": 4.50
-                      , "M-S": 10.41
-                      , "F-NS": 4.14
-                      , "F-S": 8.88
-                    },
-                    48: {
-                      "M-NS": 4.87
-                      , "M-S": 11.84
-                      , "F-NS": 4.45
-                      , "F-S": 9.60
-                    },
-                    49: {
-                      "M-NS": 5.29
-                      , "M-S": 13.05
-                      , "F-NS": 4.79
-                      , "F-S": 10.38
-                    },
-                    50: {
-                      "M-NS": 5.75
-                      , "M-S": 14.38
-                      , "F-NS": 5.17
-                      , "F-S": 11.24
-                    },
-                    51: {
-                      "M-NS": 6.27
-                      , "M-S": 15.31
-                      , "F-NS": 5.62
-                      , "F-S": 12.19
-                    },
-                    52: {
-                      "M-NS": 6.86
-                      , "M-S": 16.42
-                      , "F-NS": 6.12
-                      , "F-S": 13.22
-                    },
-                    53: {
-                      "M-NS": 7.51
-                      , "M-S": 17.34
-                      , "F-NS": 6.68
-                      , "F-S": 14.34
-                    },
-                    54: {
-                      "M-NS": 8.23
-                      , "M-S": 18.46
-                      , "F-NS": 7.30
-                      , "F-S": 15.57
-                    },
-                    55: {
-                      "M-NS": 9.07
-                      , "M-S": 19.30
-                      , "F-NS": 8.02
-                      , "F-S": 16.89
-                    },
-                    56: {
-                      "M-NS": 9.99
-                      , "M-S": 22.72
-                      , "F-NS": 8.82
-                      , "F-S": 18.36
-                    },
-                    57: {
-                      "M-NS": 11.44
-                      , "M-S": 25.96
-                      , "F-NS": 9.71
-                      , "F-S": 19.95
-                    },
-                    58: {
-                      "M-NS": 13.00
-                      , "M-S": 28.34
-                      , "F-NS": 10.73
-                      , "F-S": 21.68
-                    },
-                    59: {
-                      "M-NS": 14.60
-                      , "M-S": 30.90
-                      , "F-NS": 11.88
-                      , "F-S": 23.57
-                    },
-                    60: {
-                      "M-NS": 16.36
-                      , "M-S": 33.64
-                      , "F-NS": 13.16
-                      , "F-S": 25.64
-                    },
-                    61: {
-                      "M-NS": 17.98
-                      , "M-S": 36.59
-                      , "F-NS": 14.64
-                      , "F-S": 27.89
-                    },
-                    62: {
-                      "M-NS": 19.77
-                      , "M-S": 39.75
-                      , "F-NS": 16.28
-                      , "F-S": 30.35
-                    },
-                    63: {
-                      "M-NS": 21.76
-                      , "M-S": 43.12
-                      , "F-NS": 18.15
-                      , "F-S": 33.03
-                    },
-                    64: {
-                      "M-NS": 23.71
-                      , "M-S": 46.72
-                      , "F-NS": 20.22
-                      , "F-S": 35.92
-                    },
-                    65: {
-                      "M-NS": 25.31
-                      , "M-S": 50.58
-                      , "F-NS": 22.55
-                      , "F-S": 39.12
-                    },
-                    66: {
-                      "M-NS": 30.84
-                      , "M-S": 60.24
-                      , "F-NS": 27.63
-                      , "F-S": 46.88
-                    },
-                    67: {
-                      "M-NS": 34.23
-                      , "M-S": 65.12
-                      , "F-NS": 30.86
-                      , "F-S": 51.08
-                    },
-                    68: {
-                      "M-NS": 37.97
-                      , "M-S": 70.37
-                      , "F-NS": 34.47
-                      , "F-S": 55.68
-                    },
-                    69: {
-                      "M-NS": 42.12
-                      , "M-S": 76.02
-                      , "F-NS": 37.00
-                      , "F-S": 60.51
-                    },
-                    70: {
-                      "M-NS": 46.70
-                      , "M-S": 80.08
-                      , "F-NS": 39.03
-                      , "F-S": 63.59
-                    },
-                    71: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    72: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    73: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    74: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    75: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    76: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    77: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    78: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    79: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    80: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    }
-                  },
-                  20: {
-                    18: {
-                      "M-NS": 1.73
-                      , "M-S": 2.71
-                      , "F-NS": 1.38
-                      , "F-S": 1.69
-                    },
-                    19: {
-                      "M-NS": 1.73
-                      , "M-S": 2.71
-                      , "F-NS": 1.38
-                      , "F-S": 1.73
-                    },
-                    20: {
-                      "M-NS": 1.73
-                      , "M-S": 2.71
-                      , "F-NS": 1.38
-                      , "F-S": 1.79
-                    },
-                    21: {
-                      "M-NS": 1.73
-                      , "M-S": 2.71
-                      , "F-NS": 1.39
-                      , "F-S": 1.86
-                    },
-                    22: {
-                      "M-NS": 1.73
-                      , "M-S": 2.71
-                      , "F-NS": 1.42
-                      , "F-S": 1.96
-                    },
-                    23: {
-                      "M-NS": 1.73
-                      , "M-S": 2.76
-                      , "F-NS": 1.44
-                      , "F-S": 2.08
-                    },
-                    24: {
-                      "M-NS": 1.74
-                      , "M-S": 2.82
-                      , "F-NS": 1.48
-                      , "F-S": 2.24
-                    },
-                    25: {
-                      "M-NS": 1.75
-                      , "M-S": 2.94
-                      , "F-NS": 1.52
-                      , "F-S": 2.42
-                    },
-                    26: {
-                      "M-NS": 1.79
-                      , "M-S": 3.04
-                      , "F-NS": 1.58
-                      , "F-S": 2.51
-                    },
-                    27: {
-                      "M-NS": 1.82
-                      , "M-S": 3.17
-                      , "F-NS": 1.63
-                      , "F-S": 2.60
-                    },
-                    28: {
-                      "M-NS": 1.86
-                      , "M-S": 3.28
-                      , "F-NS": 1.68
-                      , "F-S": 2.69
-                    },
-                    29: {
-                      "M-NS": 1.90
-                      , "M-S": 3.41
-                      , "F-NS": 1.74
-                      , "F-S": 2.84
-                    },
-                    30: {
-                      "M-NS": 1.95
-                      , "M-S": 3.52
-                      , "F-NS": 1.81
-                      , "F-S": 3.02
-                    },
-                    31: {
-                      "M-NS": 2.01
-                      , "M-S": 3.64
-                      , "F-NS": 1.88
-                      , "F-S": 3.22
-                    },
-                    32: {
-                      "M-NS": 2.07
-                      , "M-S": 3.80
-                      , "F-NS": 1.95
-                      , "F-S": 3.45
-                    },
-                    33: {
-                      "M-NS": 2.13
-                      , "M-S": 4.05
-                      , "F-NS": 2.03
-                      , "F-S": 3.70
-                    },
-                    34: {
-                      "M-NS": 2.21
-                      , "M-S": 4.35
-                      , "F-NS": 2.13
-                      , "F-S": 3.98
-                    },
-                    35: {
-                      "M-NS": 2.32
-                      , "M-S": 4.67
-                      , "F-NS": 2.23
-                      , "F-S": 4.28
-                    },
-                    36: {
-                      "M-NS": 2.42
-                      , "M-S": 5.06
-                      , "F-NS": 2.36
-                      , "F-S": 4.63
-                    },
-                    37: {
-                      "M-NS": 2.56
-                      , "M-S": 5.50
-                      , "F-NS": 2.49
-                      , "F-S": 5.00
-                    },
-                    38: {
-                      "M-NS": 2.71
-                      , "M-S": 6.01
-                      , "F-NS": 2.62
-                      , "F-S": 5.39
-                    },
-                    39: {
-                      "M-NS": 2.89
-                      , "M-S": 6.58
-                      , "F-NS": 2.79
-                      , "F-S": 5.82
-                    },
-                    40: {
-                      "M-NS": 3.09
-                      , "M-S": 7.24
-                      , "F-NS": 2.96
-                      , "F-S": 6.27
-                    },
-                    41: {
-                      "M-NS": 3.32
-                      , "M-S": 7.48
-                      , "F-NS": 3.15
-                      , "F-S": 6.76
-                    },
-                    42: {
-                      "M-NS": 3.57
-                      , "M-S": 8.07
-                      , "F-NS": 3.36
-                      , "F-S": 7.30
-                    },
-                    43: {
-                      "M-NS": 3.86
-                      , "M-S": 8.79
-                      , "F-NS": 3.58
-                      , "F-S": 7.87
-                    },
-                    44: {
-                      "M-NS": 4.17
-                      , "M-S": 9.68
-                      , "F-NS": 3.84
-                      , "F-S": 8.50
-                    },
-                    45: {
-                      "M-NS": 4.53
-                      , "M-S": 10.65
-                      , "F-NS": 4.13
-                      , "F-S": 9.18
-                    },
-                    46: {
-                      "M-NS": 4.92
-                      , "M-S": 11.71
-                      , "F-NS": 4.47
-                      , "F-S": 9.23
-                    },
-                    47: {
-                      "M-NS": 5.62
-                      , "M-S": 12.61
-                      , "F-NS": 4.83
-                      , "F-S": 9.98
-                    },
-                    48: {
-                      "M-NS": 6.32
-                      , "M-S": 13.16
-                      , "F-NS": 5.24
-                      , "F-S": 10.79
-                    },
-                    49: {
-                      "M-NS": 7.06
-                      , "M-S": 13.67
-                      , "F-NS": 5.70
-                      , "F-S": 11.44
-                    },
-                    50: {
-                      "M-NS": 7.74
-                      , "M-S": 14.98
-                      , "F-NS": 6.22
-                      , "F-S": 11.96
-                    },
-                    51: {
-                      "M-NS": 8.50
-                      , "M-S": 15.50
-                      , "F-NS": 6.81
-                      , "F-S": 13.13
-                    },
-                    52: {
-                      "M-NS": 9.18
-                      , "M-S": 16.54
-                      , "F-NS": 7.48
-                      , "F-S": 14.39
-                    },
-                    53: {
-                      "M-NS": 9.82
-                      , "M-S": 17.40
-                      , "F-NS": 8.21
-                      , "F-S": 15.59
-                    },
-                    54: {
-                      "M-NS": 10.52
-                      , "M-S": 18.49
-                      , "F-NS": 9.06
-                      , "F-S": 16.91
-                    },
-                    55: {
-                      "M-NS": 11.38
-                      , "M-S": 19.62
-                      , "F-NS": 9.99
-                      , "F-S": 17.54
-                    },
-                    56: {
-                      "M-NS": 12.58
-                      , "M-S": 23.10
-                      , "F-NS": 11.03
-                      , "F-S": 19.46
-                    },
-                    57: {
-                      "M-NS": 14.04
-                      , "M-S": 26.83
-                      , "F-NS": 12.20
-                      , "F-S": 21.57
-                    },
-                    58: {
-                      "M-NS": 15.51
-                      , "M-S": 29.15
-                      , "F-NS": 13.52
-                      , "F-S": 24.93
-                    },
-                    59: {
-                      "M-NS": 17.15
-                      , "M-S": 32.32
-                      , "F-NS": 14.96
-                      , "F-S": 28.15
-                    },
-                    60: {
-                      "M-NS": 18.93
-                      , "M-S": 35.77
-                      , "F-NS": 16.61
-                      , "F-S": 30.54
-                    },
-                    61: {
-                      "M-NS": 22.05
-                      , "M-S": null
-                      , "F-NS": 19.30
-                      , "F-S": null
-                    },
-                    62: {
-                      "M-NS": 24.19
-                      , "M-S": null
-                      , "F-NS": 19.80
-                      , "F-S": null
-                    },
-                    63: {
-                      "M-NS": 25.47
-                      , "M-S": null
-                      , "F-NS": 20.99
-                      , "F-S": null
-                    },
-                    64: {
-                      "M-NS": 26.71
-                      , "M-S": null
-                      , "F-NS": 21.92
-                      , "F-S": null
-                    },
-                    65: {
-                      "M-NS": 27.10
-                      , "M-S": null
-                      , "F-NS": 22.72
-                      , "F-S": null
-                    },
-                    66: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    67: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    68: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    69: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    70: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    71: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    72: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    73: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    74: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    75: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    76: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    77: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    78: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    79: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    80: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    }
-                  },
-                  25: {
-                    18: {
-                      "M-NS": 2.05
-                      , "M-S": 3.41
-                      , "F-NS": 1.42
-                      , "F-S": 2.01
-                    },
-                    19: {
-                      "M-NS": 2.05
-                      , "M-S": 3.41
-                      , "F-NS": 1.42
-                      , "F-S": 2.08
-                    },
-                    20: {
-                      "M-NS": 2.05
-                      , "M-S": 3.42
-                      , "F-NS": 1.42
-                      , "F-S": 2.15
-                    },
-                    21: {
-                      "M-NS": 2.05
-                      , "M-S": 3.42
-                      , "F-NS": 1.44
-                      , "F-S": 2.23
-                    },
-                    22: {
-                      "M-NS": 2.05
-                      , "M-S": 3.43
-                      , "F-NS": 1.47
-                      , "F-S": 2.35
-                    },
-                    23: {
-                      "M-NS": 2.05
-                      , "M-S": 3.46
-                      , "F-NS": 1.51
-                      , "F-S": 2.49
-                    },
-                    24: {
-                      "M-NS": 2.08
-                      , "M-S": 3.49
-                      , "F-NS": 1.54
-                      , "F-S": 2.65
-                    },
-                    25: {
-                      "M-NS": 2.09
-                      , "M-S": 3.56
-                      , "F-NS": 1.60
-                      , "F-S": 2.84
-                    },
-                    26: {
-                      "M-NS": 2.11
-                      , "M-S": 3.71
-                      , "F-NS": 1.66
-                      , "F-S": 2.97
-                    },
-                    27: {
-                      "M-NS": 2.17
-                      , "M-S": 3.87
-                      , "F-NS": 1.72
-                      , "F-S": 3.09
-                    },
-                    28: {
-                      "M-NS": 2.24
-                      , "M-S": 4.02
-                      , "F-NS": 1.79
-                      , "F-S": 3.22
-                    },
-                    29: {
-                      "M-NS": 2.30
-                      , "M-S": 4.19
-                      , "F-NS": 1.86
-                      , "F-S": 3.37
-                    },
-                    30: {
-                      "M-NS": 2.34
-                      , "M-S": 4.33
-                      , "F-NS": 1.94
-                      , "F-S": 3.55
-                    },
-                    31: {
-                      "M-NS": 2.38
-                      , "M-S": 4.43
-                      , "F-NS": 2.02
-                      , "F-S": 3.74
-                    },
-                    32: {
-                      "M-NS": 2.43
-                      , "M-S": 4.49
-                      , "F-NS": 2.11
-                      , "F-S": 3.97
-                    },
-                    33: {
-                      "M-NS": 2.50
-                      , "M-S": 4.82
-                      , "F-NS": 2.21
-                      , "F-S": 4.25
-                    },
-                    34: {
-                      "M-NS": 2.61
-                      , "M-S": 5.19
-                      , "F-NS": 2.35
-                      , "F-S": 4.59
-                    },
-                    35: {
-                      "M-NS": 2.76
-                      , "M-S": 5.60
-                      , "F-NS": 2.47
-                      , "F-S": 4.94
-                    },
-                    36: {
-                      "M-NS": 2.90
-                      , "M-S": 6.07
-                      , "F-NS": 2.62
-                      , "F-S": 5.34
-                    },
-                    37: {
-                      "M-NS": 3.29
-                      , "M-S": 6.60
-                      , "F-NS": 2.78
-                      , "F-S": 5.77
-                    },
-                    38: {
-                      "M-NS": 3.50
-                      , "M-S": 7.21
-                      , "F-NS": 2.96
-                      , "F-S": 6.22
-                    },
-                    39: {
-                      "M-NS": 3.81
-                      , "M-S": 7.87
-                      , "F-NS": 3.17
-                      , "F-S": 6.73
-                    },
-                    40: {
-                      "M-NS": 4.11
-                      , "M-S": 8.62
-                      , "F-NS": 3.39
-                      , "F-S": 7.18
-                    },
-                    41: {
-                      "M-NS": 4.44
-                      , "M-S": 9.25
-                      , "F-NS": 3.63
-                      , "F-S": 7.74
-                    },
-                    42: {
-                      "M-NS": 4.74
-                      , "M-S": 10.13
-                      , "F-NS": 3.91
-                      , "F-S": 8.36
-                    },
-                    43: {
-                      "M-NS": 5.04
-                      , "M-S": 10.76
-                      , "F-NS": 4.19
-                      , "F-S": 9.02
-                    },
-                    44: {
-                      "M-NS": 5.49
-                      , "M-S": 11.08
-                      , "F-NS": 4.52
-                      , "F-S": 9.72
-                    },
-                    45: {
-                      "M-NS": 5.75
-                      , "M-S": 11.60
-                      , "F-NS": 4.90
-                      , "F-S": 10.18
-                    },
-                    46: {
-                      "M-NS": 6.40
-                      , "M-S": 12.68
-                      , "F-NS": 5.32
-                      , "F-S": 10.67
-                    },
-                    47: {
-                      "M-NS": 7.05
-                      , "M-S": 13.87
-                      , "F-NS": 5.79
-                      , "F-S": 11.21
-                    },
-                    48: {
-                      "M-NS": 7.95
-                      , "M-S": 15.24
-                      , "F-NS": 6.31
-                      , "F-S": 11.40
-                    },
-                    49: {
-                      "M-NS": 8.69
-                      , "M-S": 16.71
-                      , "F-NS": 6.90
-                      , "F-S": 11.70
-                    },
-                    50: {
-                      "M-NS": 9.97
-                      , "M-S": 17.30
-                      , "F-NS": 7.54
-                      , "F-S": 11.99
-                    },
-                    51: {
-                      "M-NS": 10.73
-                      , "M-S": null
-                      , "F-NS": 8.52
-                      , "F-S": 13.76
-                    },
-                    52: {
-                      "M-NS": 11.81
-                      , "M-S": null
-                      , "F-NS": 9.34
-                      , "F-S": 16.00
-                    },
-                    53: {
-                      "M-NS": 12.65
-                      , "M-S": null
-                      , "F-NS": 10.26
-                      , "F-S": 17.34
-                    },
-                    54: {
-                      "M-NS": 13.54
-                      , "M-S": null
-                      , "F-NS": 11.32
-                      , "F-S": 18.80
-                    },
-                    55: {
-                      "M-NS": 14.65
-                      , "M-S": null
-                      , "F-NS": 12.48
-                      , "F-S": 19.38
-                    },
-                    56: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    57: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    58: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    59: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    60: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    61: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    62: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    63: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    64: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    65: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    66: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    67: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    68: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    69: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    70: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    71: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    72: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    73: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    74: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    75: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    76: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    77: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    78: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    79: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    80: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    }
-                  },
-                  30: {
-                    18: {
-                      "M-NS": 2.46
-                      , "M-S": 3.79
-                      , "F-NS": 1.65
-                      , "F-S": 2.29
-                    },
-                    19: {
-                      "M-NS": 2.46
-                      , "M-S": 3.80
-                      , "F-NS": 1.67
-                      , "F-S": 2.38
-                    },
-                    20: {
-                      "M-NS": 2.46
-                      , "M-S": 3.81
-                      , "F-NS": 1.67
-                      , "F-S": 2.48
-                    },
-                    21: {
-                      "M-NS": 2.46
-                      , "M-S": 3.82
-                      , "F-NS": 1.69
-                      , "F-S": 2.57
-                    },
-                    22: {
-                      "M-NS": 2.46
-                      , "M-S": 3.83
-                      , "F-NS": 1.72
-                      , "F-S": 2.69
-                    },
-                    23: {
-                      "M-NS": 2.46
-                      , "M-S": 3.84
-                      , "F-NS": 1.78
-                      , "F-S": 2.86
-                    },
-                    24: {
-                      "M-NS": 2.50
-                      , "M-S": 3.85
-                      , "F-NS": 1.83
-                      , "F-S": 3.02
-                    },
-                    25: {
-                      "M-NS": 2.56
-                      , "M-S": 3.86
-                      , "F-NS": 1.90
-                      , "F-S": 3.22
-                    },
-                    26: {
-                      "M-NS": 2.63
-                      , "M-S": 4.04
-                      , "F-NS": 1.97
-                      , "F-S": 3.38
-                    },
-                    27: {
-                      "M-NS": 2.72
-                      , "M-S": 4.20
-                      , "F-NS": 2.06
-                      , "F-S": 3.54
-                    },
-                    28: {
-                      "M-NS": 2.81
-                      , "M-S": 4.38
-                      , "F-NS": 2.15
-                      , "F-S": 3.70
-                    },
-                    29: {
-                      "M-NS": 2.92
-                      , "M-S": 4.54
-                      , "F-NS": 2.23
-                      , "F-S": 3.86
-                    },
-                    30: {
-                      "M-NS": 3.05
-                      , "M-S": 4.73
-                      , "F-NS": 2.34
-                      , "F-S": 4.01
-                    },
-                    31: {
-                      "M-NS": 3.06
-                      , "M-S": 4.77
-                      , "F-NS": 2.45
-                      , "F-S": 4.19
-                    },
-                    32: {
-                      "M-NS": 3.09
-                      , "M-S": 5.01
-                      , "F-NS": 2.57
-                      , "F-S": 4.42
-                    },
-                    33: {
-                      "M-NS": 3.11
-                      , "M-S": 5.19
-                      , "F-NS": 2.71
-                      , "F-S": 4.74
-                    },
-                    34: {
-                      "M-NS": 3.14
-                      , "M-S": 5.54
-                      , "F-NS": 2.89
-                      , "F-S": 5.11
-                    },
-                    35: {
-                      "M-NS": 3.18
-                      , "M-S": 6.00
-                      , "F-NS": 3.07
-                      , "F-S": 5.51
-                    },
-                    36: {
-                      "M-NS": 3.41
-                      , "M-S": 6.52
-                      , "F-NS": 3.26
-                      , "F-S": 5.95
-                    },
-                    37: {
-                      "M-NS": 3.83
-                      , "M-S": 7.09
-                      , "F-NS": 3.49
-                      , "F-S": 6.44
-                    },
-                    38: {
-                      "M-NS": 4.36
-                      , "M-S": 7.73
-                      , "F-NS": 3.75
-                      , "F-S": 6.95
-                    },
-                    39: {
-                      "M-NS": 4.69
-                      , "M-S": 8.42
-                      , "F-NS": 4.02
-                      , "F-S": 7.52
-                    },
-                    40: {
-                      "M-NS": 5.09
-                      , "M-S": 9.19
-                      , "F-NS": 4.31
-                      , "F-S": 8.10
-                    },
-                    41: {
-                      "M-NS": 5.51
-                      , "M-S": 10.04
-                      , "F-NS": 4.65
-                      , "F-S": 8.74
-                    },
-                    42: {
-                      "M-NS": 5.99
-                      , "M-S": 10.58
-                      , "F-NS": 5.04
-                      , "F-S": 9.44
-                    },
-                    43: {
-                      "M-NS": 6.53
-                      , "M-S": 11.14
-                      , "F-NS": 5.46
-                      , "F-S": 10.08
-                    },
-                    44: {
-                      "M-NS": 6.88
-                      , "M-S": 11.56
-                      , "F-NS": 5.91
-                      , "F-S": 10.40
-                    },
-                    45: {
-                      "M-NS": 7.29
-                      , "M-S": 11.63
-                      , "F-NS": 6.42
-                      , "F-S": 10.75
-                    },
-                    46: {
-                      "M-NS": 8.13
-                      , "M-S": null
-                      , "F-NS": 7.00
-                      , "F-S": 11.06
-                    },
-                    47: {
-                      "M-NS": 9.05
-                      , "M-S": null
-                      , "F-NS": 7.64
-                      , "F-S": 11.31
-                    },
-                    48: {
-                      "M-NS": 9.86
-                      , "M-S": null
-                      , "F-NS": 8.37
-                      , "F-S": 11.51
-                    },
-                    49: {
-                      "M-NS": 10.24
-                      , "M-S": null
-                      , "F-NS": 8.88
-                      , "F-S": 11.79
-                    },
-                    50: {
-                      "M-NS": 10.51
-                      , "M-S": null
-                      , "F-NS": 9.23
-                      , "F-S": 12.06
-                    },
-                    51: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    52: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    53: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    54: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    55: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    56: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    57: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    58: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    59: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    60: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    61: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    62: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    63: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    64: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    65: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    66: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    67: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    68: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    69: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    70: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    71: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    72: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    73: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    74: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    75: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    76: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    77: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    78: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    79: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    },
-                    80: {
-                      "M-NS": null
-                      , "M-S": null
-                      , "F-NS": null
-                      , "F-S": null
-                    }
-                  }
-                }
-              },
-            ]
-          }
-        },
+        // {
+        //   id: 802,
+        //   name: "Sage No Lapse Universal Life",
+        //   nickname: "NLUL",
+        //   payout: {
+        //     min: 1,
+        //     max: 400000
+        //   },
+        //   calculator: {
+        //     type: 'whole',
+        //     terms: [10, 15, 20, 25, 30],
+        //     products: [
+        //       {
+        //         id: 8002,
+        //         name: 'Sage No Lapse Universal',
+        //         type: 'whole',
+        //         multiplier: 1000,
+        //         fee: 50,
+        //         monthFactor: 0.09,
+        //         range: {'min': 1, 'max': 400000},
+        //         age: {min: 18, max: 65},
+        //         rates: [],
+        //         tableType: 'term--age--gender-smokerStatus',
+        //         table: {
+        //           10: {
+        //             18: {
+        //               "M-NS": 1.07
+        //               , "M-S": 1.89
+        //               , "F-NS": 0.73
+        //               , "F-S": 0.83
+        //             },
+        //             19: {
+        //               "M-NS": 1.07
+        //               , "M-S": 1.94
+        //               , "F-NS": 0.73
+        //               , "F-S": 0.84
+        //             },
+        //             20: {
+        //               "M-NS": 1.07
+        //               , "M-S": 1.95
+        //               , "F-NS": 0.73
+        //               , "F-S": 0.94
+        //             },
+        //             21: {
+        //               "M-NS": 1.07
+        //               , "M-S": 2.07
+        //               , "F-NS": 0.74
+        //               , "F-S": 0.96
+        //             },
+        //             22: {
+        //               "M-NS": 1.07
+        //               , "M-S": 2.08
+        //               , "F-NS": 0.76
+        //               , "F-S": 1.07
+        //             },
+        //             23: {
+        //               "M-NS": 1.24
+        //               , "M-S": 2.37
+        //               , "F-NS": 0.76
+        //               , "F-S": 1.15
+        //             },
+        //             24: {
+        //               "M-NS": 1.43
+        //               , "M-S": 2.54
+        //               , "F-NS": 1.23
+        //               , "F-S": 1.47
+        //             },
+        //             25: {
+        //               "M-NS": 1.74
+        //               , "M-S": 2.71
+        //               , "F-NS": 1.32
+        //               , "F-S": 1.65
+        //             },
+        //             26: {
+        //               "M-NS": 1.77
+        //               , "M-S": 2.73
+        //               , "F-NS": 1.35
+        //               , "F-S": 2.03
+        //             },
+        //             27: {
+        //               "M-NS": 1.79
+        //               , "M-S": 2.78
+        //               , "F-NS": 1.38
+        //               , "F-S": 2.17
+        //             },
+        //             28: {
+        //               "M-NS": 1.83
+        //               , "M-S": 2.84
+        //               , "F-NS": 1.41
+        //               , "F-S": 2.29
+        //             },
+        //             29: {
+        //               "M-NS": 1.83
+        //               , "M-S": 2.96
+        //               , "F-NS": 1.44
+        //               , "F-S": 2.43
+        //             },
+        //             30: {
+        //               "M-NS": 1.91
+        //               , "M-S": 3.04
+        //               , "F-NS": 1.47
+        //               , "F-S": 2.56
+        //             },
+        //             31: {
+        //               "M-NS": 1.97
+        //               , "M-S": 3.10
+        //               , "F-NS": 1.54
+        //               , "F-S": 2.73
+        //             },
+        //             32: {
+        //               "M-NS": 2.03
+        //               , "M-S": 3.24
+        //               , "F-NS": 1.59
+        //               , "F-S": 2.90
+        //             },
+        //             33: {
+        //               "M-NS": 2.09
+        //               , "M-S": 3.40
+        //               , "F-NS": 1.65
+        //               , "F-S": 3.10
+        //             },
+        //             34: {
+        //               "M-NS": 2.13
+        //               , "M-S": 3.58
+        //               , "F-NS": 1.71
+        //               , "F-S": 3.32
+        //             },
+        //             35: {
+        //               "M-NS": 2.23
+        //               , "M-S": 3.79
+        //               , "F-NS": 1.77
+        //               , "F-S": 3.57
+        //             },
+        //             36: {
+        //               "M-NS": 2.30
+        //               , "M-S": 4.06
+        //               , "F-NS": 1.88
+        //               , "F-S": 3.84
+        //             },
+        //             37: {
+        //               "M-NS": 2.44
+        //               , "M-S": 4.38
+        //               , "F-NS": 1.99
+        //               , "F-S": 4.14
+        //             },
+        //             38: {
+        //               "M-NS": 2.55
+        //               , "M-S": 4.74
+        //               , "F-NS": 2.10
+        //               , "F-S": 4.46
+        //             },
+        //             39: {
+        //               "M-NS": 2.68
+        //               , "M-S": 5.16
+        //               , "F-NS": 2.22
+        //               , "F-S": 4.81
+        //             },
+        //             40: {
+        //               "M-NS": 2.80
+        //               , "M-S": 5.64
+        //               , "F-NS": 2.32
+        //               , "F-S": 5.17
+        //             },
+        //             41: {
+        //               "M-NS": 2.95
+        //               , "M-S": 6.18
+        //               , "F-NS": 2.51
+        //               , "F-S": 5.55
+        //             },
+        //             42: {
+        //               "M-NS": 3.15
+        //               , "M-S": 6.79
+        //               , "F-NS": 2.71
+        //               , "F-S": 5.97
+        //             },
+        //             43: {
+        //               "M-NS": 3.36
+        //               , "M-S": 7.48
+        //               , "F-NS": 2.91
+        //               , "F-S": 6.42
+        //             },
+        //             44: {
+        //               "M-NS": 3.61
+        //               , "M-S": 8.23
+        //               , "F-NS": 3.11
+        //               , "F-S": 6.90
+        //             },
+        //             45: {
+        //               "M-NS": 3.87
+        //               , "M-S": 9.06
+        //               , "F-NS": 3.30
+        //               , "F-S": 7.43
+        //             },
+        //             46: {
+        //               "M-NS": 4.16
+        //               , "M-S": 9.08
+        //               , "F-NS": 3.56
+        //               , "F-S": 8.00
+        //             },
+        //             47: {
+        //               "M-NS": 4.49
+        //               , "M-S": 10.30
+        //               , "F-NS": 3.83
+        //               , "F-S": 8.63
+        //             },
+        //             48: {
+        //               "M-NS": 4.86
+        //               , "M-S": 11.72
+        //               , "F-NS": 4.08
+        //               , "F-S": 9.32
+        //             },
+        //             49: {
+        //               "M-NS": 5.29
+        //               , "M-S": 12.93
+        //               , "F-NS": 4.35
+        //               , "F-S": 10.09
+        //             },
+        //             50: {
+        //               "M-NS": 5.71
+        //               , "M-S": 14.24
+        //               , "F-NS": 4.61
+        //               , "F-S": 10.92
+        //             },
+        //             51: {
+        //               "M-NS": 6.23
+        //               , "M-S": 15.16
+        //               , "F-NS": 4.97
+        //               , "F-S": 11.84
+        //             },
+        //             52: {
+        //               "M-NS": 6.86
+        //               , "M-S": 16.26
+        //               , "F-NS": 5.33
+        //               , "F-S": 12.84
+        //             },
+        //             53: {
+        //               "M-NS": 7.51
+        //               , "M-S": 17.27
+        //               , "F-NS": 5.68
+        //               , "F-S": 13.93
+        //             },
+        //             54: {
+        //               "M-NS": 8.15
+        //               , "M-S": 18.31
+        //               , "F-NS": 6.04
+        //               , "F-S": 15.12
+        //             },
+        //             55: {
+        //               "M-NS": 8.74
+        //               , "M-S": 19.28
+        //               , "F-NS": 6.41
+        //               , "F-S": 16.41
+        //             },
+        //             56: {
+        //               "M-NS": 9.68
+        //               , "M-S": 22.63
+        //               , "F-NS": 7.07
+        //               , "F-S": 17.84
+        //             },
+        //             57: {
+        //               "M-NS": 10.62
+        //               , "M-S": 24.74
+        //               , "F-NS": 7.73
+        //               , "F-S": 19.38
+        //             },
+        //             58: {
+        //               "M-NS": 11.55
+        //               , "M-S": 27.27
+        //               , "F-NS": 8.40
+        //               , "F-S": 21.06
+        //             },
+        //             59: {
+        //               "M-NS": 12.49
+        //               , "M-S": 28.03
+        //               , "F-NS": 9.06
+        //               , "F-S": 22.90
+        //             },
+        //             60: {
+        //               "M-NS": 13.43
+        //               , "M-S": 32.53
+        //               , "F-NS": 9.72
+        //               , "F-S": 25.38
+        //             },
+        //             61: {
+        //               "M-NS": 14.68
+        //               , "M-S": 36.33
+        //               , "F-NS": 10.90
+        //               , "F-S": 27.88
+        //             },
+        //             62: {
+        //               "M-NS": 16.13
+        //               , "M-S": 39.38
+        //               , "F-NS": 12.09
+        //               , "F-S": 29.89
+        //             },
+        //             63: {
+        //               "M-NS": 17.58
+        //               , "M-S": 43.10
+        //               , "F-NS": 13.27
+        //               , "F-S": 31.90
+        //             },
+        //             64: {
+        //               "M-NS": 19.03
+        //               , "M-S": 46.38
+        //               , "F-NS": 14.45
+        //               , "F-S": 33.91
+        //             },
+        //             65: {
+        //               "M-NS": 20.08
+        //               , "M-S": 50.48
+        //               , "F-NS": 15.31
+        //               , "F-S": 35.21
+        //             },
+        //             66: {
+        //               "M-NS": 22.78
+        //               , "M-S": 56.56
+        //               , "F-NS": 17.68
+        //               , "F-S": 39.07
+        //             },
+        //             67: {
+        //               "M-NS": 25.48
+        //               , "M-S": 62.63
+        //               , "F-NS": 20.03
+        //               , "F-S": 42.95
+        //             },
+        //             68: {
+        //               "M-NS": 28.19
+        //               , "M-S": 68.70
+        //               , "F-NS": 22.40
+        //               , "F-S": 46.82
+        //             },
+        //             69: {
+        //               "M-NS": 30.89
+        //               , "M-S": 74.77
+        //               , "F-NS": 24.75
+        //               , "F-S": 50.68
+        //             },
+        //             70: {
+        //               "M-NS": 33.59
+        //               , "M-S": 79.45
+        //               , "F-NS": 27.12
+        //               , "F-S": 54.56
+        //             },
+        //             71: {
+        //               "M-NS": 39.29
+        //               , "M-S": 93.34
+        //               , "F-NS": 31.12
+        //               , "F-S": 60.19
+        //             },
+        //             72: {
+        //               "M-NS": 45.00
+        //               , "M-S": 105.62
+        //               , "F-NS": 35.12
+        //               , "F-S": 65.81
+        //             },
+        //             73: {
+        //               "M-NS": 50.70
+        //               , "M-S": 117.89
+        //               , "F-NS": 39.12
+        //               , "F-S": 71.45
+        //             },
+        //             74: {
+        //               "M-NS": 56.40
+        //               , "M-S": 127.74
+        //               , "F-NS": 43.13
+        //               , "F-S": 77.08
+        //             },
+        //             75: {
+        //               "M-NS": 62.10
+        //               , "M-S": 133.13
+        //               , "F-NS": 47.14
+        //               , "F-S": 82.71
+        //             },
+        //             76: {
+        //               "M-NS": 71.71
+        //               , "M-S": 137.87
+        //               , "F-NS": 56.57
+        //               , "F-S": 95.07
+        //             },
+        //             77: {
+        //               "M-NS": 81.32
+        //               , "M-S": 139.75
+        //               , "F-NS": 65.99
+        //               , "F-S": 107.42
+        //             },
+        //             78: {
+        //               "M-NS": 90.94
+        //               , "M-S": 141.44
+        //               , "F-NS": 75.43
+        //               , "F-S": 119.77
+        //             },
+        //             79: {
+        //               "M-NS": 100.55
+        //               , "M-S": 142.95
+        //               , "F-NS": 84.86
+        //               , "F-S": 125.83
+        //             },
+        //             80: {
+        //               "M-NS": 104.10
+        //               , "M-S": 144.26
+        //               , "F-NS": 89.80
+        //               , "F-S": 128.66
+        //             }
+        //           },
+        //           15: {
+        //             18: {
+        //               "M-NS": 1.23
+        //               , "M-S": 2.29
+        //               , "F-NS": 0.96
+        //               , "F-S": 1.14
+        //             },
+        //             19: {
+        //               "M-NS": 1.23
+        //               , "M-S": 2.53
+        //               , "F-NS": 1.15
+        //               , "F-S": 1.31
+        //             },
+        //             20: {
+        //               "M-NS": 1.72
+        //               , "M-S": 2.64
+        //               , "F-NS": 1.37
+        //               , "F-S": 1.68
+        //             },
+        //             21: {
+        //               "M-NS": 1.72
+        //               , "M-S": 2.64
+        //               , "F-NS": 1.38
+        //               , "F-S": 1.73
+        //             },
+        //             22: {
+        //               "M-NS": 1.72
+        //               , "M-S": 2.65
+        //               , "F-NS": 1.41
+        //               , "F-S": 1.77
+        //             },
+        //             23: {
+        //               "M-NS": 1.72
+        //               , "M-S": 2.69
+        //               , "F-NS": 1.43
+        //               , "F-S": 1.92
+        //             },
+        //             24: {
+        //               "M-NS": 1.73
+        //               , "M-S": 2.69
+        //               , "F-NS": 1.47
+        //               , "F-S": 1.99
+        //             },
+        //             25: {
+        //               "M-NS": 1.74
+        //               , "M-S": 2.74
+        //               , "F-NS": 1.50
+        //               , "F-S": 2.09
+        //             },
+        //             26: {
+        //               "M-NS": 1.77
+        //               , "M-S": 2.76
+        //               , "F-NS": 1.57
+        //               , "F-S": 2.19
+        //             },
+        //             27: {
+        //               "M-NS": 1.81
+        //               , "M-S": 2.81
+        //               , "F-NS": 1.62
+        //               , "F-S": 2.23
+        //             },
+        //             28: {
+        //               "M-NS": 1.85
+        //               , "M-S": 2.86
+        //               , "F-NS": 1.67
+        //               , "F-S": 2.36
+        //             },
+        //             29: {
+        //               "M-NS": 1.89
+        //               , "M-S": 3.00
+        //               , "F-NS": 1.73
+        //               , "F-S": 2.50
+        //             },
+        //             30: {
+        //               "M-NS": 1.95
+        //               , "M-S": 3.07
+        //               , "F-NS": 1.81
+        //               , "F-S": 2.64
+        //             },
+        //             31: {
+        //               "M-NS": 1.98
+        //               , "M-S": 3.13
+        //               , "F-NS": 1.87
+        //               , "F-S": 2.81
+        //             },
+        //             32: {
+        //               "M-NS": 2.05
+        //               , "M-S": 3.28
+        //               , "F-NS": 1.93
+        //               , "F-S": 2.98
+        //             },
+        //             33: {
+        //               "M-NS": 2.09
+        //               , "M-S": 3.43
+        //               , "F-NS": 1.99
+        //               , "F-S": 3.19
+        //             },
+        //             34: {
+        //               "M-NS": 2.14
+        //               , "M-S": 3.62
+        //               , "F-NS": 2.08
+        //               , "F-S": 3.42
+        //             },
+        //             35: {
+        //               "M-NS": 2.24
+        //               , "M-S": 3.83
+        //               , "F-NS": 2.17
+        //               , "F-S": 3.67
+        //             },
+        //             36: {
+        //               "M-NS": 2.31
+        //               , "M-S": 4.10
+        //               , "F-NS": 2.25
+        //               , "F-S": 3.96
+        //             },
+        //             37: {
+        //               "M-NS": 2.44
+        //               , "M-S": 4.42
+        //               , "F-NS": 2.38
+        //               , "F-S": 4.25
+        //             },
+        //             38: {
+        //               "M-NS": 2.55
+        //               , "M-S": 4.78
+        //               , "F-NS": 2.49
+        //               , "F-S": 4.59
+        //             },
+        //             39: {
+        //               "M-NS": 2.68
+        //               , "M-S": 5.21
+        //               , "F-NS": 2.61
+        //               , "F-S": 4.95
+        //             },
+        //             40: {
+        //               "M-NS": 2.81
+        //               , "M-S": 5.70
+        //               , "F-NS": 2.74
+        //               , "F-S": 5.31
+        //             },
+        //             41: {
+        //               "M-NS": 2.95
+        //               , "M-S": 6.25
+        //               , "F-NS": 2.89
+        //               , "F-S": 5.71
+        //             },
+        //             42: {
+        //               "M-NS": 3.15
+        //               , "M-S": 6.86
+        //               , "F-NS": 3.05
+        //               , "F-S": 6.15
+        //             },
+        //             43: {
+        //               "M-NS": 3.37
+        //               , "M-S": 7.55
+        //               , "F-NS": 3.21
+        //               , "F-S": 6.60
+        //             },
+        //             44: {
+        //               "M-NS": 3.61
+        //               , "M-S": 8.31
+        //               , "F-NS": 3.41
+        //               , "F-S": 7.10
+        //             },
+        //             45: {
+        //               "M-NS": 3.88
+        //               , "M-S": 9.15
+        //               , "F-NS": 3.62
+        //               , "F-S": 7.65
+        //             },
+        //             46: {
+        //               "M-NS": 4.17
+        //               , "M-S": 9.17
+        //               , "F-NS": 3.87
+        //               , "F-S": 8.23
+        //             },
+        //             47: {
+        //               "M-NS": 4.50
+        //               , "M-S": 10.41
+        //               , "F-NS": 4.14
+        //               , "F-S": 8.88
+        //             },
+        //             48: {
+        //               "M-NS": 4.87
+        //               , "M-S": 11.84
+        //               , "F-NS": 4.45
+        //               , "F-S": 9.60
+        //             },
+        //             49: {
+        //               "M-NS": 5.29
+        //               , "M-S": 13.05
+        //               , "F-NS": 4.79
+        //               , "F-S": 10.38
+        //             },
+        //             50: {
+        //               "M-NS": 5.75
+        //               , "M-S": 14.38
+        //               , "F-NS": 5.17
+        //               , "F-S": 11.24
+        //             },
+        //             51: {
+        //               "M-NS": 6.27
+        //               , "M-S": 15.31
+        //               , "F-NS": 5.62
+        //               , "F-S": 12.19
+        //             },
+        //             52: {
+        //               "M-NS": 6.86
+        //               , "M-S": 16.42
+        //               , "F-NS": 6.12
+        //               , "F-S": 13.22
+        //             },
+        //             53: {
+        //               "M-NS": 7.51
+        //               , "M-S": 17.34
+        //               , "F-NS": 6.68
+        //               , "F-S": 14.34
+        //             },
+        //             54: {
+        //               "M-NS": 8.23
+        //               , "M-S": 18.46
+        //               , "F-NS": 7.30
+        //               , "F-S": 15.57
+        //             },
+        //             55: {
+        //               "M-NS": 9.07
+        //               , "M-S": 19.30
+        //               , "F-NS": 8.02
+        //               , "F-S": 16.89
+        //             },
+        //             56: {
+        //               "M-NS": 9.99
+        //               , "M-S": 22.72
+        //               , "F-NS": 8.82
+        //               , "F-S": 18.36
+        //             },
+        //             57: {
+        //               "M-NS": 11.44
+        //               , "M-S": 25.96
+        //               , "F-NS": 9.71
+        //               , "F-S": 19.95
+        //             },
+        //             58: {
+        //               "M-NS": 13.00
+        //               , "M-S": 28.34
+        //               , "F-NS": 10.73
+        //               , "F-S": 21.68
+        //             },
+        //             59: {
+        //               "M-NS": 14.60
+        //               , "M-S": 30.90
+        //               , "F-NS": 11.88
+        //               , "F-S": 23.57
+        //             },
+        //             60: {
+        //               "M-NS": 16.36
+        //               , "M-S": 33.64
+        //               , "F-NS": 13.16
+        //               , "F-S": 25.64
+        //             },
+        //             61: {
+        //               "M-NS": 17.98
+        //               , "M-S": 36.59
+        //               , "F-NS": 14.64
+        //               , "F-S": 27.89
+        //             },
+        //             62: {
+        //               "M-NS": 19.77
+        //               , "M-S": 39.75
+        //               , "F-NS": 16.28
+        //               , "F-S": 30.35
+        //             },
+        //             63: {
+        //               "M-NS": 21.76
+        //               , "M-S": 43.12
+        //               , "F-NS": 18.15
+        //               , "F-S": 33.03
+        //             },
+        //             64: {
+        //               "M-NS": 23.71
+        //               , "M-S": 46.72
+        //               , "F-NS": 20.22
+        //               , "F-S": 35.92
+        //             },
+        //             65: {
+        //               "M-NS": 25.31
+        //               , "M-S": 50.58
+        //               , "F-NS": 22.55
+        //               , "F-S": 39.12
+        //             },
+        //             66: {
+        //               "M-NS": 30.84
+        //               , "M-S": 60.24
+        //               , "F-NS": 27.63
+        //               , "F-S": 46.88
+        //             },
+        //             67: {
+        //               "M-NS": 34.23
+        //               , "M-S": 65.12
+        //               , "F-NS": 30.86
+        //               , "F-S": 51.08
+        //             },
+        //             68: {
+        //               "M-NS": 37.97
+        //               , "M-S": 70.37
+        //               , "F-NS": 34.47
+        //               , "F-S": 55.68
+        //             },
+        //             69: {
+        //               "M-NS": 42.12
+        //               , "M-S": 76.02
+        //               , "F-NS": 37.00
+        //               , "F-S": 60.51
+        //             },
+        //             70: {
+        //               "M-NS": 46.70
+        //               , "M-S": 80.08
+        //               , "F-NS": 39.03
+        //               , "F-S": 63.59
+        //             },
+        //             71: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             72: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             73: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             74: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             75: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             76: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             77: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             78: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             79: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             80: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             }
+        //           },
+        //           20: {
+        //             18: {
+        //               "M-NS": 1.73
+        //               , "M-S": 2.71
+        //               , "F-NS": 1.38
+        //               , "F-S": 1.69
+        //             },
+        //             19: {
+        //               "M-NS": 1.73
+        //               , "M-S": 2.71
+        //               , "F-NS": 1.38
+        //               , "F-S": 1.73
+        //             },
+        //             20: {
+        //               "M-NS": 1.73
+        //               , "M-S": 2.71
+        //               , "F-NS": 1.38
+        //               , "F-S": 1.79
+        //             },
+        //             21: {
+        //               "M-NS": 1.73
+        //               , "M-S": 2.71
+        //               , "F-NS": 1.39
+        //               , "F-S": 1.86
+        //             },
+        //             22: {
+        //               "M-NS": 1.73
+        //               , "M-S": 2.71
+        //               , "F-NS": 1.42
+        //               , "F-S": 1.96
+        //             },
+        //             23: {
+        //               "M-NS": 1.73
+        //               , "M-S": 2.76
+        //               , "F-NS": 1.44
+        //               , "F-S": 2.08
+        //             },
+        //             24: {
+        //               "M-NS": 1.74
+        //               , "M-S": 2.82
+        //               , "F-NS": 1.48
+        //               , "F-S": 2.24
+        //             },
+        //             25: {
+        //               "M-NS": 1.75
+        //               , "M-S": 2.94
+        //               , "F-NS": 1.52
+        //               , "F-S": 2.42
+        //             },
+        //             26: {
+        //               "M-NS": 1.79
+        //               , "M-S": 3.04
+        //               , "F-NS": 1.58
+        //               , "F-S": 2.51
+        //             },
+        //             27: {
+        //               "M-NS": 1.82
+        //               , "M-S": 3.17
+        //               , "F-NS": 1.63
+        //               , "F-S": 2.60
+        //             },
+        //             28: {
+        //               "M-NS": 1.86
+        //               , "M-S": 3.28
+        //               , "F-NS": 1.68
+        //               , "F-S": 2.69
+        //             },
+        //             29: {
+        //               "M-NS": 1.90
+        //               , "M-S": 3.41
+        //               , "F-NS": 1.74
+        //               , "F-S": 2.84
+        //             },
+        //             30: {
+        //               "M-NS": 1.95
+        //               , "M-S": 3.52
+        //               , "F-NS": 1.81
+        //               , "F-S": 3.02
+        //             },
+        //             31: {
+        //               "M-NS": 2.01
+        //               , "M-S": 3.64
+        //               , "F-NS": 1.88
+        //               , "F-S": 3.22
+        //             },
+        //             32: {
+        //               "M-NS": 2.07
+        //               , "M-S": 3.80
+        //               , "F-NS": 1.95
+        //               , "F-S": 3.45
+        //             },
+        //             33: {
+        //               "M-NS": 2.13
+        //               , "M-S": 4.05
+        //               , "F-NS": 2.03
+        //               , "F-S": 3.70
+        //             },
+        //             34: {
+        //               "M-NS": 2.21
+        //               , "M-S": 4.35
+        //               , "F-NS": 2.13
+        //               , "F-S": 3.98
+        //             },
+        //             35: {
+        //               "M-NS": 2.32
+        //               , "M-S": 4.67
+        //               , "F-NS": 2.23
+        //               , "F-S": 4.28
+        //             },
+        //             36: {
+        //               "M-NS": 2.42
+        //               , "M-S": 5.06
+        //               , "F-NS": 2.36
+        //               , "F-S": 4.63
+        //             },
+        //             37: {
+        //               "M-NS": 2.56
+        //               , "M-S": 5.50
+        //               , "F-NS": 2.49
+        //               , "F-S": 5.00
+        //             },
+        //             38: {
+        //               "M-NS": 2.71
+        //               , "M-S": 6.01
+        //               , "F-NS": 2.62
+        //               , "F-S": 5.39
+        //             },
+        //             39: {
+        //               "M-NS": 2.89
+        //               , "M-S": 6.58
+        //               , "F-NS": 2.79
+        //               , "F-S": 5.82
+        //             },
+        //             40: {
+        //               "M-NS": 3.09
+        //               , "M-S": 7.24
+        //               , "F-NS": 2.96
+        //               , "F-S": 6.27
+        //             },
+        //             41: {
+        //               "M-NS": 3.32
+        //               , "M-S": 7.48
+        //               , "F-NS": 3.15
+        //               , "F-S": 6.76
+        //             },
+        //             42: {
+        //               "M-NS": 3.57
+        //               , "M-S": 8.07
+        //               , "F-NS": 3.36
+        //               , "F-S": 7.30
+        //             },
+        //             43: {
+        //               "M-NS": 3.86
+        //               , "M-S": 8.79
+        //               , "F-NS": 3.58
+        //               , "F-S": 7.87
+        //             },
+        //             44: {
+        //               "M-NS": 4.17
+        //               , "M-S": 9.68
+        //               , "F-NS": 3.84
+        //               , "F-S": 8.50
+        //             },
+        //             45: {
+        //               "M-NS": 4.53
+        //               , "M-S": 10.65
+        //               , "F-NS": 4.13
+        //               , "F-S": 9.18
+        //             },
+        //             46: {
+        //               "M-NS": 4.92
+        //               , "M-S": 11.71
+        //               , "F-NS": 4.47
+        //               , "F-S": 9.23
+        //             },
+        //             47: {
+        //               "M-NS": 5.62
+        //               , "M-S": 12.61
+        //               , "F-NS": 4.83
+        //               , "F-S": 9.98
+        //             },
+        //             48: {
+        //               "M-NS": 6.32
+        //               , "M-S": 13.16
+        //               , "F-NS": 5.24
+        //               , "F-S": 10.79
+        //             },
+        //             49: {
+        //               "M-NS": 7.06
+        //               , "M-S": 13.67
+        //               , "F-NS": 5.70
+        //               , "F-S": 11.44
+        //             },
+        //             50: {
+        //               "M-NS": 7.74
+        //               , "M-S": 14.98
+        //               , "F-NS": 6.22
+        //               , "F-S": 11.96
+        //             },
+        //             51: {
+        //               "M-NS": 8.50
+        //               , "M-S": 15.50
+        //               , "F-NS": 6.81
+        //               , "F-S": 13.13
+        //             },
+        //             52: {
+        //               "M-NS": 9.18
+        //               , "M-S": 16.54
+        //               , "F-NS": 7.48
+        //               , "F-S": 14.39
+        //             },
+        //             53: {
+        //               "M-NS": 9.82
+        //               , "M-S": 17.40
+        //               , "F-NS": 8.21
+        //               , "F-S": 15.59
+        //             },
+        //             54: {
+        //               "M-NS": 10.52
+        //               , "M-S": 18.49
+        //               , "F-NS": 9.06
+        //               , "F-S": 16.91
+        //             },
+        //             55: {
+        //               "M-NS": 11.38
+        //               , "M-S": 19.62
+        //               , "F-NS": 9.99
+        //               , "F-S": 17.54
+        //             },
+        //             56: {
+        //               "M-NS": 12.58
+        //               , "M-S": 23.10
+        //               , "F-NS": 11.03
+        //               , "F-S": 19.46
+        //             },
+        //             57: {
+        //               "M-NS": 14.04
+        //               , "M-S": 26.83
+        //               , "F-NS": 12.20
+        //               , "F-S": 21.57
+        //             },
+        //             58: {
+        //               "M-NS": 15.51
+        //               , "M-S": 29.15
+        //               , "F-NS": 13.52
+        //               , "F-S": 24.93
+        //             },
+        //             59: {
+        //               "M-NS": 17.15
+        //               , "M-S": 32.32
+        //               , "F-NS": 14.96
+        //               , "F-S": 28.15
+        //             },
+        //             60: {
+        //               "M-NS": 18.93
+        //               , "M-S": 35.77
+        //               , "F-NS": 16.61
+        //               , "F-S": 30.54
+        //             },
+        //             61: {
+        //               "M-NS": 22.05
+        //               , "M-S": null
+        //               , "F-NS": 19.30
+        //               , "F-S": null
+        //             },
+        //             62: {
+        //               "M-NS": 24.19
+        //               , "M-S": null
+        //               , "F-NS": 19.80
+        //               , "F-S": null
+        //             },
+        //             63: {
+        //               "M-NS": 25.47
+        //               , "M-S": null
+        //               , "F-NS": 20.99
+        //               , "F-S": null
+        //             },
+        //             64: {
+        //               "M-NS": 26.71
+        //               , "M-S": null
+        //               , "F-NS": 21.92
+        //               , "F-S": null
+        //             },
+        //             65: {
+        //               "M-NS": 27.10
+        //               , "M-S": null
+        //               , "F-NS": 22.72
+        //               , "F-S": null
+        //             },
+        //             66: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             67: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             68: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             69: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             70: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             71: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             72: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             73: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             74: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             75: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             76: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             77: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             78: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             79: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             80: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             }
+        //           },
+        //           25: {
+        //             18: {
+        //               "M-NS": 2.05
+        //               , "M-S": 3.41
+        //               , "F-NS": 1.42
+        //               , "F-S": 2.01
+        //             },
+        //             19: {
+        //               "M-NS": 2.05
+        //               , "M-S": 3.41
+        //               , "F-NS": 1.42
+        //               , "F-S": 2.08
+        //             },
+        //             20: {
+        //               "M-NS": 2.05
+        //               , "M-S": 3.42
+        //               , "F-NS": 1.42
+        //               , "F-S": 2.15
+        //             },
+        //             21: {
+        //               "M-NS": 2.05
+        //               , "M-S": 3.42
+        //               , "F-NS": 1.44
+        //               , "F-S": 2.23
+        //             },
+        //             22: {
+        //               "M-NS": 2.05
+        //               , "M-S": 3.43
+        //               , "F-NS": 1.47
+        //               , "F-S": 2.35
+        //             },
+        //             23: {
+        //               "M-NS": 2.05
+        //               , "M-S": 3.46
+        //               , "F-NS": 1.51
+        //               , "F-S": 2.49
+        //             },
+        //             24: {
+        //               "M-NS": 2.08
+        //               , "M-S": 3.49
+        //               , "F-NS": 1.54
+        //               , "F-S": 2.65
+        //             },
+        //             25: {
+        //               "M-NS": 2.09
+        //               , "M-S": 3.56
+        //               , "F-NS": 1.60
+        //               , "F-S": 2.84
+        //             },
+        //             26: {
+        //               "M-NS": 2.11
+        //               , "M-S": 3.71
+        //               , "F-NS": 1.66
+        //               , "F-S": 2.97
+        //             },
+        //             27: {
+        //               "M-NS": 2.17
+        //               , "M-S": 3.87
+        //               , "F-NS": 1.72
+        //               , "F-S": 3.09
+        //             },
+        //             28: {
+        //               "M-NS": 2.24
+        //               , "M-S": 4.02
+        //               , "F-NS": 1.79
+        //               , "F-S": 3.22
+        //             },
+        //             29: {
+        //               "M-NS": 2.30
+        //               , "M-S": 4.19
+        //               , "F-NS": 1.86
+        //               , "F-S": 3.37
+        //             },
+        //             30: {
+        //               "M-NS": 2.34
+        //               , "M-S": 4.33
+        //               , "F-NS": 1.94
+        //               , "F-S": 3.55
+        //             },
+        //             31: {
+        //               "M-NS": 2.38
+        //               , "M-S": 4.43
+        //               , "F-NS": 2.02
+        //               , "F-S": 3.74
+        //             },
+        //             32: {
+        //               "M-NS": 2.43
+        //               , "M-S": 4.49
+        //               , "F-NS": 2.11
+        //               , "F-S": 3.97
+        //             },
+        //             33: {
+        //               "M-NS": 2.50
+        //               , "M-S": 4.82
+        //               , "F-NS": 2.21
+        //               , "F-S": 4.25
+        //             },
+        //             34: {
+        //               "M-NS": 2.61
+        //               , "M-S": 5.19
+        //               , "F-NS": 2.35
+        //               , "F-S": 4.59
+        //             },
+        //             35: {
+        //               "M-NS": 2.76
+        //               , "M-S": 5.60
+        //               , "F-NS": 2.47
+        //               , "F-S": 4.94
+        //             },
+        //             36: {
+        //               "M-NS": 2.90
+        //               , "M-S": 6.07
+        //               , "F-NS": 2.62
+        //               , "F-S": 5.34
+        //             },
+        //             37: {
+        //               "M-NS": 3.29
+        //               , "M-S": 6.60
+        //               , "F-NS": 2.78
+        //               , "F-S": 5.77
+        //             },
+        //             38: {
+        //               "M-NS": 3.50
+        //               , "M-S": 7.21
+        //               , "F-NS": 2.96
+        //               , "F-S": 6.22
+        //             },
+        //             39: {
+        //               "M-NS": 3.81
+        //               , "M-S": 7.87
+        //               , "F-NS": 3.17
+        //               , "F-S": 6.73
+        //             },
+        //             40: {
+        //               "M-NS": 4.11
+        //               , "M-S": 8.62
+        //               , "F-NS": 3.39
+        //               , "F-S": 7.18
+        //             },
+        //             41: {
+        //               "M-NS": 4.44
+        //               , "M-S": 9.25
+        //               , "F-NS": 3.63
+        //               , "F-S": 7.74
+        //             },
+        //             42: {
+        //               "M-NS": 4.74
+        //               , "M-S": 10.13
+        //               , "F-NS": 3.91
+        //               , "F-S": 8.36
+        //             },
+        //             43: {
+        //               "M-NS": 5.04
+        //               , "M-S": 10.76
+        //               , "F-NS": 4.19
+        //               , "F-S": 9.02
+        //             },
+        //             44: {
+        //               "M-NS": 5.49
+        //               , "M-S": 11.08
+        //               , "F-NS": 4.52
+        //               , "F-S": 9.72
+        //             },
+        //             45: {
+        //               "M-NS": 5.75
+        //               , "M-S": 11.60
+        //               , "F-NS": 4.90
+        //               , "F-S": 10.18
+        //             },
+        //             46: {
+        //               "M-NS": 6.40
+        //               , "M-S": 12.68
+        //               , "F-NS": 5.32
+        //               , "F-S": 10.67
+        //             },
+        //             47: {
+        //               "M-NS": 7.05
+        //               , "M-S": 13.87
+        //               , "F-NS": 5.79
+        //               , "F-S": 11.21
+        //             },
+        //             48: {
+        //               "M-NS": 7.95
+        //               , "M-S": 15.24
+        //               , "F-NS": 6.31
+        //               , "F-S": 11.40
+        //             },
+        //             49: {
+        //               "M-NS": 8.69
+        //               , "M-S": 16.71
+        //               , "F-NS": 6.90
+        //               , "F-S": 11.70
+        //             },
+        //             50: {
+        //               "M-NS": 9.97
+        //               , "M-S": 17.30
+        //               , "F-NS": 7.54
+        //               , "F-S": 11.99
+        //             },
+        //             51: {
+        //               "M-NS": 10.73
+        //               , "M-S": null
+        //               , "F-NS": 8.52
+        //               , "F-S": 13.76
+        //             },
+        //             52: {
+        //               "M-NS": 11.81
+        //               , "M-S": null
+        //               , "F-NS": 9.34
+        //               , "F-S": 16.00
+        //             },
+        //             53: {
+        //               "M-NS": 12.65
+        //               , "M-S": null
+        //               , "F-NS": 10.26
+        //               , "F-S": 17.34
+        //             },
+        //             54: {
+        //               "M-NS": 13.54
+        //               , "M-S": null
+        //               , "F-NS": 11.32
+        //               , "F-S": 18.80
+        //             },
+        //             55: {
+        //               "M-NS": 14.65
+        //               , "M-S": null
+        //               , "F-NS": 12.48
+        //               , "F-S": 19.38
+        //             },
+        //             56: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             57: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             58: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             59: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             60: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             61: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             62: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             63: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             64: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             65: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             66: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             67: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             68: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             69: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             70: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             71: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             72: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             73: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             74: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             75: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             76: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             77: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             78: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             79: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             80: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             }
+        //           },
+        //           30: {
+        //             18: {
+        //               "M-NS": 2.46
+        //               , "M-S": 3.79
+        //               , "F-NS": 1.65
+        //               , "F-S": 2.29
+        //             },
+        //             19: {
+        //               "M-NS": 2.46
+        //               , "M-S": 3.80
+        //               , "F-NS": 1.67
+        //               , "F-S": 2.38
+        //             },
+        //             20: {
+        //               "M-NS": 2.46
+        //               , "M-S": 3.81
+        //               , "F-NS": 1.67
+        //               , "F-S": 2.48
+        //             },
+        //             21: {
+        //               "M-NS": 2.46
+        //               , "M-S": 3.82
+        //               , "F-NS": 1.69
+        //               , "F-S": 2.57
+        //             },
+        //             22: {
+        //               "M-NS": 2.46
+        //               , "M-S": 3.83
+        //               , "F-NS": 1.72
+        //               , "F-S": 2.69
+        //             },
+        //             23: {
+        //               "M-NS": 2.46
+        //               , "M-S": 3.84
+        //               , "F-NS": 1.78
+        //               , "F-S": 2.86
+        //             },
+        //             24: {
+        //               "M-NS": 2.50
+        //               , "M-S": 3.85
+        //               , "F-NS": 1.83
+        //               , "F-S": 3.02
+        //             },
+        //             25: {
+        //               "M-NS": 2.56
+        //               , "M-S": 3.86
+        //               , "F-NS": 1.90
+        //               , "F-S": 3.22
+        //             },
+        //             26: {
+        //               "M-NS": 2.63
+        //               , "M-S": 4.04
+        //               , "F-NS": 1.97
+        //               , "F-S": 3.38
+        //             },
+        //             27: {
+        //               "M-NS": 2.72
+        //               , "M-S": 4.20
+        //               , "F-NS": 2.06
+        //               , "F-S": 3.54
+        //             },
+        //             28: {
+        //               "M-NS": 2.81
+        //               , "M-S": 4.38
+        //               , "F-NS": 2.15
+        //               , "F-S": 3.70
+        //             },
+        //             29: {
+        //               "M-NS": 2.92
+        //               , "M-S": 4.54
+        //               , "F-NS": 2.23
+        //               , "F-S": 3.86
+        //             },
+        //             30: {
+        //               "M-NS": 3.05
+        //               , "M-S": 4.73
+        //               , "F-NS": 2.34
+        //               , "F-S": 4.01
+        //             },
+        //             31: {
+        //               "M-NS": 3.06
+        //               , "M-S": 4.77
+        //               , "F-NS": 2.45
+        //               , "F-S": 4.19
+        //             },
+        //             32: {
+        //               "M-NS": 3.09
+        //               , "M-S": 5.01
+        //               , "F-NS": 2.57
+        //               , "F-S": 4.42
+        //             },
+        //             33: {
+        //               "M-NS": 3.11
+        //               , "M-S": 5.19
+        //               , "F-NS": 2.71
+        //               , "F-S": 4.74
+        //             },
+        //             34: {
+        //               "M-NS": 3.14
+        //               , "M-S": 5.54
+        //               , "F-NS": 2.89
+        //               , "F-S": 5.11
+        //             },
+        //             35: {
+        //               "M-NS": 3.18
+        //               , "M-S": 6.00
+        //               , "F-NS": 3.07
+        //               , "F-S": 5.51
+        //             },
+        //             36: {
+        //               "M-NS": 3.41
+        //               , "M-S": 6.52
+        //               , "F-NS": 3.26
+        //               , "F-S": 5.95
+        //             },
+        //             37: {
+        //               "M-NS": 3.83
+        //               , "M-S": 7.09
+        //               , "F-NS": 3.49
+        //               , "F-S": 6.44
+        //             },
+        //             38: {
+        //               "M-NS": 4.36
+        //               , "M-S": 7.73
+        //               , "F-NS": 3.75
+        //               , "F-S": 6.95
+        //             },
+        //             39: {
+        //               "M-NS": 4.69
+        //               , "M-S": 8.42
+        //               , "F-NS": 4.02
+        //               , "F-S": 7.52
+        //             },
+        //             40: {
+        //               "M-NS": 5.09
+        //               , "M-S": 9.19
+        //               , "F-NS": 4.31
+        //               , "F-S": 8.10
+        //             },
+        //             41: {
+        //               "M-NS": 5.51
+        //               , "M-S": 10.04
+        //               , "F-NS": 4.65
+        //               , "F-S": 8.74
+        //             },
+        //             42: {
+        //               "M-NS": 5.99
+        //               , "M-S": 10.58
+        //               , "F-NS": 5.04
+        //               , "F-S": 9.44
+        //             },
+        //             43: {
+        //               "M-NS": 6.53
+        //               , "M-S": 11.14
+        //               , "F-NS": 5.46
+        //               , "F-S": 10.08
+        //             },
+        //             44: {
+        //               "M-NS": 6.88
+        //               , "M-S": 11.56
+        //               , "F-NS": 5.91
+        //               , "F-S": 10.40
+        //             },
+        //             45: {
+        //               "M-NS": 7.29
+        //               , "M-S": 11.63
+        //               , "F-NS": 6.42
+        //               , "F-S": 10.75
+        //             },
+        //             46: {
+        //               "M-NS": 8.13
+        //               , "M-S": null
+        //               , "F-NS": 7.00
+        //               , "F-S": 11.06
+        //             },
+        //             47: {
+        //               "M-NS": 9.05
+        //               , "M-S": null
+        //               , "F-NS": 7.64
+        //               , "F-S": 11.31
+        //             },
+        //             48: {
+        //               "M-NS": 9.86
+        //               , "M-S": null
+        //               , "F-NS": 8.37
+        //               , "F-S": 11.51
+        //             },
+        //             49: {
+        //               "M-NS": 10.24
+        //               , "M-S": null
+        //               , "F-NS": 8.88
+        //               , "F-S": 11.79
+        //             },
+        //             50: {
+        //               "M-NS": 10.51
+        //               , "M-S": null
+        //               , "F-NS": 9.23
+        //               , "F-S": 12.06
+        //             },
+        //             51: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             52: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             53: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             54: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             55: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             56: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             57: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             58: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             59: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             60: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             61: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             62: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             63: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             64: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             65: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             66: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             67: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             68: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             69: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             70: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             71: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             72: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             73: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             74: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             75: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             76: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             77: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             78: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             79: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             },
+        //             80: {
+        //               "M-NS": null
+        //               , "M-S": null
+        //               , "F-NS": null
+        //               , "F-S": null
+        //             }
+        //           }
+        //         }
+        //       },
+        //     ]
+        //   }
+        // },
 
       ]
     },
@@ -11129,46 +11451,190 @@ export default {
     //     }
     //   ]
     // },
-
     // AIG
-    // {
-    //   id: 7,
-    //   name: "AIG",
-    //   nickname: "AI",
-    //   logoUrl: './images/logo_aig.png',
-    //   products: [
-    //     {
-    //       id: 601,
-    //       name: "Simplified Issue Whole Life",
-    //       nickname: "SI-WL",
-    //       payout: {
-    //         min: 2000,
-    //         max: 20000
-    //       },
-    //       guaranteedIssue: 1,
-    //       calculator: {
-    //         type: 'term',
-    //         terms: [10,15,20,25,30],
-    //         products: [
-    //           {
-    //             guaranteed: 1,
-    //             id: 402,
-    //             name: 'Simplified Issue Whole Life',
-    //             type: 'term',
-    //             multiplier: 1000,
-    //             fee: 60,
-    //             monthFactor: 0.0875,
-    //             range: {'min':1000, 'max':40000},
-    //             age: { min: 18, max: 80 },
-    //             rates: [],
-    //             tableType: 'term--age--gender-smokerStatus',
-    //             table: {}
-    //           },
-    //         ]
-    //       }
-    //     }
-    //   ]
-    // },
+    {
+      id: 7,
+      name: "AIG",
+      nickname: "AI",
+      logoUrl: './images/logo_aig.png',
+      products: [
+        {
+          id: 601,
+          name: "Guaranteed Issue Whole Life",
+          nickname: "GIWL",
+          payout: {
+            min: 2000,
+            max: 20000
+          },
+          guaranteedIssue: 1,
+          calculator: {
+            type: 'term',
+            terms: [10,15,20,25,30],
+            products: [
+              {
+                guaranteed: 1,
+                id: 6001,
+                name: 'Guaranteed Issue Whole Life',
+                type: 'term',
+                multiplier: 1000,
+                fee: 24,
+                monthFactor: 0.0834,
+                range: {'min':1000, 'max':40000},
+                age: { min: 50, max: 85 },
+                rates: [],
+                tableType: 'age--gender',
+                table: {
+                  50: {
+                    "M": 59.86,
+                    "F": 40.56
+                  },
+                  51: {
+                    "M": 60.82,
+                    "F": 41.58
+                  },
+                  52: {
+                    "M": 61.91,
+                    "F": 43.15
+                  },
+                  53: {
+                    "M": 62.88,
+                    "F": 45.48
+                  },
+                  54: {
+                    "M": 63.98,
+                    "F": 47.57
+                  },
+                  55: {
+                    "M": 65.83,
+                    "F": 49.44
+                  },
+                  56: {
+                    "M": 67.8,
+                    "F": 51.53
+                  },
+                  57: {
+                    "M": 69.55,
+                    "F": 53.16
+                  },
+                  58: {
+                    "M": 71.11,
+                    "F": 54.82
+                  },
+                  59: {
+                    "M": 72.19,
+                    "F": 56.35
+                  },
+                  60: {
+                    "M": 73.34,
+                    "F": 57.58
+                  },
+                  61: {
+                    "M": 78.58,
+                    "F": 61.2
+                  },
+                  62: {
+                    "M": 83.86,
+                    "F": 64.51
+                  },
+                  63: {
+                    "M": 88.92,
+                    "F": 67.37
+                  },
+                  64: {
+                    "M": 93.77,
+                    "F": 69.5
+                  },
+                  65: {
+                    "M": 98.5,
+                    "F": 71.4
+                  },
+                  66: {
+                    "M": 102.67,
+                    "F": 75.29
+                  },
+                  67: {
+                    "M": 106.3,
+                    "F": 78.48
+                  },
+                  68: {
+                    "M": 109.7,
+                    "F": 81.43
+                  },
+                  69: {
+                    "M": 112.68,
+                    "F": 84.31
+                  },
+                  70: {
+                    "M": 115.32,
+                    "F": 86.95
+                  },
+                  71: {
+                    "M": 126.1,
+                    "F": 95.74
+                  },
+                  72: {
+                    "M": 136.66,
+                    "F": 104.11
+                  },
+                  73: {
+                    "M": 146.57,
+                    "F": 112.13
+                  },
+                  74: {
+                    "M": 155.81,
+                    "F": 119.5
+                  },
+                  75: {
+                    "M": 163.73,
+                    "F": 126.1
+                  },
+                  76: {
+                    "M": 191.76,
+                    "F": 144.79
+                  },
+                  77: {
+                    "M": 218.71,
+                    "F": 162.41
+                  },
+                  78: {
+                    "M": 244.56,
+                    "F": 178.9
+                  },
+                  79: {
+                    "M": 269.33,
+                    "F": 194.3
+                  },
+                  80: {
+                    "M": 293.09,
+                    "F": 207.94
+                  },
+                  81: {
+                    "M": 301.18,
+                    "F": 212.69
+                  },
+                  82: {
+                    "M": 309.81,
+                    "F": 217.82
+                  },
+                  83: {
+                    "M": 343.11,
+                    "F": 225
+                  },
+                  84: {
+                    "M": 359.63,
+                    "F": 230.61
+                  },
+                  85: {
+                    "M": 376.28,
+                    "F": 236.28
+                  }
+                }
+              },
+            ]
+          }
+        }
+      ]
+    },
 
   ]
 }

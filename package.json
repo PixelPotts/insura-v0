@@ -39,6 +39,7 @@
     "react-native-swipeout": "^2.3.6",
     "react-native-testfairy": "^2.15.1",
     "react-native-vector-icons": "^4.6.0",
+    "react-native-view-shot": "^2.4.0",
     "react-stripe-elements": "^2.0.1",
     "react-timer-mixin": "^0.13.4",
     "stringify-object": "^3.2.2",
