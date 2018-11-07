@@ -1,11 +1,10 @@
 /*
  * TODO:
- * - Fix PR
- * - Fix AIG
  * - Change NLUL -> TERM
  * -
- *
  */
+
+version = "0.1"
 
 import React, { Component } from 'react';
 import {
@@ -29,6 +28,7 @@ import {
   AsyncStorage,
 } from 'react-native';
 import CalculatorProduct from "./calculatorProduct"
+import Analytics from "appcenter-analytics"
 
 const dismissKeyboard = require('react-native/Libraries/Utilities/dismissKeyboard')
 import { MediaQuery } from "react-native-responsive-ui";
@@ -56,7 +56,7 @@ var TimerMixin = require('react-timer-mixin');
 const {width, height} = Device.dimensions.window;
 const PHONE = MediaQuerySelector.query({ orientation: "portrait", minHeight: 1 }, width, height)
 const IPHONE_X = MediaQuerySelector.query({ minHeight: 812, minWidth: 375 }, width, height);
-const resetTimer = 10 * 1000;
+const resetTimer = 1000 * 30;
 
 import Swipeout from 'react-native-swipeout';
 import codePush from "react-native-code-push";
@@ -311,7 +311,7 @@ class Insura extends Component {
 // console.log("installing update")
           break;
         case codePush.SyncStatus.UPDATE_INSTALLED:
-          alert("Update isntalled. Reset app to get the latest version.")
+          // alert("Update isntalled. Reset app to get the latest version.")
           break;
       }
     }
@@ -335,7 +335,6 @@ class Insura extends Component {
     // connectedRef.on("value", (snap) => {this.setState({internetConnected:snap.val()});
 
     this.authSubscription = firebase.auth().onAuthStateChanged((user)=>{
-
       this.setState({loading: false});
       if(firebase.auth().currentUser === null){
         this.setState({modalMaskVisible: true, registerVisible: true});
@@ -356,10 +355,7 @@ class Insura extends Component {
             // console.log(this.state.user)
           })
         })
-
-
       }
-
     });
     checkUserSeenInstrctions=()=>{
       if(this.state.user.hasSeenInstructions === undefined) {
@@ -1984,6 +1980,7 @@ class Insura extends Component {
         // console.log(this.state.user);
         this.setState({loginVisible: false});
         // console.log("SUCCESSFUL LOGIN");
+        Analytics.trackEvent("Successful login: "+email);
         storage.load({key:'user'}).then((res)=>{
           this.setState({user:res},()=>{
 // console.log("loaded user from storage:")
@@ -1994,6 +1991,7 @@ class Insura extends Component {
       .catch((error) => {
         const { code, message } = error;
         // console.log(message);
+        Analytics.trackEvent("FAILED login: "+email);
         this.setFormError(code,message);
       });
   }
@@ -2035,6 +2033,7 @@ class Insura extends Component {
 // console.log(token)
         if(token.error){
 // console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************")
+          Analytics.trackEvent("Stripe Token Failed: "+customer.error.message);
           this.setFormError('1009',token.error.message);
           card_error = true
         }
@@ -2043,6 +2042,7 @@ class Insura extends Component {
             if(customer.error){
 // console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************")
               if(!card_error) this.setFormError('1008',customer.error.message);
+              Analytics.trackEvent("Register Failed: "+customer.error.message);
               card_error = true
             }
 // console.log("customer:")
@@ -2053,6 +2053,7 @@ class Insura extends Component {
 // console.log(subscribe)
                 if(subscribe.error){
 // console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************")
+                  Analytics.trackEvent("Subscribe Failed: "+subscribe.error.message);
                   if(!card_error) this.setFormError('1008',subscribe.error.message);
                   card_error = true
                 }
@@ -2071,11 +2072,13 @@ class Insura extends Component {
                       u = firebase.auth().currentUser;
 // console.log(u)
                       this.setUser(u.uid,fullName,email,null);
+                      Analytics.trackEvent("Register SUCCESS: "+email);
                     })
                     .catch((error) => {
 // console.log("FIREBASE ERROR: COULD NOT CREATE AN ACCOUNT ****************")
 // console.log(error)
                       const { code, message } = error;
+                      Analytics.trackEvent("Subscribe Failed: "+message);
                       this.setFormError(code,message);
                     });
                 } else {
@@ -2084,12 +2087,14 @@ class Insura extends Component {
 
               })
               .catch(err=>{
+                Analytics.trackEvent("Subscribe Failed: "+email);
 // console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************");
 // console.log(err)
                 card_error = true
               })
           })
           .catch(err=>{
+            Analytics.trackEvent("Create Customer Failed: "+email);
 // console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************");
 // console.log(err)
             card_error = true
@@ -2098,6 +2103,7 @@ class Insura extends Component {
       .catch(err=>{
 // console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************");
 // console.log(err)
+        Analytics.trackEvent("Create Token Failed: "+error.message);
         this.setFormError('1009',error.message);
         card_error = true
       })
@@ -2494,6 +2500,8 @@ class Insura extends Component {
             </View>
             <Text style={[styles.menuEmail,{marginBottom:-10}]}>Logged in as:</Text>
             <Text style={styles.menuEmail}>{this.state.user.email !== null && this.state.user.email}</Text>
+            <Text style={[styles.menuEmail,{marginBottom:-10}]}>Version {version}</Text>
+
             {/*<TextInput value={firebase.auth().currentUser.uid} />*/}
           </ScrollView>
       </Animated.View>
@@ -3125,8 +3133,6 @@ class Insura extends Component {
 
 }
 
-
-
 // Code Push
 let codePushOptions = { installMode: codePush.InstallMode.IMMEDIATE };
 Insura = codePush(codePushOptions)(Insura);
@@ -3162,11 +3168,6 @@ Push.setListener({
     }
   }
 });
-
-
-
-
-
 
 
 /*
