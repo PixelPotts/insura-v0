@@ -138,6 +138,8 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-linear-gradient')
+    compile project(':react-native-iap')
     compile project(':react-native-view-shot')
     compile project(':react-native-code-push')
     compile project(':react-native-device-info')

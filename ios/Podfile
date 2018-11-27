@@ -2,6 +2,20 @@ platform :ios, '9.0'
 
 target 'AwesomeProject' do
   platform :ios, '9.0'
+
+    pod 'React', :path => '../node_modules/react-native', :subspecs => [
+                                                                'Core',
+                                                                'CxxBridge',
+                                                                'DevSupport',
+                                                                'RCTNetwork'
+                                                                ]
+
+    pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
+    pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
+    pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
+
+  pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
+
   pod 'PPBlinkID', '~> 2.15.0'
   pod 'Firebase/Core'
 
@@ -12,6 +26,9 @@ target 'AwesomeProject' do
   pod 'AppCenter/Analytics', '~> 1.9.0'
   pod 'AppCenter/Push', '~> 1.9.0'
 
-  pod 'RNViewShot', :path => '../node_modules/react-native-view-shot'
+  # pod 'RNViewShot', :path => '../node_modules/react-native-view-shot'
+
+  pod 'RNIap', :path => '../node_modules/react-native-iap'
+  # pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
 end

@@ -4,7 +4,7 @@
  * -
  */
 
-version = "0.1"
+version = "0.35"
 
 import React, { Component } from 'react';
 import {
@@ -46,7 +46,8 @@ import styles from './styles'
 import Storage from 'react-native-storage';
 import moment from 'moment';
 import Push from 'appcenter-push';
-import {captureScreen,releaseCapture} from "react-native-view-shot";
+// import {captureScreen,releaseCapture} from "react-native-view-shot";
+import LinearGradient from 'react-native-linear-gradient';
 
 const stringifyObject = require('stringify-object')
 const Providers = require('./providers').default.providers
@@ -88,7 +89,7 @@ global.storage = storage;
 // BLINK ID License Key
 import {BlinkID, MRTDKeys, USDLKeys, EUDLKeys, MYKADKeys} from 'blinkid-react-native';
 const BlinklicenseKey = Platform.select({
-  ios: 'JSW726FK-XHDH446J-KIFA77YF-UQHQBCHM-JSSPFKJH-2BHJP4CV-ZFJBOUJ7-AIJ7ISJ4',
+  ios: '67ZRQWEZ-VOKTBUVI-OEW3PUK7-6GINDEGW-QI37PNSN-W4UYM66C-KXEVFNZI-LWHEKJRS',
 });
 
 // STRIPE KEYS
@@ -112,7 +113,7 @@ const subscriptioons = {
 }
 
 const logos = {
-  0: require('./images/insura_logo.png'),
+  0: require('./images/insura_logo_bg.png'),
 
   // Logos
   1: require('./images/logo_moo.png'),
@@ -1112,6 +1113,14 @@ class Insura extends Component {
   }
   renderButtons = (buttons) => {
     LayoutAnimation.configureNext(CustomLayoutLinear);
+    let gradient = {
+      colors: {
+      'BIO': ['#368faa','#00789b','#00617d'],
+      'MED': ['#029876','#008962','#006e4f'],
+      'CON': ['#b05f98','#a64789','#85396f']
+      },
+      location: [0,0.90,1]
+    }
     return (
       <View>
         <MediaQuery minHeight={1} orientation={"portrait"}>
@@ -1119,13 +1128,13 @@ class Insura extends Component {
             <View style={{height:100,width:'100%',borderWidth:0,borderColor:'red'}}><Text> </Text></View>
             {buttons.map((button,k) => (
               <TouchableHighlight onPress={()=>{this.editButton(button, k)}} onLongPress={()=>{this.deleteButton(button,k)}} key={button.id} underlayColor={"transparent"}>
-                <View>
-                    <View style={[styles.infoButton_portrait,styles['infoButton_'+button.category]]}>
-                      <Text style={[styles.infoButtonTitle, styles['infoButtonTitle_'+button.category]]}>{button.title}</Text>
-                      <Text style={[styles.infoButtonSubtitle, styles['infoButtonSubtitle_'+button.category]]}>{button.subtitle}</Text>
-                      {this.renderButtonButtons(button)}
-                    </View>
-                </View>
+                {/*<View>*/}
+                  <LinearGradient colors={gradient.colors[button.category]} locations={gradient.location} style={[styles.infoButton_portrait,styles['infoButton_'+button.category]]}>
+                    <Text style={[styles.infoButtonTitle, styles['infoButtonTitle_'+button.category]]}>{button.title}</Text>
+                    <Text style={[styles.infoButtonSubtitle, styles['infoButtonSubtitle_'+button.category]]}>{button.subtitle}</Text>
+                    {this.renderButtonButtons(button)}
+                  </LinearGradient>
+                {/*</View>*/}
               </TouchableHighlight>
             ))}
             <View style={{height:220,width:'100%',borderWidth:0,borderColor:'red'}}><Text> </Text></View>
@@ -1136,11 +1145,11 @@ class Insura extends Component {
             {buttons.map((button,k) => (
               <TouchableHighlight onPress={()=>{this.editButton(button, k)}} onLongPress={()=>{this.deleteButton(button,k)}} key={button.id} underlayColor="transparent">
                 <View>
-                    <View style={[styles.infoButton,styles.infoButton_portrait,styles['infoButton_'+button.category]]}>
-                      <Text style={[styles.infoButtonTitle, styles['infoButtonTitle_'+button.category]]}>{button.title}</Text>
-                      <Text style={[styles.infoButtonSubtitle, styles['infoButtonSubtitle_'+button.category]]}>{button.subtitle}</Text>
-                      {this.renderButtonButtons(button)}
-                    </View>
+                  <LinearGradient colors={gradient.colors[button.category]} locations={gradient.location} style={[styles.infoButton,styles.infoButton_portrait,styles['infoButton_'+button.category]]}>
+                    <Text style={[styles.infoButtonTitle, styles['infoButtonTitle_'+button.category]]}>{button.title}</Text>
+                    <Text style={[styles.infoButtonSubtitle, styles['infoButtonSubtitle_'+button.category]]}>{button.subtitle}</Text>
+                    {this.renderButtonButtons(button)}
+                  </LinearGradient>
                 </View>
               </TouchableHighlight>
             ))}
@@ -2689,16 +2698,16 @@ class Insura extends Component {
             {this.state.masterInputNotice ? this.renderMasterInputNotice() : null}
             <View style={styles.questionLinksWrap}>
               <View style={styles.nextPrevButton}>
-                <Button title="&laquo;" color="#000" onPress={()=>this.prevQuestion()} style={{marginTop: -10}}>
-                  <Text>Prev</Text>
+                <Button title="&laquo;" color="#000" onPress={()=>this.prevQuestion()} style={{marginTop: -10,fontSize: 30}}>
+                  <Text style={styles.nextPrevButtonText}>Prev</Text>
                 </Button>
               </View>
               <View style={styles.nextPrevButton}>
                 <Button title="&raquo;" color="#000" onPress={()=>this.nextQuestion()}>
-                  <Text>Prev</Text>
+                  <Text style={styles.nextPrevButtonText}>Prev</Text>
                 </Button>
               </View>
-              <Text style={styles.questionPos}>{this.state.questionCounter} of {Questions.length}</Text>
+              <Text style={styles.questionPos}>{this.state.questionCounter}/{Questions.length}</Text>
               {this.renderIdScanButton()}
             </View>
             {this.state.answerButtonsVisible ? this.renderAnswerButtons(Questions[this.state.activeQuestionId].answerOptions||[]) : null}

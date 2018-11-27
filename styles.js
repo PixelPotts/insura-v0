@@ -13,7 +13,7 @@ export default StyleSheet.create({
     borderColor: '#FFF',
     borderWidth: 0,
     padding: 0,
-    backgroundColor: '#404861',
+    backgroundColor: '#0E1A26',
     zIndex: 2
   },
   paddingWrap: {
@@ -39,11 +39,11 @@ export default StyleSheet.create({
   backgroundLogo: {
     position: 'absolute',
     top: 0,
-    left: -100,
+    left: '20%',
     height: '100%',
-    width: '100%',
+    width: '60%',
     resizeMode: 'contain',
-    opacity: 0.05,
+    opacity: 1,
     zIndex: -1
   },
   logo: {
@@ -121,16 +121,18 @@ export default StyleSheet.create({
     // display: 'none'
   },
   masterInput: {
-    borderBottomColor: '#575e73',
+    borderBottomColor: '#121E29',
     borderBottomWidth: 1,
-    borderLeftColor: '#493E3E',
+    borderLeftColor: '#121E29',
     borderLeftWidth: 1,
     marginTop: 7,
+    marginLeft: -20,
+    marginRight: -20,
     height: 50,
-    paddingLeft: 10,
+    paddingLeft: 20,
     fontSize: 20,
     borderRadius: 2,
-    backgroundColor: '#495169',
+    backgroundColor: '#121E29',
     zIndex: 2,
     color: '#FFF',
   },
@@ -204,13 +206,13 @@ export default StyleSheet.create({
   },
 
   answerButton: {
-    backgroundColor: '#676F89',
+    backgroundColor: '#1C2937',
     marginRight: 0,
     height: 49,
     borderLeftWidth: 1,
-    borderLeftColor: '#6a7aa1',
+    borderLeftColor: '#273545',
     borderRightWidth: 1,
-    borderRightColor: '#485573',
+    borderRightColor: '#16202C',
     // borderRadius: 5,
     minWidth: 100,
     paddingLeft: 15,
@@ -264,10 +266,13 @@ export default StyleSheet.create({
     backgroundColor: '#ffb601',
     borderWidth: 1,
     height: 40,
-    width: 40,
+    width: 60,
     paddingTop: -3,
     marginRight: 14,
-    borderRadius: 5
+    borderRadius: 30
+  },
+  nextPrevButtonText: {
+    fontSize: 20
   },
   questionButton: {
     height: 50,
@@ -584,13 +589,13 @@ export default StyleSheet.create({
   infoButton: {
     minWidth: 170,
     paddingTop: 6,
-    paddingRight: 10,
+    paddingRight: 15,
     paddingBottom: 15,
-    paddingLeft: 10,
+    paddingLeft: 15,
     margin: 10,
     alignItems: 'center',
     // alignSelf: 'stretch',
-    borderRadius: 15,
+    borderRadius: 50,
     borderColor: '#373737',
     borderWidth: 0,
     shadowOffset:{  width: 2,  height: 2,  },
@@ -600,13 +605,13 @@ export default StyleSheet.create({
   infoButton_portrait: {
     minWidth: 170,
     paddingTop: 6,
-    paddingRight: 5,
+    paddingRight: 10,
     paddingBottom: 10,
-    paddingLeft: 10,
+    paddingLeft: 15,
     marginTop: 15,
     alignItems: 'center',
     // alignSelf: 'stretch',
-    borderRadius: 8,
+    borderRadius: 50,
     borderColor: '#373737',
     borderWidth: 0,
     shadowOffset:{  width: 2,  height: 2,  },
@@ -649,7 +654,8 @@ export default StyleSheet.create({
   buttonButtonText: {
     width: '100%',
     height: '100%',
-    textAlign: 'center'
+    textAlign: 'center',
+    color: '#E7E7E7'
   },
   buttonButtonTitle: {
     fontSize: 10,
@@ -661,7 +667,7 @@ export default StyleSheet.create({
 
   // BIO
   infoButton_BIO: {
-    backgroundColor: '#566b98',
+    // backgroundColor: '#317A9F',
   },
   infoButtonTitle_BIO: {
     fontSize: 14,
@@ -682,68 +688,68 @@ export default StyleSheet.create({
 
   // MEDICATION
   infoButton_MED: {
-    backgroundColor: '#FFF05B',
+    backgroundColor: '#2C8B67',
     borderColor: "#fde5d2"
   },
   infoButtonTitle_MED: {
     marginBottom: 2,
     marginTop: 10,
     fontWeight: "bold",
-    color: "#2d2c2c",
+    color: "#E7E7E7",
     fontSize: 20
   },
   infoButtonSubtitle_MED: {
     padding: 3,
     fontSize: 13,
-    color: "#2d2c2c"
+    color: "#E7E7E7"
   },
   infoButtonType_MED: {
     padding: 3,
-    color: "#b0ac3c"
+    color: "#2C8B67"
   },
 
 
   infoButton_MED_OLD: {
-    backgroundColor: '#FFF8B4',
+    backgroundColor: '#2C8B67',
     borderColor: "#111"
   },
   infoButtonTitle_MED_OLD: {
     marginBottom: 2,
     marginTop: 10,
     fontWeight: "bold",
-    color: "#2d2c2c",
+    color: "#E7E7E7",
     fontSize: 20
   },
   infoButtonSubtitle_MED_OLD: {
     padding: 3,
     fontSize: 13,
-    color: "#2d2c2c"
+    color: "#E7E7E7"
   },
   infoButtonType_MED_OLD: {
     padding: 3,
-    color: "#8d893a"
+    color: "#2C8B67"
   },
 
   // CONDITION
   infoButton_CON: {
-    backgroundColor: '#23ABCC',
+    backgroundColor: '#A0508D',
     borderColor: "#fde5d2"
   },
   infoButtonTitle_CON: {
     marginBottom: 2,
     marginTop: 10,
     fontWeight: "bold",
-    color: "#2d2c2c",
+    color: "#E7E7E7",
     fontSize: 20
   },
   infoButtonSubtitle_CON: {
     padding: 3,
     fontSize: 13,
-    color: "#2d2c2c"
+    color: "#E7E7E7"
   },
   infoButtonType_CON: {
     padding: 3,
-    color: "#C6B8FF"
+    color: "#A0508D"
   },
 
 
