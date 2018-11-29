@@ -9,26 +9,12 @@ export default class RenderCalculatorProduct extends Component {
     super(props);
     this.state = {}
   }
-  // props: provider, product, calculatorProduct
-
-
-  // console.log("=== renderCalculatorProduct() ===");
-  // console.log(provider);
-  // console.log(product);
-  // console.log(calculatorProduct);
-  // console.log(this.state.calculatorHiddenProducts);
-
   renderStarRating = (productId) => {
     const ratings = {200: 4, 201: 5, 202: 4, 203: 5, 2021: 3, 2031: 4, 2041: 3};
     const rating = productId in ratings ? ratings[productId] : _.random(2, 5);
     return (<Text style={{color: '#b0b10d'}}>{_.repeat('★', rating)}{"\n"} {rating} stars </Text>)
   }
-
   render() {
-    // Hide products from the hide array
-    // console.log('index check:')
-    // console.log(_.indexOf(this.state.calculatorHiddenProducts,calculatorProduct.id))
-
     if (_.indexOf(this.state.calculatorHiddenProducts, calculatorProduct.id) != -1) return false
     if (this.state.calculator[calculatorProduct.id].annual === 0) return false;
 
@@ -81,7 +67,6 @@ export default class RenderCalculatorProduct extends Component {
             </Text>
           </View>
           <View style={styles.calculatorProductPeriodCostWrap}>
-            {/*{renderStarRating(calculatorProduct.id)}*/}
           </View>
         </View>
       </View>

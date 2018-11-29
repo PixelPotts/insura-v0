@@ -1,14 +1,7 @@
-/*
- * TODO:
- * - Change NLUL -> TERM
- * -
- */
-
 version = "0.35"
 
 import React, { Component } from 'react';
 import {
-  AlertIOS,
   Button,
   Image,
   Platform,
@@ -16,21 +9,16 @@ import {
   StatusBar,
   Text,
   TextInput,
-  Picker,
   TouchableHighlight,
   TouchableOpacity,
   LayoutAnimation,
   Animated,
   Easing,
-  KeyboardAvoidingView,
   SafeAreaView,
   View,
   AsyncStorage,
 } from 'react-native';
-import CalculatorProduct from "./calculatorProduct"
 import Analytics from "appcenter-analytics"
-
-const dismissKeyboard = require('react-native/Libraries/Utilities/dismissKeyboard')
 import { MediaQuery } from "react-native-responsive-ui";
 import Device from "react-native-responsive-ui/lib/Device";
 import MediaQuerySelector from "react-native-responsive-ui/lib/MediaQuerySelector";
@@ -40,20 +28,17 @@ import Stripe from './stripe'
 import { LiteCreditCardInput } from "react-native-credit-card-input"
 import * as firebase from 'firebase'
 import RNPickerSelect from 'react-native-picker-select'
-import Hyperlink from 'react-native-hyperlink'
 import _ from 'lodash'
 import styles from './styles'
 import Storage from 'react-native-storage';
 import moment from 'moment';
 import Push from 'appcenter-push';
-// import {captureScreen,releaseCapture} from "react-native-view-shot";
 import LinearGradient from 'react-native-linear-gradient';
 
 const stringifyObject = require('stringify-object')
 const Providers = require('./providers').default.providers
 const DeclinedDrugs = require('./decline_drugs').default.medications
 const CoverageLimits = require('./coverage-limits').default
-var TimerMixin = require('react-timer-mixin');
 const {width, height} = Device.dimensions.window;
 const PHONE = MediaQuerySelector.query({ orientation: "portrait", minHeight: 1 }, width, height)
 const IPHONE_X = MediaQuerySelector.query({ minHeight: 812, minWidth: 375 }, width, height);
@@ -70,7 +55,6 @@ const TestFairy = require('react-native-testfairy');
 
 const Conditions = require('./decline_conditions').default.conditions;
 const Medications = require('./medications2').default.all;
-const Calculator = require('./calculatorData').default;
 let Questions = require('./questions').default.questions;
 
 const uniqueId = "CDf0zu-cs24N64lIw-t2OAxvvQA-PbXIxjhNv-Hdk7LxQ0k-pXK1pehOItc-bG79adAAPk"
@@ -87,7 +71,7 @@ var storage = new Storage({
 global.storage = storage;
 
 // BLINK ID License Key
-import {BlinkID, MRTDKeys, USDLKeys, EUDLKeys, MYKADKeys} from 'blinkid-react-native';
+import {BlinkID, USDLKeys} from 'blinkid-react-native';
 const BlinklicenseKey = Platform.select({
   ios: '67ZRQWEZ-VOKTBUVI-OEW3PUK7-6GINDEGW-QI37PNSN-W4UYM66C-KXEVFNZI-LWHEKJRS',
 });
@@ -98,7 +82,6 @@ const stripe_url = 'https://api.stripe.com/v1/';
 const stripe_test_key = "sk_test_4pJ7hGg9yxZxZCXibtxvzphX";
 const stripe_prod_key = "sk_live_c8NPJO5bonIsTxjtryiEwmrN";
 const STRIPE_API_KEY = stripe_mode === "PROD" ? stripe_prod_key : stripe_test_key;
-// console.log("Stripe API Key: "+STRIPE_API_KEY);
 const subscriptioons = {
   test: [
     {label:'Monthly – $40 – 1 Day Trial',           value:'plan_D2F9m6oyVdqmGD'},
@@ -114,7 +97,6 @@ const subscriptioons = {
 
 const logos = {
   0: require('./images/insura_logo_bg.png'),
-
   // Logos
   1: require('./images/logo_moo.png'),
   2: require('./images/logo_am.png'),
@@ -247,24 +229,18 @@ class Insura extends Component {
       formErrorNotice: false,
       registerVisible: false,
       registerFullName: null,
-      // registerFullName: 'Bryan Potts',
       registerEmail: null,
-      // registerEmail: 'pottspotts+25@gmail.com',
       registerPhone: null,
       registerPhoneResult: null,
       registerPassword: null,
-      // registerPassword: 'test123',
       registerConfirmPassword: null,
-      // registerConfirmPassword: 'test123',
       registerCC: {},
       registerCCStatuses: {},
       refisterCCValid: false,
       registerPlanID: stripe_mode === "PROD" ? subscriptioons.prod[0].value : subscriptioons.test[0].value,
       loginVisible: false,
       loginEmail: null,
-      // loginEmail: 'pottspotts+100@gmail.com',
       loginPassword: null,
-      // loginPassword: 'merchan1',
       resetPasswordVisible: false,
       menuVisible: false,
       menuPosition: new Animated.Value(-250),
@@ -298,21 +274,16 @@ class Insura extends Component {
     this.setCalculatorHiddenNoticesTemplate()
 
     var onSyncStatusChange = function(SyncStatus) {
-      // alert("onSyncStatusChange()")
       switch (SyncStatus) {
         case codePush.SyncStatus.CHECKING_FOR_UPDATE:
-// console.log("checking for update")
           break;
         case codePush.SyncStatus.AWAITING_USER_ACTION:
-// console.log("waiting for user action")
           break;
         case codePush.SyncStatus.DOWNLOADING_PACKAGE:
           break;
         case codePush.SyncStatus.INSTALLING_UPDATE:
-// console.log("installing update")
           break;
         case codePush.SyncStatus.UPDATE_INSTALLED:
-          // alert("Update isntalled. Reset app to get the latest version.")
           break;
       }
     }
@@ -331,10 +302,6 @@ class Insura extends Component {
     const firebaseApp = firebase.initializeApp(firebaseConfig);
     let db = firebase.database();
 
-    // Listen for internet connection status and update our state var
-    // var connectedRef = firebase.database().ref(".info/connected");
-    // connectedRef.on("value", (snap) => {this.setState({internetConnected:snap.val()});
-
     this.authSubscription = firebase.auth().onAuthStateChanged((user)=>{
       this.setState({loading: false});
       if(firebase.auth().currentUser === null){
@@ -352,8 +319,6 @@ class Insura extends Component {
         })
         firebase.database().ref('users/'+firebase.auth().currentUser.uid).on('value',(snapshot) => {
           this.setState({user: snapshot.val()},()=>{
-            // console.log("======= Updated the User object froom .on() read")
-            // console.log(this.state.user)
           })
         })
       }
@@ -377,44 +342,28 @@ class Insura extends Component {
   }
 
   log = (content) => {
-    // let str = stringifyObject(content) + " " + Math.floor(Date.now() / 1000) + "\n" + this.state.consoleContent;
     let str = stringifyObject(content) + "\n" + this.state.consoleContent;
     this.state.consoleContent = str.substr(0,4999);
-// console.log(str);
     this.setState({consoleContent: str});
   };
   setAnswerFromButton=(questionId)=>{
-    // console.log("setAnswerFromButt() =====================")
-    // console.log("questionId: "+questionId)
-    // console.log("buttons:")
-    // console.log(this.state.buttons)
     button = _.find(this.state.buttons,function(b){ return b.questionId==questionId})
-    // console.log("button found by ID:")
-    // console.log(button)
     if(typeof button != 'undefined') {
       if(button.field==='dob') button.subtitle = button.subtitle.replace(/\(.*\)/gm,'').trim(); // remove anything in ()s
       this.setState({questionAnswer: button.subtitle},()=>{
-        //console.log(this.state.questionAnswer)
       })
     }
   }
   nextQuestion = (skip=false) => {
-    // console.log("nextQuestion()")
     Q = Questions[this.state.activeQuestionId]
-    // require option select
     if(Q.submitByReturn===false && !skip && Q.fieldType=='buttons'){
-      // this.setState({masterInputNotice:'PRESS OPTION'});
-      // return false
     }
-    // LayoutAnimation.configureNext(CustomLayoutSpring);
     if(!this.validateAnswer()) return
-    // console.log("nextQuestion, answer is validated");
     if(this.state.questionCounter < Questions.length) this.setState({questionCounter: this.state.questionCounter + 1});
     if(!skip) this.processAnswer(Q.category,{answer:this.state.questionAnswer});
     if(Questions[this.state.activeQuestionId+1]) {
       this.setState({activeQuestionId: this.state.activeQuestionId+1});
       this.setState({activeButtonId: this.state.activeQuestionId+1});
-      // this.setAnswerFromButton(this.state.activeQuestionId+1)
     }
   };
   prevQuestion = () => {
@@ -426,10 +375,8 @@ class Insura extends Component {
     }
   };
   validateAnswer=()=>{
-    // console.log("running validateAnswer()")
     const Q = Questions[this.state.activeQuestionId]
     const a = this.state.questionAnswer.toString().trim()
-    //console.log(Q); console.log(a)
     if(!a.length) return 1
 
     stat = 1
@@ -469,7 +416,6 @@ class Insura extends Component {
           return 0
         }
     }
-    // console.log("stat:"); console.log(stat)
     if(stat==1) this.setState({masterInputNotice:null});
     return stat
   }
@@ -512,7 +458,6 @@ class Insura extends Component {
       details.tobacco = details.answer
     }
     if(Q.field==='mortgage'){
-      // clientInfo.calculatorFaceValue = details.answer;
       details.answer = '$' + number_format(details.answer);
     }
     if(Q.field==='mortgage-rate'){
@@ -559,7 +504,6 @@ class Insura extends Component {
       }
       if(_.trim(B.title)==='') return;
       this.setState(prevState => ({buttons: [...prevState.buttons, B]}),()=>{
-        // this.updateProviders(false,'new start button, line 561');
       });
     }
     if('answerOptions' in Q){
@@ -569,7 +513,6 @@ class Insura extends Component {
     clientInfo.modified = true;
     this.setState({clientInfo: clientInfo, calculatorHiddenNotices: _.cloneDeep(calculatorHiddenNoticesTemplate)}, ()=>{
       this.clearAnswer()
-      // this.updateProviders(false,'process answer, line 571');
       this.updateCalculatorValues(this.state.calculatorFaceValue,this.state.calculatorTerms,'end of process answer')
     });
 
@@ -578,41 +521,26 @@ class Insura extends Component {
     this.setState({questionAnswer: ''});
   };
   getAge = (dob) => {
-    // console.log("getAge():");
-    // console.log(dob);
     let today = new Date();
     let birthDate = new Date(dob);
-    // console.log("biorthdate:"); console.log(birthDate);
     let age = today.getFullYear() - birthDate.getFullYear();
-    // console.log("age:"); console.log(age);
     let m = today.getMonth() - birthDate.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
       age--;
     }
-    // console.log("returning age of: "+age);
     return age;
   };
   formatDOB = (str) => {
-    // console.log("=== FORMATTING DOB ====");
-    // console.log(str);
     if(_.trim(str)==='') return;
     let m = /([0-9]{1,2})[^0-9]*([0-9]{1,2})[^0-9]*([0-9]{2,4})/.exec(str);
-    // console.log(m)
     let dob = m[1]+"/"+m[2]+"/"+m[3];
-    // console.log(dob)
     return dob;
   };
   formateHeight = (height) => {
-// console.log("height");
-// console.log(height);
     if(!height) return;
     return parseInt(parseInt(height)/12) +"' "+height%12+"'' or "+ height+"''";
   };
   updateProviders = (restart=false,from='ERROR: NO LOCATION GIVEN TO UPDATEPROVIDERS') => {
-    // console.log("updateProviders called from: %s", from);
-    // console.log("0o0oo0oo0oo0 Updating providers 0o0o0o0o0o0");
-   // console.log(this.state.buttons);
-   // console.log(this.state.clientInfo);
     let self = this;
     const age = this.state.clientInfo.age;
     let Providers = {...this.state.Providers};
@@ -632,7 +560,6 @@ class Insura extends Component {
         _.each(product.calculator.products, (calcProduct)=>{
           notices[calcProduct.id] = {full:[],short:[]}
           if(calcProduct.guaranteedIssue) guaranteed = true;
-          // console.log("========= PRODUCT AGE CHECK ==========");
           table = calcProduct.table;
           // CALCULATE MONTHLY AND ANUUAL COST
           let anyTermSupported = false;
@@ -640,8 +567,6 @@ class Insura extends Component {
             case 'term--age--gender-smokerStatus':
               anyTermSupported = false;
               _.each(table,function(term){
-                // console.log("=== term ===");
-                // console.log(term);
                 if(typeof term[age] !== "undefined") anyTermSupported = true;
               })
               if(! anyTermSupported){
@@ -686,14 +611,7 @@ class Insura extends Component {
           // console.log("statuses: "); console.log(statuses);
           if(_.max(statuses)===3) statuses = [3];
 
-
-          // Check the build charts for height/weight requirements
-          //
-          // console.log("====== checking product height/weight reqs ======");
-          // console.log(product);
-
           if(client.height in Build.min && client.height in Build.max){
-            // console.log("=== checking height and weight ===");
             let minWeight = Build.min[client.height][product.nickname];
             let maxWeight = Build.max[client.height][product.nickname];
 
@@ -712,7 +630,6 @@ class Insura extends Component {
             // Accepted (probably guaranteed issue)
             } else if(maxWeight==='A' && minWeight==='A') {
               statuses.push(3);
-             // console.log("BMI Accepted (guaranteed).");
             }
 
             // If we're through the ICs and As, parse these as INTs and let's get this party started
@@ -746,33 +663,15 @@ class Insura extends Component {
           // If this is a medication...
           if(button.category==='MED'){
             let medication = _.find(Medications,function(o){return o.id == button.key});
-            // console.log("medication / button:")
-            // console.log(medication)
-            // console.log(button)
-
-            // console.log("checking drug list:")
-
             medication = _.filter(DeclinedDrugs, function (dd) {
-
-              // console.log("Filtering %s", dd.name)
-
-              // console.log("dd.name"+_.toLower(dd.name))
-              // console.log("medication.name: "+_.toLower(medication.name))
               const ret = _.includes(_.toLower(medication.name), _.toLower(dd.name))
-              // console.log(ret)
               return ret
             })[0]
 
 
             // If the drug exists in our databases
             if(medication){
-              // console.log("Medication is not undefined...")
-
-
               if(product.nickname in medication) {
-
-                // console.log("Name is in medication...")
-
                 let status = medication[product.nickname];
                 let arr = _.split(status, '-'); // split out encoded answers
                 status = arr[0]; // update medications to use the first segment regardless
@@ -788,7 +687,6 @@ class Insura extends Component {
                   case 'IC':
                     statuses.push(2);
                     notices[product.id].full.push(product.name + " needs to review: " + medication.name);
-                    // notices[product.id].short.push(medication.name+" needs review");
                     break;
                   case 'D':
                     statuses.push(1);
@@ -813,10 +711,6 @@ class Insura extends Component {
           if(button.category==='CON'){
             numConditions++
             let condition = _.find(Conditions,function(o){return o.id == button.key});
-            // console.log("checking condition...........");
-            // console.log(condition);
-            // console.log(product.nickname);
-
             if(condition !== undefined){
 
               let status = condition[product.nickname];
@@ -842,9 +736,6 @@ class Insura extends Component {
                   notices[product.id].short.push(product.name+" does not allow: "+condition.name);
                   break;
                 case 'Q':
-                  // console.log(" ========== Case Q ========== ");
-                  // console.log("button.buttonButtonId: " + button.buttonButtonId);
-                  // console.log("query: " + query);
                   if(button.buttonButtonId <= query){
                     statuses.push(1)
                     notices[product.id].full.push(product.name+" does not support: "+condition.name+" within "+query+" years.");
@@ -865,7 +756,6 @@ class Insura extends Component {
           }
           // Check to see if they have exceeded the number of allowed conditions and turn this to IC (unless its guaranteed)
           if(numConditions >= conditionsToFlag && product.guaranteed !== 1) {
-// console.log("Number of conditions: "+ numConditions);
             statuses.push(2)
             notices[product.id].full.push(product.name+" needs review if the client has 5 or more conditions.");
           }
@@ -882,15 +772,8 @@ class Insura extends Component {
             hiddenCalcProductIds.push(calcProduct.id)
           })
           this.setState({calculatorHiddenProducts: hiddenCalcProductIds},()=>{
-            // console.log("=== Updating hidden IDs for calculator sub-products")
-            // console.log(this.state.calculatorHiddenProducts)
           })
         }
-
-        // console.log("STATUS NUMBERS");
-        // console.log(product.name)
-        // console.log(statuses)
-
       })
     });
 
@@ -899,14 +782,9 @@ class Insura extends Component {
     const oldNotices = this.state.calculatorHiddenNotices
     this.setState({calculatorHiddenNotices: mergedNotices},()=>{
       this.getProviderLevelNotices()
-      // console.log("Merged and updated notices! (end of updateProviders()");
-      // console.log(oldNotices)
-      // console.log(notices)
-      // console.log(this.state.calculatorHiddenNotices);
     })
   };
   watchAnswer = (questionAnswer) => {
-// console.log("watchAnswer()")
     this.setState({questionAnswer: questionAnswer});
     if(questionAnswer===''){
       this.setState({autoSuggestVisible: false});
@@ -929,7 +807,6 @@ class Insura extends Component {
     let data = [];
     if(category==="MED"||category==="MED_OLD"){
       data = Medications;
-      // console.log(data)
     }
     else if(category==="CON") {
       data = Conditions
@@ -946,12 +823,6 @@ class Insura extends Component {
     // Use the first term to filter by all option names
     matches = _.filter(searchData, function(o) { return _.includes(_.toLower(o.name),_.toLower(terms[0])) }).slice(0,100);
     terms.shift();
-
-    // console.log("matches:")
-    // console.log(matches)
-    // console.log("terms:")
-    // console.log(terms)
-
     // filter matches by all remaining terms
     if(terms.length){
       let matchesTmp = [];
@@ -969,7 +840,6 @@ class Insura extends Component {
       matches = _.uniqBy(matches,'key'); // force unique (thanks Obama)
     } // order by shortest name
     if(category==="CON") matches = _.orderBy(matches,'mifts','desc'); // order by shortest name
-    // LayoutAnimation.configureNext(CustomLayoutSpring);
     this.setState({autoSuggestOptions: matches});
   };
   clickAnswer = (option) => {
@@ -979,10 +849,6 @@ class Insura extends Component {
     this.clearAnswer();
   };
   renderOptions = (buttons) => {
-    // console.log('=== renderOptions ===');
-    // console.log(this.state.autoSuggestOptions);
-    // console.log(this.state.questionAnswer);
-
     if(this.state.autoSuggestOptions.length > 0) {
       return (
         <View style={styles.autoSuggestWrap}>
@@ -1052,17 +918,12 @@ class Insura extends Component {
 
   };
   renderButtonButtons = (button) => {
-    // console.log("rendering renderButtonButtons()");
-    // console.log(button);
     let o = false; // medication or condition object, known lovingly here as "o"
     if(button.category === "MED" || button.category === "MED_OLD") {
       o = _.find(DeclinedDrugs, function (o) { return o.id === button.key });
-      // console.log("found medication:");
     } else if(button.category === "CON") {
       o = _.find(Conditions, function (o) { return o.id === button.key });
-      // console.log("found condition:");
     }
-    // console.log(o);
     let needMoreButtons = false; // there is a value like "Q-5" that prompts inner buttons
     for(var product in o){ // iterate over the status of all products for this med/con
       let arr = _.split(o[product],'-'); // split out encoded answers
@@ -1072,12 +933,8 @@ class Insura extends Component {
         needMoreButtons = true;
       }
     }
-
-    let buttons = '';
     let numbers = [1,2,3,4,5,10];
 
-    // console.log("needMoreButtons:");
-    // console.log(needMoreButtons);
     function activeBgColor(n,active){ return n == active ? '#434343' : 'white' }
     function activeColor(n,active){ return n == active ? 'white' : 'black' }
     if(needMoreButtons)
@@ -1100,9 +957,6 @@ class Insura extends Component {
       )
   }
   clickedButtonButton = (n, activeButton) => {
-    // console.log('clicked button button');
-    // console.log(n);
-    // console.log(activeButton);
     let buttons = this.state.buttons;
     let button = _.find(this.state.buttons, function (b) {
       return b.id === activeButton.id
@@ -1161,13 +1015,7 @@ class Insura extends Component {
   renderProviderStatus = (Providers) => {
     return (
       <TouchableHighlight onPress={()=>{
-        // console.log("::: DEEP CLEAN? :::")
-        // console.log(_.cloneDeep(calculatorHiddenNoticesTemplate))
         this.setState({calculatorHiddenNotices: _.cloneDeep(calculatorHiddenNoticesTemplate)},()=>{
-          // console.log("values should be cleared here...")
-          // console.log(this.state.calculatorHiddenNotices)
-          // console.log("notices template that should have been cleared...")
-          // console.log(calculatorHiddenNoticesTemplate)
           this.setState({
             calculatorVisible: true,
             calculatorProduct: 1,
@@ -1208,7 +1056,6 @@ class Insura extends Component {
     )
   };
   hideCalculator = () => {
-    // console.log('test')
     this.setState({calculatorVisible: false});
   };
   check = (o,k) => {
@@ -1222,11 +1069,6 @@ class Insura extends Component {
     notice = {full:'',short:''}
     table = product.table;
 
-   // console.log("=-=-=-=-=-= PRODUCT TABLE =-=-=-=-=-=-=");
-   // console.log(table);
-   //  // CALCULATE SHOW/HIDE STATUS
-   // console.log(product.tableType);
-
     // CALCULATE MONTHLY AND ANUUAL COST
     switch (product.tableType) {
       case 'term--age--gender-smokerStatus':
@@ -1239,9 +1081,6 @@ class Insura extends Component {
           return cost;
         }
         rate = table[term][age][gender+"-"+smokerStatus];
-       // console.log(" RATE: : %f", rate)
-       // console.log(rate)
-       // console.log(" gender: : %s", gender)
         break;
       case 'age--term-smokerStatus':
         if(!(age in table)){
@@ -1253,10 +1092,6 @@ class Insura extends Component {
           return cost;
         }
         if(table[age][term+"-"+smokerStatus] === undefined) return cost;
-        // console.log("=== HMS Plust cost check ===")
-        // console.log("age:"); console.log(age)
-        // console.log("term:"); console.log(term)
-        // console.log("smokerStatus:"); console.log(smokerStatus)
         rate = table[age][term+"-"+smokerStatus];
         break;
       case 'age--gender-smokerStatus':
@@ -1284,9 +1119,7 @@ class Insura extends Component {
     // Check for riders and add to the rate
     if('rider' in product){
       if(!(age in product.rider)){
-        // console.log("AGE not in product.rider")
         cost.notice = "No rate for age '"+age+"' found.";
-       // console.log(cost.notice);
         return cost;
       } else {
         rate += product.rider[age]
@@ -1303,20 +1136,10 @@ class Insura extends Component {
     if(product.id===403)
       cost.annual = (rate * (_.toInteger(faceValue) / product.multiplier) + product.fee) * 12;
     cost.month = cost.annual * product.monthFactor;
-    // console.log("Cost output: ")
-    // console.log(cost)
     return cost;
   }
   updateCalculatorValues = (updatedFaceValue, updatedTerms, from='ERROR: NO LOCATION GIVEN FOR UPDATED CALCULATOR VALUES') => {
-    // console.log("updateCalculatorValues: called from: %s",from)
     getProductCostAvailability = this.getProductCostAvailability;
-    // console.log("state:");
-    // console.log(this.state);
-    // console.log("0o0o0o0o0o start updateCalculatorValues o0o0o0o0o0o0");
-    // console.log("updatedFaceValue: ");
-    // console.log(updatedFaceValue);
-    // console.log("updatedTerms: ");
-    // console.log(updatedTerms);
 
     updatedFaceValue = updatedFaceValue === null ? this.state.calculatorFaceValue : updatedFaceValue;
     updatedTerms = updatedTerms === null ? this.state.calculatorTerms : updatedTerms;
@@ -1333,60 +1156,14 @@ class Insura extends Component {
     const gender = this.state.clientInfo.gender
     age = this.state.clientInfo.age;
 
-    // console.log("smoker status");
-    // console.log(smokerStatus);
-
-    //
-    // console.log("PROPS UPDATED:");
-    // console.log("updatedFaceValue: ");
-    // console.log(updatedFaceValue);
-    // console.log("updatedTerms: ");
-    // console.log(updatedTerms);
-
     calc = this.state.calculator;
     this.setState({calculatorHiddenProducts: []});
     notices = this.state.calculatorHiddenNotices
     hiddenIds = []
 
     _.each(Providers,function(provider){
-      // console.log("==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-== P R O V I D E R ==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==");
-      // console.log(provider);
       _.each(provider.products,function(product){
-        // console.log("==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-== P R O D U C T ==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-== ");
-        // console.log(product);
         _.each(product.calculator.products,function(calculatorProduct){
-          // notices[calculatorProduct.id] = {full:[],short:[]}
-          // console.log(calculatorProduct);
-
-          // console.log("==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-== C A L C - P R O D U C T ==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-== ");
-
-          // console.log("product.calculator.type: ");
-          // console.log(product.calculator.type);
-          // console.log("calculatorProduct");
-          // console.log(calculatorProduct);
-          // console.log(" === COST VARIABLES ===");
-          // console.log("updatedTerms");
-          // console.log(updatedTerms);
-          // console.log("updatedFaceValue");
-          // console.log(updatedFaceValue);
-          // console.log("age")
-          // console.log(age);
-          // console.log("gender");
-          // console.log(gender);
-          // console.log("calculatorProduct.multiplier");
-          // console.log(calculatorProduct.multiplier);
-          // console.log("multiplier applied:");
-          // console.log(_.toInteger(updatedFaceValue) / calculatorProduct.multiplier);
-          // console.log("rate table");
-          // console.log(calculatorProduct.table);
-
-          // Check rate tables
-          // console.log(" * * * * * * * * cost.annual == 0")
-          // console.log("notices table:")
-          // console.log(notices)
-          // console.log("product ID")
-          // console.log(calculatorProduct.id)
-
           cost = getProductCostAvailability(calculatorProduct,age,gender,smokerStatus,updatedFaceValue,updatedTerms);
           calc[calculatorProduct.id] = cost;
           if(cost.annual == 0) {
@@ -1394,69 +1171,33 @@ class Insura extends Component {
             notices[calculatorProduct.id].full.push(calculatorProduct.name+" is showing a cost notice: "+cost.notice)
             if(notices[calculatorProduct.id].short[0]==="" || notices[calculatorProduct.id].short.length < 1)
               notices[calculatorProduct.id].short.push(cost.notice)
-            // console.log("cost variable:")
-            // console.log(cost)
             hiddenIds.push(calculatorProduct.id);
           }
 
           // Check the coverage limits
-          // console.log("product nickname: "+product.nickname);
           face = parseInt(updatedFaceValue/1000);
-          // console.log("faceValue: "+face);
-          // console.log("coverage Limits");
-          // console.log(CoverageLimits[product.nickname]);
           const cMin = parseInt(CoverageLimits[product.nickname][1])
           const cMax = parseInt(CoverageLimits[product.nickname][2])
           ages = CoverageLimits[product.nickname]
           delete ages.min, delete ages.max
-          // console.log("cMin: "+cMin);
-          // console.log("cMax: "+cMax);
-          // console.log("ages: ");
-          // console.log(ages);
-
           if(cMin != null && cMax != null){
             if(face<cMin){
               hiddenIds.push(calculatorProduct.id)
               notices[calculatorProduct.id].full.push(calculatorProduct.name+" does not support coverage of less than "+cMin+"k")
               notices[calculatorProduct.id].short.push("Face under "+cMin+"k unavailable.")
-              // console.log(calculatorProduct.name+" does not support coverage of less than "+cMin+"k")
             }
             if(face>cMax){
               hiddenIds.push(calculatorProduct.id)
               notices[calculatorProduct.id].full.push(calculatorProduct.name+" does not support coverage of more than "+cMax+"k")
               notices[calculatorProduct.id].short.push("Face over "+cMax+"k unavailable.")
-              // console.log(calculatorProduct.name+" does not support coverage of more than "+cMax+"k")
             }
           }
-          //
-          // console.log("=== notices  ===");
-          // console.log(notices)
-
         })
       })
     })
 
-    // console.log("=== Hidden Calculator Products ===");
-    // console.log(_.sortedUniq(hiddenIds));
-    //
-    // console.log("=== Hidden Calculator Notices ===");
-    // console.log(notices);
-    //
-    // console.log("=== CALCULATOR OUTPUT ===");
-    // console.log(calc);
-
     this.setState({calculator: calc});
     this.setState({calculatorHiddenProducts: _.sortedUniq(hiddenIds)});
-
-    // // console.log("=-=-=-=-= UPDATE PROVIDERS Notices =-=-=-=-=")
-    // mergedNotices = _.merge(this.state.calculatorHiddenNotices,notices)
-    // const oldNotices = this.state.calculatorHiddenNotices
-    // this.setState({calculatorHiddenNotices: mergedNotices},()=>{
-    //   console.log("Merged and updated notices! (end of updateCalculatorValues()");
-    //   console.log(oldNotices)
-    //   console.log(notices)
-    //   console.log(this.state.calculatorHiddenNotices);
-    // })
 
     this.updateProviders(false,'end of updateCalculatorValues');
     return 1
@@ -1468,28 +1209,22 @@ class Insura extends Component {
       _.each(provider.products, (product) => {
         _.each(product.calculator.products, (calculatorProduct) => {
           this.state.calculatorHiddenNotices[product.id].short.map((notice)=>{
-            // console.log("PUSHED NOTICE: '%s' FROM %s to %s",notice,product.id,calculatorProduct.id)
               copiedNotices[calculatorProduct.id].short.push(notice)
           })
         })
       })
     })
     this.setState({calculatorHiddenNotices: copiedNotices},()=>{
-      // console.log("Pushed all notices and updated calculatorHiddenNotices:")
-      // console.log(this.state.calculatorHiddenNotices)
       this.removeDuplicateNotices()
     })
   }
   removeDuplicateNotices = () => {
-    // console.log("removing duplicate notices...")
     notices = this.state.calculatorHiddenNotices;
     _.forEach(this.state.calculatorHiddenNotices,(product,k)=>{
       notices[k].full = _.uniq(product.full)
       notices[k].short = _.uniq(product.short)
     })
     this.setState({calculatorHiddenNotices: notices},()=>{
-      // console.log("duplicates removed")
-      // console.log(this.state.calculatorHiddenNotices)
     })
   }
 
@@ -1498,19 +1233,9 @@ class Insura extends Component {
     let available = true
     if(
       this.state.calculatorHiddenNotices[calculatorProduct.id].short.length !== 0
-      // || this.state.calculatorHiddenNotices[calculatorProduct.id].full.length !== 0
-      // && _.indexOf(this.state.calculatorHiddenProducts[calculatorProduct.id]) === -1
     ) available = false
 
     if(this.state.calculator[calculatorProduct.id].annual===0) available = false
-
-    // console.log(" *** ======== %s (%s) ======== ***", calculatorProduct.name, calculatorProduct.id);
-    // console.log("notices:")
-    // console.log(this.state.calculatorHiddenNotices[calculatorProduct.id])
-    // console.log("this.state.calculator[calculatorProduct.id]:")
-    // console.log(this.state.calculator[calculatorProduct.id])
-    // console.log("available:")
-    // console.log(available)
 
     if(PHONE)
       return(
@@ -1581,8 +1306,6 @@ class Insura extends Component {
             </View>
             <View>
               {this.state.calculatorHiddenNotices[calculatorProduct.id].short.map((notice,k)=>{
-                // console.log("NOTICE:");
-                // console.log(notice);
                 return (<Text key={k}>{notice}</Text>)
               })}
             </View>
@@ -1592,9 +1315,6 @@ class Insura extends Component {
     )
   }
   renderCalculator = () => {
-    // console.log(" === RENDER CALCULATOR ============================================================");
-    // console.log(this.state.clientInfo)
-
     //let Providers = Calculator.providers;
     this.inputRefs = {};
     self = this;
@@ -1609,7 +1329,6 @@ class Insura extends Component {
              <Text style={{fontSize:16}}><Text style={{fontWeight:'900'}}>&lsaquo;</Text> Questions</Text>
            </TouchableHighlight>
          </View>
-         {/*<Text style={{fontSize: 20}}>Coverage Options for {this.state.clientInfo.firstName}</Text>*/}
          <ScrollView horizontal={true} style={styles.calculatorHeader}>
 
            {/* FACE VALUE SELECT */}
@@ -1741,35 +1460,12 @@ class Insura extends Component {
 
          </ScrollView>
 
-         {/*<View style={styles.calculatorProductsCounter}>*/}
-           {/*<Text>*/}
-             {/*Showing*/}
-             {/*<Text style={styles.calculatorProductsCounterHighlight}> {Object.keys(this.state.calculator).length - this.state.calculatorHiddenProducts.length} </Text>*/}
-             {/*eligible of*/}
-             {/*<Text style={styles.calculatorProductsCounterHighlight}> {Object.keys(this.state.calculator).length} </Text>*/}
-             {/*products:*/}
-           {/*</Text>*/}
-         {/*</View>*/}
-
          <ScrollView style={styles.calculatorContentScrollView}>
-
-           {/*{*/}
-             {/*console.log("this.state.calculatorHiddenNotices: ")*/}
-           {/*}*/}
-
-           {/*{*/}
-             {/*console.log(this.state.calculatorHiddenNotices)*/}
-           {/*}*/}
-
-           {/*{_.forEach(this.state.calculatorHiddenNotices,(o,k)=>{*/}
-             {/*<CalculatorProduct/>*/}
-           {/*})}*/}
 
            {Providers.map(function(provider){
              provider.products.map(function(product){
                product.calculator.products.map(function(calculatorProduct){
                  productsRender.push(renderCalculatorProduct(provider,product,calculatorProduct));
-                 // console.log("--- Rendering ---");
                })
              })
            })}
@@ -1777,7 +1473,6 @@ class Insura extends Component {
 
            <Text>&nbsp;</Text>
         </ScrollView>
-         {/*{this.renderProviderStatus(Providers)}*/}
       </View>
     )
   };
@@ -1813,13 +1508,9 @@ class Insura extends Component {
     )
   }
   renderInstructions = () => {
-    // if(this.state.modalMaskVisible !== true) this.setState({modalMaskVisible: true})
     return(
       <SafeAreaView style={styles.modalWrap}>
         <View style={styles.modalInstructions}>
-          {/*<TouchableHighlight onPress={()=>{this.setState({instructionsVisible: false})}} style={{width: 100}}>*/}
-            {/*<Text style={{fontSize:16,marginBottom:13}}>X</Text>*/}
-          {/*</TouchableHighlight>*/}
           <View style={styles.modalInstructionsWrap}>
             <Image source={logos[100]} style={styles.instructionsImage}/>
           </View>
@@ -1861,9 +1552,7 @@ class Insura extends Component {
         clientInfo: client.clientInfo
       },()=>{
         this.updateCalculatorValues(this.state.calculatorFaceValue, this.state.calculatorTerms,'loadFromClientHistory');
-       // console.log(this.state)
       })
-     // console.log("inside save and clear callback")
       client.buttons.forEach((button,k)=>{
         if(button.category=='BIO'){
 
@@ -1872,16 +1561,11 @@ class Insura extends Component {
     })
   }
   renderClientHistory = () => {
-    // this.getClientHistory()
-    // console.log("renderClientHistory(): this.state.clientHistory: ")
-    // console.log(this.state.clientHistory)
 
     deleteClientFromHistory = (clientId) => {
-// console.log("deleting: "+clientId)
       res = firebase.database().ref('clients/'+this.state.user.uid+'/'+clientId)
         .set(null)
         .then(res=>{
-// console.log(res)
           this.setState({clientHistory: _.filter(this.state.clientHistory, function(o){return o.clientId !== clientId})})
         })
         .catch(err=>console.log(err))
@@ -1952,8 +1636,6 @@ class Insura extends Component {
   }
 
   renderLoginHeader = () => {
-    // console.log("renderLoginHeader()")
-    // console.log(this.state)
     return (
       <TouchableHighlight style={styles.headerTopRight} underlayColor="transparent" onPress={()=>{this.toggleMenu()}}>
         <View>
@@ -1968,7 +1650,6 @@ class Insura extends Component {
 
   setFormError = (code,message) => {
     this.setState({formError: code, formErrorNotice: message},
-      // console.log(this.state.formErrorNotice)
     );
   }
   clearFormError = () => {
@@ -1980,33 +1661,24 @@ class Insura extends Component {
     this.setState({formErrorNotice: "Processing. Please wait..."});
     const email = this.state.loginEmail;
     const password = this.state.loginPassword;
-    // const phone = this.state.registerPhone;
     if(email==''||email==null) {this.setFormError(1,'Please enter your email.'); return false}
     if(password==''||password==null) {this.setFormError(1,'Please enter your password.'); return false}
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => {
-        // this.setState({user: user},console.log(this.state.user));
-        // console.log(this.state.user);
         this.setState({loginVisible: false});
-        // console.log("SUCCESSFUL LOGIN");
         Analytics.trackEvent("Successful login: "+email);
         storage.load({key:'user'}).then((res)=>{
           this.setState({user:res},()=>{
-// console.log("loaded user from storage:")
-// console.log(this.state.user);
           })
         })
       })
       .catch((error) => {
         const { code, message } = error;
-        // console.log(message);
         Analytics.trackEvent("FAILED login: "+email);
         this.setFormError(code,message);
       });
   }
   charge=()=>{
-    // console.log("running charge()")
-    // console.log(this.state.registerCC)
     cc = this.state.registerCC.values
     m = cc.expiry.split('/')
   }
@@ -2034,14 +1706,9 @@ class Insura extends Component {
     const client = new StripeToken(STRIPE_API_KEY)
     let card_error = false
     date = cc.values.expiry.split('/')
-// console.log(cc)
-// console.log(cc.values.number)
     client.createToken({number:cc.values.number, exp_month: date[0], exp_year: date[1], cvc: cc.values.cvc})
       .then(token=>{
-// console.log("token:")
-// console.log(token)
         if(token.error){
-// console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************")
           Analytics.trackEvent("Stripe Token Failed: "+customer.error.message);
           this.setFormError('1009',token.error.message);
           card_error = true
@@ -2049,19 +1716,13 @@ class Insura extends Component {
         const customer = Stripe.createCustomer(token.id, email)
           .then(customer=>{
             if(customer.error){
-// console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************")
               if(!card_error) this.setFormError('1008',customer.error.message);
               Analytics.trackEvent("Register Failed: "+customer.error.message);
               card_error = true
             }
-// console.log("customer:")
-// console.log(customer)
             Stripe.subscribe(customer.id,planId)
               .then(subscribe=>{
-// console.log("subscription:")
-// console.log(subscribe)
                 if(subscribe.error){
-// console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************")
                   Analytics.trackEvent("Subscribe Failed: "+subscribe.error.message);
                   if(!card_error) this.setFormError('1008',subscribe.error.message);
                   card_error = true
@@ -2069,49 +1730,35 @@ class Insura extends Component {
                 if(!card_error){
                   firebase.auth().createUserWithEmailAndPassword(email, password)
                     .then((data) => {
-// console.log("created AUTH user")
-// console.log(data);
                       this.setState({user: data.user},()=>{
-// console.log(this.state.user)
                         storage.save({key:'user', data: data.user.uid})
                       })
                       let verifyEmail = firebase.auth().currentUser.sendEmailVerification()
                       this.setState({registerVisible: false},()=>this.setState({loginVisible: true}))
-// console.log("creating user with email and password...")
                       u = firebase.auth().currentUser;
-// console.log(u)
                       this.setUser(u.uid,fullName,email,null);
                       Analytics.trackEvent("Register SUCCESS: "+email);
                     })
                     .catch((error) => {
-// console.log("FIREBASE ERROR: COULD NOT CREATE AN ACCOUNT ****************")
-// console.log(error)
                       const { code, message } = error;
                       Analytics.trackEvent("Subscribe Failed: "+message);
                       this.setFormError(code,message);
                     });
                 } else {
-// console.log("========= CARD ERROR ===========")
                 }
 
               })
               .catch(err=>{
                 Analytics.trackEvent("Subscribe Failed: "+email);
-// console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************");
-// console.log(err)
                 card_error = true
               })
           })
           .catch(err=>{
             Analytics.trackEvent("Create Customer Failed: "+email);
-// console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************");
-// console.log(err)
             card_error = true
           })
       })
       .catch(err=>{
-// console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************");
-// console.log(err)
         Analytics.trackEvent("Create Token Failed: "+error.message);
         this.setFormError('1009',error.message);
         card_error = true
@@ -2120,7 +1767,6 @@ class Insura extends Component {
   }
   registerPhone = () => {
     firebase.auth().signInWithPhoneNumber(phone).then((res) => {
-      // console.log("phone confirmation result object:"); console.log(res);
       this.setState({registerPhoneResult: res});
     }).catch((err)=>{
       this.setFormError(err.code, err.message);
@@ -2130,16 +1776,12 @@ class Insura extends Component {
     return(
       <SafeAreaView style={styles.modalWrap}>
         <View style={styles.modal}>
-          {/*<TouchableHighlight onPress={()=>{this.setState({registerVisible: false})}}>*/}
-            {/*<Text style={{fontSize:16,marginBottom:13}}><Text style={{fontWeight:'900'}}>&nbsp;</Text> &nbsp;</Text>*/}
-          {/*</TouchableHighlight>*/}
           <View style={{position: 'absolute',right: 15, top: 15}}>
             <TouchableHighlight onPress={()=>{this.setState({registerVisible: false, loginVisible: true})}}>
               <Text style={{fontSize:16,marginBottom:13}}>Sign In <Text style={{fontWeight:'900'}}>&rsaquo;</Text></Text>
             </TouchableHighlight>
           </View>
           <Text style={styles.modalHeading}>Register New Account</Text>
-          {/*<Text style={{marginBottom: 10}}>Please enter your account info:</Text>*/}
           <TextInput
             ref="registerFullName"
             placeholder="First & Last Name"
@@ -2188,8 +1830,6 @@ class Insura extends Component {
           />
           <LiteCreditCardInput onChange={(cc)=>{this.setState({registerCC: cc})}} />
           <Text style={{marginTop: 10}}>Please provide a credit or debit card for the plan.</Text>
-          {/*<Text style={{marginBottom: 10}}>The first payment is charged after your trial.</Text>*/}
-
           <Text style={styles.formErrorMessage}>
             {this.state.formErrorNotice && this.state.formErrorNotice}
           </Text>
@@ -2198,7 +1838,6 @@ class Insura extends Component {
               title="Submit"
               onPress={()=>{
                 this.onRegister();
-                // console.log(this.state.registerErr)
               }}
             />
 
@@ -2211,11 +1850,6 @@ class Insura extends Component {
     return(
       <SafeAreaView style={styles.modalWrap}>
         <View style={styles.modal}>
-          {/*<View style={{position: 'absolute',right: 15, top: 15}}>*/}
-            {/*<TouchableHighlight onPress={()=>{this.setState({registerVisible: true, loginVisible: false})}}>*/}
-              {/*<Text style={{fontSize:16,marginBottom:13}}>Register <Text style={{fontWeight:'900'}}>&rsaquo;</Text></Text>*/}
-            {/*</TouchableHighlight>*/}
-          {/*</View>*/}
           <TouchableHighlight onPress={()=>{this.setState({registerVisible: true, loginVisible: false})}} style={{width: 100}}>
             <Text style={{fontSize:16,marginBottom:13}}><Text style={{fontWeight:'900'}}>&lsaquo;</Text> Register</Text>
           </TouchableHighlight>
@@ -2229,13 +1863,6 @@ class Insura extends Component {
             value={this.state.loginEmail}
             autoCapitalize='none'
           />
-          {/*<TextInput*/}
-            {/*ref="registerPhone"*/}
-            {/*placeholder="Phone Number"*/}
-            {/*style={styles.modalInput}*/}
-            {/*onChangeText={(v)=>this.setState({registerPhone: v})}*/}
-            {/*value={this.state.registerPhone}*/}
-          {/*/>*/}
           <TextInput
             ref="loginPassword"
             placeholder="Password"
@@ -2253,12 +1880,10 @@ class Insura extends Component {
             <Button
               title="Sign In"
               onPress={()=>{this.onLogin();console.log(this.state.registerErr)}}
-              // disabled={(this.state.formError !== false)}
             />
             <Button
               title="Reset Password"
               onPress={()=>{this.setState({loginVisible: false, resetPasswordVisible: true})}}
-              // disabled={(this.state.formError !== false)}
             />
 
           </View>
@@ -2302,7 +1927,6 @@ class Insura extends Component {
             <Button
               title="Request Reset Email"
               onPress={()=>{this.onResetPassword()}}
-              // disabled={(this.state.formError !== false)}
             />
           </View>
         </View>
@@ -2310,7 +1934,6 @@ class Insura extends Component {
     );
   }
   simulateIDScan =()=> {
-    // this is test data
     let fields = {
       'Full Address': '1808 E JAMAICA AVE, MESA, AZ, 852046833',
       'Eye Color': 'BLU',
@@ -2416,8 +2039,6 @@ class Insura extends Component {
     clientInfo.dob = m[1]+"/"+m[2]+"/"+m[3];
     clientInfo.gender = fields[USDLKeys.Sex] === '1' ? 'M' : 'F';
     clientInfo.height = parseInt(fields[USDLKeys.HeightIn])
-// console.log("HEIGHT: ")
-// console.log(clientInfo.height)
     clientInfo.weight = fields[USDLKeys.WeightPounds];
 
     this.setState({questionAnswer: clientInfo.name},()=>{
@@ -2436,15 +2057,6 @@ class Insura extends Component {
         })
       })
     })
-
-    // clientInfo.height = Math.floor(parseInt(fields[USDLKeys.HeightIn]) / 12) +"-"+ parseInt(fields[USDLKeys.HeightIn]) %12;
-    // clientInfo.height = Math.floor(parseInt(fields[USDLKeys.HeightIn]));
-    // clientInfo.street1 = fields[USDLKeys.AddressStreet];
-    // clientInfo.city = fields[USDLKeys.AddressCity];
-    // clientInfo.state = fields[USDLKeys.AddressJurisdictionCode];
-    // clientInfo.zip = fields[USDLKeys.AddressPostalCode];
-    // clientInfo.race = fields[USDLKeys.RaceEthnicity];
-    // clientInfo.ssn = fields[USDLKeys.SocialSecurityNumber];
     this.setState({clientInfo},()=>{this.updateButtonsFromScan(clientInfo)});
     alert("ID Scan Simulated...")
   }
@@ -2466,13 +2078,8 @@ class Insura extends Component {
     self=this
     var menuItems = [
       {title: 'Save & New Client',callback: this.pressMenuSaveNewClient },
-      // {title: 'Scan Driver\'s License',callback: this.pressMenuScanLicense },
       {title: 'Client History ('+this.state.clientHistory.length+')',callback: this.pressMenuClientHistory },
-      // {title: 'Export PDF',callback: this.pressMenuExportPDF },
       {title: 'Support',callback: this.pressMenuSupport },
-      // {title: 'Debug Log',callback: this.pressMenuDebugLog },
-      // {title: 'Simulate ID Scan',callback: this.pressMenuSimulateIDScan },
-      // {title: 'Simulate App Crash',callback: this.pressMenuCrash },
       {title: 'Log Out',callback: this.pressMenuLogOut },
     ]
     return (
@@ -2510,15 +2117,11 @@ class Insura extends Component {
             <Text style={[styles.menuEmail,{marginBottom:-10}]}>Logged in as:</Text>
             <Text style={styles.menuEmail}>{this.state.user.email !== null && this.state.user.email}</Text>
             <Text style={[styles.menuEmail,{marginBottom:-10}]}>Version {version}</Text>
-
-            {/*<TextInput value={firebase.auth().currentUser.uid} />*/}
           </ScrollView>
       </Animated.View>
     )
   }
   sendSupportMessage = () => {
-    // console.log("sendSupportMessage Called =======")
-    // console.log(this.state.supportInput)
     this.saveSupportMessage(this.state.supportInput)
   }
   closeSupport = () => {
@@ -2557,20 +2160,10 @@ class Insura extends Component {
             <Text>Loading...</Text>
           )}
         </AutoScroll>
-
-        {/*<ScrollView style={styles.supportMessagesWrap}>*/}
-          {/*<Text style={styles.messageBubble}>TEST POST</Text>*/}
-          {/*{this.state.supportMessages.map(m=>(*/}
-            {/*<Text style={styles.messageBubble} key={m.time}>{m.content}</Text>*/}
-          {/*))}*/}
-        {/*</ScrollView>*/}
-
         <TextInput
           ref="supportInput"
           value={this.state.supportInput}
           placeholder={"Aa"}
-          // multiline
-          // blurOnSubmit
           onChangeText={(text)=>this.setState({supportInput:text})}
           onSubmitEditing={e=>{
             this.sendSupportMessage()
@@ -2589,7 +2182,6 @@ class Insura extends Component {
     )
   }
   renderMasterInputNotice=()=>{
-// console.log("render modal mask")
     return (
       <View style={styles.masterInputNoticeWrap}>
         <Text style={styles.masterInputNoticeText}>{_.upperCase(this.state.masterInputNotice)}</Text>
@@ -2675,8 +2267,6 @@ class Insura extends Component {
             </View>
             <TextInput
               ref="answer"
-              // autoFocus={true}
-              // spellCheck={false}
               autoCorrect={false}
               blurOnSubmit={true}
               autoComplete="off"
@@ -2790,7 +2380,6 @@ class Insura extends Component {
     return s
   }
   saveAndClear = (clear=false, callback=undefined) => {
-   console.log("Saving client...")
     const clientInfo      = c = this.state.clientInfo
     const buttons         = this.state.buttons
     const userNameDobID   = c.lastName +'-'+ c.firstName +'-'+ c.key;
@@ -2891,9 +2480,6 @@ class Insura extends Component {
           clientInfo: clientInfoRestart,
         },
         () => {
-          // console.log("saveAndClear() finished");
-          // console.log(clientInfoRestart)
-          // console.log(this.state);
           this.updateProviders(true,'end of clear()');
         }
       );
@@ -2903,31 +2489,12 @@ class Insura extends Component {
   renderIdScanButton() {
     return (
       <View style={styles.idScanButtonContainer}>
-        {/*<Button onPress={()=>{this.setState({exportVisible: true})}} title="Export" color="#d2d2d4"/>*/}
         <View style={{borderWidth:1, borderColor: '#d2d2d4', borderRadius: 4, marginRight: 10, }}>
           <Button onPress={()=>this.clear(true)} title="Clear" color="#d2d2d4"/>
         </View>
         <View style={{borderWidth:1, borderColor: '#d2d2d4', borderRadius: 4, }}>
           <Button onPress={this.scan.bind(this)} title="Scan DL" color="#d2d2d4"/>
         </View>
-
-        {/*<Button onPress={()=>{*/}
-          {/*AlertIOS.alert(*/}
-            {/*'Clear All Data',*/}
-            {/*'This action cannot be undone.',*/}
-            {/*[*/}
-              {/*{*/}
-                {/*text: 'Cancel',*/}
-                {/*onPress: () => console.log('Cancel Clear Form Pressed'),*/}
-                {/*style: 'cancel',*/}
-              {/*},*/}
-              {/*{*/}
-                {/*text: 'Clear Form',*/}
-                {/*onPress: () => this.saveAndClear(),*/}
-              {/*},*/}
-            {/*]*/}
-          {/*);*/}
-        {/*}} title="Save & Clear" color="#d2d2d4"/>*/}
       </View>
     );
   }
@@ -2968,9 +2535,6 @@ class Insura extends Component {
 
               let m = /(.{2})(.{2})(.{4})/.exec(fields[USDLKeys.DateOfBirth]);
               clientInfo.dob = m[1]+"/"+m[2]+"/"+m[3];
-
-              // clientInfo.height = Math.floor(parseInt(fields[USDLKeys.HeightIn]) / 12) +"-"+ parseInt(fields[USDLKeys.HeightIn]) %12;
-              // clientInfo.height = Math.floor(parseInt(fields[USDLKeys.HeightIn]));
               clientInfo.height = fields[USDLKeys.HeightIn];
               clientInfo.weight = fields[USDLKeys.WeightPounds];
               clientInfo.street1 = fields[USDLKeys.AddressStreet];
@@ -2979,8 +2543,6 @@ class Insura extends Component {
               clientInfo.zip = fields[USDLKeys.AddressPostalCode];
               clientInfo.race = fields[USDLKeys.RaceEthnicity];
               clientInfo.ssn = fields[USDLKeys.SocialSecurityNumber];
-
-              // this.updateButtonsFromScan(clientInfo);
 
             this.saveAndClear(true,()=>{
               this.setState({questionAnswer: clientInfo.name},()=>{
@@ -3026,8 +2588,6 @@ class Insura extends Component {
     }
   }
   setUser=(id,name,email,card)=>{
-    // console.log("setUser()")
-    // console.log(u)
     res = firebase.database().ref('users/'+id).set({
       id: id,
       name: name,
@@ -3037,8 +2597,6 @@ class Insura extends Component {
       activeSubscription: true,
       redDot: false
     })
-    // .then(res=>{console.log(res)})
-    // .catch(err=>console.log(err))
   }
   saveClient=(userId,clientId,clientInfo,buttons)=>{
    console.log("saveClient()")
@@ -3072,8 +2630,6 @@ class Insura extends Component {
     t = (new Date).getTime()
     ref = firebase.database().ref('support/'+firebase.auth().currentUser.uid+'/messages')
     msgRef = ref.push()
-    // console.log("new msg ref key")
-    // console.log(msgRef.key)
     msgRef.setWithPriority({
       senderType: 'user',
       time: t,
@@ -3104,36 +2660,26 @@ class Insura extends Component {
       })
   }
   getClientHistory=(callback=null)=>{
-    // console.log("getClientHistory(): setting this.state.clientHistory to []")
     this.setState({clientHistory: []},()=>{
       ref = firebase.database().ref('clients/'+firebase.auth().currentUser.uid).orderByKey()
       clients = this.state.clientHistory
       ref.once('value').then(snapshot=>{
         _.each(snapshot.val(),(client,k)=>{
-          // console.log("pushing client")
           clients.push(client)
         });
       }).done(()=>{
         this.setState({clientHistory: clients},()=>{
-          // console.log("=== .once() updated this.client.history ===")
-          // console.log(this.state.clientHistory)
         })
       })
     })
   }
   setUserMeta = (k,v,cb=()=>{}) => {
-    // console.log('setting user meta')
-    // console.log(k)
-    // console.log(v)
     value = undefined
     ref = firebase.database().ref('users/'+firebase.auth().currentUser.uid)
     ref.update({[k]:v},(err)=>{
       if(err) {
-        // console.log("setUserMeta failed...")
       } else {
         value = v
-        // console.log("Meta update successfull")
-        // console.log("SET: getUserMeta set key %s to value %s",k,v)
       }
     })
     cb()
@@ -3197,9 +2743,6 @@ Number.prototype.toCurrencyString = function(prefix, suffix) {
 function number_format(number, decimals, dec_point, thousands_sep) {
 
   number = parseFloat(number.toString().replace(/[^0-9\.]/gm,''));
-
-  // console.log("number format after replace: ");
-  // console.log(number);
 
   var n = !isFinite(+number) ? 0 : +number,
     prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),

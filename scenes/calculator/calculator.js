@@ -11,11 +11,6 @@ export default class CalculatorScene extends Compnent {
   }
 
   render(){
-
-    // console.log(" --- RENDER CALCULATOR ---");
-    // console.log(this.state.clientInfo)
-
-    //let Providers = Calculator.providers;
     this.inputRefs = {};
     self = this;
     renderCalculatorProduct = this.renderCalculatorProduct;
@@ -29,9 +24,7 @@ export default class CalculatorScene extends Compnent {
             <Text style={{fontSize:16}}><Text style={{fontWeight:'900'}}>&lsaquo;</Text> Questions</Text>
           </TouchableHighlight>
         </View>
-        {/*<Text style={{fontSize: 20}}>Coverage Options for {this.state.clientInfo.firstName}</Text>*/}
         <ScrollView horizontal={true} style={styles.calculatorHeader}>
-
           {/* FACE VALUE SELECT */}
           <View style={styles.calculatorFaceValueWrap}>
             <Text>Face Value</Text>
@@ -53,8 +46,6 @@ export default class CalculatorScene extends Compnent {
               />
             </View>
           </View>
-
-
           {/* TERMS SELECT */}
           <View style={styles.calculatorTermsWrap}>
             <Text>Term</Text>
@@ -83,8 +74,6 @@ export default class CalculatorScene extends Compnent {
               />
             </View>
           </View>
-
-
           {/* AGE SELECT */}
           <View style={styles.calculatorTermsWrap}>
             <Text>Age</Text>
@@ -108,8 +97,6 @@ export default class CalculatorScene extends Compnent {
               />
             </View>
           </View>
-
-
           {/* GENDER SELECT */}
           <View style={styles.calculatorTermsWrap}>
             <Text>Gender</Text>
@@ -133,8 +120,6 @@ export default class CalculatorScene extends Compnent {
               />
             </View>
           </View>
-
-
           {/* TOBACCO SELECT */}
           <View style={styles.calculatorTermsWrap}>
             <Text>Tobacco</Text>
@@ -158,9 +143,7 @@ export default class CalculatorScene extends Compnent {
               />
             </View>
           </View>
-
         </ScrollView>
-
         <View style={styles.calculatorProductsCounter}>
           <Text>
             Showing
@@ -170,29 +153,12 @@ export default class CalculatorScene extends Compnent {
             products:
           </Text>
         </View>
-
         <ScrollView style={styles.calculatorContentScrollView}>
-
-
           {this.calculatorHiddenNotices.map((o,k)=>{
             <CalculatorProduct/>
           })}
-
-          {/*{Providers.map(function(provider){*/}
-            {/*provider.products.map(function(product){*/}
-              {/*product.calculator.products.map(function(calculatorProduct){*/}
-                {/*productsRender.push(renderCalculatorProduct(provider,product,calculatorProduct));*/}
-                {/*// console.log("--- Rendering ---");*/}
-              {/*})*/}
-            {/*})*/}
-          {/*})}*/}
-
-          {/*{productsRender}*/}
-
           <Text>&nbsp;</Text>
-
         </ScrollView>
-        {/*{this.renderProviderStatus(Providers)}*/}
       </View>
     )
   }
