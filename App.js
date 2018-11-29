@@ -24,12 +24,12 @@ import Device from "react-native-responsive-ui/lib/Device";
 import MediaQuerySelector from "react-native-responsive-ui/lib/MediaQuerySelector";
 import AutoScroll from 'react-native-auto-scroll'
 import StripeToken from 'react-native-stripe-api'
-import Stripe from './stripe'
+import Stripe from './services/stripe/stripe'
 import { LiteCreditCardInput } from "react-native-credit-card-input"
 import * as firebase from 'firebase'
 import RNPickerSelect from 'react-native-picker-select'
 import _ from 'lodash'
-import styles from './styles'
+import styles from './styles/styles'
 import Storage from 'react-native-storage';
 import moment from 'moment';
 import Push from 'appcenter-push';
