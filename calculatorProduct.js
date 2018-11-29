@@ -103,9 +103,6 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
   number = parseFloat(number.toString().replace(/[^0-9\.]/gm,''));
 
-  // console.log("number format after replace: ");
-  // console.log(number);
-
   var n = !isFinite(+number) ? 0 : +number,
     prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
     sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,

@@ -1,36 +1,3 @@
-/**
- * Sample React Native App for BlinkID
- * https://github.com/BlinkID/blinkid-react-native
- */
-
-/**
- * Use these recognizer types
- * Available: RECOGNIZER_USDL, RECOGNIZER_MRTD, RECOGNIZER_EUDL, RECOGNIZER_DOCUMENT_FACE
- * RECOGNIZER_USDL - scans barcodes located on the back of US driver license
- * RECOGNIZER_MRTD - scans Machine Readable Travel Document, contained in various IDs and passports
- * RECOGNIZER_EUDL - scans the front of European driver license
- * RECOGNIZER_MYKAD - scans the front of Malaysian ID
- * RECOGNIZER_DOCUMENT_FACE - scans documents with face image and returns document images
- */
-
-/**
- * There are several options you need to pass to scan function to add recognizers and to obtain the image and BlinkResults
- * available:
- * enableBeep : if it is set to true, successful scan will play a sound
- * useFrontCamera : if it is set to false, back camera is used, else front
- * shouldReturnCroppedImage : if true, cropped images in the recognition process will be returned
- * shouldReturnSuccessfulImage : if true, image on which scan gave valid scanning result will be returned
- * recognizers : array which contains recognizers that will be activated
- */
-
-/**
- * Scan method returns scan fields in JSON format and image(s) (image is returned as Base64 encoded JPEG)
- * scanningResult.resultImageCropped : cropped document image
- * scanningResult.resultImageSuccessful : full image on which scan gave valid scanning result
- * scanningResult.resultList : array of scanning BlinkResults in JSON format (each activated recognizer can produce its own result)
- */
-
-
 import React, { Component } from 'react';
 import {BlinkID, MRTDKeys, USDLKeys, EUDLKeys, MYKADKeys} from 'blinkid-react-native';
 import {
@@ -45,7 +12,6 @@ import {
 } from 'react-native';
 
 const BlinkLicenseKey = Platform.select({
-  // iOS license key for applicationID: org.reactjs.native.example.BlinkIDReactNative
   ios: '5XHL5ZTZ-3ODPWSUO-MGNXJVYF-HQ63APCA-6HS34T2M-NBHNVYJX-K37EXHIV-4IEXOAD3',
 })
 
@@ -97,7 +63,6 @@ export default class BlinkIDReactNative extends Component {
           if (recognizerResult.resultType == "USDL result") {
             // handle USDL parsing resul
             var fields = recognizerResult.fields
-            // USDLKeys are keys from keys/usdl_keys.js
             resultsFormattedText += /** Personal information */
               "USDL version: " + fields[USDLKeys.StandardVersionNumber] + fieldDelim +
               "Family name: " + fields[USDLKeys.CustomerFamilyName] + fieldDelim +
