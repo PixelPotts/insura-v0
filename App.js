@@ -36,9 +36,9 @@ import Push from 'appcenter-push';
 import LinearGradient from 'react-native-linear-gradient';
 
 const stringifyObject = require('stringify-object')
-const Providers = require('./providers').default.providers
-const DeclinedDrugs = require('./decline_drugs').default.medications
-const CoverageLimits = require('./coverage-limits').default
+const Providers = require('./data/providers').default.providers
+const DeclinedDrugs = require('./data/decline_drugs').default.medications
+const CoverageLimits = require('./data/coverage-limits').default
 const {width, height} = Device.dimensions.window;
 const PHONE = MediaQuerySelector.query({ orientation: "portrait", minHeight: 1 }, width, height)
 const IPHONE_X = MediaQuerySelector.query({ minHeight: 812, minWidth: 375 }, width, height);
@@ -48,14 +48,14 @@ import Swipeout from 'react-native-swipeout';
 import codePush from "react-native-code-push";
 
 let Build = {min:{},max:{}}
-Build.min = require('./weight-min').default.min
-Build.max = require('./weight-max').default.max
+Build.min = require('./data/weight-min').default.min
+Build.max = require('./data/weight-max').default.max
 
 const TestFairy = require('react-native-testfairy');
 
-const Conditions = require('./decline_conditions').default.conditions;
-const Medications = require('./medications2').default.all;
-let Questions = require('./questions').default.questions;
+const Conditions = require('./data/decline_conditions').default.conditions;
+const Medications = require('./data/medications2').default.all;
+let Questions = require('./data/questions').default.questions;
 
 const uniqueId = "CDf0zu-cs24N64lIw-t2OAxvvQA-PbXIxjhNv-Hdk7LxQ0k-pXK1pehOItc-bG79adAAPk"
 
