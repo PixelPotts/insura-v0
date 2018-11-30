@@ -1,0 +1,5 @@
+renderCalculatorProduct
+renderInstructions
+registerModal
+loginModal
+resetPasswordModal
