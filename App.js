@@ -2569,7 +2569,7 @@ class Insura extends Component {
           ref="supportInput"
           value={this.state.supportInput}
           placeholder={"Aa"}
-          // multiline
+          multiline
           // blurOnSubmit
           onChangeText={(text)=>this.setState({supportInput:text})}
           onSubmitEditing={e=>{
