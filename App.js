@@ -4,7 +4,7 @@
  * -
  */
 
-version = "0.35"
+version = "0.4"
 
 import React, { Component } from 'react';
 import {
