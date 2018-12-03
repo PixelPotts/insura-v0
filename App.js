@@ -1083,7 +1083,7 @@ class Insura extends Component {
     if(needMoreButtons)
       return (
         <View style={styles.buttonButtonsWrap}>
-          <View><Text style={styles.buttonButtonTitle}>Years Ago:</Text></View>
+          <View><Text style={[styles.buttonButtonTitle, {'color': 'white'}]}>Years Ago:</Text></View>
           {numbers.map(n => (
             <TouchableHighlight
               key={n}
