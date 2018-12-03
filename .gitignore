@@ -64,3 +64,7 @@ ios/build/
 node_modules/
 package-lock.json
 .babel.rc
+ios/AwesomeProject.xcodeproj/project.pbxproj
+ios/Podfile.lock
+ios/AwesomeProject.xcodeproj/project.pbxproj
+ios/Podfile.lock

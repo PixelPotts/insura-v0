@@ -60,7 +60,7 @@ const IPHONE_X = MediaQuerySelector.query({ minHeight: 812, minWidth: 375 }, wid
 const resetTimer = 1000 * 30;
 
 import Swipeout from 'react-native-swipeout';
-import codePush from "react-native-code-push";
+var codePush = require("react-native-code-push");
 
 let Build = {min:{},max:{}}
 Build.min = require('./weight-min').default.min
@@ -1092,7 +1092,7 @@ class Insura extends Component {
                   styles.buttonButtonWrap,
                   {'backgroundColor': activeBgColor(n,button.buttonButtonId)}
                 ]}>
-                <Text style={[{'color': activeColor(n,button.buttonButtonId)},styles.buttonButtonText]}>{n}</Text>
+                <Text style={[styles.buttonButtonText, {'color': activeColor(n,button.buttonButtonId)}]}>{n}</Text>
               </View>
             </TouchableHighlight>
           ))}
