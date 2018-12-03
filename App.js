@@ -3143,8 +3143,8 @@ class Insura extends Component {
 }
 
 // Code Push
-let codePushOptions = { installMode: codePush.InstallMode.IMMEDIATE };
-Insura = codePush(codePushOptions)(Insura);
+// let codePushOptions = { installMode: codePush.InstallMode.IMMEDIATE };
+// Insura = codePush(codePushOptions)(Insura);
 export default Insura;
 
 
