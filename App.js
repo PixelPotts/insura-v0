@@ -50,6 +50,7 @@ import moment from 'moment';
 import Push from 'appcenter-push';
 // import {captureScreen,releaseCapture} from "react-native-view-shot";
 import LinearGradient from 'react-native-linear-gradient';
+import ChatSupport from './components/ChatSupport';
 
 const stringifyObject = require('stringify-object')
 const Providers = require('./providers').default.providers

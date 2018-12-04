@@ -1,5 +1,7 @@
 const defaultState = {
-  title: 'noooo'
+  redDotPresent: false,
+  supportMessages: [],
+  supportInput: '',
 };
 
 export const supportReducer = (state = defaultState, action) => {
