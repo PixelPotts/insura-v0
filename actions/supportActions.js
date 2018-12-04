@@ -27,7 +27,7 @@ export const sendSupportMessage = () => {
   };
 };
 
-export const fetchSupportMessage = (supportMessages) => {
+export const fetchSupportMessages = (supportMessages) => {
   return {
     type: 'FETCH_SUPPORT_MESSAGE',
     supportMessages: supportMessages
