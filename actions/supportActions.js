@@ -1,3 +1,6 @@
+import { dispatch } from "redux";
+
+
 export const setRedDot = (status) => {
   return {
     type: 'SET_RED_DOT',
@@ -24,11 +27,17 @@ export const sendSupportMessage = () => {
   };
 };
 
-export const getSupportMessage = () => {
+export const fetchSupportMessage = (supportMessages) => {
   return {
-    type: 'GET_SUPPORT_MESSAGE',
+    type: 'FETCH_SUPPORT_MESSAGE',
+    supportMessages: supportMessages
   };
 };
+
+// export const getSupportMessages = (supportMessages) => {
+//   dispatch(fetchSupportMessage(supportMessages));
+// }
+
 
 
 

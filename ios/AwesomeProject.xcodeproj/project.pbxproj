@@ -106,6 +106,13 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
+		23C2158421B69AF400E73A4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E166C05216C765600EDA01D /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB07622D01327EC76881C25C4D20DCEE;
+			remoteInfo = React;
+		};
 		2D16E6711FA4F8DC00B85C8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -721,6 +728,7 @@
 				7E166C0F216C765600EDA01D /* libGoogleUtilities.a */,
 				7E166C11216C765600EDA01D /* libnanopb.a */,
 				7E166C13216C765600EDA01D /* libPods-AwesomeProject.a */,
+				23C2158521B69AF400E73A4F /* libReact.a */,
 				7E3E277521AB592200E0322A /* libRNIap.a */,
 				7E3E277721AB592200E0322A /* libyoga.a */,
 			);
@@ -951,7 +959,6 @@
 				ORGANIZATIONNAME = Insura;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = NH5J65QW37;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1135,6 +1142,13 @@
 			fileType = archive.ar;
 			path = libReact.a;
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		23C2158521B69AF400E73A4F /* libReact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReact.a;
+			remoteRef = 23C2158421B69AF400E73A4F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */ = {
@@ -1542,7 +1556,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-resources.sh",
 				"${PODS_ROOT}/PPBlinkID/MicroBlink.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1551,7 +1565,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1D1883C7B323C6BCAA17F226 /* [CP] Check Pods Manifest.lock */ = {
@@ -1592,7 +1606,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-frameworks.sh",
 				"${PODS_ROOT}/PPBlinkID/MicroBlink.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1601,7 +1615,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1638,7 +1652,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = AwesomeProject/AwesomeProject.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bryan Potts (64PLEA3M4T)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = NO;
@@ -1665,7 +1679,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.insura;
 				PRODUCT_NAME = AwesomeProject;
-				PROVISIONING_PROFILE = "9725da1a-f91c-43ab-a2e1-71596b3ae07f";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "dev-insura-provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1679,11 +1693,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = AwesomeProject/AwesomeProject.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bryan Potts (64PLEA3M4T)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bryan Potts (64PLEA3M4T)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = NH5J65QW37;
+				DEVELOPMENT_TEAM = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/blinkid-react-native/src/ios/BlinkIDReactNative/BlinkIDReactNative",
@@ -1707,7 +1721,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.insura;
 				PRODUCT_NAME = AwesomeProject;
 				PROVISIONING_PROFILE = "8c61f016-e7fa-417d-84b1-c5ba5b431b11";
-				PROVISIONING_PROFILE_SPECIFIER = "dev-insura-provision";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

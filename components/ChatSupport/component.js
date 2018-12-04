@@ -11,6 +11,9 @@ const ChatSupport = ({
   updateSupportInput,
   sendSupportMessage
 }) => {
+  console.log("Loading info from redux")
+  console.log(redDotPresent)
+  console.log(supportMessages)
   return (
     <View style={styles.supportModal}>
       
