@@ -30,6 +30,8 @@ import {
 import CalculatorProduct from "./calculatorProduct"
 import Analytics from "appcenter-analytics"
 
+
+
 const dismissKeyboard = require('react-native/Libraries/Utilities/dismissKeyboard')
 import { MediaQuery } from "react-native-responsive-ui";
 import Device from "react-native-responsive-ui/lib/Device";
@@ -275,6 +277,7 @@ class Insura extends Component {
       instructionsVisible: false,
     };
   }
+
 
   setCalculatorHiddenNoticesTemplate=()=>{
     // Setup blank hidden notices object
@@ -2654,6 +2657,7 @@ class Insura extends Component {
 
         {/* CONSOLE */}
         {this.state.consoleIsVisible ? this.renderConsole() : null}
+
 
         <View style={styles.paddingWrap}>
 
