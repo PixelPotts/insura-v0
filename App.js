@@ -33,7 +33,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 // Import redux actions
-import { fetchSupportMessages, setRedDot } from './actions/supportActions';
+import { fetchSupportMessages, setRedDot, toggleSupportModal } from './actions/supportActions';
 
 
 
@@ -2466,7 +2466,9 @@ class Insura extends Component {
   pressMenuCrash =()=>            {this.setState({consoleIsVisible: true}); this.toggleMenu()}
   pressMenuSimulateIDScan =()=>   {this.simulateIDScan(); this.toggleMenu()}
   pressMenuSupport =()=> {
-    this.setState({modalMaskVisible: true, supportVisible: true});
+    // this.setState({modalMaskVisible: true, supportVisible: true});
+    this.props.store.dispatch(toggleSupportModal(true));
+
     this.toggleMenu()
     this.setUserMeta('redDot',false)
   }
@@ -2531,12 +2533,13 @@ class Insura extends Component {
     this.saveSupportMessage(this.state.supportInput)
   }
   closeSupport = () => {
-    this.setState({supportVisible: false, modalMaskVisible: false})
+    // this.setState({supportVisible: false, modalMaskVisible: false})
+    this.props.store.dispatch(toggleSupportModal(false));
   }
   supportModal = () => {
     this.setUserMeta('redDot',false)
     return (
-      <ChatSupport />
+      <ChatSupport store={this.props.store} />
       // <View style={styles.supportModal}>
 
       //   <View style={styles.supportModalHeader}>
@@ -2626,6 +2629,9 @@ class Insura extends Component {
   }
   render() {
     StatusBar.setBarStyle('light-content', true);
+    const state = this.props.store.getState()
+    console.log(state.supportReducer.supportVisible)
+
     return (
       <View style={styles.masterWrap}>
 
@@ -2660,7 +2666,7 @@ class Insura extends Component {
         {this.state.menuVisible ? this.menuModal() : null}
 
         {/* SUPPORT */}
-        {this.state.supportVisible ? this.supportModal() : null}
+        {state.supportReducer.supportVisible ? this.supportModal() : null}
 
         {/* CONSOLE */}
         {this.state.consoleIsVisible ? this.renderConsole() : null}

@@ -5,6 +5,7 @@ import {
   setRedDot,
   toggleSupport,
   updateSupportInput,
+  toggleSupportModal,
   sendSupportMessage
 } from '../../actions/supportActions';
 
@@ -19,13 +20,15 @@ const mapStateToProps = (state) => {
 
 };
 
+
 const mapDispatchToProps = (dispatch) => {
 
   return bindActionCreators({
     setRedDot,
     toggleSupport,
     updateSupportInput,
-    sendSupportMessage
+    sendSupportMessage,
+    toggleSupportModal
   }, dispatch);
 
 };

@@ -34,9 +34,23 @@ export const fetchSupportMessages = (supportMessages) => {
   };
 };
 
-// export const getSupportMessages = (supportMessages) => {
-//   dispatch(fetchSupportMessage(supportMessages));
-// }
+export const toggleSupportModal = (show) => {
+  console.log("Called")
+  if (show == true) {
+    return {
+      type: 'TOGGLE_SUPPORT',
+      supportVisible: true,
+      modalMaskVisible: true,
+    };
+  } else {
+    return {
+      type: 'TOGGLE_SUPPORT',
+      supportVisible: false,
+      modalMaskVisible: false,
+    };
+  }
+};
+
 
 
 

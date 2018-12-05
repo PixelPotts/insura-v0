@@ -3,23 +3,26 @@ import { View, Text, TouchableHighlight, TextInput } from 'react-native';
 import AutoScroll from 'react-native-auto-scroll'
 import styles from '../../styles'
 
-const ChatSupport = ({
-  redDotPresent,
+const ChatSupport = (props) => {
+  const {
+    redDotPresent,
   supportMessages,
   supportInput,
   setRedDot,
   toggleSupport,
   updateSupportInput,
-  sendSupportMessage
-}) => {
-  console.log("Loading info from redux")
-  console.log(redDotPresent)
-  console.log(supportMessages)
+  toggleSupportModal,
+  sendSupportMessage,
+  store
+  } = props;
   const adminInitialMsg = "Hi there. If you run into any issues with the app or have an idea for a feature request let us know. We normally reply within an hour."
+  const closeModal = () => {
+    store.dispatch(toggleSupportModal(false))
+  }
   return (
     <View style={styles.supportModal}>
       <View style={styles.supportModalHeader}>
-        <TouchableHighlight style={styles.supportCloseIcon}>
+        <TouchableHighlight style={styles.supportCloseIcon} onPress={() => closeModal()} >
           <Text style={styles.supportCloseBtn}>&rsaquo;</Text>
         </TouchableHighlight>
 
