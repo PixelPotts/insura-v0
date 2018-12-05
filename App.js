@@ -2539,7 +2539,7 @@ class Insura extends Component {
   supportModal = () => {
     this.setUserMeta('redDot',false)
     return (
-      <ChatSupport store={this.props.store} />
+      <ChatSupport />
       // <View style={styles.supportModal}>
 
       //   <View style={styles.supportModalHeader}>
@@ -3112,11 +3112,11 @@ class Insura extends Component {
       .on('child_added',(snapshot,prevKey)=>{
         messagesArray.push(snapshot.val())
         // Send to redux store
-        this.props.store.dispatch(fetchSupportMessages(messagesArray));
+        this.props.fetchSupportMessages(messagesArray);
         this.setState({supportMessages: messagesArray},()=>{
           last = _.last(this.state.supportMessages)
           if(last.senderType == 'admin'){
-            this.props.store.dispatch(setRedDot(true));
+            this.props.setRedDot(true)
             console.log("New support message!")
             this.setUserMeta('redDot',true)
           }

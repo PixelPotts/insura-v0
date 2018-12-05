@@ -23,11 +23,16 @@ export const supportReducer = (state = defaultState, action) => {
       }
 
     case 'TOGGLE_SUPPORT':
-    console.log("Called in reducer")
       return {
         ...state,
         supportVisible: action.supportVisible,
         modalMaskVisible: action.modalMaskVisible,
+      }
+
+    case 'UPDATE_SUPPORT_INPUT':
+      return {
+        ...state,
+        supportInput: action.value,
       }
 
     default:

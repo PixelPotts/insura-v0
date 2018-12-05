@@ -16,13 +16,11 @@ const ChatSupport = (props) => {
   store
   } = props;
   const adminInitialMsg = "Hi there. If you run into any issues with the app or have an idea for a feature request let us know. We normally reply within an hour."
-  const closeModal = () => {
-    store.dispatch(toggleSupportModal(false))
-  }
+  console.log(supportInput)
   return (
     <View style={styles.supportModal}>
       <View style={styles.supportModalHeader}>
-        <TouchableHighlight style={styles.supportCloseIcon} onPress={() => closeModal()} >
+        <TouchableHighlight style={styles.supportCloseIcon} onPress={() => toggleSupportModal(false)} >
           <Text style={styles.supportCloseBtn}>&rsaquo;</Text>
         </TouchableHighlight>
 
@@ -49,10 +47,10 @@ const ChatSupport = (props) => {
       </AutoScroll>
       <TextInput
         // ref="supportInput"
-        // value={this.state.supportInput}
+        value={supportInput}
         placeholder={"Aa"}
         multiline
-        // onChangeText={(text) => this.setState({ supportInput: text })}
+        onChangeText={(text) => updateSupportInput(text)}
         // onSubmitEditing={e => {
         //   this.sendSupportMessage()
         //   this.refs.supportInput.focus();

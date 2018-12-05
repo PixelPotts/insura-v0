@@ -34,13 +34,6 @@ export const fetchSupportMessages = (supportMessages) => {
   };
 };
 
-export const dispatchSupportModal = (show) => {
-  console.log("caling dispatch")
-	return dispatch => {
-    dispatch(toggleSupportModal(show))
-  }
-}
-
 export const toggleSupportModal = (show) => {
   console.log("Called" + show)
   if (show == true) {
