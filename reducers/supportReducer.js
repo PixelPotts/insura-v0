@@ -23,6 +23,7 @@ export const supportReducer = (state = defaultState, action) => {
       }
 
     case 'TOGGLE_SUPPORT':
+    console.log("Called in reducer")
       return {
         ...state,
         supportVisible: action.supportVisible,
