@@ -1976,9 +1976,6 @@ class Insura extends Component {
   }
 
   renderLoginHeader = () => {
-    // console.log("renderLoginHeader()")
-    // console.log(this.state)
-    console.log(this.props)
     return (
       <TouchableHighlight style={styles.headerTopRight} underlayColor="transparent" onPress={()=>{this.toggleMenu()}}>
         <View>
@@ -3050,14 +3047,18 @@ class Insura extends Component {
         messagesArray.push(snapshot.val())
         // Send to redux store
         this.props.fetchSupportMessages(messagesArray);
+        let setRed = false
         last = _.last(messagesArray)
           if(last.senderType == 'admin'){
-            this.props.setRedDot(true)
+            setRed = true;
             PushNotification.localNotification({
               title: "Insura Support Message",
               message: last.content,
           });
+          } else {
+            setRed = false;
           }
+          this.props.setRedDot(setRed)
       })
   }
   getClientHistory=(callback=null)=>{

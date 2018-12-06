@@ -43,11 +43,6 @@ export const sendSupportMessage = (message) => {
         .startAt(3)
         .on('child_added',(snapshot)=>{
           messagesArray.push(snapshot.val())
-          // Send to redux store
-          last = _.last(messagesArray)
-            if(last.senderType == 'admin'){
-              dispatch(setRedDot(true))
-            }
         })
         dispatch(fetchSupportMessages(messagesArray));
     }
