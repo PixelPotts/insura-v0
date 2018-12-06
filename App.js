@@ -19,6 +19,7 @@ import {
   Picker,
   TouchableHighlight,
   TouchableOpacity,
+  PushNotificationIOS,
   LayoutAnimation,
   Animated,
   Easing,
@@ -35,7 +36,20 @@ import { bindActionCreators } from "redux";
 // Import redux actions
 import { fetchSupportMessages, setRedDot, toggleSupportModal } from './actions/supportActions';
 
+// Push Notifications Set Up
 import PushNotification from 'react-native-push-notification';
+PushNotification.configure({
+  // (required) Called when a remote or local notification is opened or received
+  onNotification: function(notification) {
+      notification.finish(PushNotificationIOS.FetchResult.NoData);
+  },
+  permissions: {
+      alert: true,
+      badge: true,
+      sound: true
+  },
+  popInitialNotification: true,
+});
 
 
 const dismissKeyboard = require('react-native/Libraries/Utilities/dismissKeyboard')
@@ -1964,11 +1978,12 @@ class Insura extends Component {
   renderLoginHeader = () => {
     // console.log("renderLoginHeader()")
     // console.log(this.state)
+    console.log(this.props)
     return (
       <TouchableHighlight style={styles.headerTopRight} underlayColor="transparent" onPress={()=>{this.toggleMenu()}}>
         <View>
           <View style={styles.loginRegisterLinks}>
-            {(this.state.user.redDot === true && ! this.state.supportVisible) && <View style={styles.redNoticeDot}></View>}
+            {(this.props.redDotPresent === true && ! this.props.supportVisible) && <View style={styles.redNoticeDot}></View>}
             <Button title="☰" onPress={()=>{this.toggleMenu()}} style={[styles.signOutLink,{marginRight: 20}]} color="#ffb601"/>
           </View>
         </View>
@@ -2468,6 +2483,7 @@ class Insura extends Component {
   pressMenuSimulateIDScan =()=>   {this.simulateIDScan(); this.toggleMenu()}
   pressMenuSupport =()=> {
     // this.setState({modalMaskVisible: true, supportVisible: true});
+    this.props.setRedDot(false)
     this.props.toggleSupportModal(true);
 
     this.toggleMenu()
@@ -2515,7 +2531,7 @@ class Insura extends Component {
           <ScrollView style={{width: '100%', height: '100%'}}>
             <View style={styles.menuItemWrap}>
                 {menuItems.map((m,i) => {
-                  let accent = m.title=="Support" && this.state.user.redDot ? (<Text style={styles.redNoticeDotSupport}>&nbsp;&nbsp;(NEW)</Text>) : ''
+                  let accent = m.title=="Support" && this.props.redDotPresent ? (<Text style={styles.redNoticeDotSupport}>&nbsp;&nbsp;(NEW)</Text>) : ''
                   return (<TouchableHighlight key={i} onPress={()=>{self.toggleMenu; m.callback()}}><Text style={styles.menuItem}>{m.title.toUpperCase()}{accent}</Text></TouchableHighlight>)
                 })}
             </View>
@@ -2533,7 +2549,6 @@ class Insura extends Component {
     this.props.toggleSupportModal(false);
   }
   supportModal = () => {
-    this.props.setRedDot(true);
     return (
       <ChatSupport />
     )
@@ -2995,7 +3010,6 @@ class Insura extends Component {
       stripe_customer_id: 'null',
       stripe_token_id: 'null',
       activeSubscription: true,
-      redDot: false
     })
     // .then(res=>{console.log(res)})
     // .catch(err=>console.log(err))
@@ -3039,6 +3053,10 @@ class Insura extends Component {
         last = _.last(messagesArray)
           if(last.senderType == 'admin'){
             this.props.setRedDot(true)
+            PushNotification.localNotification({
+              title: "Insura Support Message",
+              message: last.content,
+          });
           }
       })
   }
@@ -3087,7 +3105,8 @@ class Insura extends Component {
 // export default Insura;
 const mapStateToProps = (state) => {
   return {
-    supportVisable: state.supportReducer.supportVisible
+    supportVisable: state.supportReducer.supportVisible,
+    redDotPresent: state.supportReducer.redDotPresent
   };
 };
 
