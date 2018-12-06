@@ -1,6 +1,7 @@
 import * as firebase from 'firebase'
-let messagesArray = [];
 import _ from 'lodash'
+
+let messagesArray = [];
 
 export const setRedDot = (status) => {
   return {

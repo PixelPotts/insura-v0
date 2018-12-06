@@ -42,7 +42,7 @@ const ChatSupport = (props) => {
       </AutoScroll>
       <TextInput
         value={supportInput}
-        placeholder={"Aa"}
+        placeholder={"Please Enter Your Message"}
         multiline
         onChangeText={(text) => updateSupportInput(text)}
         onSubmitEditing={e => {
