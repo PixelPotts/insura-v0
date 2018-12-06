@@ -35,6 +35,7 @@ import { bindActionCreators } from "redux";
 // Import redux actions
 import { fetchSupportMessages, setRedDot, toggleSupportModal } from './actions/supportActions';
 
+import PushNotification from 'react-native-push-notification';
 
 
 const dismissKeyboard = require('react-native/Libraries/Utilities/dismissKeyboard')
