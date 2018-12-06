@@ -2470,7 +2470,7 @@ class Insura extends Component {
     this.props.toggleSupportModal(true);
 
     this.toggleMenu()
-    this.setUserMeta('redDot',false)
+    this.props.setRedDot(false)
   }
 
   menuModal =()=> {
@@ -2532,61 +2532,9 @@ class Insura extends Component {
     this.props.toggleSupportModal(false);
   }
   supportModal = () => {
-    this.setUserMeta('redDot',false)
+    this.props.setRedDot(true);
     return (
       <ChatSupport />
-      // <View style={styles.supportModal}>
-
-      //   <View style={styles.supportModalHeader}>
-      //     <TouchableHighlight style={styles.supportCloseIcon} onPress={this.closeSupport}>
-      //       <Text style={styles.supportCloseBtn}>&rsaquo;</Text>
-      //     </TouchableHighlight>
-
-      //     <View style={{flexDirection:'row'}}>
-      //       <Text style={{fontWeight:'100',fontSize:18}}>Support Chat</Text>
-      //       <Text style={{color:'#cecece',paddingLeft: 20,position:'relative',top:3}}>(From 8am–5pm MT)</Text>
-      //     </View>
-
-      //   </View>
-
-      //   <AutoScroll style={styles.supportMessagesWrap}>
-      //     <View style={[styles.messageBubble]} key={1}>
-      //       <Text style={[styles.messageBubbleText,styles.messageBubble_admin]}>{adminInitialMsg}</Text>
-      //     </View>
-
-      //     {this.state.supportMessages.length !== 0 && this.state.supportMessages.map(msg => {
-      //       return (
-      //         <View style={[styles.messageBubble]} key={msg.time}>
-      //           <Text style={[styles.messageBubbleText,styles['messageBubble_'+msg.senderType]]}>{msg.content}</Text>
-      //         </View>
-      //       )
-      //     })}
-      //     {!this.state.supportMessages && (
-      //       <Text>Loading...</Text>
-      //     )}
-      //   </AutoScroll>
-
-      //   {/*<ScrollView style={styles.supportMessagesWrap}>*/}
-      //     {/*<Text style={styles.messageBubble}>TEST POST</Text>*/}
-      //     {/*{this.state.supportMessages.map(m=>(*/}
-      //       {/*<Text style={styles.messageBubble} key={m.time}>{m.content}</Text>*/}
-      //     {/*))}*/}
-      //   {/*</ScrollView>*/}
-
-      //   <TextInput
-      //     ref="supportInput"
-      //     value={this.state.supportInput}
-      //     placeholder={"Aa"}
-      //     multiline
-      //     // blurOnSubmit
-      //     onChangeText={(text)=>this.setState({supportInput:text})}
-      //     onSubmitEditing={e=>{
-      //       this.sendSupportMessage()
-      //       this.refs.supportInput.focus();
-      //     }}
-      //     style={styles.supportMessageInput}
-      //   />
-      // </View>
     )
   }
   renderModalMask = () => {
@@ -3083,7 +3031,7 @@ class Insura extends Component {
     ref = firebase.database().ref('support/'+firebase.auth().currentUser.uid+'/messages')
     ref.orderByChild('time')
       .startAt(3)
-      .on('child_added',(snapshot,prevKey)=>{
+      .on('child_added',(snapshot)=>{
         messagesArray.push(snapshot.val())
         // Send to redux store
         this.props.fetchSupportMessages(messagesArray);

@@ -41,7 +41,7 @@ export const sendSupportMessage = (message) => {
         let newref = firebase.database().ref('support/'+firebase.auth().currentUser.uid+'/messages')
         newref.orderByChild('time')
         .startAt(3)
-        .on('child_added',(snapshot,prevKey)=>{
+        .on('child_added',(snapshot)=>{
           messagesArray.push(snapshot.val())
           // Send to redux store
           last = _.last(messagesArray)
@@ -56,7 +56,6 @@ export const sendSupportMessage = (message) => {
 };
 
 export const fetchSupportMessages = (supportMessages) => {
-  console.log("Fetch was called")
   return {
     type: 'FETCH_SUPPORT_MESSAGE',
     supportMessages: supportMessages
