@@ -29,9 +29,9 @@ const ChatSupport = (props) => {
           <Text style={[styles.messageBubbleText, styles.messageBubble_admin]}>{adminInitialMsg}</Text>
         </View>
 
-        {supportMessages.length !== 0 && supportMessages.map(msg => {
+        {supportMessages.length !== 0 && supportMessages.map((msg, index) => {
           return (
-            <View style={[styles.messageBubble]} key={msg.time}>
+            <View style={[styles.messageBubble]} key={index}>
               <Text style={[styles.messageBubbleText, styles['messageBubble_' + msg.senderType]]}>{msg.content}</Text>
             </View>
           )
