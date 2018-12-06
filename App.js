@@ -2527,11 +2527,6 @@ class Insura extends Component {
       </Animated.View>
     )
   }
-  sendSupportMessage = () => {
-    // console.log("sendSupportMessage Called =======")
-    // console.log(this.state.supportInput)
-    this.saveSupportMessage(this.state.supportInput)
-  }
   closeSupport = () => {
     // this.setState({supportVisible: false, modalMaskVisible: false})
     this.props.toggleSupportModal(false);
@@ -2630,7 +2625,6 @@ class Insura extends Component {
   render() {
     StatusBar.setBarStyle('light-content', true);
     const supportVisable = this.props.supportVisable
-    console.log(supportVisable)
 
     return (
       <View style={styles.masterWrap}>
@@ -3084,26 +3078,6 @@ class Insura extends Component {
         console.log(err)
       })
   }
-  saveSupportMessage=(message)=>{
-    if(message.trim()==='') return false
-    t = (new Date).getTime()
-    ref = firebase.database().ref('support/'+firebase.auth().currentUser.uid+'/messages')
-    msgRef = ref.push()
-    // console.log("new msg ref key")
-    // console.log(msgRef.key)
-    msgRef.setWithPriority({
-      senderType: 'user',
-      time: t,
-      content: message
-    },t).done(()=>{
-        this.setState({supportInput: ''})
-        firebase.database()
-          .ref('support/'+firebase.auth().currentUser.uid)
-          .update({status:1})
-          .done(console.log("support status updated to 1"))
-      }
-    )
-  }
   getSupportMessages=()=>{
     messagesArray = []
     ref = firebase.database().ref('support/'+firebase.auth().currentUser.uid+'/messages')
@@ -3113,14 +3087,10 @@ class Insura extends Component {
         messagesArray.push(snapshot.val())
         // Send to redux store
         this.props.fetchSupportMessages(messagesArray);
-        this.setState({supportMessages: messagesArray},()=>{
-          last = _.last(this.state.supportMessages)
+        last = _.last(messagesArray)
           if(last.senderType == 'admin'){
             this.props.setRedDot(true)
-            console.log("New support message!")
-            this.setUserMeta('redDot',true)
           }
-        })
       })
   }
   getClientHistory=(callback=null)=>{

@@ -1,4 +1,4 @@
-import { dispatch } from "redux";
+import * as firebase from 'firebase'
 
 
 export const setRedDot = (status) => {
@@ -21,10 +21,25 @@ export const updateSupportInput = (value) => {
   };
 };
 
-export const sendSupportMessage = () => {
-  return {
-    type: 'SEND_SUPPORT_MESSAGE',
-  };
+export const sendSupportMessage = (message) => {
+  return dispatch => {
+    if (message.trim() === '') return false
+    t = (new Date).getTime()
+    let ref = firebase.database().ref('support/' + firebase.auth().currentUser.uid + '/messages')
+    msgRef = ref.push()
+    msgRef.setWithPriority({
+      senderType: 'user',
+      time: t,
+      content: message
+    }, t).done(() => {
+      dispatch(updateSupportInput(''));
+      firebase.database()
+        .ref('support/' + firebase.auth().currentUser.uid)
+        .update({ status: 1 })
+        .done(console.log("support status updated to 1"))
+    }
+    )
+  }
 };
 
 export const fetchSupportMessages = (supportMessages) => {
@@ -35,7 +50,6 @@ export const fetchSupportMessages = (supportMessages) => {
 };
 
 export const toggleSupportModal = (show) => {
-  console.log("Called" + show)
   if (show == true) {
     return {
       type: 'TOGGLE_SUPPORT',

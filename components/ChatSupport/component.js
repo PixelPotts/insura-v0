@@ -5,18 +5,13 @@ import styles from '../../styles'
 
 const ChatSupport = (props) => {
   const {
-    redDotPresent,
   supportMessages,
   supportInput,
-  setRedDot,
-  toggleSupport,
   updateSupportInput,
   toggleSupportModal,
   sendSupportMessage,
-  store
   } = props;
   const adminInitialMsg = "Hi there. If you run into any issues with the app or have an idea for a feature request let us know. We normally reply within an hour."
-  console.log(supportInput)
   return (
     <View style={styles.supportModal}>
       <View style={styles.supportModalHeader}>
@@ -46,15 +41,13 @@ const ChatSupport = (props) => {
         )}
       </AutoScroll>
       <TextInput
-        // ref="supportInput"
         value={supportInput}
         placeholder={"Aa"}
         multiline
         onChangeText={(text) => updateSupportInput(text)}
-        // onSubmitEditing={e => {
-        //   this.sendSupportMessage()
-        //   this.refs.supportInput.focus();
-        // }}
+        onSubmitEditing={e => {
+        sendSupportMessage(supportInput)
+        }}
         style={styles.supportMessageInput}
       />
     </View>
