@@ -34,7 +34,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 // Import redux actions
-import { fetchSupportMessages, setRedDot, toggleSupportModal } from './actions/supportActions';
+import { fetchSupportMessages, setRedDot, toggleSupportModal, toggleNewChatModal } from './actions/supportActions';
 
 // Push Notifications Set Up
 import PushNotification from 'react-native-push-notification';
@@ -71,6 +71,7 @@ import Push from 'appcenter-push';
 // import {captureScreen,releaseCapture} from "react-native-view-shot";
 import LinearGradient from 'react-native-linear-gradient';
 import ChatSupport from './components/ChatSupport';
+import NewChatModal from './components/NewChatModal'
 
 const stringifyObject = require('stringify-object')
 const Providers = require('./providers').default.providers
@@ -2583,9 +2584,15 @@ class Insura extends Component {
       </View>
     )
   }
+  renderNewChatModal = () => {
+    return (
+      <NewChatModal />
+    )
+  }
   render() {
     StatusBar.setBarStyle('light-content', true);
     const supportVisable = this.props.supportVisable
+    const newChatModalShowing = this.props.newChatModalShowing
 
     return (
       <View style={styles.masterWrap}>
@@ -2622,6 +2629,9 @@ class Insura extends Component {
 
         {/* SUPPORT */}
         {supportVisable ? this.supportModal() : null}
+
+         {/* NEW SUPPORT NOTIFICATION */}
+         {newChatModalShowing ? this.renderNewChatModal() : null}
 
         {/* CONSOLE */}
         {this.state.consoleIsVisible ? this.renderConsole() : null}
@@ -3048,17 +3058,21 @@ class Insura extends Component {
         // Send to redux store
         this.props.fetchSupportMessages(messagesArray);
         let setRed = false
+        let setNewChatModal = false;
         last = _.last(messagesArray)
           if(last.senderType == 'admin'){
             setRed = true;
+            setNewChatModal = true
             PushNotification.localNotification({
               title: "Insura Support Message",
               message: last.content,
           });
           } else {
             setRed = false;
+            setNewChatModal = false
           }
           this.props.setRedDot(setRed)
+          this.props.toggleNewChatModal(setNewChatModal)
       })
   }
   getClientHistory=(callback=null)=>{
@@ -3107,7 +3121,8 @@ class Insura extends Component {
 const mapStateToProps = (state) => {
   return {
     supportVisable: state.supportReducer.supportVisible,
-    redDotPresent: state.supportReducer.redDotPresent
+    redDotPresent: state.supportReducer.redDotPresent,
+    newChatModalShowing: state.supportReducer.newChatModal
   };
 };
 
@@ -3116,7 +3131,8 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators({
     fetchSupportMessages,
     setRedDot,
-    toggleSupportModal
+    toggleSupportModal,
+    toggleNewChatModal
   },dispatch);
 
 };

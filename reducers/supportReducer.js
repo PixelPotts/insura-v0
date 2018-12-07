@@ -3,7 +3,8 @@ const defaultState = {
   supportMessages: [],
   supportInput: '',
   supportVisible: false, 
-  modalMaskVisible: false
+  modalMaskVisible: false,
+  newChatModal: false,
 };
 
 export const supportReducer = (state = defaultState, action) => {
@@ -14,6 +15,12 @@ export const supportReducer = (state = defaultState, action) => {
       return {
         ...state,
         supportMessages: action.supportMessages,
+      }
+
+    case 'TOGGLE_NEW_CHAT_MODAL':
+      return {
+        ...state,
+        newChatModal: action.newChatModal,
       }
 
     case 'SET_RED_DOT':

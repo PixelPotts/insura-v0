@@ -58,6 +58,22 @@ export const fetchSupportMessages = (supportMessages) => {
   };
 };
 
+
+export const toggleNewChatModal = (status) => {
+  console.log("Called")
+  if (status == true) {
+    return {
+      type: 'TOGGLE_NEW_CHAT_MODAL',
+      newChatModal: true
+    };
+  } else {
+    return {
+      type: 'TOGGLE_NEW_CHAT_MODAL',
+      newChatModal: false
+    };
+  }
+};
+
 export const toggleSupportModal = (show) => {
   if (show == true) {
     return {
