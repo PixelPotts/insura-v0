@@ -98,7 +98,7 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNIap (2.3.18):
+  - RNIap (2.3.21):
     - React
   - yoga (0.56.0.React)
 
@@ -170,6 +170,6 @@ SPEC CHECKSUMS:
   RNIap: ef7dbcbb0ad7bb2400c14797ef3fad4e02ff0681
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: eb8cfd4610e55ef9ff93db88f9c725224b97b6e3
+PODFILE CHECKSUM: cfbc3c8f9c59f0648467a101811f6f7cc7a5ee97
 
 COCOAPODS: 1.5.3

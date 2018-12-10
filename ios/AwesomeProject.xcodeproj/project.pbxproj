@@ -24,6 +24,8 @@
 		1F79F0FAF5604925A0AA8DFC /* libAppCenterReactNativeAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DDF38BE92D48BA98E30616 /* libAppCenterReactNativeAnalytics.a */; };
 		21AB7C9DC373447DA6769BFF /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A6E8DA3CEDE4A2D9E6ACE1E /* AppCenter-Config.plist */; };
 		237CB64C21B941DC00BDF72A /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 237CB62D21B941C100BDF72A /* libRCTPushNotification.a */; };
+		23DBE41121BE72910074E154 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DBE41021BE72910074E154 /* StoreKit.framework */; };
+		23DBE41821BE74400074E154 /* libRNIap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DBE41721BE73FF0074E154 /* libRNIap.a */; };
 		2611F01A1063436AA8507F16 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 846A2C71EA54406885D3D423 /* SimpleLineIcons.ttf */; };
 		299F578504D54F878AE0C3BD /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F12944A33C547EEB33FB358 /* Foundation.ttf */; };
 		30625E05BEE0493FB711243C /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 973B1FB10EC4418296D4235E /* FontAwesome.ttf */; };
@@ -127,6 +129,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = DB07622D01327EC76881C25C4D20DCEE;
 			remoteInfo = React;
+		};
+		23DBE41621BE73FF0074E154 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23DBE41221BE73FF0074E154 /* RNIap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNIap;
 		};
 		2D16E6711FA4F8DC00B85C8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -514,6 +523,8 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		1895EA4DDA644E55A991E588 /* libRCTRestart.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTRestart.a; sourceTree = "<group>"; };
 		237CB60821B941C000BDF72A /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
+		23DBE41021BE72910074E154 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		23DBE41221BE73FF0074E154 /* RNIap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNIap.xcodeproj; path = "../node_modules/react-native-iap/ios/RNIap.xcodeproj"; sourceTree = "<group>"; };
 		269A4D56D899461D87E28564 /* libAppCenterReactNativePush.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAppCenterReactNativePush.a; sourceTree = "<group>"; };
 		2988A85E6AB14F40AE433483 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -557,6 +568,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23DBE41821BE74400074E154 /* libRNIap.a in Frameworks */,
 				237CB64C21B941DC00BDF72A /* libRCTPushNotification.a in Frameworks */,
 				7E3E288B21AB742B00E0322A /* libBVLinearGradient.a in Frameworks */,
 				7E7F2568216C7E9000DD8E7D /* libz.tbd in Frameworks */,
@@ -574,6 +586,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				74C90997F25244B1BCAFDCAE /* libBlinkIDReactNative.a in Frameworks */,
 				BC57283E18A73C951820F608 /* libPods-AwesomeProject.a in Frameworks */,
+				23DBE41121BE72910074E154 /* StoreKit.framework in Frameworks */,
 				7E8F96CFB57F42638B2C5DCD /* libRNFirebase.a in Frameworks */,
 				4D869DF491164D04807E6D4C /* libRCTRestart.a in Frameworks */,
 				6D140886BF1E48028A5FA840 /* libReactNativeTestFairy.a in Frameworks */,
@@ -697,9 +710,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		23DBE41321BE73FF0074E154 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				23DBE41721BE73FF0074E154 /* libRNIap.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				23DBE41021BE72910074E154 /* StoreKit.framework */,
 				7E7F2567216C7E9000DD8E7D /* libz.tbd */,
 				7E3E2FE320FC55C700F69EAB /* libRNDeviceInfo.a */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
@@ -879,6 +901,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				23DBE41221BE73FF0074E154 /* RNIap.xcodeproj */,
 				237CB60821B941C000BDF72A /* RCTPushNotification.xcodeproj */,
 				7E3E284021AB740800E0322A /* BVLinearGradient.xcodeproj */,
 				7E7F2528216C7E7200DD8E7D /* CodePush.xcodeproj */,
@@ -989,6 +1012,9 @@
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 							com.apple.Push = {
@@ -1107,6 +1133,10 @@
 					ProjectRef = 36F6E96DD9324EF59C060EBA /* RNFirebase.xcodeproj */;
 				},
 				{
+					ProductGroup = 23DBE41321BE73FF0074E154 /* Products */;
+					ProjectRef = 23DBE41221BE73FF0074E154 /* RNIap.xcodeproj */;
+				},
+				{
 					ProductGroup = 7E2363AB20D44E3E0051A901 /* Products */;
 					ProjectRef = 022E846E59CE43F4863CC7A6 /* StripeNative.xcodeproj */;
 				},
@@ -1194,6 +1224,13 @@
 			fileType = archive.ar;
 			path = libReact.a;
 			remoteRef = 23C2158421B69AF400E73A4F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		23DBE41721BE73FF0074E154 /* libRNIap.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNIap.a;
+			remoteRef = 23DBE41621BE73FF0074E154 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */ = {

@@ -35,6 +35,10 @@ import { bindActionCreators } from "redux";
 
 // Import redux actions
 import { fetchSupportMessages, setRedDot, toggleSupportModal, toggleNewChatModal } from './actions/supportActions';
+import { setActiveSubscription } from './actions/inAppPurchaseActions'
+
+// Import In-App Purchases
+import * as RNIap from 'react-native-iap';
 
 // Push Notifications Set Up
 import PushNotification from 'react-native-push-notification';
@@ -318,8 +322,30 @@ class Insura extends Component {
   }
   clearCalculatorHiddenNotices=()=>{ this.setState({calculatorHiddenNotices: _.cloneDeep(calculatorHiddenNoticesTemplate)})}
 
-  componentDidMount() {
+  async getInAppPurchaseItems() {
+    const itemSkus = Platform.select({
+      ios: [
+        '3',
+        '2',
+        '1',
+      ],
+    });
+    try {
+      const products = await RNIap.getProducts(itemSkus);
+      // console.log(products)
+    } catch(err) {
+      console.warn(err);
+    }
+  }
 
+  saveSubscriptionState(user) {
+    const activeSubscription = user.activeSubscription;
+    const subscriptionPlan = user.subscriptionPlan;
+    this.props.setActiveSubscription(activeSubscription, subscriptionPlan);
+  }
+
+  componentDidMount() {
+    this.getInAppPurchaseItems()
     this.setCalculatorHiddenNoticesTemplate()
 
     var onSyncStatusChange = function(SyncStatus) {
@@ -370,6 +396,9 @@ class Insura extends Component {
         // Get the initial user object
         firebase.database().ref('users/'+firebase.auth().currentUser.uid).once('value',(snapshot) => {
           this.setState({user: snapshot.val()},()=>{
+            console.log("This is the user coming back from the database")
+            console.log(snapshot.val())
+            this.saveSubscriptionState(snapshot.val())
             this.getSupportMessages();
             checkUserSeenInstrctions();
             this.getClientHistory();
@@ -399,6 +428,7 @@ class Insura extends Component {
   componentWillUnmount() {
     this.authSubscription();
     TestFairy.begin("0b43fbd57420a2d774299b1e10e75ca1ff5249af");
+    RNIap.endConnection();
   }
 
   log = (content) => {
@@ -2103,7 +2133,7 @@ class Insura extends Component {
 // console.log("creating user with email and password...")
                       u = firebase.auth().currentUser;
 // console.log(u)
-                      this.setUser(u.uid,fullName,email,null);
+                      this.setUser(u.uid,fullName,email, planId);
                       Analytics.trackEvent("Register SUCCESS: "+email);
                     })
                     .catch((error) => {
@@ -3007,19 +3037,14 @@ class Insura extends Component {
       this.setState({ BlinkShowImage: false, BlinkResultImage: '', BlinkResults: error.message});
     }
   }
-  setUser=(id,name,email,card)=>{
-    // console.log("setUser()")
-    // console.log(u)
+  setUser=(id,name,email, subscription)=>{
     res = firebase.database().ref('users/'+id).set({
-      id: id,
-      name: name,
-      email: email,
-      stripe_customer_id: 'null',
-      stripe_token_id: 'null',
+      id,
+      name,
+      email,
+      subscription,
       activeSubscription: true,
     })
-    // .then(res=>{console.log(res)})
-    // .catch(err=>console.log(err))
   }
   saveClient=(userId,clientId,clientInfo,buttons)=>{
    console.log("saveClient()")
@@ -3122,7 +3147,9 @@ const mapStateToProps = (state) => {
   return {
     supportVisable: state.supportReducer.supportVisible,
     redDotPresent: state.supportReducer.redDotPresent,
-    newChatModalShowing: state.supportReducer.newChatModal
+    newChatModalShowing: state.supportReducer.newChatModal,
+    activeSubscription: state.inAppPurchaseReducer.activeSubscription,
+    subscriptionPlan: state.inAppPurchaseReducer.subscriptionPlan
   };
 };
 
@@ -3132,7 +3159,8 @@ const mapDispatchToProps = dispatch => {
     fetchSupportMessages,
     setRedDot,
     toggleSupportModal,
-    toggleNewChatModal
+    toggleNewChatModal,
+    setActiveSubscription,
   },dispatch);
 
 };
