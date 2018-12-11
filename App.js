@@ -35,7 +35,7 @@ import { bindActionCreators } from "redux";
 
 // Import redux actions
 import { fetchSupportMessages, setRedDot, toggleSupportModal, toggleNewChatModal } from './actions/supportActions';
-import { setActiveSubscription } from './actions/inAppPurchaseActions'
+import { setActiveSubscription, setAvailableProducts, setCookedProducts, selectProduct } from './actions/inAppPurchaseActions'
 
 // Import In-App Purchases
 import * as RNIap from 'react-native-iap';
@@ -332,7 +332,17 @@ class Insura extends Component {
     });
     try {
       const products = await RNIap.getProducts(itemSkus);
-      // console.log(products)
+      // Save Products in Redux Store.
+      let iosProducts = [];
+      products.forEach(product => {
+        let cookedProduct = {
+          label: product.title,
+          value: product.productId, 
+        }
+        iosProducts.push(cookedProduct)
+      });
+      this.props.setCookedProducts(iosProducts)
+      this.props.setAvailableProducts(products);
     } catch(err) {
       console.warn(err);
     }
@@ -2229,20 +2239,16 @@ class Insura extends Component {
           />
           <Text style={{marginBottom: 10, marginTop: 15}}>Select a plan:</Text>
           <RNPickerSelect
-            items={stripe_mode === "PROD" ? subscriptioons.prod : subscriptioons.test}
-            onValueChange={(value) => {this.setState({registerPlanID:value})}}
+            items={this.props.cookedProducts}
+            onValueChange={(value) => {this.props.selectProduct(value)}}
             onUpArrow={() => { this.inputRefs.name.focus(); }}
             onDownArrow={() => {
               this.inputRefs.picker4.togglePickyr();
             }}
             style={{icon: {marginTop:-16, marginRight:0 }, inputIOS: {fontSize: 14, borderBottomWidth: 1, borderBottomColor: '#c8cffd', paddingBottom: 7,marginBottom: 3, color: '#000' }}}
-            value={this.state.registerPlanID}
+            value={this.props.selectedProductToPurchase}
             ref="terms"
           />
-          <LiteCreditCardInput onChange={(cc)=>{this.setState({registerCC: cc})}} />
-          <Text style={{marginTop: 10}}>Please provide a credit or debit card for the plan.</Text>
-          {/*<Text style={{marginBottom: 10}}>The first payment is charged after your trial.</Text>*/}
-
           <Text style={styles.formErrorMessage}>
             {this.state.formErrorNotice && this.state.formErrorNotice}
           </Text>
@@ -3149,7 +3155,10 @@ const mapStateToProps = (state) => {
     redDotPresent: state.supportReducer.redDotPresent,
     newChatModalShowing: state.supportReducer.newChatModal,
     activeSubscription: state.inAppPurchaseReducer.activeSubscription,
-    subscriptionPlan: state.inAppPurchaseReducer.subscriptionPlan
+    subscriptionPlan: state.inAppPurchaseReducer.subscriptionPlan,
+    availableProducts: state.inAppPurchaseReducer.availableProducts,
+    cookedProducts: state.inAppPurchaseReducer.cookedProducts,
+    selectedProductToPurchase: state.inAppPurchaseReducer.selectedProductToPurchase,
   };
 };
 
@@ -3161,6 +3170,9 @@ const mapDispatchToProps = dispatch => {
     toggleSupportModal,
     toggleNewChatModal,
     setActiveSubscription,
+    setAvailableProducts,
+    setCookedProducts,
+    selectProduct
   },dispatch);
 
 };
