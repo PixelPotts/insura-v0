@@ -333,8 +333,6 @@ class Insura extends Component {
     try {
       const products = await RNIap.getProducts(itemSkus);
       // Save Products in Redux Store.
-      console.log("PRODUCTS")
-      console.log(products)
       let iosProducts = [];
       products.forEach(product => {
         let cookedProduct = {
@@ -2095,6 +2093,8 @@ class Insura extends Component {
 
     // Make purchase through inApp Purchases
     RNIap.buyProduct(planId).then(purchase => {
+      console.log("COmpleted Purchase")
+      console.log(purchase)
       firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((data) => {
             this.setState({user: data.user},()=>{
@@ -2113,10 +2113,14 @@ class Insura extends Component {
             );
           })
           .catch((error) => {
+            console.log("Uh Oh there was an error")
+            console.log(error)
             const { code, message } = error;
             this.setFormError(code,message);
           });
     }).catch(err => {
+      console.log("Uh Oh there was an error")
+      console.log(err)
       this.setFormError('',err);
     })
   }
