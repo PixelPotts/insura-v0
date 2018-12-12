@@ -333,6 +333,8 @@ class Insura extends Component {
     try {
       const products = await RNIap.getProducts(itemSkus);
       // Save Products in Redux Store.
+      console.log("PRODUCTS")
+      console.log(products)
       let iosProducts = [];
       products.forEach(product => {
         let cookedProduct = {
@@ -2076,7 +2078,6 @@ class Insura extends Component {
   onRegister = () => {
     this.clearFormError();
     this.setState({formErrorNotice: "Processing. Please wait..."})
-    let ccNoticeField = false;
 
     const email =                   this.state.registerEmail
     const password =                this.state.registerPassword
@@ -2085,101 +2086,39 @@ class Insura extends Component {
     if(fullName != null) {
       const {firstName,lastName} =  fullName.toString().trim().split(' ')
     }
-    const planId =                  this.state.registerPlanID
-    const cc =                      this.state.registerCC
+    const planId =                  this.props.selectedProductToPurchase;
 
     if(fullName==''|| fullName==null)   {this.setFormError(1,'A full name is required to register.'); return false}
     if(email==''||    email==null)      {this.setFormError(1,'An email is required to register.');    return false}
     if(password==''|| password==null)   {this.setFormError(1,'A password is required to register.');  return false}
     if(password!==    confirmPassword)  {this.setFormError(1,'Your passwords do not match.');         return false}
-    if(!cc.valid)                       {this.setFormError(9,"Please confirm you card numbers.");     return false}
 
-    const client = new StripeToken(STRIPE_API_KEY)
-    let card_error = false
-    date = cc.values.expiry.split('/')
-// console.log(cc)
-// console.log(cc.values.number)
-    client.createToken({number:cc.values.number, exp_month: date[0], exp_year: date[1], cvc: cc.values.cvc})
-      .then(token=>{
-// console.log("token:")
-// console.log(token)
-        if(token.error){
-// console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************")
-          Analytics.trackEvent("Stripe Token Failed: "+customer.error.message);
-          this.setFormError('1009',token.error.message);
-          card_error = true
-        }
-        const customer = Stripe.createCustomer(token.id, email)
-          .then(customer=>{
-            if(customer.error){
-// console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************")
-              if(!card_error) this.setFormError('1008',customer.error.message);
-              Analytics.trackEvent("Register Failed: "+customer.error.message);
-              card_error = true
-            }
-// console.log("customer:")
-// console.log(customer)
-            Stripe.subscribe(customer.id,planId)
-              .then(subscribe=>{
-// console.log("subscription:")
-// console.log(subscribe)
-                if(subscribe.error){
-// console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************")
-                  Analytics.trackEvent("Subscribe Failed: "+subscribe.error.message);
-                  if(!card_error) this.setFormError('1008',subscribe.error.message);
-                  card_error = true
-                }
-                if(!card_error){
-                  firebase.auth().createUserWithEmailAndPassword(email, password)
-                    .then((data) => {
-// console.log("created AUTH user")
-// console.log(data);
-                      this.setState({user: data.user},()=>{
-// console.log(this.state.user)
-                        storage.save({key:'user', data: data.user.uid})
-                      })
-                      let verifyEmail = firebase.auth().currentUser.sendEmailVerification()
-                      this.setState({registerVisible: false},()=>this.setState({loginVisible: true}))
-// console.log("creating user with email and password...")
-                      u = firebase.auth().currentUser;
-// console.log(u)
-                      this.setUser(u.uid,fullName,email, planId);
-                      Analytics.trackEvent("Register SUCCESS: "+email);
-                    })
-                    .catch((error) => {
-// console.log("FIREBASE ERROR: COULD NOT CREATE AN ACCOUNT ****************")
-// console.log(error)
-                      const { code, message } = error;
-                      Analytics.trackEvent("Subscribe Failed: "+message);
-                      this.setFormError(code,message);
-                    });
-                } else {
-// console.log("========= CARD ERROR ===========")
-                }
-
-              })
-              .catch(err=>{
-                Analytics.trackEvent("Subscribe Failed: "+email);
-// console.log("STRIPE ERROR: SUBSCRIBE FAILED ****************");
-// console.log(err)
-                card_error = true
-              })
+    // Make purchase through inApp Purchases
+    RNIap.buyProduct(planId).then(purchase => {
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then((data) => {
+            this.setState({user: data.user},()=>{
+              storage.save({key:'user', data: data.user.uid})
+            })
+            let verifyEmail = firebase.auth().currentUser.sendEmailVerification()
+            this.setState({registerVisible: false},()=>this.setState({loginVisible: true}))
+            u = firebase.auth().currentUser;
+            this.setUser(
+              u.uid,
+              fullName,email, 
+              planId, 
+              purchase.transactionId, 
+              purchase.originalTransactionDateIOS, 
+              purchase.originalTransactionIdentifierIOS
+            );
           })
-          .catch(err=>{
-            Analytics.trackEvent("Create Customer Failed: "+email);
-// console.log("STRIPE ERROR: CREATE CUSTOMER FAILED ****************");
-// console.log(err)
-            card_error = true
-          })
-      })
-      .catch(err=>{
-// console.log("STRIPE ERROR: CREATE TOKEN FAILED ****************");
-// console.log(err)
-        Analytics.trackEvent("Create Token Failed: "+error.message);
-        this.setFormError('1009',error.message);
-        card_error = true
-      })
-
+          .catch((error) => {
+            const { code, message } = error;
+            this.setFormError(code,message);
+          });
+    }).catch(err => {
+      this.setFormError('',err);
+    })
   }
   registerPhone = () => {
     firebase.auth().signInWithPhoneNumber(phone).then((res) => {
@@ -3043,13 +2982,16 @@ class Insura extends Component {
       this.setState({ BlinkShowImage: false, BlinkResultImage: '', BlinkResults: error.message});
     }
   }
-  setUser=(id,name,email, subscription)=>{
+  setUser=(id,name,email, subscription, transactionId, originalTransactionDateIOS, originalTransactionIdentifierIOS)=>{
     res = firebase.database().ref('users/'+id).set({
       id,
       name,
       email,
       subscription,
       activeSubscription: true,
+      transactionId,
+      originalTransactionDateIOS,
+      originalTransactionIdentifierIOS
     })
   }
   saveClient=(userId,clientId,clientInfo,buttons)=>{
