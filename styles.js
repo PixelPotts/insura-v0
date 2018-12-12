@@ -872,6 +872,30 @@ export default StyleSheet.create({
     shadowColor: 'black',
     shadowOpacity: 0.2,
   },
+  authModal: {
+    top: 22,
+    backgroundColor: '#404861',
+    maxWidth: 608,
+    // maxHeight: 434,
+    width: '85%',
+    minHeight: '58%',
+    paddingTop: 28,
+    paddingBottom: 28,
+    paddingLeft: 24,
+    paddingRight: 24,
+    borderColor: '#0F0F0F',
+    borderWidth: 1,
+    borderRadius: 31
+
+  },
+  authTitleContainer: {
+    marginBottom: 24,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+  },  
   modalInstructions: {
     top: 22,
     padding: 30,
@@ -905,9 +929,16 @@ export default StyleSheet.create({
     borderColor: 'red'
   },
   modalHeading: {
-    marginBottom: 20,
+    marginBottom: 16,
     fontSize: 20,
     width: 200
+  },
+  authModalHeading: {
+    margin: 0,
+    fontSize: 27,
+    fontWeight: 'bold',
+    lineHeight: 28,
+    color: 'white',
   },
   modalInput: {
     borderColor: 'transparent',
@@ -920,8 +951,54 @@ export default StyleSheet.create({
     borderRadius: 0,
     backgroundColor: '#FFF'
   },
+  authModalInput: {
+    borderColor: '#B7B7B7',
+    borderWidth: 1,
+    marginBottom: 14,
+    marginTop: 0,
+    height: 38,
+    paddingLeft: 32,
+    fontSize: 18,
+    fontWeight: '100',
+    backgroundColor: '#FFF',
+    borderRadius: 31,
+  },
+  authSubmitHighlight: {
+    height: 32, 
+    width: '100%', 
+    backgroundColor: '#10273A', 
+    borderRadius: 31, 
+    flex: 1, 
+    marginBottom: 8,
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'center' 
+  },
+  authSubmitDisabled: {
+    height: 32, 
+    width: '100%', 
+    backgroundColor: '#A7B6C2', 
+    borderRadius: 31, 
+    flex: 1, 
+    marginBottom: 8,
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'center' 
+  },
   modalSubmit: {
     marginTop: 7
+  },
+  authModalSubmit: {
+    marginTop: 7,
+    height: 100
+  },
+  authModalFooter: {
+    height: 24,
+    width: '100%',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   formErrorMessage: {
     color: '#F00'
