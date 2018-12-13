@@ -156,6 +156,12 @@ const logos = {
   100: require('./images/insura-how-to.png'),
 };
 
+const gradients = {
+  1: require('./images/orange-gradient.png'),
+  2: require('./images/yellow-gradient.png'),
+  3: require('./images/green-gradient.png')
+}
+
 var CustomLayoutSpring = {
   duration: 200,
   create: {
@@ -289,8 +295,10 @@ class Insura extends Component {
       refisterCCValid: false,
       registerPlanID: stripe_mode === "PROD" ? subscriptioons.prod[0].value : subscriptioons.test[0].value,
       loginVisible: false,
+      choosePlanVisible: false,
       loginEmail: null,
       termsOfServiceChecked: false,
+      acceptAIChecked: false,
       // loginEmail: 'pottspotts+100@gmail.com',
       loginPassword: null,
       // loginPassword: 'merchan1',
@@ -336,9 +344,29 @@ class Insura extends Component {
       // Save Products in Redux Store.
       let iosProducts = [];
       products.forEach(product => {
+        let desc = ''
+        let price = ''
+        switch (product.productId) {
+          case '1':
+            desc = 'You get billed $48 every 30 days.'
+            price = '$48/mo'
+            break;
+          case '2':
+            desc = 'You get billed $148 every 90 days.'
+            price = '$90/3mo'
+            break;
+          case '3':
+            desc = 'One payment of $300 for 12 months access.'
+            price = '$300/1yr'
+            break;
+          default:
+            break;
+        }
         let cookedProduct = {
           label: product.title,
           value: product.productId,
+          desc: desc,
+          price: price
         }
         iosProducts.push(cookedProduct)
       });
@@ -2075,9 +2103,7 @@ class Insura extends Component {
     m = cc.expiry.split('/')
   }
   onRegister = () => {
-    this.clearFormError();
-    this.setState({ formErrorNotice: "Processing. Please wait..." })
-
+    console.log("Called")
     const email = this.state.registerEmail
     const password = this.state.registerPassword
     const confirmPassword = this.state.registerConfirmPassword
@@ -2092,17 +2118,16 @@ class Insura extends Component {
     if (password == '' || password == null) { this.setFormError(1, 'A password is required to register.'); return false }
     if (password !== confirmPassword) { this.setFormError(1, 'Your passwords do not match.'); return false }
 
+    return console.log("Purchase shoudld work")
     // Make purchase through inApp Purchases
     RNIap.buyProduct(planId).then(purchase => {
-      console.log("COmpleted Purchase")
-      console.log(purchase)
       firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((data) => {
           this.setState({ user: data.user }, () => {
             storage.save({ key: 'user', data: data.user.uid })
           })
           let verifyEmail = firebase.auth().currentUser.sendEmailVerification()
-          this.setState({ registerVisible: false }, () => this.setState({ loginVisible: true }))
+          this.setState({ choosePlanVisible: false }, () => this.setState({ loginVisible: true }))
           u = firebase.auth().currentUser;
           this.setUser(
             u.uid,
@@ -2137,16 +2162,12 @@ class Insura extends Component {
     return (
       <SafeAreaView style={styles.modalWrap}>
         <View style={styles.modal}>
-          {/*<TouchableHighlight onPress={()=>{this.setState({registerVisible: false})}}>*/}
-          {/*<Text style={{fontSize:16,marginBottom:13}}><Text style={{fontWeight:'900'}}>&nbsp;</Text> &nbsp;</Text>*/}
-          {/*</TouchableHighlight>*/}
           <View style={{ position: 'absolute', right: 15, top: 15 }}>
-            <TouchableHighlight onPress={() => { this.setState({ registerVisible: false, loginVisible: true }) }}>
+            <TouchableHighlight onPress={() => { this.setState({ registerVisible: false, choosePlanVisible: true }) }}>
               <Text style={{ fontSize: 16, marginBottom: 13 }}>Sign In <Text style={{ fontWeight: '900' }}>&rsaquo;</Text></Text>
             </TouchableHighlight>
           </View>
           <Text style={styles.modalHeading}>Register New Account</Text>
-          {/*<Text style={{marginBottom: 10}}>Please enter your account info:</Text>*/}
           <TextInput
             ref="registerFullName"
             placeholder="First & Last Name"
@@ -2201,7 +2222,6 @@ class Insura extends Component {
               title="Submit"
               onPress={() => {
                 this.onRegister();
-                // console.log(this.state.registerErr)
               }}
             />
 
@@ -2209,6 +2229,157 @@ class Insura extends Component {
         </View>
       </SafeAreaView>
     );
+  }
+
+  registerModalNew = () => {
+    return (
+      <SafeAreaView style={styles.modalWrap}>
+        <View style={{...styles.authChoosePlanModal, height: 500}}>
+          <View style={styles.authTitleContainer}>
+            <Text style={styles.authModalHeading}>Register</Text>
+            <TouchableHighlight onPress={() => { this.setState({ registerVisible: false, loginVisible: true }) }}>
+              <Text style={{ fontSize: 16, color: 'white', margin: 0 }}>Login ></Text>
+            </TouchableHighlight>
+          </View>
+          <View style={{ height: '85%' }}>
+            <TextInput
+              ref="registerFullName"
+              placeholder="First & Last Name"
+              style={styles.authModalInput}
+              onChangeText={(v) => this.setState({ registerFullName: v })}
+              value={this.state.registerFullName}
+              autoCapitalize='words'
+            />
+            <TextInput
+              ref="registerEmail"
+              placeholder="Email"
+              style={styles.authModalInput}
+              onChangeText={(v) => this.setState({ registerEmail: v })}
+              value={this.state.registerEmail}
+              autoCapitalize='none'
+            />
+            <TextInput
+              ref="registerPassword"
+              placeholder="Password"
+              style={styles.authModalInput}
+              onChangeText={(v) => this.setState({ registerPassword: v })}
+              value={this.state.registerPassword}
+              autoCapitalize='none'
+              secureTextEntry={true}
+            />
+            <TextInput
+              ref="registerPasswor2"
+              placeholder="Confirm Password"
+              style={styles.authModalInput}
+              onChangeText={(v) => this.setState({ registerConfirmPassword: v })}
+              value={this.state.registerConfirmPassword}
+              autoCapitalize='none'
+              secureTextEntry={true}
+            />
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+              <TouchableOpacity
+                onPress={() => { this.setState({ termsOfServiceChecked: true }) }}
+                style={{ textalign: 'center', height: 22, width: 22, borderRadius: 33, backgroundColor: '#FFFFFF', marginRight: 8, }}
+              >
+                {
+                  this.state.termsOfServiceChecked ?
+                    <View style={{ position: 'absolute', marginTop: 3, marginLeft: 3, height: 16, width: 16, padding: 0, borderRadius: 33, backgroundColor: '#D8D8D8', marginRight: 8 }} />
+                    :
+                    null
+                }
+              </TouchableOpacity>
+              <Text style={{ fontSize: 12, color: '#FFFFFF' }}>I agree to the Insura terms of service.</Text>
+            </View>
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+              <TouchableOpacity
+                onPress={() => { this.setState({ acceptAIChecked: true }) }}
+                style={{ textalign: 'center', height: 22, width: 22, borderRadius: 33, backgroundColor: '#FFFFFF', marginRight: 8, }}
+              >
+                {
+                  this.state.acceptAIChecked ?
+                    <View style={{ position: 'absolute', marginTop: 3, marginLeft: 3, height: 16, width: 16, padding: 0, borderRadius: 33, backgroundColor: '#D8D8D8', marginRight: 8 }} />
+                    :
+                    null
+                }
+              </TouchableOpacity>
+              <Text style={{ fontSize: 12, color: '#FFFFFF' }}>I understand my account is subject to A.I. and human fraud review..</Text>
+            </View>
+            <View style={{...styles.authModalSubmit, height: 48 }}>
+              <TouchableOpacity
+                style={this.state.termsOfServiceChecked && this.state.acceptAIChecked ? styles.authSubmitHighlight : styles.authSubmitDisabled}
+                disabled={this.state.termsOfServiceChecked && this.state.acceptAIChecked ? false : true}
+                onPress={() => this.setState({ registerVisible: false, choosePlanVisible: true })}
+              >
+                <Text style={{ fontSize: 16, color: '#FFFFFF' }}>SUBMIT</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.authModalFooter}>
+              <TouchableOpacity>
+                <Text style={{ fontSize: 13, color: 'rgba(255, 255, 255, .4)', fontWeight: '200' }}>PRIVACY POLICY</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={{ fontSize: 13, color: 'rgba(255, 255, 255, .4)', fontWeight: '200' }}>TERMS OF USE</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </SafeAreaView>
+    )
+
+  }
+
+  choosePlanModal = () => {
+    return (
+      <SafeAreaView style={styles.modalWrap}>
+        <View style={styles.authChoosePlanModal}>
+          <View style={styles.authTitleContainer}>
+            <Text style={styles.authModalHeading}>Select Plan</Text>
+            <TouchableHighlight onPress={() => { this.setState({ choosePlanVisible: false, loginVisible: true }) }}>
+              <Text style={{ fontSize: 16, color: 'white', margin: 0 }}>Login ></Text>
+            </TouchableHighlight>
+          </View>
+          <View style={{ height: '75%' }}>
+            {
+              this.props.cookedProducts.map((product, index) => {
+                return (
+                  <TouchableHighlight key={index} style={{height: 100,  marginBottom: 24,}} onPress={() =>  this.props.selectProduct(product.value) }>
+                  <View
+                    style={{
+                      flex: 1,
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      height: '100%',
+                      width: '100%',
+                      backgroundImage: gradients[1],
+                      padding: 16,
+                      position: 'relative',
+                      overflow: 'hidden'
+                    }}>
+                    <Image source={gradients[index + 1]} style={{ height: '120%', width: '120%', position: 'absolute', left: 0, right: 0, zIndex: -100 }} />
+                    <View>
+                      <Text style={{ fontSize: 18 }}>{product.label}</Text>
+                      <Text style={{ fontSize: 10 }}>{product.desc}</Text>
+
+                    </View>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', position: 'absolute', right: 16, top: 16 }}>{product.price}</Text>
+                  </View>
+                  </TouchableHighlight>
+                )
+              })
+            }
+          </View>
+          <View style={{...styles.authModalSubmit, height: 48 }}>
+              <TouchableHighlight
+                style={this.props.selectedProductToPurchase ? styles.authSubmitHighlight : styles.authSubmitDisabled}
+                disabled={this.props.selectedProductToPurchased ? false : true}
+                onPress={() => {console.log("TEST")}}
+              >
+                <Text style={{ fontSize: 16, color: '#FFFFFF' }}>REGISTER</Text>
+              </TouchableHighlight>
+            </View>
+        </View>
+      </SafeAreaView>
+    )
   }
   loginModal = () => {
     return (
@@ -2240,19 +2411,19 @@ class Insura extends Component {
           <Text style={styles.formErrorMessage}>
             {this.state.formErrorNotice && this.state.formErrorNotice}
           </Text>
-          <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
-          <TouchableOpacity
+          <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+            <TouchableOpacity
               onPress={() => { this.setState({ termsOfServiceChecked: true }) }}
-              style={{textalign: 'center', height: 22, width: 22, borderRadius: 33, backgroundColor: '#FFFFFF', marginRight: 8,}}
+              style={{ textalign: 'center', height: 22, width: 22, borderRadius: 33, backgroundColor: '#FFFFFF', marginRight: 8, }}
             >
-             {
-               this.state.termsOfServiceChecked ?
-               <View style={{position: 'absolute', marginTop: 3, marginLeft: 3, height: 16, width: 16, padding: 0, borderRadius: 33, backgroundColor: '#D8D8D8', marginRight: 8}} />
-               :
-               null
-             }
+              {
+                this.state.termsOfServiceChecked ?
+                  <View style={{ position: 'absolute', marginTop: 3, marginLeft: 3, height: 16, width: 16, padding: 0, borderRadius: 33, backgroundColor: '#D8D8D8', marginRight: 8 }} />
+                  :
+                  null
+              }
             </TouchableOpacity>
-              <Text style={{ fontSize: 12, color: '#FFFFFF' }}>I agree to the Insura terms of service.</Text>
+            <Text style={{ fontSize: 12, color: '#FFFFFF' }}>I agree to the Insura terms of service.</Text>
           </View>
           <View style={styles.authModalSubmit}>
             <TouchableOpacity
@@ -2605,10 +2776,13 @@ class Insura extends Component {
         {this.state.calculatorVisible ? this.renderCalculator() : null}
 
         {/* REGISTER */}
-        {this.state.registerVisible ? this.registerModal() : null}
+        {this.state.registerVisible ? this.registerModalNew() : null}
 
         {/* LOGIN */}
         {this.state.loginVisible ? this.loginModal() : null}
+
+        {/* CHOOSE PLAN */}
+        {this.state.choosePlanVisible ? this.choosePlanModal() : null}
 
         {/* RESET PASSWORD */}
         {this.state.resetPasswordVisible ? this.resetPasswordModal() : null}

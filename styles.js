@@ -886,7 +886,20 @@ export default StyleSheet.create({
     borderColor: '#0F0F0F',
     borderWidth: 1,
     borderRadius: 31
-
+  },
+  authChoosePlanModal: {
+    top: 22,
+    backgroundColor: '#404861',
+    maxWidth: 608,
+    width: '85%',
+    height: 550,
+    paddingTop: 28,
+    paddingBottom: 28,
+    paddingLeft: 24,
+    paddingRight: 24,
+    borderColor: '#0F0F0F',
+    borderWidth: 1,
+    borderRadius: 31
   },
   authTitleContainer: {
     marginBottom: 24,
