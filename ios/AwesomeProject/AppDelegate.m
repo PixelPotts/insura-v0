@@ -1,11 +1,18 @@
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
+ * All rights reserved.
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  */
 
 #import "AppDelegate.h"
+#import <CodePush/CodePush.h>
+#import <AppCenterReactNativePush/AppCenterReactNativePush.h>
+#import <AppCenterReactNativeCrashes/AppCenterReactNativeCrashes.h>
+#import <AppCenterReactNativeAnalytics/AppCenterReactNativeAnalytics.h>
+#import <AppCenterReactNative/AppCenterReactNative.h>
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
@@ -16,7 +23,25 @@
 {
   NSURL *jsCodeLocation;
 
-  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+  [AppCenterReactNative register];  // Initialize AppCenter 
+
+  [AppCenterReactNativePush register];  // Initialize AppCenter push
+
+  [AppCenterReactNativeCrashes registerWithAutomaticProcessing];  // Initialize AppCenter crashes
+
+  [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];  // Initialize AppCenter analytics
+
+  [AppCenterReactNative register];  // Initialize AppCenter
+  
+    #ifdef DEBUG
+        jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+    #else
+        jsCodeLocation = [CodePush bundleURL];
+    #endif
+
+/**
+ * #  jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+ */
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"AwesomeProject"
