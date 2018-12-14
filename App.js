@@ -61,8 +61,6 @@ import { MediaQuery } from "react-native-responsive-ui";
 import Device from "react-native-responsive-ui/lib/Device";
 import MediaQuerySelector from "react-native-responsive-ui/lib/MediaQuerySelector";
 import AutoScroll from 'react-native-auto-scroll'
-import StripeToken from 'react-native-stripe-api'
-import Stripe from './stripe'
 import { LiteCreditCardInput } from "react-native-credit-card-input"
 import * as firebase from 'firebase'
 import RNPickerSelect from 'react-native-picker-select'
@@ -119,26 +117,6 @@ import { BlinkID, MRTDKeys, USDLKeys, EUDLKeys, MYKADKeys } from 'blinkid-react-
 const BlinklicenseKey = Platform.select({
   ios: '67ZRQWEZ-VOKTBUVI-OEW3PUK7-6GINDEGW-QI37PNSN-W4UYM66C-KXEVFNZI-LWHEKJRS',
 });
-
-// STRIPE KEYS
-const stripe_mode = "PROD"
-const stripe_url = 'https://api.stripe.com/v1/';
-const stripe_test_key = "sk_test_4pJ7hGg9yxZxZCXibtxvzphX";
-const stripe_prod_key = "sk_live_c8NPJO5bonIsTxjtryiEwmrN";
-const STRIPE_API_KEY = stripe_mode === "PROD" ? stripe_prod_key : stripe_test_key;
-// console.log("Stripe API Key: "+STRIPE_API_KEY);
-const subscriptioons = {
-  test: [
-    { label: 'Monthly – $40 – 1 Day Trial', value: 'plan_D2F9m6oyVdqmGD' },
-    { label: 'Every 3 Months – $100 – 3 Day Trial', value: 'plan_D2F7qblyYSuea2' },
-    { label: 'Annually – $320 – 7 Day Trial', value: 'plan_D2F3s5CVgtPEkC' },
-  ],
-  prod: [
-    { label: 'Monthly – $40 – 1 Day Trial', value: 'plan_Djw2e1ZLm760HT' },
-    { label: 'Every 3 Months – $100 – 3 Day Trial', value: 'plan_Djw3SwKvedkMA7' },
-    { label: 'Annually – $320 – 7 Day Trial', value: 'plan_Djw5NQCQM8fqfr' },
-  ]
-}
 
 const logos = {
   0: require('./images/insura_logo_bg.png'),
