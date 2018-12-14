@@ -271,7 +271,6 @@ class Insura extends Component {
       registerCC: {},
       registerCCStatuses: {},
       refisterCCValid: false,
-      registerPlanID: stripe_mode === "PROD" ? subscriptioons.prod[0].value : subscriptioons.test[0].value,
       loginVisible: false,
       choosePlanVisible: false,
       loginEmail: null,
@@ -2245,7 +2244,7 @@ class Insura extends Component {
             {
               this.props.cookedProducts.map((product, index) => {
                 return (
-                  <TouchableHighlight key={index} style={{height: 100,  marginBottom: 24,}} onPress={() =>  this.props.selectProduct(product.value) }>
+                  <TouchableHighlight key={index} style={{height: 100,  marginBottom: 24}} onPress={() =>  this.props.selectProduct(product.value) }>
                   <View
                     style={{
                       flex: 1,
@@ -2259,8 +2258,9 @@ class Insura extends Component {
                       overflow: 'hidden'
                     }}>
                     <Image source={gradients[index + 1]} style={{ height: '120%', width: '120%', position: 'absolute', left: 0, right: 0, zIndex: -100 }} />
+                    <Text style={{fontSize: 16, fontWeight: 'bold', position: 'absolute', left: 16, top: 16 }}>{this.props.selectedProductToPurchase === product.value ? "Selected" : null}</Text>
                     <View>
-                      <Text style={{ fontSize: 18 }}>{product.label}</Text>
+                      <Text style={{ fontSize: 18, marginTop: 8 }}>{product.label}</Text>
                       <Text style={{ fontSize: 10 }}>{product.desc}</Text>
 
                     </View>
