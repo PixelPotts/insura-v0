@@ -2103,7 +2103,6 @@ class Insura extends Component {
     m = cc.expiry.split('/')
   }
   onRegister = () => {
-    console.log("Called")
     const email = this.state.registerEmail
     const password = this.state.registerPassword
     const confirmPassword = this.state.registerConfirmPassword
@@ -2118,7 +2117,6 @@ class Insura extends Component {
     if (password == '' || password == null) { this.setFormError(1, 'A password is required to register.'); return false }
     if (password !== confirmPassword) { this.setFormError(1, 'Your passwords do not match.'); return false }
 
-    return console.log("Purchase shoudld work")
     // Make purchase through inApp Purchases
     RNIap.buyProduct(planId).then(purchase => {
       firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -2159,79 +2157,6 @@ class Insura extends Component {
     })
   }
   registerModal = () => {
-    return (
-      <SafeAreaView style={styles.modalWrap}>
-        <View style={styles.modal}>
-          <View style={{ position: 'absolute', right: 15, top: 15 }}>
-            <TouchableHighlight onPress={() => { this.setState({ registerVisible: false, choosePlanVisible: true }) }}>
-              <Text style={{ fontSize: 16, marginBottom: 13 }}>Sign In <Text style={{ fontWeight: '900' }}>&rsaquo;</Text></Text>
-            </TouchableHighlight>
-          </View>
-          <Text style={styles.modalHeading}>Register New Account</Text>
-          <TextInput
-            ref="registerFullName"
-            placeholder="First & Last Name"
-            style={styles.modalInput}
-            onChangeText={(v) => this.setState({ registerFullName: v })}
-            value={this.state.registerFullName}
-            autoCapitalize='words'
-          />
-          <TextInput
-            ref="registerEmail"
-            placeholder="Email"
-            style={styles.modalInput}
-            onChangeText={(v) => this.setState({ registerEmail: v })}
-            value={this.state.registerEmail}
-            autoCapitalize='none'
-          />
-          <TextInput
-            ref="registerPassword"
-            placeholder="Password"
-            style={styles.modalInput}
-            onChangeText={(v) => this.setState({ registerPassword: v })}
-            value={this.state.registerPassword}
-            autoCapitalize='none'
-            secureTextEntry={true}
-          />
-          <TextInput
-            ref="registerPasswor2"
-            placeholder="Confirm Password"
-            style={styles.modalInput}
-            onChangeText={(v) => this.setState({ registerConfirmPassword: v })}
-            value={this.state.registerConfirmPassword}
-            autoCapitalize='none'
-            secureTextEntry={true}
-          />
-          <Text style={{ marginBottom: 10, marginTop: 15 }}>Select a plan:</Text>
-          <RNPickerSelect
-            items={this.props.cookedProducts}
-            onValueChange={(value) => { this.props.selectProduct(value) }}
-            onUpArrow={() => { this.inputRefs.name.focus(); }}
-            onDownArrow={() => {
-              this.inputRefs.picker4.togglePickyr();
-            }}
-            style={{ icon: { marginTop: -16, marginRight: 0 }, inputIOS: { fontSize: 14, borderBottomWidth: 1, borderBottomColor: '#c8cffd', paddingBottom: 7, marginBottom: 3, color: '#000' } }}
-            value={this.props.selectedProductToPurchase}
-            ref="terms"
-          />
-          <Text style={styles.formErrorMessage}>
-            {this.state.formErrorNotice && this.state.formErrorNotice}
-          </Text>
-          <View style={styles.modalSubmit}>
-            <Button
-              title="Submit"
-              onPress={() => {
-                this.onRegister();
-              }}
-            />
-
-          </View>
-        </View>
-      </SafeAreaView>
-    );
-  }
-
-  registerModalNew = () => {
     return (
       <SafeAreaView style={styles.modalWrap}>
         <View style={{...styles.authChoosePlanModal, height: 500}}>
@@ -2368,11 +2293,14 @@ class Insura extends Component {
               })
             }
           </View>
+          <Text style={styles.formErrorMessage}>
+            {this.state.formErrorNotice && this.state.formErrorNotice}
+          </Text>
           <View style={{...styles.authModalSubmit, height: 48 }}>
               <TouchableHighlight
                 style={this.props.selectedProductToPurchase ? styles.authSubmitHighlight : styles.authSubmitDisabled}
-                disabled={this.props.selectedProductToPurchased ? false : true}
-                onPress={() => {console.log("TEST")}}
+                disabled={this.props.selectedProductToPurchase ? false : true}
+                onPress={() => {this.onRegister()}}
               >
                 <Text style={{ fontSize: 16, color: '#FFFFFF' }}>REGISTER</Text>
               </TouchableHighlight>
@@ -2776,7 +2704,7 @@ class Insura extends Component {
         {this.state.calculatorVisible ? this.renderCalculator() : null}
 
         {/* REGISTER */}
-        {this.state.registerVisible ? this.registerModalNew() : null}
+        {this.state.registerVisible ? this.registerModal() : null}
 
         {/* LOGIN */}
         {this.state.loginVisible ? this.loginModal() : null}
