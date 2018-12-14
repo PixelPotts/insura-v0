@@ -92,11 +92,13 @@ PODS:
     - React/Core
   - React/RCTNetwork (0.56.0):
     - React/Core
+  - React/RCTPushNotification (0.56.0):
+    - React/Core
   - React/RCTWebSocket (0.56.0):
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNIap (2.3.18):
+  - RNIap (2.3.21):
     - React
   - yoga (0.56.0.React)
 
@@ -115,6 +117,7 @@ DEPENDENCIES:
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
+  - React/RCTPushNotification (from `../node_modules/react-native`)
   - RNIap (from `../node_modules/react-native-iap`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -167,6 +170,6 @@ SPEC CHECKSUMS:
   RNIap: ef7dbcbb0ad7bb2400c14797ef3fad4e02ff0681
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 678d315e8c9f5f70385b28535bea3451f1a38576
+PODFILE CHECKSUM: cfbc3c8f9c59f0648467a101811f6f7cc7a5ee97
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.5.3
