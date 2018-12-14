@@ -1033,8 +1033,8 @@ export default StyleSheet.create({
   supportMessageInput: {
     borderTopWidth: 1,
     borderTopColor: '#ccc',
-    padding: 16,
-    height: 100,
+    padding: 10,
+    // height: 40,
     width: '100%'
   },
   supportCloseIcon: {
