@@ -31,4 +31,6 @@ target 'AwesomeProject' do
   pod 'RNIap', :path => '../node_modules/react-native-iap'
   # pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
 end

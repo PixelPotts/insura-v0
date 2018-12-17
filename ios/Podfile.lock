@@ -151,14 +151,14 @@ SPEC CHECKSUMS:
   AppCenter: 3cf7b9387549e9703dab068793e404013e8c0cc1
   AppCenterReactNativeShared: 3d804f256b964e040d902d1a215d7866fedae55d
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  DoubleConversion: a6ec5115d02a687c3a7350d6462b8c3e744bfa41
+  DoubleConversion: a9706f16e388b53ff12cca34473428ee29746a26
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
   Firebase: 383fa29aca93e371cab776b48a5c66544d3c2003
   FirebaseAnalytics: 831f1f127f4a75698e9875a87bf7e2668730d953
   FirebaseCore: 2a84b6b325792a4319ef71ee18819dcba08d2fd7
   FirebaseInstanceID: 78ba376fcd5b94c001f9999b2cbd3d1f1e56e78d
-  Folly: fa458a15230e6bee654f3e2b25f6be60f0b61bf3
-  glog: cffdcd539a4fed795bdf0146afde6dd4a981576c
+  Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
+  glog: b3b0330915eccea41c5cc9731a77cf564a9be5ea
   GoogleAppMeasurement: 2b3a023a61239c8d002e6e4fcf4abce8eddce0e0
   GoogleUtilities: 760ccb53b7c7f40f9c02d8c241f76f841a7a6162
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -169,4 +169,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 678d315e8c9f5f70385b28535bea3451f1a38576
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.5.3
