@@ -92,11 +92,15 @@ PODS:
     - React/Core
   - React/RCTNetwork (0.56.0):
     - React/Core
+  - React/RCTPushNotification (0.56.0):
+    - React/Core
   - React/RCTWebSocket (0.56.0):
     - React/Core
     - React/fishhook
     - React/RCTBlob
   - RNIap (2.3.18):
+    - React
+  - RNVectorIcons (4.6.0):
     - React
   - yoga (0.56.0.React)
 
@@ -115,7 +119,9 @@ DEPENDENCIES:
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
+  - React/RCTPushNotification (from `../node_modules/react-native`)
   - RNIap (from `../node_modules/react-native-iap`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -144,6 +150,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   RNIap:
     :path: "../node_modules/react-native-iap"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -165,8 +173,9 @@ SPEC CHECKSUMS:
   PPBlinkID: c48ed2cab5b326449921eb187784c7f3e58e70a2
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
   RNIap: ef7dbcbb0ad7bb2400c14797ef3fad4e02ff0681
+  RNVectorIcons: c0dbfbf6068fefa240c37b0f71bd03b45dddac44
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 678d315e8c9f5f70385b28535bea3451f1a38576
+PODFILE CHECKSUM: cf7d3c9eda985f86c1ae7a5af22762d1d0f63717
 
 COCOAPODS: 1.5.3
