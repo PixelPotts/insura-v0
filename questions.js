@@ -3,7 +3,7 @@ export default {
     {
       id: 100,
       text: 'Full name?',
-      placeholder: "First (Middle) Last",
+      placeholder: "Test First (Middle) Last",
       category: 'BIO',
       title: "NAME",
       subtitle: null,
