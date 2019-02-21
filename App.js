@@ -2466,11 +2466,11 @@ class Insura extends Component {
     self=this
     var menuItems = [
       {title: 'Save & New Client',callback: this.pressMenuSaveNewClient },
-      // {title: 'Scan Driver\'s License',callback: this.pressMenuScanLicense },
+      {title: 'Scan Driver\'s License',callback: this.pressMenuScanLicense },
       {title: 'Client History ('+this.state.clientHistory.length+')',callback: this.pressMenuClientHistory },
-      // {title: 'Export PDF',callback: this.pressMenuExportPDF },
+      {title: 'Export PDF',callback: this.pressMenuExportPDF },
       {title: 'Support',callback: this.pressMenuSupport },
-      // {title: 'Debug Log',callback: this.pressMenuDebugLog },
+      {title: 'Debug Log',callback: this.pressMenuDebugLog },
       // {title: 'Simulate ID Scan',callback: this.pressMenuSimulateIDScan },
       // {title: 'Simulate App Crash',callback: this.pressMenuCrash },
       {title: 'Log Out',callback: this.pressMenuLogOut },
