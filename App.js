@@ -4,7 +4,7 @@
  * -
  */
 
-version = "0.4"
+version = "0.8"
 
 import React, { Component } from 'react';
 import {
@@ -89,7 +89,7 @@ global.storage = storage;
 // BLINK ID License Key
 import {BlinkID, MRTDKeys, USDLKeys, EUDLKeys, MYKADKeys} from 'blinkid-react-native';
 const BlinklicenseKey = Platform.select({
-  ios: '67ZRQWEZ-VOKTBUVI-OEW3PUK7-6GINDEGW-QI37PNSN-W4UYM66C-KXEVFNZI-LWHEKJRS',
+  ios: '35LIUMEO-EY2RHA22-OEW3PUK7-6GINDEGW-QI37PNSN-W4UYM66C-KXEVFNZI-LWHELBND',
 });
 
 // STRIPE KEYS
