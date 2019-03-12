@@ -9,6 +9,7 @@ target 'AwesomeProject' do
                                                                 'DevSupport',
                                                                 'RCTNetwork',
                                                                 'RCTPushNotification',
+                                                                'RCTImage'
                                                                 ]
 
     pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
@@ -29,9 +30,11 @@ target 'AwesomeProject' do
 
   # pod 'RNViewShot', :path => '../node_modules/react-native-view-shot'
 
-  pod 'RNIap', :path => '../node_modules/react-native-iap'
+  # pod 'RNIap', :path => '../node_modules/react-native-iap'
   # pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
-
+  
+  # Pods for AppCenter
+  
 end
